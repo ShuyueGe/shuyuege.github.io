@@ -11930,15 +11930,15 @@ html {
 
 .bg-gradient-primary-to-secondary {
   background: #1e30f3;
-  background: linear-gradient(90deg, #7f8cf6 0%, #b86bb7 55%, #d46a9e 100%);
+  background: linear-gradient(90deg, #7682f0 0%, #9b6ccf 55%, #c85f8f 100%);
 }
 
 .text-gradient {
   background: -webkit-linear-gradient(
     90deg,
-    #7f8cf6 0%,
-    #b86bb7 55%,
-    #d46a9e 100%
+    #7682f0 0%,
+    #9b6ccf 55%,
+    #c85f8f 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
