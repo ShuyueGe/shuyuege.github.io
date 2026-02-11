@@ -12119,10 +12119,40 @@ html {
 }
 
 .project-thumb {
-  width: 420px; /* 你可以调大/调小：320/360/420 都行 */
+  width: auto; /* 你可以调大/调小：320/360/420 都行 */
   aspect-ratio: 5 / 3; /* 1000x600 的比例 */
   object-fit: cover; /* 裁切填满，不变形 */
   flex-shrink: 0; /* 防止被挤扁 */
-  height: auto; /* 由比例自动算高度 */
+  height: 320px; /* 由比例自动算高度 */
+  display: block;
+}
+.project-card {
+  min-height: 320px; /* 你想要多高自己调 */
+}
+
+.case-article {
+  line-height: 1.75;
+}
+
+.case-section {
+  margin-top: 3.5rem; /* 模块之间用空白分隔 */
+}
+
+.case-section:first-child {
+  margin-top: 0;
+}
+
+.case-article p {
+  margin-bottom: 1rem;
+}
+
+.case-article ul {
+  padding-left: 1.2rem;
+}
+
+/* Only affects images inside project case study pages */
+.case-article figure img {
+  width: 100%;
+  height: auto;
   display: block;
 }
