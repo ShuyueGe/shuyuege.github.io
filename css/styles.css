@@ -42,6 +42,8 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
+  --bs-projectblue: #d5f1fe;
+  --bs-projectgreen: #eafce7;
   --bs-primary-rgb: 101, 169, 225;
   --bs-secondary-rgb: 227, 122, 174;
   --bs-success-rgb: 135, 212, 176;
@@ -12160,4 +12162,40 @@ html {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/*详情页分区背景色浅蓝+波浪*/
+.curly-section1 {
+  background-color: #d5f1fe; /*浅蓝*/
+  background-image:
+    url("../assets/shape-top.png"), url("../assets/shape-bottom.png");
+  background-position:
+    50% 0,
+    50% 100%;
+  background-size:
+    100% auto,
+    100% auto;
+  background-repeat: no-repeat, no-repeat;
+  padding-top: 80px;
+  padding-bottom: 120px;
+}
+
+.curly-section2 {
+  background-color: #eafce7; /*浅绿*/
+  background-image:
+    url("../assets/shape-top.png"), url("../assets/shape-bottom.png");
+  background-position:
+    50% 0,
+    50% 100%;
+  background-size:
+    100% auto,
+    100% auto;
+  background-repeat: no-repeat, no-repeat;
+  padding-top: 80px;
+  padding-bottom: 120px;
+}
+
+.wave-inner {
+  width: 55%;
+  margin: 0 auto;
 }
