@@ -13,6 +13,12 @@ const projectArtworkPaths: Record<string, string> = {
     "/images/projects/church-hover.png",
 };
 
+const projectHoverBackgrounds: Partial<Record<string, string>> = {
+  "ai-health-web-app-upgrade": "#E7F2F7",
+  "restaurant-website-redesign": "#F6EED7",
+  "church-ngo-website-redesign-implementation": "#DBBABA",
+};
+
 interface ProjectArtworkProps {
   project: Project;
 }
@@ -38,9 +44,12 @@ export function ProjectShowcase() {
   );
   const selectedProject =
     activeProjectIndex >= 0 ? projects[activeProjectIndex] : null;
+  const selectedProjectBackground = selectedProject
+    ? (projectHoverBackgrounds[selectedProject.slug] ??
+      `color-mix(in srgb, ${selectedProject.mutedColor} 22%, var(--color-bg))`)
+    : "var(--color-bg)";
   const previewStyle = {
-    "--projects-active-color":
-      selectedProject?.mutedColor ?? "var(--color-primary-soft)",
+    "--projects-active-color": selectedProjectBackground,
   } as CSSProperties;
 
   return (
