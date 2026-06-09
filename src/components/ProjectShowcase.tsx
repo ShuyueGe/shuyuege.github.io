@@ -21,9 +21,9 @@ const projectHoverBackgrounds: Partial<Record<string, string>> = {
 
 const projectActiveTitleColors: Record<string, string> = {
   "ngo-website-redesign": "#3F5A3D",
-  "ai-health-web-app-upgrade": "#36536F",
-  "restaurant-website-redesign": "#6B4A1F",
-  "church-ngo-website-redesign-implementation": "#6F3F3B",
+  "ai-health-web-app-upgrade": "#2B4157",
+  "restaurant-website-redesign": "#473927",
+  "church-ngo-website-redesign-implementation": "#492A28",
 };
 
 interface ProjectArtworkProps {
