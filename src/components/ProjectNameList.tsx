@@ -24,7 +24,6 @@ export function ProjectNameList({
           <Link
             to={`/projects/${project.slug}`}
             onMouseEnter={() => onActivate(project.slug)}
-            onMouseLeave={onDeactivate}
             onFocus={() => onActivate(project.slug)}
             onBlur={onDeactivate}
           >
@@ -41,4 +40,3 @@ export function ProjectNameList({
     </ol>
   );
 }
-
