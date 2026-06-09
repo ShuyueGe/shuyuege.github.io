@@ -15,15 +15,11 @@ const projectArtworkPaths: Record<string, string> = {
 
 interface ProjectArtworkProps {
   project: Project;
-  isActive: boolean;
 }
 
-function ProjectArtwork({ project, isActive }: ProjectArtworkProps) {
+function ProjectArtwork({ project }: ProjectArtworkProps) {
   return (
-    <div
-      className={`project-artwork ${isActive ? "is-active" : ""}`}
-      aria-hidden="true"
-    >
+    <div className="project-artwork" aria-hidden="true">
       <img
         className="project-artwork__image"
         src={projectArtworkPaths[project.slug]}
@@ -71,13 +67,12 @@ export function ProjectShowcase() {
             onDeactivate={clearActiveProject}
           />
           <div className="project-artwork-layer" aria-hidden="true">
-            {projects.map((project) => (
+            {selectedProject ? (
               <ProjectArtwork
-                project={project}
-                isActive={activeProject === project.slug}
-                key={project.slug}
+                project={selectedProject}
+                key={selectedProject.slug}
               />
-            ))}
+            ) : null}
           </div>
         </div>
 
