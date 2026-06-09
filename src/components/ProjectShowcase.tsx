@@ -1,59 +1,16 @@
-import type { CSSProperties, SyntheticEvent } from "react";
+import type { CSSProperties } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
-import type { Project } from "../types/project";
 import { ProjectNameList } from "./ProjectNameList";
 
 const projectArtworkPaths: Record<string, string> = {
-  "ngo-website-redesign": "/images/projects/ngo-hover.webp",
-  "ai-health-web-app-upgrade": "/images/projects/ai-health-hover.webp",
-  "restaurant-website-redesign": "/images/projects/restaurant-hover.webp",
+  "ngo-website-redesign": "/images/projects/ngo-hover.png",
+  "ai-health-web-app-upgrade": "/images/projects/ai-health-hover.png",
+  "restaurant-website-redesign": "/images/projects/restaurant-hover.png",
   "church-ngo-website-redesign-implementation":
-    "/images/projects/church-hover.webp",
+    "/images/projects/church-hover.png",
 };
-
-interface ProjectArtworkProps {
-  project: Project;
-  index: number;
-}
-
-function ProjectArtwork({ project, index }: ProjectArtworkProps) {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const style = {
-    "--artwork-theme": project.themeColor,
-    "--artwork-muted": project.mutedColor,
-  } as CSSProperties;
-
-  const handleImageError = (event: SyntheticEvent<HTMLImageElement>) => {
-    event.currentTarget.hidden = true;
-  };
-
-  return (
-    <div
-      className={`project-artwork ${imageLoaded ? "has-image" : ""}`}
-      data-variant={index + 1}
-      style={style}
-      aria-hidden="true"
-    >
-      <div className="project-artwork__fallback">
-        <span className="project-artwork__wash" />
-        <span className="project-artwork__orbit" />
-        <span className="project-artwork__arc" />
-        <span className="project-artwork__glyph">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-      </div>
-      <img
-        className="project-artwork__image"
-        src={projectArtworkPaths[project.slug]}
-        alt=""
-        onLoad={() => setImageLoaded(true)}
-        onError={handleImageError}
-      />
-    </div>
-  );
-}
 
 export function ProjectShowcase() {
   const [activeProject, setActiveProject] = useState<string | null>(null);
@@ -91,14 +48,18 @@ export function ProjectShowcase() {
             onActivate={setActiveProject}
             onDeactivate={clearActiveProject}
           />
-          <div className="project-artwork-layer" aria-live="polite">
-            {selectedProject ? (
-              <ProjectArtwork
-                project={selectedProject}
-                index={activeProjectIndex}
-                key={selectedProject.slug}
+          <div className="project-artwork-layer" aria-hidden="true">
+            {projects.map((project) => (
+              <img
+                className={`project-artwork__image ${
+                  activeProject === project.slug ? "is-active" : ""
+                }`}
+                src={projectArtworkPaths[project.slug]}
+                alt=""
+                decoding="async"
+                key={project.slug}
               />
-            ) : null}
+            ))}
           </div>
         </div>
 
