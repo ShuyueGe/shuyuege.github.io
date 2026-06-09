@@ -5,20 +5,24 @@ import { projects } from "../data/projects";
 import type { Project } from "../types/project";
 import { ProjectNameList } from "./ProjectNameList";
 
-interface ProjectPreviewProps {
+const projectArtworkPaths: Record<string, string> = {
+  "ngo-website-redesign": "/images/projects/ngo-hover.webp",
+  "ai-health-web-app-upgrade": "/images/projects/ai-health-hover.webp",
+  "restaurant-website-redesign": "/images/projects/restaurant-hover.webp",
+  "church-ngo-website-redesign-implementation":
+    "/images/projects/church-hover.webp",
+};
+
+interface ProjectArtworkProps {
   project: Project;
   index: number;
-  compact?: boolean;
 }
 
-function ProjectPreview({
-  project,
-  index,
-  compact = false,
-}: ProjectPreviewProps) {
+function ProjectArtwork({ project, index }: ProjectArtworkProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const style = {
-    "--preview-theme": project.themeColor,
-    "--preview-muted": project.mutedColor,
+    "--artwork-theme": project.themeColor,
+    "--artwork-muted": project.mutedColor,
   } as CSSProperties;
 
   const handleImageError = (event: SyntheticEvent<HTMLImageElement>) => {
@@ -27,27 +31,26 @@ function ProjectPreview({
 
   return (
     <div
-      className={`project-preview ${compact ? "project-preview--compact" : ""}`}
-      style={style}
+      className={`project-artwork ${imageLoaded ? "has-image" : ""}`}
       data-variant={index + 1}
+      style={style}
+      aria-hidden="true"
     >
-      <div className="project-preview__placeholder" aria-hidden="true">
-        <span className="project-preview__shape project-preview__shape--one" />
-        <span className="project-preview__shape project-preview__shape--two" />
-        <span className="project-preview__shape project-preview__shape--three" />
-        <span className="project-preview__screen project-preview__screen--one" />
-        <span className="project-preview__screen project-preview__screen--two" />
+      <div className="project-artwork__fallback">
+        <span className="project-artwork__wash" />
+        <span className="project-artwork__orbit" />
+        <span className="project-artwork__arc" />
+        <span className="project-artwork__glyph">
+          {String(index + 1).padStart(2, "0")}
+        </span>
       </div>
       <img
-        className="project-preview__image"
-        src={project.heroImage}
-        alt={`${project.title} feature preview`}
+        className="project-artwork__image"
+        src={projectArtworkPaths[project.slug]}
+        alt=""
+        onLoad={() => setImageLoaded(true)}
         onError={handleImageError}
       />
-      <div className="project-preview__meta">
-        <span>{project.projectType}</span>
-        <strong>{project.shortTitle}</strong>
-      </div>
     </div>
   );
 }
@@ -88,26 +91,14 @@ export function ProjectShowcase() {
             onActivate={setActiveProject}
             onDeactivate={clearActiveProject}
           />
-          <div className="project-feature" aria-live="polite">
+          <div className="project-artwork-layer" aria-live="polite">
             {selectedProject ? (
-              <Link
-                className="project-feature__link"
-                to={`/projects/${selectedProject.slug}`}
+              <ProjectArtwork
+                project={selectedProject}
+                index={activeProjectIndex}
                 key={selectedProject.slug}
-                aria-label={`View ${selectedProject.title} case study`}
-              >
-                <ProjectPreview
-                  project={selectedProject}
-                  index={activeProjectIndex}
-                />
-              </Link>
-            ) : (
-              <div className="project-feature__idle" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </div>
-            )}
+              />
+            ) : null}
           </div>
         </div>
 
@@ -122,7 +113,6 @@ export function ProjectShowcase() {
                     <p>{project.tools.join(" · ")}</p>
                   </div>
                 </div>
-                <ProjectPreview project={project} index={index} compact />
               </Link>
             </article>
           ))}
