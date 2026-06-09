@@ -1916,16 +1916,12 @@ p {
   transform: translateY(-50%);
 }
 
-.project-artwork__image {
+.project-artwork {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  object-fit: contain;
-  object-position: center right;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transform: translate3d(2.5rem, 0.75rem, 0) scale(0.98);
   transition:
     opacity 420ms ease,
@@ -1933,11 +1929,25 @@ p {
     visibility 0s linear 460ms;
 }
 
-.project-artwork__image.is-active {
+.project-artwork.is-active {
   opacity: 1;
   visibility: visible;
   transform: translate3d(0, 0, 0) scale(1);
   transition-delay: 0s;
+}
+
+.project-artwork__image {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+  object-fit: contain;
+  object-position: center right;
 }
 
 @media (max-width: 1050px) {
@@ -1971,11 +1981,11 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-artwork__image {
+  .project-artwork {
     transition: none;
   }
 
-  .project-artwork__image.is-active {
+  .project-artwork.is-active {
     transform: none;
   }
 }

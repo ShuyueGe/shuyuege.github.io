@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
+import type { Project } from "../types/project";
 import { ProjectNameList } from "./ProjectNameList";
 
 const projectArtworkPaths: Record<string, string> = {
@@ -11,6 +12,27 @@ const projectArtworkPaths: Record<string, string> = {
   "church-ngo-website-redesign-implementation":
     "/images/projects/church-hover.png",
 };
+
+interface ProjectArtworkProps {
+  project: Project;
+  isActive: boolean;
+}
+
+function ProjectArtwork({ project, isActive }: ProjectArtworkProps) {
+  return (
+    <div
+      className={`project-artwork ${isActive ? "is-active" : ""}`}
+      aria-hidden="true"
+    >
+      <img
+        className="project-artwork__image"
+        src={projectArtworkPaths[project.slug]}
+        alt=""
+        decoding="async"
+      />
+    </div>
+  );
+}
 
 export function ProjectShowcase() {
   const [activeProject, setActiveProject] = useState<string | null>(null);
@@ -50,13 +72,9 @@ export function ProjectShowcase() {
           />
           <div className="project-artwork-layer" aria-hidden="true">
             {projects.map((project) => (
-              <img
-                className={`project-artwork__image ${
-                  activeProject === project.slug ? "is-active" : ""
-                }`}
-                src={projectArtworkPaths[project.slug]}
-                alt=""
-                decoding="async"
+              <ProjectArtwork
+                project={project}
+                isActive={activeProject === project.slug}
                 key={project.slug}
               />
             ))}
