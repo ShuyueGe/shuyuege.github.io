@@ -54,6 +54,10 @@ export function ProjectTile({
         label={`${project.shortTitle} preview ${imageIndex + 1}`}
         className="project-tile__image"
       />
+      <span className="project-tile__caption">
+        <strong>{project.shortTitle}</strong>
+        <small>{project.tools.slice(0, 2).join(" · ")}</small>
+      </span>
       <span className="project-tile__index" aria-hidden="true">
         0{imageIndex + 1}
       </span>

@@ -24,14 +24,13 @@ export function HomePage() {
   }, [location.search]);
 
   return (
-    <>
+    <div className="home-page">
       <Navbar />
       <main>
         <AboutSection />
         <ProjectShowcase />
       </main>
-      <Footer />
-    </>
+      <Footer variant="home" />
+    </div>
   );
 }
-

@@ -31,7 +31,10 @@ export function ProjectNameList({
             <span className="project-name-list__number">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <span>{project.title}</span>
+            <span className="project-name-list__content">
+              <strong>{project.title}</strong>
+              <small>{project.tools.join(" · ")}</small>
+            </span>
           </Link>
         </li>
       ))}
