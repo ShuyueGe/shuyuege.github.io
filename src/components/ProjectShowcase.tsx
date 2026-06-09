@@ -14,9 +14,16 @@ const projectArtworkPaths: Record<string, string> = {
 };
 
 const projectHoverBackgrounds: Partial<Record<string, string>> = {
-  "ai-health-web-app-upgrade": "#E7F2F7",
-  "restaurant-website-redesign": "#F6EED7",
-  "church-ngo-website-redesign-implementation": "#DBBABA",
+  "ai-health-web-app-upgrade": "#B7C8D8",
+  "restaurant-website-redesign": "#FAEDCB",
+  "church-ngo-website-redesign-implementation": "#D0ADA7",
+};
+
+const projectActiveTitleColors: Record<string, string> = {
+  "ngo-website-redesign": "#3F5A3D",
+  "ai-health-web-app-upgrade": "#36536F",
+  "restaurant-website-redesign": "#6B4A1F",
+  "church-ngo-website-redesign-implementation": "#6F3F3B",
 };
 
 interface ProjectArtworkProps {
@@ -50,6 +57,9 @@ export function ProjectShowcase() {
     : "var(--color-bg)";
   const previewStyle = {
     "--projects-active-color": selectedProjectBackground,
+    "--projects-active-title-color": selectedProject
+      ? projectActiveTitleColors[selectedProject.slug]
+      : "var(--color-text)",
   } as CSSProperties;
 
   return (

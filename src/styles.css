@@ -1781,7 +1781,7 @@ p {
   li.is-active
   .project-name-list__content
   strong {
-  color: var(--color-accent);
+  color: var(--projects-active-title-color);
 }
 
 .home-page .project-editorial .project-name-list__content small {
