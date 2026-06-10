@@ -11,12 +11,42 @@ export function AboutSection() {
   return (
     <section className="about-section about-hero page-shell" id="about">
       <div className="about-hero__watercolor" aria-hidden="true">
+        <svg className="about-hero__filters" width="0" height="0">
+          <defs>
+            <filter
+              id="watercolor-edge"
+              x="-15%"
+              y="-15%"
+              width="130%"
+              height="130%"
+              colorInterpolationFilters="sRGB"
+            >
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.018 0.032"
+                numOctaves="2"
+                seed="11"
+                result="watercolorNoise"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="watercolorNoise"
+                scale="4"
+                xChannelSelector="R"
+                yChannelSelector="G"
+                result="displacedShape"
+              />
+              <feGaussianBlur in="displacedShape" stdDeviation="0.65" />
+            </filter>
+          </defs>
+        </svg>
+
         <svg
           className="about-hero__blob about-hero__blob--green-large"
           viewBox="0 0 200 170"
         >
           <path
-            d="M22 94C17 58 43 32 79 29C109 27 119 7 145 15C174 24 190 58 185 91C181 126 157 152 123 159C85 167 49 151 31 123C25 113 23 104 22 94Z"
+            d="M18 93C13 70 27 49 52 42C76 35 89 17 113 21C137 24 146 44 169 51C190 57 194 79 184 101C175 122 154 129 142 148C130 165 102 163 80 154C57 145 45 130 28 118C20 112 18 102 18 93Z"
             fill="currentColor"
           />
         </svg>
@@ -25,7 +55,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M18 77C22 43 55 21 88 28C113 33 130 12 158 30C185 48 194 83 177 112C160 142 126 159 92 153C57 147 23 127 17 98C15 91 16 84 18 77Z"
+            d="M20 65C31 36 61 21 88 30C110 39 128 19 154 28C181 37 190 64 176 87C164 106 171 129 149 145C128 160 105 148 84 153C57 159 29 140 21 116C15 98 13 83 20 65Z"
             fill="currentColor"
           />
         </svg>
@@ -34,7 +64,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M25 63C42 28 79 22 109 29C137 35 163 25 179 53C195 81 180 119 156 139C130 160 91 161 58 143C26 126 8 96 25 63Z"
+            d="M23 61C34 34 58 24 83 29C105 33 121 21 145 27C171 33 187 55 181 79C176 100 188 117 165 137C142 158 111 151 88 158C62 165 32 145 21 120C12 99 13 82 23 61Z"
             fill="currentColor"
           />
         </svg>
@@ -43,7 +73,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M31 50C53 20 91 23 117 31C143 39 171 38 180 67C190 98 166 132 136 147C104 163 63 151 41 127C19 104 12 76 31 50Z"
+            d="M30 48C47 24 71 20 94 30C113 38 131 23 153 34C177 46 185 70 172 91C161 109 169 128 145 143C121 158 99 147 77 151C52 154 26 137 20 113C15 91 16 68 30 48Z"
             fill="currentColor"
           />
         </svg>
@@ -52,7 +82,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M24 89C20 55 43 29 76 24C107 20 120 38 147 36C174 34 190 60 184 90C178 122 151 149 116 155C81 161 47 145 31 118C26 109 23 99 24 89Z"
+            d="M22 88C18 62 34 39 59 34C81 29 92 12 116 21C138 30 150 25 169 42C187 59 190 83 176 102C163 120 165 139 139 151C114 162 92 148 70 151C45 154 26 133 21 112C19 103 19 96 22 88Z"
             fill="currentColor"
           />
         </svg>
@@ -61,7 +91,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M22 82C27 48 56 26 88 29C117 32 133 18 159 35C185 53 190 87 174 114C157 143 121 157 88 151C53 145 23 124 18 98C17 93 19 87 22 82Z"
+            d="M18 79C24 49 48 32 76 35C101 38 115 18 140 27C166 36 184 59 177 83C171 104 185 120 163 140C141 160 112 151 88 157C61 164 31 146 20 123C13 108 12 94 18 79Z"
             fill="currentColor"
           />
         </svg>
