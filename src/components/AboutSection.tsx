@@ -1,6 +1,21 @@
 export function AboutSection() {
+  const focusAreas = [
+    "Product Design",
+    "UX Research",
+    "Information Architecture",
+    "Responsive Web Design",
+    "AI-assisted Prototyping",
+    "Visual Systems",
+  ];
+
   return (
     <section className="about-section about-hero page-shell" id="about">
+      <div className="about-hero__watercolor" aria-hidden="true">
+        <span className="about-hero__blob about-hero__blob--green" />
+        <span className="about-hero__blob about-hero__blob--blue" />
+        <span className="about-hero__blob about-hero__blob--yellow" />
+      </div>
+
       <div className="about-hero__content">
         <p className="about-hero__intro">
           Hi, I&apos;m <mark className="about-hero__name">Shu</mark>.
@@ -16,6 +31,12 @@ export function AboutSection() {
           working prototypes across web and mobile, using AI-assisted workflows
           to move from research to implementation.
         </p>
+
+        <ul className="about-hero__focus" aria-label="Design focus areas">
+          {focusAreas.map((focusArea) => (
+            <li key={focusArea}>{focusArea}</li>
+          ))}
+        </ul>
       </div>
     </section>
   );
