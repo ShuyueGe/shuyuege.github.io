@@ -2692,57 +2692,57 @@ p {
 }
 
 .home-page .about-hero__blob--green-large {
-  top: 4%;
-  right: 15%;
-  width: clamp(14rem, 22vw, 22rem);
+  top: 16%;
+  right: 29%;
+  width: clamp(13rem, 19vw, 19rem);
   color: #b8c8b2;
-  opacity: 0.38;
-  transform: rotate(-8deg);
-}
-
-.home-page .about-hero__blob--blue {
-  top: 28%;
-  right: 2%;
-  width: clamp(13rem, 20vw, 20rem);
-  color: #afc7d8;
-  opacity: 0.37;
-  transform: rotate(11deg);
-}
-
-.home-page .about-hero__blob--yellow {
-  right: 18%;
-  bottom: 2%;
-  width: clamp(10rem, 15vw, 15rem);
-  color: #faedcb;
-  opacity: 0.48;
+  opacity: 0.33;
   transform: rotate(-11deg);
 }
 
-.home-page .about-hero__blob--green-small {
-  top: 16%;
-  right: 34%;
-  width: clamp(7rem, 10vw, 10rem);
-  color: #d5e6e0;
+.home-page .about-hero__blob--blue {
+  top: 8%;
+  right: 1.25rem;
+  width: clamp(12rem, 17vw, 17rem);
+  color: #afc7d8;
+  opacity: 0.34;
+  transform: rotate(8deg);
+}
+
+.home-page .about-hero__blob--yellow {
+  right: 11%;
+  bottom: 0;
+  width: clamp(10rem, 14vw, 14rem);
+  color: #faedcb;
   opacity: 0.44;
-  transform: rotate(17deg);
+  transform: rotate(-8deg);
+}
+
+.home-page .about-hero__blob--green-small {
+  top: 1rem;
+  right: 17%;
+  width: clamp(7rem, 9vw, 9rem);
+  color: #d5e6e0;
+  opacity: 0.18;
+  transform: rotate(14deg);
 }
 
 .home-page .about-hero__blob--pink {
-  right: 4%;
-  bottom: 8%;
-  width: clamp(6rem, 8vw, 8rem);
+  top: 55%;
+  right: 32%;
+  width: clamp(5.5rem, 7vw, 7rem);
   color: #d0ada7;
-  opacity: 0.2;
-  transform: rotate(6deg);
+  opacity: 0.17;
+  transform: rotate(9deg);
 }
 
 .home-page .about-hero__blob--left {
-  bottom: 5%;
-  left: 0.75rem;
-  width: clamp(5rem, 7vw, 7rem);
+  bottom: -4%;
+  left: clamp(-9rem, -7vw, -6rem);
+  width: clamp(12rem, 17vw, 17rem);
   color: #b8c8b2;
-  opacity: 0.23;
-  transform: rotate(-15deg);
+  opacity: 0.2;
+  transform: rotate(-12deg);
 }
 
 .home-page .about-hero__intro {
@@ -2861,17 +2861,18 @@ p {
   }
 
   .home-page .about-hero__blob--green-large {
-    top: 12%;
-    right: 12%;
+    top: 21%;
+    right: 27%;
   }
 
   .home-page .about-hero__blob--blue {
-    top: 39%;
-    right: 1rem;
+    top: 12%;
+    right: 1.5rem;
   }
 
   .home-page .about-hero__blob--green-small {
-    right: 39%;
+    top: 0.85rem;
+    right: 15%;
   }
 
   .home-page .about-hero__title-primary {
@@ -2899,39 +2900,39 @@ p {
   }
 
   .home-page .about-hero__blob--green-large {
-    top: 27%;
-    right: 1rem;
-    width: 11rem;
+    top: 31%;
+    right: 26%;
+    width: 9.5rem;
   }
 
   .home-page .about-hero__blob--blue {
-    top: 49%;
-    right: 0.75rem;
-    width: 10rem;
+    top: 18%;
+    right: 1rem;
+    width: 9rem;
   }
 
   .home-page .about-hero__blob--yellow {
-    right: 22%;
-    bottom: 8%;
-    width: 7.5rem;
+    right: 5%;
+    bottom: 7%;
+    width: 7rem;
   }
 
   .home-page .about-hero__blob--green-small {
-    top: 19%;
-    right: 34%;
-    width: 5.5rem;
+    top: -0.1rem;
+    right: 17%;
+    width: 5rem;
   }
 
   .home-page .about-hero__blob--pink {
-    right: 3%;
-    bottom: 17%;
-    width: 4.75rem;
+    top: 58%;
+    right: 40%;
+    width: 4.25rem;
   }
 
   .home-page .about-hero__blob--left {
-    bottom: 5%;
-    left: 0.5rem;
-    width: 4.5rem;
+    bottom: -2%;
+    left: -4rem;
+    width: 9rem;
   }
 
   .home-page .about-hero__intro {
@@ -2981,6 +2982,47 @@ p {
 
 .home-page .projects-section--editorial {
   padding-top: clamp(2.25rem, 3.5vw, 3rem);
+}
+
+.home-page .projects-section--editorial::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: clamp(6.25rem, 10vw, 10rem);
+  background:
+    radial-gradient(
+      ellipse at 18% 12%,
+      rgb(184 200 178 / 0.18),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 72% 18%,
+      rgb(175 199 216 / 0.16),
+      transparent 46%
+    ),
+    radial-gradient(
+      ellipse at 91% 25%,
+      rgb(250 237 203 / 0.18),
+      transparent 43%
+    ),
+    linear-gradient(
+      to bottom,
+      var(--color-bg) 0%,
+      color-mix(in srgb, var(--color-bg) 72%, transparent) 42%,
+      transparent 100%
+    );
+  content: "";
+  opacity: 0.88;
+  pointer-events: none;
+}
+
+.home-page .projects-section--editorial > .page-shell {
+  position: relative;
+  z-index: 1;
 }
 
 .home-page .projects-section--editorial .projects-section__intro {
@@ -3057,7 +3099,7 @@ p {
 
 .logo:hover .logo__name,
 .logo:focus-visible .logo__name {
-  color: #13362f;
+  color: #78a49b;
 }
 
 .home-page .logo__name::after {
