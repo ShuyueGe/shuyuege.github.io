@@ -2786,3 +2786,23 @@ p {
     font-size: 1.04rem;
   }
 }
+
+/* Recent Work heading rhythm */
+
+.home-page .projects-section--editorial {
+  padding-top: clamp(3rem, 5vw, 4rem);
+}
+
+.home-page .projects-section--editorial .projects-section__intro {
+  margin-bottom: clamp(2.25rem, 3vw, 2.5rem);
+}
+
+@media (max-width: 600px) {
+  .home-page .projects-section--editorial {
+    padding-top: 2.75rem;
+  }
+
+  .home-page .projects-section--editorial .projects-section__intro {
+    margin-bottom: 2rem;
+  }
+}
