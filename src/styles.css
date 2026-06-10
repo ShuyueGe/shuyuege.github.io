@@ -2677,7 +2677,7 @@ p {
 .home-page .about-hero__name {
   margin-inline: 3px;
   padding-inline: 0.22em;
-  border-radius: 15px;
+  border-radius: 10px;
   background: linear-gradient(
     180deg,
     transparent 7%,
@@ -2794,7 +2794,7 @@ p {
 }
 
 .home-page .projects-section--editorial .projects-section__intro {
-  margin-bottom: clamp(2.25rem, 3vw, 2.5rem);
+  margin-bottom: clamp(1.5rem, 2vw, 1.7rem);
 }
 
 @media (max-width: 600px) {
@@ -2803,6 +2803,6 @@ p {
   }
 
   .home-page .projects-section--editorial .projects-section__intro {
-    margin-bottom: 2rem;
+    margin-bottom: 1.35rem;
   }
 }
