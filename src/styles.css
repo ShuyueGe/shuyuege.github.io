@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap");
+
 :root {
   --color-bg: #f8f6f0;
   --color-text: #1f2523;
@@ -2804,5 +2806,56 @@ p {
 
   .home-page .projects-section--editorial .projects-section__intro {
     margin-bottom: 1.35rem;
+  }
+}
+
+/* Header brand refinement */
+
+.logo__mark {
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1px solid #13362f;
+  border-radius: 50%;
+  background: #d5e6e0;
+  font-size: 0;
+}
+
+.home-page .logo__mark {
+  width: 1.325rem;
+  height: 1.325rem;
+  border-color: #13362f;
+  border-radius: 50%;
+  background: #d5e6e0;
+}
+
+.logo__name,
+.home-page .logo__name {
+  color: #000000;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  transition: color var(--transition-fast);
+}
+
+.logo:hover .logo__name,
+.logo:focus-visible .logo__name {
+  color: #13362f;
+}
+
+.home-page .logo__name::after {
+  display: none;
+  content: none;
+}
+
+@media (max-width: 600px) {
+  .logo__mark {
+    width: 1.075rem;
+    height: 1.075rem;
+  }
+
+  .home-page .logo__mark {
+    width: 1.125rem;
+    height: 1.125rem;
   }
 }
