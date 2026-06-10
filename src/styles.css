@@ -2707,6 +2707,16 @@ p {
   line-height: 1.72;
 }
 
+.home-page .projects-section__intro h2.projects-section__heading {
+  margin: 0;
+  font-family: inherit;
+  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.72;
+}
+
 @media (max-width: 900px) {
   .home-page .about-hero {
     min-height: auto;
@@ -2743,5 +2753,9 @@ p {
     margin-top: 1.9rem;
     font-size: 1.04rem;
     line-height: 1.7;
+  }
+
+  .home-page .projects-section__intro h2.projects-section__heading {
+    font-size: 1.04rem;
   }
 }

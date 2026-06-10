@@ -72,7 +72,7 @@ export function ProjectShowcase() {
     >
       <div className="page-shell">
         <div className="projects-section__intro">
-          <h2>Projects</h2>
+          <h2 className="projects-section__heading">Recent Work</h2>
         </div>
 
         <div
