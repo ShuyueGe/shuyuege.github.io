@@ -2677,7 +2677,7 @@ p {
 .home-page .about-hero__name {
   margin-inline: 3px;
   padding-inline: 0.22em;
-  border-radius: 3px;
+  border-radius: 15px;
   background: linear-gradient(
     180deg,
     transparent 7%,
@@ -2690,12 +2690,27 @@ p {
 }
 
 .home-page .about-hero__title {
-  max-width: 25ch;
+  max-width: none;
   margin: 0;
   font-family: inherit;
-  font-size: clamp(2.75rem, 4.9vw, 5rem);
   font-weight: 500;
   letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.home-page .about-hero__title-primary,
+.home-page .about-hero__title-secondary {
+  display: block;
+}
+
+.home-page .about-hero__title-primary {
+  font-size: clamp(3.5rem, 6.8vw, 6.75rem);
+  line-height: 1;
+}
+
+.home-page .about-hero__title-secondary {
+  margin-top: 0.08em;
+  font-size: clamp(2.45rem, 4vw, 4.1rem);
   line-height: 1.04;
 }
 
@@ -2724,9 +2739,12 @@ p {
     padding-bottom: clamp(3.25rem, 7vw, 4.5rem);
   }
 
-  .home-page .about-hero__title {
-    max-width: 20ch;
-    font-size: clamp(2.7rem, 8vw, 4.5rem);
+  .home-page .about-hero__title-primary {
+    font-size: clamp(2.85rem, 8vw, 4.5rem);
+  }
+
+  .home-page .about-hero__title-secondary {
+    font-size: clamp(2.5rem, 7vw, 4rem);
   }
 }
 
@@ -2742,10 +2760,19 @@ p {
   }
 
   .home-page .about-hero__title {
-    max-width: 15ch;
-    font-size: clamp(2.45rem, 11.5vw, 3.55rem);
     letter-spacing: -0.055em;
+  }
+
+  .home-page .about-hero__title-primary {
+    font-size: clamp(2.55rem, 11.5vw, 3.45rem);
     line-height: 1.02;
+  }
+
+  .home-page .about-hero__title-secondary {
+    max-width: 15ch;
+    margin-top: 0.16em;
+    font-size: clamp(2.2rem, 10vw, 3rem);
+    line-height: 1.06;
   }
 
   .home-page .about-hero__description {

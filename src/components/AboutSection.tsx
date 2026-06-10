@@ -6,7 +6,10 @@ export function AboutSection() {
           Hi, I&apos;m <mark className="about-hero__name">Shu</mark>.
         </p>
         <h1 className="about-hero__title">
-          Product Designer for clear, usable digital experiences.
+          <span className="about-hero__title-primary">Product Designer</span>
+          <span className="about-hero__title-secondary">
+            for clear, usable digital experiences.
+          </span>
         </h1>
         <p className="about-hero__description">
           I turn complex content and user needs into structured interfaces and
