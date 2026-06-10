@@ -23,20 +23,20 @@ export function AboutSection() {
             >
               <feTurbulence
                 type="fractalNoise"
-                baseFrequency="0.018 0.032"
-                numOctaves="2"
+                baseFrequency="0.012 0.026"
+                numOctaves="3"
                 seed="11"
                 result="watercolorNoise"
               />
               <feDisplacementMap
                 in="SourceGraphic"
                 in2="watercolorNoise"
-                scale="4"
+                scale="7"
                 xChannelSelector="R"
                 yChannelSelector="G"
                 result="displacedShape"
               />
-              <feGaussianBlur in="displacedShape" stdDeviation="0.65" />
+              <feGaussianBlur in="displacedShape" stdDeviation="0.4" />
             </filter>
           </defs>
         </svg>
@@ -46,7 +46,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M18 93C13 70 27 49 52 42C76 35 89 17 113 21C137 24 146 44 169 51C190 57 194 79 184 101C175 122 154 129 142 148C130 165 102 163 80 154C57 145 45 130 28 118C20 112 18 102 18 93Z"
+            d="M12 94C7 73 17 52 42 43C66 34 77 13 105 18C130 22 140 43 166 45C188 47 198 68 188 93C179 116 158 126 149 146C138 169 105 166 82 158C56 149 49 132 28 122C17 116 13 104 12 94Z"
             fill="currentColor"
           />
         </svg>
@@ -55,7 +55,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M20 65C31 36 61 21 88 30C110 39 128 19 154 28C181 37 190 64 176 87C164 106 171 129 149 145C128 160 105 148 84 153C57 159 29 140 21 116C15 98 13 83 20 65Z"
+            d="M14 67C25 36 55 16 86 28C109 37 124 14 153 23C181 31 196 58 179 84C166 104 177 128 151 147C128 164 104 148 80 157C50 168 24 145 17 119C11 99 7 84 14 67Z"
             fill="currentColor"
           />
         </svg>
@@ -64,7 +64,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M23 61C34 34 58 24 83 29C105 33 121 21 145 27C171 33 187 55 181 79C176 100 188 117 165 137C142 158 111 151 88 158C62 165 32 145 21 120C12 99 13 82 23 61Z"
+            d="M17 62C27 35 51 17 80 25C103 31 119 16 146 22C176 29 193 52 184 78C177 99 194 117 167 140C143 161 111 151 86 161C58 172 28 149 17 122C8 100 7 82 17 62Z"
             fill="currentColor"
           />
         </svg>
@@ -73,7 +73,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M30 48C47 24 71 20 94 30C113 38 131 23 153 34C177 46 185 70 172 91C161 109 169 128 145 143C121 158 99 147 77 151C52 154 26 137 20 113C15 91 16 68 30 48Z"
+            d="M24 48C41 21 70 16 94 27C114 36 132 17 157 30C183 44 190 69 175 92C163 110 174 131 147 147C122 162 98 147 74 154C47 161 20 140 15 113C10 89 10 67 24 48Z"
             fill="currentColor"
           />
         </svg>
@@ -82,7 +82,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M22 88C18 62 34 39 59 34C81 29 92 12 116 21C138 30 150 25 169 42C187 59 190 83 176 102C163 120 165 139 139 151C114 162 92 148 70 151C45 154 26 133 21 112C19 103 19 96 22 88Z"
+            d="M16 89C11 61 28 37 55 32C79 28 88 8 116 18C140 27 151 20 173 40C193 58 195 83 178 104C165 121 169 143 140 155C112 167 91 148 67 156C40 164 20 137 16 113C14 104 14 96 16 89Z"
             fill="currentColor"
           />
         </svg>
@@ -91,7 +91,7 @@ export function AboutSection() {
           viewBox="0 0 200 170"
         >
           <path
-            d="M18 79C24 49 48 32 76 35C101 38 115 18 140 27C166 36 184 59 177 83C171 104 185 120 163 140C141 160 112 151 88 157C61 164 31 146 20 123C13 108 12 94 18 79Z"
+            d="M10 80C16 47 42 28 75 33C101 37 114 13 144 23C174 34 192 58 182 85C174 107 191 124 165 145C141 165 110 151 84 162C54 174 23 150 13 124C7 108 6 94 10 80Z"
             fill="currentColor"
           />
         </svg>

@@ -5,13 +5,13 @@ export function Logo() {
     <Link className="logo" to="/" aria-label="Shuyue Ge, home">
       <svg
         className="logo__mark"
-        viewBox="0 0 64 64"
+        viewBox="0 0 72 64"
         aria-hidden="true"
         focusable="false"
       >
         <path
           className="logo__mark-shape"
-          d="M10 31C10 24 13 20 20 18C28 15.5 35 14 40 9.5C44.5 5.5 49.5 5 53.2 8.1C59.5 13.3 61.5 23.5 60 33C58.5 43.5 53.5 52.5 45 57C36 61.8 25.5 60.5 18.5 54.5C12 48.8 9.2 39.1 10 31Z"
+          d="M6.5 31.5C6.5 23 11.5 17.5 22.5 14.5C34 11.5 40.5 5.5 50 7C61.5 8.5 67.5 20 67 32C66.5 45 59 54.5 47 58C34 61.5 20.5 57.5 13 49.5C8.5 44.5 5.5 37.5 6.5 31.5Z"
         />
       </svg>
       <span className="logo__name">Shuyue Ge</span>

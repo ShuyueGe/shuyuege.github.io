@@ -79,28 +79,28 @@ export function ProjectShowcase() {
         <defs>
           <filter
             id="projects-watercolor-edge"
-            x="-4%"
-            y="-8%"
-            width="108%"
-            height="116%"
+            x="-6%"
+            y="-22%"
+            width="112%"
+            height="144%"
             colorInterpolationFilters="sRGB"
           >
             <feTurbulence
               type="fractalNoise"
-              baseFrequency="0.006 0.025"
-              numOctaves="2"
+              baseFrequency="0.009 0.022"
+              numOctaves="3"
               seed="19"
               result="edgeNoise"
             />
             <feDisplacementMap
               in="SourceGraphic"
               in2="edgeNoise"
-              scale="17"
+              scale="19"
               xChannelSelector="R"
               yChannelSelector="G"
               result="displacedBackground"
             />
-            <feGaussianBlur in="displacedBackground" stdDeviation="4.5" />
+            <feGaussianBlur in="displacedBackground" stdDeviation="8" />
           </filter>
           <filter
             id="projects-wash-soften"
@@ -109,30 +109,66 @@ export function ProjectShowcase() {
             width="130%"
             height="160%"
           >
-            <feGaussianBlur stdDeviation="10" />
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.012 0.03"
+              numOctaves="2"
+              seed="29"
+              result="washNoise"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="washNoise"
+              scale="12"
+              xChannelSelector="R"
+              yChannelSelector="G"
+              result="displacedWash"
+            />
+            <feGaussianBlur in="displacedWash" stdDeviation="5" />
           </filter>
         </defs>
 
-        <path
-          className="projects-section__background-fill"
-          d="M0 128C112 69 210 151 330 107C451 62 564 139 692 100C817 62 925 146 1047 105C1171 64 1296 139 1415 94C1491 65 1545 88 1600 66V1000H0Z"
-          filter="url(#projects-watercolor-edge)"
-        />
+        <g className="projects-section__background-fill">
+          <path
+            className="projects-section__background-bleed projects-section__background-bleed--left"
+            d="M-70 155C38 81 147 164 255 129C353 98 416 144 486 179C360 211 220 218 85 203C13 195-40 184-70 155Z"
+            filter="url(#projects-wash-soften)"
+          />
+          <path
+            className="projects-section__background-bleed projects-section__background-bleed--center"
+            d="M390 146C503 82 616 160 722 126C818 95 902 138 980 177C839 213 690 213 556 198C483 190 425 174 390 146Z"
+            filter="url(#projects-wash-soften)"
+          />
+          <path
+            className="projects-section__background-bleed projects-section__background-bleed--right"
+            d="M1040 147C1153 84 1269 157 1376 122C1470 92 1552 124 1652 169C1518 211 1368 214 1230 199C1148 190 1081 173 1040 147Z"
+            filter="url(#projects-wash-soften)"
+          />
+          <path
+            className="projects-section__background-base"
+            d="M-30 226C66 188 146 231 247 215C351 198 423 228 521 209C627 188 707 225 808 207C916 188 1005 229 1111 205C1224 180 1308 224 1413 198C1495 178 1551 190 1630 176V1000H-30Z"
+            filter="url(#projects-watercolor-edge)"
+          />
+        </g>
         <g
           className="projects-section__background-wash"
           filter="url(#projects-wash-soften)"
         >
           <path
-            d="M-35 92C94 26 232 133 365 88C491 46 604 127 725 93C831 63 910 90 993 124C773 166 548 151 331 157C183 161 58 145-35 92Z"
+            d="M-62 126C20 77 105 91 164 127C222 163 185 205 106 203C28 202-39 170-62 126Z"
             fill="#B8C8B2"
           />
           <path
-            d="M581 102C737 42 847 135 989 86C1118 41 1245 138 1380 91C1471 59 1540 68 1634 99C1511 151 1362 157 1228 146C1034 130 827 179 581 102Z"
+            d="M655 112C724 72 804 88 850 131C896 175 850 208 778 199C707 190 663 165 655 112Z"
+            fill="#FAEDCB"
+          />
+          <path
+            d="M1284 125C1360 76 1455 91 1511 128C1567 166 1534 205 1451 202C1367 199 1300 174 1284 125Z"
             fill="#AFC7D8"
           />
           <path
-            d="M1054 111C1162 70 1266 119 1364 91C1452 66 1532 83 1619 124C1505 161 1394 158 1288 151C1198 145 1122 153 1054 111Z"
-            fill="#FAEDCB"
+            d="M1511 105C1550 80 1594 88 1625 113C1657 140 1637 170 1594 169C1550 168 1518 145 1511 105Z"
+            fill="#D0ADA7"
           />
         </g>
       </svg>
