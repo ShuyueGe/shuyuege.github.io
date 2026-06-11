@@ -2,28 +2,20 @@ import type { MouseEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Logo } from "./Logo";
 
-const sectionLinks = [
-  { label: "About Me", id: "about" },
-  { label: "Projects", id: "projects" },
-];
-
 export function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleSectionClick = (
-    event: MouseEvent<HTMLAnchorElement>,
-    sectionId: string,
-  ) => {
+  const handleProjectsClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (location.pathname !== "/") {
       return;
     }
 
     event.preventDefault();
     document
-      .getElementById(sectionId)
+      .getElementById("projects")
       ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    navigate(`/?section=${sectionId}`, { replace: true });
+    navigate("/?section=projects", { replace: true });
   };
 
   return (
@@ -31,16 +23,16 @@ export function Navbar() {
       <div className="site-header__inner page-shell">
         <Logo />
         <nav className="site-nav" aria-label="Primary navigation">
-          {sectionLinks.map((link) => (
-            <Link
-              key={link.id}
-              className="site-nav__link"
-              to={`/?section=${link.id}`}
-              onClick={(event) => handleSectionClick(event, link.id)}
-            >
-              {link.label}
-            </Link>
-          ))}
+          <Link className="site-nav__link" to="/about">
+            About Me
+          </Link>
+          <Link
+            className="site-nav__link"
+            to="/?section=projects"
+            onClick={handleProjectsClick}
+          >
+            Projects
+          </Link>
           <a
             className="site-nav__link"
             href={`${import.meta.env.BASE_URL}resume.pdf`}
@@ -54,4 +46,3 @@ export function Navbar() {
     </header>
   );
 }
-

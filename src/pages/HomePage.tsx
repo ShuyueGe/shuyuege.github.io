@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { AboutSection } from "../components/AboutSection";
-import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
+import { Layout } from "../components/Layout";
 import { ProjectShowcase } from "../components/ProjectShowcase";
 
 export function HomePage() {
@@ -24,13 +23,9 @@ export function HomePage() {
   }, [location.search]);
 
   return (
-    <div className="home-page">
-      <Navbar />
-      <main>
-        <AboutSection />
-        <ProjectShowcase />
-      </main>
-      <Footer variant="home" />
-    </div>
+    <Layout className="home-page">
+      <AboutSection />
+      <ProjectShowcase />
+    </Layout>
   );
 }
