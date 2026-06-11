@@ -2884,32 +2884,37 @@ p {
 .home-page .projects-section--editorial {
   --projects-transition-mask:
     radial-gradient(
-      ellipse 30% 82% at 1% 104%,
-      #000 55%,
+      ellipse 32% 116% at 0% 112%,
+      #000 26%,
+      rgb(0 0 0 / 0.68) 58%,
       transparent 100%
     ),
     radial-gradient(
-      ellipse 34% 108% at 26% 116%,
-      #000 57%,
+      ellipse 36% 142% at 25% 124%,
+      #000 28%,
+      rgb(0 0 0 / 0.66) 59%,
       transparent 100%
     ),
     radial-gradient(
-      ellipse 31% 88% at 50% 103%,
-      #000 54%,
+      ellipse 33% 122% at 50% 111%,
+      #000 25%,
+      rgb(0 0 0 / 0.7) 57%,
       transparent 100%
     ),
     radial-gradient(
-      ellipse 35% 112% at 75% 118%,
-      #000 58%,
+      ellipse 37% 146% at 76% 126%,
+      #000 29%,
+      rgb(0 0 0 / 0.65) 60%,
       transparent 100%
     ),
     radial-gradient(
-      ellipse 30% 86% at 100% 104%,
-      #000 55%,
+      ellipse 32% 120% at 100% 113%,
+      #000 26%,
+      rgb(0 0 0 / 0.68) 58%,
       transparent 100%
     );
   overflow: visible;
-  padding-top: clamp(2.25rem, 3.5vw, 3rem);
+  padding-top: clamp(5.75rem, 8vw, 6.75rem);
   background: var(--projects-active-color);
   transition: background-color 420ms ease;
 }
@@ -2925,10 +2930,10 @@ p {
   z-index: 0;
   display: block;
   width: calc(100vw + 3rem);
-  height: 4rem;
+  height: 6.8rem;
   background: var(--projects-active-color);
   content: "";
-  filter: blur(9px);
+  filter: blur(14px);
   overflow: visible;
   pointer-events: none;
   transform: translateX(-50%);
@@ -2951,8 +2956,8 @@ p {
 @media (max-width: 600px) {
   .home-page .projects-section--editorial::before {
     top: -1.25rem;
-    height: 3rem;
-    filter: blur(7px);
+    height: 5.1rem;
+    filter: blur(10px);
   }
 }
 
@@ -2962,7 +2967,7 @@ p {
 
 @media (max-width: 600px) {
   .home-page .projects-section--editorial {
-    padding-top: 2rem;
+    padding-top: 4.6rem;
   }
 
   .home-page .projects-section--editorial .projects-section__intro {
