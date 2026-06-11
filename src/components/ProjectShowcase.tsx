@@ -14,9 +14,9 @@ const projectArtworkPaths: Record<string, string> = {
 };
 
 const projectHoverBackgrounds: Partial<Record<string, string>> = {
-  "ai-health-web-app-upgrade": "#B7C8D8",
-  "restaurant-website-redesign": "#FAEDCB",
-  "church-ngo-website-redesign-implementation": "#D0ADA7",
+  "ai-health-web-app-upgrade": "#E3EEF2",
+  "restaurant-website-redesign": "#F3EAD5",
+  "church-ngo-website-redesign-implementation": "#EADCD8",
 };
 
 const projectActiveTitleColors: Record<string, string> = {
