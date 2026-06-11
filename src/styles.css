@@ -2682,10 +2682,24 @@ p {
   left: 50%;
   z-index: 0;
   width: 100vw;
-  height: auto;
-  overflow: visible;
+  height: calc(100% + 3rem);
+  overflow: hidden;
   pointer-events: none;
   transform: translateX(-50%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 72%,
+    rgb(0 0 0 / 0.72) 84%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 72%,
+    rgb(0 0 0 / 0.72) 84%,
+    transparent 100%
+  );
 }
 
 .home-page .about-hero__watercolor-image {
@@ -2751,6 +2765,8 @@ p {
 }
 
 .home-page .about-hero__focus {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem 0.65rem;
@@ -2829,6 +2845,7 @@ p {
 
   .home-page .about-hero__watercolor {
     top: -1rem;
+    height: calc(100% + 1rem);
     opacity: 0.58;
   }
 
@@ -2882,58 +2899,35 @@ p {
 /* Recent Work heading rhythm */
 
 .home-page .projects-section--editorial {
-  --projects-transition-mask:
-    radial-gradient(
-      ellipse 32% 116% at 0% 112%,
-      #000 26%,
-      rgb(0 0 0 / 0.68) 58%,
-      transparent 100%
-    ),
-    radial-gradient(
-      ellipse 36% 142% at 25% 124%,
-      #000 28%,
-      rgb(0 0 0 / 0.66) 59%,
-      transparent 100%
-    ),
-    radial-gradient(
-      ellipse 33% 122% at 50% 111%,
-      #000 25%,
-      rgb(0 0 0 / 0.7) 57%,
-      transparent 100%
-    ),
-    radial-gradient(
-      ellipse 37% 146% at 76% 126%,
-      #000 29%,
-      rgb(0 0 0 / 0.65) 60%,
-      transparent 100%
-    ),
-    radial-gradient(
-      ellipse 32% 120% at 100% 113%,
-      #000 26%,
-      rgb(0 0 0 / 0.68) 58%,
-      transparent 100%
-    );
+  --projects-transition-mask: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgb(0 0 0 / 0.06) 1.25rem,
+    rgb(0 0 0 / 0.24) 2.75rem,
+    rgb(0 0 0 / 0.58) 4.75rem,
+    #000 7rem,
+    #000 100%
+  );
   overflow: visible;
   padding-top: clamp(5.75rem, 8vw, 6.75rem);
-  background: var(--projects-active-color);
-  transition: background-color 420ms ease;
+  background: transparent;
 }
 
 .home-page .projects-section--editorial.has-active-project {
-  background: var(--projects-active-color);
+  background: transparent;
 }
 
 .home-page .projects-section--editorial::before {
   position: absolute;
   top: -1.5rem;
+  bottom: 0;
   left: 50%;
   z-index: 0;
   display: block;
   width: calc(100vw + 3rem);
-  height: 6.8rem;
+  height: auto;
   background: var(--projects-active-color);
   content: "";
-  filter: blur(14px);
   overflow: visible;
   pointer-events: none;
   transform: translateX(-50%);
@@ -2956,8 +2950,6 @@ p {
 @media (max-width: 600px) {
   .home-page .projects-section--editorial::before {
     top: -1.25rem;
-    height: 5.1rem;
-    filter: blur(10px);
   }
 }
 
