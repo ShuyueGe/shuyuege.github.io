@@ -23,11 +23,7 @@
   --transition-slow: 420ms cubic-bezier(0.2, 0.7, 0.2, 1);
   color: var(--color-text);
   background: var(--color-bg);
-  font-family:
-    "Manrope",
-    "Avenir Next",
-    "Segoe UI",
-    sans-serif;
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -1253,8 +1249,7 @@ p {
 .home-page .project-editorial .project-name-list a {
   grid-template-columns: 2.6rem minmax(0, 1fr);
   gap: 0.8rem;
-  padding: clamp(1.55rem, 3vw, 2.4rem) 3.2rem
-    clamp(1.55rem, 3vw, 2.4rem) 0;
+  padding: clamp(1.55rem, 3vw, 2.4rem) 3.2rem clamp(1.55rem, 3vw, 2.4rem) 0;
 }
 
 .home-page .project-editorial .project-name-list a:hover,
@@ -1276,11 +1271,7 @@ p {
 .home-page .project-editorial .project-name-list__content strong {
   max-width: 18ch;
   min-height: 0;
-  font-family:
-    "Avenir Next",
-    "Manrope",
-    "Segoe UI",
-    sans-serif;
+  font-family: "Avenir Next", "Manrope", "Segoe UI", sans-serif;
   font-size: clamp(1.65rem, 3.1vw, 3.15rem);
   font-weight: 500;
   letter-spacing: -0.055em;
@@ -1372,11 +1363,7 @@ p {
   .project-mobile-entry__heading h3 {
     max-width: 21ch;
     margin-bottom: 0.65rem;
-    font-family:
-      "Avenir Next",
-      "Manrope",
-      "Segoe UI",
-      sans-serif;
+    font-family: "Avenir Next", "Manrope", "Segoe UI", sans-serif;
     font-size: clamp(1.65rem, 6vw, 2.5rem);
     font-weight: 520;
     letter-spacing: -0.05em;
@@ -1391,7 +1378,6 @@ p {
     letter-spacing: 0.035em;
     line-height: 1.55;
   }
-
 }
 
 @media (max-width: 600px) {
@@ -1411,7 +1397,6 @@ p {
   .project-mobile-entry {
     padding-block: 1.9rem;
   }
-
 }
 
 /* Frameless hover artwork revision */
@@ -1444,8 +1429,7 @@ p {
   opacity: 1;
   visibility: visible;
   pointer-events: none;
-  animation: project-artwork-in 460ms cubic-bezier(0.2, 0.7, 0.2, 1)
-    both;
+  animation: project-artwork-in 460ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 .project-artwork__image {
@@ -1539,7 +1523,6 @@ p {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
-
 }
 
 @media (prefers-contrast: more) {
@@ -1723,27 +1706,15 @@ p {
 }
 
 .site-layout .site-footer__identity {
-  position: relative;
-  padding-left: 1rem;
-}
-
-.site-layout .site-footer__identity::before {
-  position: absolute;
-  top: 0.1rem;
-  bottom: 0.1rem;
-  left: 0;
-  width: 0.28rem;
-  border-radius: 999px;
-  background: var(--color-primary);
-  content: "";
-  transform: rotate(3deg);
+  text-align: left;
 }
 
 .site-layout .site-footer__title {
   margin-bottom: 0;
+  font-family: "DM Sans", sans-serif;
   font-size: clamp(1.2rem, 2vw, 1.6rem);
-  font-weight: 600;
-  letter-spacing: -0.045em;
+  font-weight: 700;
+  letter-spacing: -0.75px;
   line-height: 1.2;
 }
 
@@ -1770,7 +1741,7 @@ p {
   bottom: -0.2rem;
   left: 0;
   height: 2px;
-  background: var(--color-primary);
+  background: var(--color-accent);
   content: "";
   transform: scaleX(0.28);
   transform-origin: left;
