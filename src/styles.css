@@ -2679,26 +2679,23 @@ p {
 .home-page .about-hero__watercolor {
   position: absolute;
   top: -3rem;
-  bottom: -4rem;
   left: 50%;
   z-index: 0;
   width: 100vw;
+  height: auto;
   overflow: visible;
   pointer-events: none;
   transform: translateX(-50%);
 }
 
 .home-page .about-hero__watercolor-image {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: relative;
   display: block;
   width: 100vw;
   max-width: none;
   height: auto;
   object-fit: contain;
-  object-position: center bottom;
+  object-position: top center;
 }
 
 .home-page .about-hero__intro {
@@ -2812,7 +2809,6 @@ p {
   }
 
   .home-page .about-hero__watercolor {
-    bottom: -3rem;
     opacity: 0.82;
   }
 
@@ -2833,14 +2829,11 @@ p {
 
   .home-page .about-hero__watercolor {
     top: -1rem;
-    bottom: -2.5rem;
     opacity: 0.58;
   }
 
   .home-page .about-hero__watercolor-image {
-    left: 50%;
-    width: 145vw;
-    transform: translateX(-50%);
+    width: 100vw;
   }
 
   .home-page .about-hero__intro {
@@ -2927,15 +2920,15 @@ p {
 
 .home-page .projects-section--editorial::before {
   position: absolute;
-  top: -7.5rem;
+  top: -1.5rem;
   left: 50%;
   z-index: 0;
   display: block;
   width: calc(100vw + 3rem);
-  height: 9rem;
+  height: 4rem;
   background: var(--projects-active-color);
   content: "";
-  filter: blur(11px);
+  filter: blur(9px);
   overflow: visible;
   pointer-events: none;
   transform: translateX(-50%);
@@ -2957,9 +2950,9 @@ p {
 
 @media (max-width: 600px) {
   .home-page .projects-section--editorial::before {
-    top: -5rem;
-    height: 6.5rem;
-    filter: blur(8px);
+    top: -1.25rem;
+    height: 3rem;
+    filter: blur(7px);
   }
 }
 
