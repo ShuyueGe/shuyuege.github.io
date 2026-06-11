@@ -2142,6 +2142,29 @@ p {
   mask-size: 100% 100%;
 }
 
+.home-page .projects-section--editorial::after {
+  position: absolute;
+  bottom: -7rem;
+  left: 50%;
+  z-index: 0;
+  display: block;
+  width: calc(100vw + 3rem);
+  height: 7rem;
+  background: var(--projects-active-color);
+  content: "";
+  pointer-events: none;
+  transform: translateX(-50%) scaleY(-1);
+  transition: background-color 420ms ease;
+  -webkit-mask-image: var(--projects-transition-mask);
+  mask-image: var(--projects-transition-mask);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
 .home-page .projects-section--editorial > .page-shell {
   position: relative;
   z-index: 1;

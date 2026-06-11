@@ -15,14 +15,14 @@ const projectArtworkPaths: Record<string, string> = {
 
 const projectHoverBackgrounds: Partial<Record<string, string>> = {
   "ai-health-web-app-upgrade": "#E3EEF2",
-  "restaurant-website-redesign": "#F3EAD5",
-  "church-ngo-website-redesign-implementation": "#EADCD8",
+  "restaurant-website-redesign": "#F6EFE0",
+  "church-ngo-website-redesign-implementation": "#F7EFEA",
 };
 
 const projectActiveTitleColors: Record<string, string> = {
   "ngo-website-redesign": "#3F5A3D",
   "ai-health-web-app-upgrade": "#2B4157",
-  "restaurant-website-redesign": "#473927",
+  "restaurant-website-redesign": "#4F3A34",
   "church-ngo-website-redesign-implementation": "#492A28",
 };
 
