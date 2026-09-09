@@ -49,6 +49,11 @@ export interface Project {
   description: string;
   role: string;
   tools: string[];
+  showcase?: {
+    title: string;
+    subtitle: string;
+    tags: string[];
+  };
   timeline: string;
   projectType: string;
   themeColor: string;

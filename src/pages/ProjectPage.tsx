@@ -10,9 +10,20 @@ import { ProjectMeta } from "../components/ProjectMeta";
 import { TextChart } from "../components/TextChart";
 import { getProjectBySlug, projects } from "../data/projects";
 import { NotFoundPage } from "./NotFoundPage";
+import { BookThingPage } from "./BookThingPage";
 
 export function ProjectPage() {
   const { slug } = useParams();
+  // BookThing replaces the first project's existing detail route.
+  // Keep the homepage link and GitHub Pages hash-routing convention intact.
+  if (slug === "ngo-website-redesign") {
+    return <BookThingPage />;
+  }
+
+  return <StandardProjectPage slug={slug} />;
+}
+
+function StandardProjectPage({ slug }: { slug: string | undefined }) {
   const project = getProjectBySlug(slug);
 
   useEffect(() => {

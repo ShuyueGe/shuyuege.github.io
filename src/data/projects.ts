@@ -12,6 +12,11 @@ export const projects: Project[] = [
       "A website redesign project for an NGO, focused on information architecture, nonprofit communication, and content clarity.",
     role: "UX/UI Designer",
     tools: ["Figma", "FigJam", "Adobe Illustrator"],
+    showcase: {
+      title: "NGO Website redesign",
+      subtitle: "The BookThing of Baltimore",
+      tags: ["information architecture", "UI & UX", "visual design", "solo work"],
+    },
     timeline: "8 weeks",
     projectType: "Nonprofit website redesign",
     themeColor: "#74B8B2",

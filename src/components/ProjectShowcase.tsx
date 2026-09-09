@@ -97,13 +97,14 @@ export function ProjectShowcase() {
 
         <div className="project-editorial__mobile">
           {projects.map((project, index) => (
-            <article className="project-mobile-entry" key={project.slug}>
+            <article className={`project-mobile-entry${project.showcase ? " project-mobile-entry--with-subtitle" : ""}`} key={project.slug}>
               <Link to={`/projects/${project.slug}`}>
                 <div className="project-mobile-entry__heading">
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <div>
-                    <h3>{project.title}</h3>
-                    <p>{project.tools.join(" · ")}</p>
+                    <h3>{project.showcase?.title ?? project.title}</h3>
+                    {project.showcase && <span className="project-showcase__subtitle">{project.showcase.subtitle}</span>}
+                    <p>{(project.showcase?.tags ?? project.tools).join(" · ")}</p>
                   </div>
                 </div>
               </Link>
