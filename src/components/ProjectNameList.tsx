@@ -30,10 +30,9 @@ export function ProjectNameList({
             <span className="project-name-list__number">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <span className={`project-name-list__content${project.showcase ? " project-name-list__content--with-subtitle" : ""}`}>
-              <strong>{project.showcase?.title ?? project.title}</strong>
-              {project.showcase && <span className="project-showcase__subtitle">{project.showcase.subtitle}</span>}
-              <small>{(project.showcase?.tags ?? project.tools).join(" · ")}</small>
+            <span className="project-name-list__content">
+              <strong>{project.title}</strong>
+              <small>{project.tools.join(" · ")}</small>
             </span>
           </Link>
         </li>

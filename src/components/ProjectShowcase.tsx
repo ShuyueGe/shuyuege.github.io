@@ -1,42 +1,116 @@
+import type { CSSProperties } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
+import type { Project } from "../types/project";
+import { ProjectNameList } from "./ProjectNameList";
+
+const projectArtworkPaths: Record<string, string> = {
+  "ngo-website-redesign": "/images/projects/ngo-hover.png",
+  "ai-health-web-app-upgrade": "/images/projects/ai-health-hover.png",
+  "restaurant-website-redesign": "/images/projects/restaurant-hover.png",
+  "church-ngo-website-redesign-implementation":
+    "/images/projects/church-hover.png",
+};
+
+const projectHoverBackgrounds: Partial<Record<string, string>> = {
+  "ai-health-web-app-upgrade": "#E3EEF2",
+  "restaurant-website-redesign": "#F6EFE0",
+  "church-ngo-website-redesign-implementation": "#F7EFEA",
+};
+
+const projectActiveTitleColors: Record<string, string> = {
+  "ngo-website-redesign": "#3F5A3D",
+  "ai-health-web-app-upgrade": "#2B4157",
+  "restaurant-website-redesign": "#4F3A34",
+  "church-ngo-website-redesign-implementation": "#492A28",
+};
+
+interface ProjectArtworkProps {
+  project: Project;
+}
+
+function ProjectArtwork({ project }: ProjectArtworkProps) {
+  return (
+    <div className="project-artwork" aria-hidden="true">
+      <img
+        className="project-artwork__image"
+        src={projectArtworkPaths[project.slug]}
+        alt=""
+        decoding="async"
+      />
+    </div>
+  );
+}
 
 export function ProjectShowcase() {
-  const otherProjects = projects.filter(project => !["ngo-website-redesign", "restaurant-website-redesign"].includes(project.slug));
-  return <section className="selected-work page-shell" id="projects" aria-labelledby="work-title">
-    <div className="selected-work__heading"><h2 id="work-title">Recent Work</h2></div>
-    <div className="selected-work__features">
-      <article className="work-feature work-feature--bookthing">
-        <Link className="work-feature__link" to="/projects/ngo-website-redesign">
-          <div className="work-feature__copy">
-            <p className="work-feature__category">information architecture · UI &amp; UX · visual design · solo work</p>
-            <h3>NGO Website redesign <span aria-hidden="true">↗</span></h3>
+  const [activeProject, setActiveProject] = useState<string | null>(null);
+  const clearActiveProject = () => setActiveProject(null);
+  const activeProjectIndex = projects.findIndex(
+    (project) => project.slug === activeProject,
+  );
+  const selectedProject =
+    activeProjectIndex >= 0 ? projects[activeProjectIndex] : null;
+  const selectedProjectBackground = selectedProject
+    ? (projectHoverBackgrounds[selectedProject.slug] ??
+      `color-mix(in srgb, ${selectedProject.mutedColor} 22%, var(--color-bg))`)
+    : "var(--color-bg)";
+  const previewStyle = {
+    "--projects-active-color": selectedProjectBackground,
+    "--projects-active-title-color": selectedProject
+      ? projectActiveTitleColors[selectedProject.slug]
+      : "var(--color-text)",
+  } as CSSProperties;
+
+  return (
+    <section
+      className={`projects-section projects-section--editorial ${
+        selectedProject ? "has-active-project" : ""
+      }`}
+      id="projects"
+      style={previewStyle}
+    >
+      <div className="page-shell">
+        <div className="projects-section__intro">
+          <h2 className="projects-section__heading">Recent Work</h2>
+        </div>
+
+        <div
+          className="project-showcase__desktop project-editorial"
+          onMouseLeave={clearActiveProject}
+        >
+          <ProjectNameList
+            projects={projects}
+            activeProject={activeProject}
+            onActivate={setActiveProject}
+            onDeactivate={clearActiveProject}
+          />
+          <div className="project-artwork-layer" aria-hidden="true">
+            {selectedProject ? (
+              <ProjectArtwork
+                project={selectedProject}
+                key={selectedProject.slug}
+              />
+            ) : null}
           </div>
-          <div className="work-feature__media work-feature__calendar">
-            <div className="work-feature__screen"><img src="/images/projects/bookthing/bookthing-final-calendar-page.png" alt="BookThing Calendar concept pairing a monthly schedule with opening and event details" width="3840" height="2496" fetchPriority="high" /></div>
-          </div>
-          <p className="work-feature__description">The BookThing of Baltimore</p>
-        </Link>
-      </article>
-      <article className="work-feature work-feature--patsy">
-        <Link className="work-feature__link" to="/projects/restaurant-website-redesign">
-          <div className="work-feature__copy">
-            <p className="work-feature__category">Figma · Miro · Google Forms</p>
-            <h3>Restaurant Website Redesign <span aria-hidden="true">↗</span></h3>
-          </div>
-          <div className="work-feature__media work-feature__phones">
-            <div><img src="/images/projects/patsy/after-Menu%202.png" alt="Patsy’s revised team menu with ordering cues" width="804" height="1758" /></div>
-            <div><img src="/images/projects/patsy/after-Landing%20Page.png" alt="Patsy’s team mobile concept with reservation, menu, and pickup entry points" width="804" height="1758" /></div>
-          </div>
-          <p className="work-feature__description"></p>
-        </Link>
-      </article>
-    </div>
-    <div className="work-index">
-      <h2>More projects</h2>
-      {otherProjects.map(project => <Link className="work-index__entry" key={project.slug} to={`/projects/${project.slug}`}>
-        <h3>{project.title}</h3><span>{project.tools.join(" · ")}</span><span aria-hidden="true">↗</span>
-      </Link>)}
-    </div>
-  </section>;
+        </div>
+
+        <div className="project-editorial__mobile">
+          {projects.map((project, index) => (
+            <article className="project-mobile-entry" key={project.slug}>
+              <Link to={`/projects/${project.slug}`}>
+                <div className="project-mobile-entry__heading">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{project.title}</h3>
+                    <p>{project.tools.join(" · ")}</p>
+                  </div>
+                </div>
+              </Link>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
