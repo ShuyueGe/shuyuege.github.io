@@ -12,6 +12,10 @@ const assets = {
   originalHomeFull: { file: "bookthing-original-homepage.png", width: 1620, height: 6504 },
   originalNews: { file: "bookthing-original-news.png", width: 1620, height: 4099 },
   originalDonate: { file: "bookthing-donate-before.png", width: 1620, height: 5538 },
+  // Lossless original screenshots: grid redesign.pdf and high didelity redesign
+  // compare-Donate rules.pdf, respectively; page 1, image xref 8 in each (2025).
+  analysisNews2025: { file: "bookthing-analysis-news-2025.png", width: 1264, height: 2740 },
+  analysisDonate2025: { file: "bookthing-analysis-donate-2025.png", width: 1152, height: 4096 },
   sitemap: { file: "bookthing-sitemap-clean-annotated.png", width: 1377, height: 462 },
   donate: { file: "bookthing-final-donate-page.png", width: 1000, height: 1590 },
   calendar: { file: "bookthing-final-calendar-page.png", width: 3840, height: 2496 },
@@ -114,37 +118,75 @@ export function BookThingPage() {
       <section className="bt-section bt-problem" aria-labelledby="bookthing-problem">
         <div className="bt-section-intro">
           <SectionHeading id="bookthing-problem" eyebrow="Site analysis">Essential information competed with the page around it</SectionHeading>
+          <p className="bt-prose">My review focused on where operational information appeared and what surrounded it. I also used assumption-based proto-personas to keep four planning tasks in view: visit, donate, volunteer, and stay updated. These were planning tools, not findings from user interviews.</p>
         </div>
         <div className="bt-evidence">
-          <div className="bt-evidence__opening">
+          <div className="bt-evidence__featured">
             <div className="bt-evidence__copy">
-              <h3>1. Opening hours were missing from the first screen.</h3>
-              <p>The desktop homepage’s first screen showed no opening dates or hours. Visitors had to scroll down to find the information needed to plan a visit.</p>
+              <h3><span className="bt-evidence__index">01</span>Practical information had overlapping destinations</h3>
+              <p>Opening dates appeared through News, while Events remained a separate navigation destination and book-donation schedules lived on Donate. The structure gave announcements, events, and operational information overlapping roles instead of a clear place for each type of content.</p>
             </div>
-            <figure>
-              <Asset name="originalHome" fullSizeName="originalHomeFull" alt="First screen of the original desktop homepage, showing navigation and a welcome area without opening dates or hours; click for the complete archived homepage" />
-              <figcaption>Desktop homepage · First screen; opening hours below the fold.</figcaption>
+            <figure className="bt-evidence__destinations">
+              <div className="bt-evidence__navigation">
+                <p className="bt-evidence__source-label">News · Original navigation</p>
+                <Asset name="analysisNews2025" crop={[480, 110, 705, 72]} alt="2025 News page navigation with separate News and Events destinations and the original Donate action" />
+              </div>
+              <div className="bt-evidence__paired">
+                <div>
+                  <p className="bt-evidence__source-label">News · Announcement excerpts</p>
+                  <a className="bt-image-link" href={assetUrl("analysisNews2025")} target="_blank" rel="noopener noreferrer" aria-label="View full-size image: October opening and Booktoberfest announcements in the 2025 News page (new tab)">
+                    <div className="bt-evidence__news-excerpts">
+                      <Asset name="analysisNews2025" crop={[390, 550, 405, 150]} alt="October 2025 opening announcement with the October 12 date" expand={false} />
+                      <Asset name="analysisNews2025" crop={[390, 805, 405, 155]} alt="Booktoberfest 2025 announcement with the October 30 event date" expand={false} />
+                    </div>
+                    <span className="bt-image-meta"><span className="bt-image-hint" aria-hidden="true">Click to view full size <span>↗</span></span></span>
+                  </a>
+                </div>
+                <div>
+                  <p className="bt-evidence__source-label">Donate</p>
+                  <a className="bt-image-link bt-evidence__donate-source" href={assetUrl("analysisDonate2025")} target="_blank" rel="noopener noreferrer" aria-label="View full-size image: 2025 Donate page title, book-donation dates, and rules (new tab)">
+                    <div className="bt-evidence__donate-title"><Asset name="analysisDonate2025" crop={[390, 285, 390, 115]} alt="Original Donations page title: how to donate books and/or money" expand={false} /></div>
+                    <span className="bt-evidence__excerpt-label">Book-donation dates &amp; rules · excerpt</span>
+                    <Asset name="analysisDonate2025" crop={[20, 850, 735, 405]} alt="2025 book-donation dates and donation hours, followed by the first book-donation rules" expand={false} />
+                    <span className="bt-image-meta"><span className="bt-image-hint" aria-hidden="true">Click to view full size <span>↗</span></span></span>
+                  </a>
+                </div>
+              </div>
+              <figcaption><Callout number={1}>News carries opening and event announcements; book-donation schedules sit on Donate.</Callout></figcaption>
             </figure>
           </div>
           <div className="bt-evidence__supporting">
-            <div className="bt-evidence__news">
-              <div className="bt-evidence__copy">
-                <h3>2. Schedules were hard to spot.</h3>
-                <p>Each opening date sat inside an individual News post. Visitors had to scan summaries and read through updates to find a date that fit their plans.</p>
-              </div>
-              <figure>
-                <Asset name="originalNews" crop={[25, 715, 1000, 1170]} alt="Original News feed with August, July, and June 2025 opening dates embedded in individual article summaries" />
-                <figcaption>Original News feed · 2025 opening announcements.</figcaption>
-              </figure>
-            </div>
             <div className="bt-evidence__donate">
               <div className="bt-evidence__copy">
-                <h3>3. Dense rules buried financial giving.</h3>
-                <p>Long book-donation rules dominated the page. The option to give money did not appear until the fourth screen, requiring visitors to scroll past extensive guidance.</p>
+                <h3><span className="bt-evidence__index">02</span>Financial giving followed lengthy book-donation rules</h3>
+                <p>The Donate page presented book-donation dates, limits, and acceptance rules before the Money Donations section. Reaching the financial-giving options meant scrolling past detailed instructions for a different type of contribution.</p>
               </div>
               <figure>
-                <Asset name="originalDonate" crop={[25, 2520, 1000, 1015]} alt="Project-era Donate page crop preserving the end of book rules above the Money Donations heading and payment action" />
-                <figcaption>Financial giving appears in the fourth screen.</figcaption>
+                <a className="bt-image-link" href={assetUrl("analysisDonate2025")} target="_blank" rel="noopener noreferrer" aria-label="View full-size image: 2025 Donate page showing book-donation rules before Money Donations (new tab)">
+                  <Asset name="analysisDonate2025" crop={[20, 725, 735, 595]} alt="Book-donation schedule and the beginning of donation rules, including the seven-box limit" expand={false} />
+                  <span className="bt-evidence__omission">Additional book-donation rules omitted</span>
+                  <Asset name="analysisDonate2025" crop={[20, 2070, 730, 515]} alt="Continuous original Donate excerpt from the final book-donation rules to Money Donations and the PayPal action" expand={false} />
+                  <span className="bt-image-meta"><span className="bt-image-hint" aria-hidden="true">Click to view full size <span>↗</span></span></span>
+                </a>
+                <figcaption><Callout number={2}>Book-donation dates and rules precede Money Donations.</Callout></figcaption>
+              </figure>
+            </div>
+            <div className="bt-evidence__dates">
+              <div className="bt-evidence__copy">
+                <h3><span className="bt-evidence__index">03</span>Limited openings made the exact date essential</h3>
+                <p>Public openings were generally monthly, typically alternating between Saturdays and Sundays, with occasional extra openings. The homepage explained the general frequency, but specific dates were presented through individual News announcements, making the relevant update necessary for planning a visit.</p>
+              </div>
+              <figure>
+                <a className="bt-image-link" href={assetUrl("analysisNews2025")} target="_blank" rel="noopener noreferrer" aria-label="View full-size image: August, July, and June 2025 News summaries in original order, including the June double opening (new tab)">
+                  <span className="bt-evidence__excerpt-label bt-evidence__excerpt-label--first">News · Opening-announcement excerpts</span>
+                  <div className="bt-evidence__news-excerpts">
+                    <Asset name="analysisNews2025" crop={[390, 1305, 405, 155]} alt="August 2025 News summary with the August 10 opening date" expand={false} />
+                    <Asset name="analysisNews2025" crop={[390, 1555, 405, 155]} alt="July 2025 News summary with the July 12 opening date" expand={false} />
+                    <Asset name="analysisNews2025" crop={[390, 1805, 405, 190]} alt="June 2025 double-opening summary with both June 15 and June 29" expand={false} />
+                  </div>
+                  <span className="bt-image-meta"><span className="bt-image-hint" aria-hidden="true">Click to view full size <span>↗</span></span></span>
+                </a>
+                <figcaption><Callout number={3}>Specific opening dates appear in individual News summaries, including extra openings.</Callout></figcaption>
               </figure>
             </div>
           </div>

@@ -74,19 +74,31 @@ body:has(.bookthing-page) { background-image: none; }
 .bookthing-page .bt-metadata dt { margin-bottom: 0.5rem; color: var(--color-muted); font-size: 0.85rem; }
 .bookthing-page .bt-metadata dd { margin: 0; font-size: 0.95rem; line-height: 1.65; }
 
-/* One featured issue, then an inset pair of supporting observations. */
+/* Site analysis: one structural observation, then two supporting content findings. */
+.bookthing-page .bt-problem .bt-section-intro { max-width: none; }
+.bookthing-page .bt-problem .bt-prose { max-width: 68ch; }
 .bookthing-page .bt-evidence { margin-top: var(--bt-visual-space); }
-.bookthing-page .bt-evidence__opening { display: grid; grid-template-columns: minmax(0, 0.35fr) minmax(0, 0.65fr); gap: var(--bt-column-gap); align-items: center; }
-.bookthing-page .bt-evidence__opening .bt-evidence__copy { max-width: 34ch; padding-bottom: 3rem; }
-.bookthing-page .bt-evidence__opening h3 { font-size: 1.15rem; }
+.bookthing-page .bt-evidence__featured { display: grid; grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr); gap: var(--bt-column-gap); align-items: start; padding-top: 2rem; border-top: 1px solid var(--color-border); }
+.bookthing-page .bt-evidence h3 { margin-bottom: 1rem; font-size: 1.35rem; line-height: 1.35; text-wrap: pretty; }
+.bookthing-page .bt-evidence__featured h3 { font-size: clamp(1.5rem, 2vw, 1.8rem); }
+.bookthing-page .bt-evidence__index { display: block; margin-bottom: 1.25rem; color: var(--color-muted); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; }
 .bookthing-page .bt-evidence__copy p { margin-bottom: 0; color: var(--color-muted); font-size: 1.05rem; line-height: 1.7; }
-.bookthing-page .bt-evidence__supporting { container-type: inline-size; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto; gap: 0 var(--bt-column-gap); max-width: 1040px; margin: 3.5rem auto 0; }
+.bookthing-page .bt-evidence__paired { display: grid; grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr); gap: 1.75rem; align-items: start; margin-top: 1.5rem; }
+.bookthing-page .bt-problem .bt-evidence__source-label { margin: 0 0 0.75rem; font-size: 0.875rem; font-weight: 650; color: var(--color-text); }
+.bookthing-page .bt-evidence__donate-source { padding: 0.875rem; background: var(--color-white); }
+.bookthing-page .bt-evidence__donate-title { max-width: 12rem; }
+.bookthing-page .bt-evidence__excerpt-label { display: block; margin: 1rem 0 0.75rem; color: var(--color-muted); font-size: 0.75rem; }
+.bookthing-page .bt-evidence__excerpt-label--first { margin-top: 0; }
+.bookthing-page .bt-evidence__news-excerpts { display: grid; gap: 1.25rem; }
+.bookthing-page .bt-evidence__omission { display: flex; align-items: center; gap: 0.75rem; margin: 0.75rem 0; color: var(--color-muted); font-size: 0.75rem; line-height: 1.6; }
+.bookthing-page .bt-evidence__omission::before,
+.bookthing-page .bt-evidence__omission::after { content: ""; flex: 1; border-top: 1px dashed var(--color-border); }
+.bookthing-page .bt-evidence__supporting { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto; gap: 0 var(--bt-column-gap); margin: 4.5rem 0 0; }
 .bookthing-page .bt-evidence__supporting > div { display: grid; grid-row: span 2; grid-template-rows: subgrid; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
-.bookthing-page .bt-evidence__supporting .bt-evidence__copy { padding-bottom: 1.75rem; }
-/* Match image heights using the shorter crop's ratio, without changing either crop. */
-.bookthing-page .bt-evidence__supporting .bt-image-link { display: grid; grid-template-rows: calc((100cqw - var(--bt-column-gap)) * 0.5075) auto; }
-.bookthing-page .bt-evidence__supporting .bt-crop { height: 100%; width: auto; justify-self: center; }
-.bookthing-page .bt-evidence h3 { text-wrap: pretty; }
+.bookthing-page .bt-evidence__supporting .bt-evidence__copy { max-width: 29rem; padding-bottom: 2rem; }
+.bookthing-page .bt-evidence__supporting figure { max-width: 29rem; }
+.bookthing-page .bt-problem .bt-callout { font-size: 0.875rem; line-height: 1.65; color: var(--color-muted); }
+.bookthing-page .bt-problem figcaption { margin-top: 1rem; }
 
 /* The sitemap takes the entire rail; the pending after-state is a compact row. */
 .bookthing-page .bt-ia__sequence { margin-top: var(--bt-visual-space); }
@@ -153,7 +165,9 @@ body:has(.bookthing-page) { background-image: none; }
 @media (max-width: 1100px) {
   .bookthing-page .bt-case { --bt-column-gap: 2rem; }
   .bookthing-page .bt-context__overview > .bt-prose { padding-top: 0; }
-  .bookthing-page .bt-evidence__supporting { max-width: 90%; }
+  .bookthing-page .bt-evidence__featured { grid-template-columns: 1fr; gap: 2rem; }
+  .bookthing-page .bt-evidence__featured .bt-evidence__copy { max-width: var(--bt-reading-width); }
+  .bookthing-page .bt-evidence__destinations { max-width: 52rem; }
   .bookthing-page .bt-comparison__before { padding-top: 4rem; }
   .bookthing-page .bt-news-detail__crops { grid-template-columns: 1fr; }
   .bookthing-page .bt-news-detail__archive { max-width: 15rem; }
@@ -182,8 +196,6 @@ body:has(.bookthing-page) { background-image: none; }
   .bookthing-page .bt-outcome__summary { grid-template-columns: 1fr; gap: 1.75rem; }
   .bookthing-page .bt-context .bt-prose { max-width: var(--bt-reading-width); }
   .bookthing-page .bt-metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.75rem; }
-  .bookthing-page .bt-evidence__opening { grid-template-columns: 1fr; gap: 1.75rem; }
-  .bookthing-page .bt-evidence__opening .bt-evidence__copy { max-width: var(--bt-reading-width); padding: 0; }
   .bookthing-page .bt-evidence__supporting { max-width: none; }
   .bookthing-page .bt-map--after { grid-template-columns: 1fr; gap: 1rem; }
   .bookthing-page .bt-comparison__primary { grid-template-columns: 1fr; gap: 3rem; }
@@ -216,10 +228,14 @@ body:has(.bookthing-page) { background-image: none; }
   .bookthing-page .bt-evidence__supporting,
   .bookthing-page .bt-comparison__details,
   .bookthing-page .bt-support { grid-template-columns: 1fr; }
-  .bookthing-page .bt-evidence__supporting { grid-template-rows: none; margin-top: 2.5rem; gap: 2.5rem; }
-  .bookthing-page .bt-evidence__supporting > div { grid-row: auto; grid-template-rows: auto 1fr; }
-  .bookthing-page .bt-evidence__supporting .bt-image-link { display: block; }
-  .bookthing-page .bt-evidence__supporting .bt-crop { height: auto; width: 100%; }
+  .bookthing-page .bt-evidence__paired { grid-template-columns: 1fr; gap: 2rem; }
+  .bookthing-page .bt-evidence__supporting { grid-template-rows: none; margin-top: 3rem; gap: 3rem; }
+  .bookthing-page .bt-evidence__supporting > div { grid-row: auto; grid-template-rows: auto auto; }
+  .bookthing-page .bt-problem h3 { font-size: 1.3rem; }
+  .bookthing-page .bt-evidence__index { margin-bottom: 0.75rem; }
+  .bookthing-page .bt-evidence__dates figure { max-width: none; }
+  .bookthing-page .bt-evidence__destinations { display: flex; flex-direction: column; }
+  .bookthing-page .bt-problem .bt-evidence__destinations > figcaption { order: -1; margin: 0 0 1.5rem; }
   .bookthing-page .bt-todo { padding: 1rem; }
   .bookthing-page .bt-comparison__before { width: 100%; }
   .bookthing-page .bt-comparison h3 { min-height: 0; }
