@@ -108,52 +108,41 @@ export function PatsyPage() {
     <article className="ps-case" aria-labelledby="patsy-title">
       <section className="ps-hero" aria-labelledby="patsy-title">
         <div className="ps-back"><Link className="back-link" to="/?section=projects"><span aria-hidden="true">←</span> Back to projects</Link></div>
-        <div className="ps-hero__spread">
-          <div className="ps-hero__story">
-            <header className="ps-hero__intro">
-              <p className="section-label">Patsy’s Restaurant · Mobile website concept</p>
-              <h1 id="patsy-title">Making the path from browsing to action clearer on mobile</h1>
-              <p>Our team explored how Patsy’s mobile website could help people evaluate a restaurant and take the next step. Research shaped the initial concept; formative testing exposed a missing pickup path and guided the revision.</p>
-            </header>
-            <div className="ps-hero__details">
-              <dl className="ps-metadata">
-                <div className="ps-metadata__role"><dt>Role</dt><dd>Research planning · Product analysis · Usability-test design &amp; observation · Focused UI refinement</dd></div>
-                <div><dt>Team</dt><dd>Four-person academic project</dd></div>
-                <div><dt>Scope</dt><dd>Mobile menu, reservations, and pickup concept</dd></div>
-                <div><dt>Report submitted</dt><dd>May 3, 2026</dd></div>
-                <div><dt>Status</dt><dd>Figma prototype</dd></div>
-              </dl>
-              <p className="ps-hero__contribution">I helped design the questionnaire, asked questions in 3 of 12 interview sessions, and identified mobile readability and navigation issues through product review.</p>
-            </div>
+        <div className="ps-hero__content">
+          <header className="ps-hero__intro">
+            <p className="section-label">Patsy’s Restaurant · Mobile website concept</p>
+            <h1 id="patsy-title">Making the path from browsing to action clearer on mobile</h1>
+            <p>Our team explored how Patsy’s mobile website could help people evaluate a restaurant and take the next step. Research shaped the initial concept; formative testing exposed a missing pickup path and guided the revision.</p>
+          </header>
+          <div className="ps-hero__details">
+            <dl className="ps-metadata">
+              <div className="ps-metadata__role"><dt>Role</dt><dd>Research planning · Product analysis · Usability-test design &amp; observation · Focused UI refinement</dd></div>
+              <div><dt>Team</dt><dd>Four-person academic project</dd></div>
+              <div><dt>Scope</dt><dd>Mobile menu, reservations, and pickup concept</dd></div>
+              <div><dt>Report submitted</dt><dd>May 3, 2026</dd></div>
+              <div><dt>Status</dt><dd>Figma prototype</dd></div>
+            </dl>
+            <p className="ps-hero__contribution">I helped design the questionnaire, asked questions in 3 of 12 interview sessions, and identified mobile readability and navigation issues through product review.</p>
           </div>
-          <figure className="ps-hero__visual">
-            <div className="ps-hero__screens">
-              <div><Screen name="landing" crop={[0, 0, 804, 1035]} alt="Team mobile landing prototype with separate Make Reservation, View Menu, and Order Pickup actions" eager /></div>
-              <div><Screen name="entrees" crop={[0, 0, 804, 1160]} alt="Team mobile menu prototype with category navigation, dish descriptions, prices, and the complete Crab Cakes row" eager /></div>
-            </div>
-            <figcaption>Team mobile prototype: menu browsing, reservations, and a proposed pickup path.</figcaption>
-          </figure>
         </div>
       </section>
 
       <section className="ps-section ps-start" aria-labelledby="patsy-start">
         <Heading id="patsy-start" eyebrow="The starting point">The information was there. Reading it on a phone was the problem.</Heading>
         <div className="ps-start__spread">
+          <div className="ps-start__copy ps-prose">
+            <p>Patsy’s is a restaurant in Bethany Beach, Delaware. Its website provided menus, hours, seasonal closures, contact details, and a reservation link. Familiar navigation labels were worth retaining, but small text and crowded content required manual zooming on mobile.</p>
+            <p>Useful information was present without a clear visual order. Respondents were relatively positive about finding hours; readability and perceived currency were weaker. The redesign needed to preserve that practical value while making the page easier to scan.</p>
+          </div>
           <figure className="ps-start__home">
             <h3>Original website</h3>
             <Screen name="originalHome" crop={[18, 160, 1120, 1640]} alt="Original Patsy’s website showing sidebar categories, promotional badge, restaurant information, opening hours, and repeated contact details" />
             <figcaption><Note number={1}>Familiar categories gave the redesign a useful starting point.</Note><Note number={2}>Restaurant details competed with promotional content and repeated contact information.</Note></figcaption>
           </figure>
-          <div className="ps-start__support">
-            <div className="ps-start__copy ps-prose">
-              <p>Patsy’s is a restaurant in Bethany Beach, Delaware. Its website provided menus, hours, seasonal closures, contact details, and a reservation link. Familiar navigation labels were worth retaining, but small text and crowded content required manual zooming on mobile.</p>
-              <p>Useful information was present without a clear visual order. Respondents were relatively positive about finding hours; readability and perceived currency were weaker. The redesign needed to preserve that practical value while making the page easier to scan.</p>
-            </div>
-            <figure className="ps-start__menu">
-              <Screen name="originalMenu" crop={[360, 320, 665, 825]} alt="Original Dinner Starters menu showing consecutive names, descriptions, and prices in dense text" />
-              <figcaption><Note number={3}>Item names, descriptions, and prices ran together in dense text.</Note></figcaption>
-            </figure>
-          </div>
+          <figure className="ps-start__menu">
+            <Screen name="originalMenu" crop={[360, 320, 665, 825]} alt="Original Dinner Starters menu showing consecutive names, descriptions, and prices in dense text" />
+            <figcaption><Note number={3}>Item names, descriptions, and prices ran together in dense text.</Note></figcaption>
+          </figure>
         </div>
       </section>
 
@@ -165,6 +154,10 @@ export function PatsyPage() {
           <div className="ps-research__results">
             <SurveyCount count={15}>respondents were somewhat or very likely to visit a restaurant’s website before going.</SurveyCount>
             <SurveyCount count={21}>selected viewing the menu as a reason to use Patsy’s website.</SurveyCount>
+            {/* Full project report, Section 4.1: Figure 7 (image14.png); Appendix A, Q11 (image42.jpg). */}
+            <SurveyCount count={14}>selected evaluating Patsy’s vibe, cuisine, and price as a reason to use its website (multiple selections allowed).</SurveyCount>
+            {/* Full project report, Section 4.1: Figure 5 (image10.png); Appendix A, Q8 (image41.jpg). */}
+            <SurveyCount count={10}>selected a third-party ordering app with in-person pickup as a likely takeout method (multiple selections allowed).</SurveyCount>
             <p className="ps-small">Survey counts describe this project sample. The menu question allowed multiple selections.</p>
           </div>
         </div>
@@ -191,11 +184,16 @@ export function PatsyPage() {
           </div>
         </div>
         <div className="ps-priorities__comparison">
-          <figure className="ps-priorities__before"><Screen name="originalPhone" crop={[0, 0, 992, 1685]} alt="Original phone capture preserving the desktop-style website at its small scale within a large orange page" /><figcaption>Original phone view: the page retained a dense, desktop-style composition.</figcaption></figure>
-          <div className="ps-priorities__after">
-            <figure><Screen name="landing" crop={[50, 205, 704, 825]} alt="Revised landing detail with the building image and all three task buttons" /><figcaption>Revised team prototype: reservations, menu browsing, and pickup have separate entry points.</figcaption></figure>
-            <figure className="ps-footer-detail"><h3>Footer detail</h3><Screen name="landing" crop={[0, 1635, 804, 123]} alt="Separate landing footer detail containing Contact Us, location, and Instagram links" /><figcaption>Contact links moved below the main tasks; hours still need a visible home.</figcaption></figure>
-          </div>
+          <figure className="ps-priorities__before">
+            <p className="ps-comparison-label">BEFORE</p>
+            <Screen name="originalPhone" crop={[0, 0, 992, 1685]} alt="Original phone capture preserving the desktop-style website at its small scale within a large orange page" />
+            <figcaption>Original phone view: the page retained a dense, desktop-style composition.</figcaption>
+          </figure>
+          <figure className="ps-priorities__after">
+            <p className="ps-comparison-label">AFTER</p>
+            <Screen name="landing" crop={[0, 0, 804, 1040]} alt="Revised landing detail with the building image and all three task buttons" />
+            <figcaption>Revised team prototype: reservations, menu browsing, and pickup have separate entry points.</figcaption>
+          </figure>
         </div>
       </section>
 
