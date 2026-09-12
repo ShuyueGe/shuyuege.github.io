@@ -1,38 +1,54 @@
-/* BookThing keeps the portfolio palette and typeface; only presentation changes. */
+/* Editorial case study. Portfolio tokens and all source-pixel crops stay intact. */
 body:has(.bookthing-page) { background-image: none; }
+
 .bookthing-page .bt-case {
-  --page-gutter: clamp(1.25rem, 3vw, 3rem);
-  --bt-related-space: clamp(2.5rem, 4.5vw, 4rem);
-  --bt-column-gap: clamp(2rem, 4.5vw, 4rem);
+  --page-width: 1320px;
+  --page-gutter: clamp(1.25rem, 4vw, 4rem);
+  --bt-reading-width: 68ch;
+  --bt-intro-width: 1120px;
+  --bt-column-gap: clamp(2rem, 4vw, 3.5rem);
+  --bt-visual-space: clamp(2.5rem, 4.5vw, 4rem);
   font-size: 1.125rem;
   line-height: 1.7;
 }
 
-.bookthing-page .bt-case :where(figure) { margin: 0; min-width: 0; }
+.bookthing-page .bt-case :where(figure, div) { min-width: 0; }
+.bookthing-page .bt-case :where(figure) { margin: 0; }
 .bookthing-page .bt-case h1,
 .bookthing-page .bt-case h2 { font-family: inherit; font-weight: 500; letter-spacing: -0.045em; }
-.bookthing-page .bt-case h1 { margin-bottom: 1.5rem; font-size: clamp(3.5rem, 7.2vw, 6rem); line-height: 1.04; }
-.bookthing-page .bt-case h2 { max-width: 24ch; margin-bottom: 0; font-size: clamp(2.3rem, 4.2vw, 3.4rem); line-height: 1.1; }
-.bookthing-page .bt-case h3 { margin-bottom: 1rem; font-size: 1.125rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.5; }
+.bookthing-page .bt-case h1 { max-width: 20ch; margin: 0 0 1.75rem; font-size: clamp(4.5rem, 6vw, 6rem); line-height: 1.03; text-wrap: initial; }
+.bookthing-page .bt-case h2 { max-width: 26ch; margin-bottom: 0; font-size: clamp(2.6rem, 3.8vw, 3.4rem); line-height: 1.08; }
+.bookthing-page .bt-case h3 { margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 650; letter-spacing: -0.02em; line-height: 1.45; }
 .bookthing-page .bt-case :where(p) { margin-bottom: 1.25rem; }
-.bookthing-page .section-label { margin-bottom: 1.25rem; }
-.bookthing-page .bt-prose { max-width: 65ch; margin-bottom: 0; color: var(--color-muted); }
-.bookthing-page .bt-section { margin-top: clamp(7.5rem, 10vw, 10rem); }
-.bookthing-page .bt-heading { margin-bottom: 1.75rem; }
+.bookthing-page .section-label { margin-bottom: 1.25rem; font-size: 0.72rem; letter-spacing: 0.11em; }
+.bookthing-page .bt-heading { margin-bottom: 1.5rem; }
+.bookthing-page .bt-prose { max-width: var(--bt-reading-width); margin-bottom: 0; color: var(--color-muted); }
+.bookthing-page .bt-section-intro { max-width: var(--bt-intro-width); margin-inline: auto; }
 .bookthing-page .bt-case figcaption { margin-top: 0.75rem; color: var(--color-muted); font-size: 0.825rem; line-height: 1.65; }
 
-/* Full visual rail, with a quieter reading measure beneath the title. */
-.bookthing-page .bt-hero { padding-top: clamp(2rem, 3vw, 3rem); }
-.bookthing-page .bt-hero__top { display: flex; justify-content: flex-end; margin-bottom: 2rem; }
-.bookthing-page .bt-hero__top .back-link { font-size: 0.85rem; }
-.bookthing-page .bt-hero__description { max-width: 65ch; margin-bottom: var(--bt-related-space); color: var(--color-muted); font-size: 1.125rem; line-height: 1.75; }
-.bookthing-page .bt-hero__visual .bt-crop { border-radius: var(--radius-media); }
+/* Section intervals follow the narrative instead of one repeating spacer. */
+.bookthing-page .bt-context { margin-top: clamp(5.5rem, 7.5vw, 6.75rem); }
+.bookthing-page .bt-problem { margin-top: clamp(6.5rem, 9vw, 8rem); }
+.bookthing-page .bt-ia { margin-top: clamp(7rem, 10.5vw, 9.25rem); }
+.bookthing-page .bt-donate { margin-top: clamp(7rem, 10.5vw, 9.25rem); }
+.bookthing-page .bt-calendar { margin-top: clamp(8rem, 12vw, 10.5rem); }
+.bookthing-page .bt-identity { margin-top: clamp(6.5rem, 9vw, 8rem); }
+.bookthing-page .bt-final { margin-top: clamp(8rem, 12vw, 10.5rem); }
+.bookthing-page .bt-outcome { margin-top: clamp(7rem, 10.5vw, 9.25rem); }
 
-/* Shared asset framing leaves all source-pixel crop calculations intact. */
+/* Opening image first, followed by a separate, inset project statement. */
+.bookthing-page .bt-hero { padding-top: 2rem; }
+.bookthing-page .bt-hero__top { margin-bottom: 1.75rem; }
+.bookthing-page .bt-hero__top .back-link { font-size: 0.85rem; }
+.bookthing-page .bt-hero__visual .bt-crop { border-radius: 0; background: transparent; }
+.bookthing-page .bt-hero__statement { max-width: var(--bt-intro-width); margin: clamp(3.5rem, 6vw, 5.5rem) auto 0; }
+.bookthing-page .bt-hero__description { max-width: 70ch; margin-bottom: 0; color: var(--color-muted); font-size: 1.125rem; line-height: 1.75; }
+
+/* No transforms, object-fit, or aspect-ratio overrides on source crops. */
 .bookthing-page .bt-image-link { display: block; cursor: zoom-in; }
 .bookthing-page .bt-image-meta { display: block; }
-.bookthing-page .bt-image-meta--captioned { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-top: 0.75rem; }
-.bookthing-page .bt-image-title { color: var(--color-text); font-size: 0.95rem; font-weight: 600; }
+.bookthing-page .bt-image-meta--captioned { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.4rem 1rem; padding-top: 0.75rem; }
+.bookthing-page .bt-image-title { color: var(--color-text); font-size: 1rem; font-weight: 600; }
 .bookthing-page .bt-image-meta--captioned .bt-image-hint { padding-top: 0; white-space: nowrap; }
 .bookthing-page .bt-image-hint { display: flex; align-items: baseline; justify-content: flex-end; gap: 0.4rem; padding-top: 0.65rem; color: var(--color-text); font-size: 0.78rem; font-weight: 600; line-height: 1.5; text-decoration: underline; text-underline-offset: 0.2em; }
 .bookthing-page .bt-image-link:hover .bt-image-hint,
@@ -41,146 +57,183 @@ body:has(.bookthing-page) { background-image: none; }
 .bookthing-page .bt-crop { position: relative; width: 100%; overflow: hidden; background: var(--color-card); }
 .bookthing-page .bt-crop > img { position: absolute; max-width: none; height: auto; }
 .bookthing-page .bt-crop > .bt-todo { height: 100%; min-height: 0; }
-.bookthing-page .bt-todo { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.75rem; min-height: 10rem; padding: 2rem; border: 1px dashed var(--color-muted); border-radius: var(--radius-small); background: color-mix(in srgb, var(--color-accent) 12%, var(--color-bg)); }
+.bookthing-page .bt-todo { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.4rem; min-height: 6rem; padding: 1.25rem 1.5rem; border-left: 2px solid var(--color-border); background: var(--color-card); }
 .bookthing-page .bt-todo span { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
 .bookthing-page .bt-todo strong { max-width: 52ch; font-size: 0.95rem; line-height: 1.7; }
 
-/* Context: headline and narrative, then a single metadata rail. */
-.bookthing-page .bt-context { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem var(--bt-column-gap); align-items: start; }
+/* Compact context sits over a full-width, ruled metadata strip. */
+.bookthing-page .bt-context__overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bt-column-gap); max-width: var(--bt-intro-width); margin-inline: auto; align-items: start; }
 .bookthing-page .bt-context .bt-heading { margin-bottom: 0; }
-.bookthing-page .bt-context > .bt-prose { padding-top: 2.3rem; }
-.bookthing-page .bt-metadata { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin: 0; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
-.bookthing-page .bt-metadata dt { margin-bottom: 0.65rem; color: var(--color-muted); font-size: 0.9rem; }
-.bookthing-page .bt-metadata dd { margin: 0; font-size: 1rem; line-height: 1.7; }
+.bookthing-page .bt-context h2 { font-size: clamp(2.6rem, 3.3vw, 3rem); }
+.bookthing-page .bt-context__overview > .bt-prose { padding-top: 2.3rem; font-size: 1.05rem; }
+.bookthing-page .bt-metadata { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin: 2.5rem 0 0; padding: 1.5rem 0; border-block: 1px solid var(--color-border); }
+.bookthing-page .bt-metadata dt { margin-bottom: 0.5rem; color: var(--color-muted); font-size: 0.85rem; }
+.bookthing-page .bt-metadata dd { margin: 0; font-size: 0.95rem; line-height: 1.65; }
 
-/* Analysis: a featured observation above two supporting pieces of evidence. */
-.bookthing-page .bt-evidence { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bt-related-space) var(--bt-column-gap); align-items: start; margin-top: var(--bt-related-space); }
-.bookthing-page .bt-evidence > div { min-width: 0; }
-.bookthing-page .bt-evidence__opening { grid-column: 1 / -1; display: grid; grid-template-columns: 0.58fr 1fr; gap: var(--bt-column-gap); align-items: start; }
-.bookthing-page .bt-evidence__opening .bt-evidence__copy { padding-top: 1rem; }
-.bookthing-page .bt-evidence__news,
-.bookthing-page .bt-evidence__donate { max-width: 32rem; }
+/* One featured issue, then an inset pair of supporting observations. */
+.bookthing-page .bt-evidence { margin-top: var(--bt-visual-space); }
+.bookthing-page .bt-evidence__opening { display: grid; grid-template-columns: minmax(0, 0.35fr) minmax(0, 0.65fr); gap: var(--bt-column-gap); align-items: center; }
+.bookthing-page .bt-evidence__opening .bt-evidence__copy { max-width: 34ch; padding-bottom: 3rem; }
+.bookthing-page .bt-evidence__opening h3 { font-size: 1.15rem; }
+.bookthing-page .bt-evidence__copy p { margin-bottom: 0; color: var(--color-muted); font-size: 1.05rem; line-height: 1.7; }
+.bookthing-page .bt-evidence__supporting { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bt-column-gap); max-width: 1040px; margin: 3.5rem 0 0 auto; }
+.bookthing-page .bt-evidence__supporting > div { display: grid; grid-template-rows: auto 1fr; align-content: start; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+.bookthing-page .bt-evidence__supporting .bt-evidence__copy { min-height: 12rem; padding-bottom: 1.75rem; }
 .bookthing-page .bt-evidence h3 { text-wrap: pretty; }
-.bookthing-page .bt-evidence__copy p { margin-bottom: 1.75rem; color: var(--color-muted); font-size: 1.05rem; line-height: 1.7; }
+
+/* The sitemap takes the entire rail; the pending after-state is a compact row. */
+.bookthing-page .bt-ia__sequence { margin-top: var(--bt-visual-space); }
+.bookthing-page .bt-map__overview { background: var(--color-white); }
+.bookthing-page .bt-map__overview .bt-image-meta { padding-right: 0.75rem; padding-bottom: 0.5rem; }
+.bookthing-page .bt-map--after { display: grid; grid-template-columns: minmax(0, 0.35fr) minmax(0, 0.65fr); gap: var(--bt-column-gap); align-items: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+.bookthing-page .bt-map--after h3 { margin: 0; }
+
+/* Two distinct stages: an unequal comparison, then supporting close-ups. */
+.bookthing-page .bt-comparison { margin-top: var(--bt-visual-space); }
+.bookthing-page .bt-comparison__primary { display: grid; grid-template-columns: minmax(0, 0.35fr) minmax(0, 0.65fr); gap: var(--bt-column-gap); align-items: start; }
+.bookthing-page .bt-comparison__before { padding-top: 6rem; }
+.bookthing-page .bt-comparison h3 { min-height: 3.5rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border); text-wrap: pretty; }
+.bookthing-page .bt-comparison__after h3 { border-bottom-color: var(--color-text); }
+.bookthing-page .bt-comparison .bt-comparison__explanation { max-width: 65ch; margin-top: 1rem; font-size: 0.875rem; line-height: 1.7; }
+.bookthing-page .bt-comparison__details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bt-column-gap); max-width: 1000px; margin: 4rem 0 0 auto; }
+
+/* A full-rail Calendar and a separate annotation band precede archive evidence. */
+.bookthing-page .bt-calendar__layout { margin-top: var(--bt-visual-space); }
+.bookthing-page .bt-calendar__visual > .bt-image-link { padding: clamp(0.75rem, 1.5vw, 1.5rem); background: var(--color-primary-soft); }
+.bookthing-page .bt-calendar__annotations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem var(--bt-column-gap); max-width: var(--bt-intro-width); margin: 1.75rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
 .bookthing-page .bt-number { flex: 0 0 auto; display: inline-grid; width: 1.6rem; height: 1.6rem; place-items: center; border: 1px solid var(--color-border); border-radius: 50%; color: var(--color-text); font-size: 0.75rem; font-weight: 700; line-height: 1; }
 .bookthing-page .bt-callout { display: flex; gap: 0.75rem; align-items: baseline; margin: 0; font-size: 1rem; line-height: 1.65; color: var(--color-text); }
-
-/* The diagram owns the rail; its pending counterpart stays compact. */
-.bookthing-page .bt-map { margin-top: var(--bt-related-space); }
-.bookthing-page .bt-map__overview { padding: clamp(1rem, 3vw, 2.5rem); background: var(--color-white); border-radius: var(--radius-small); }
-.bookthing-page .bt-map--after { margin-top: 2.5rem; }
-.bookthing-page .bt-map--after .bt-todo { min-height: 10rem; }
-
-/* Donation: the complete redesign dominates; details follow in their own row. */
-.bookthing-page .bt-comparison { display: grid; grid-template-columns: 0.6fr 1fr; gap: var(--bt-related-space) var(--bt-column-gap); align-items: start; margin-top: var(--bt-related-space); }
-.bookthing-page .bt-comparison h3 { margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--color-border); text-wrap: pretty; }
-.bookthing-page .bt-comparison__details { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bt-column-gap); width: min(100%, 60rem); min-width: 0; justify-self: end; }
-.bookthing-page .bt-comparison__details .bt-crop { border-radius: var(--radius-small); }
-.bookthing-page .bt-comparison .bt-comparison__explanation { max-width: 65ch; margin-top: 0.75rem; font-size: 0.9rem; line-height: 1.7; }
-
-/* Calendar: one main design, followed by its content split and archive evidence. */
-.bookthing-page .bt-calendar__layout { display: grid; gap: var(--bt-related-space); margin-top: var(--bt-related-space); }
-.bookthing-page .bt-calendar__visual > .bt-image-link { padding: clamp(1rem, 2.5vw, 2rem); border-radius: var(--radius-media); background: var(--color-primary-soft); }
-.bookthing-page .bt-calendar__visual .bt-callout { margin-top: 1rem; margin-bottom: 0; }
-.bookthing-page .bt-calendar__visual .bt-calendar__legend { display: flex; gap: 0.75rem; max-width: 75ch; margin: 1.25rem 0 0; color: var(--color-muted); font-size: 0.9rem; line-height: 1.7; }
+.bookthing-page .bt-calendar__annotations .bt-calendar__legend { grid-column: 1 / -1; display: flex; gap: 0.75rem; max-width: 75ch; margin: 0; color: var(--color-muted); font-size: 0.9rem; line-height: 1.7; }
 .bookthing-page .bt-calendar__legend > span { color: #977210; }
-.bookthing-page .bt-calendar__copy { display: grid; grid-template-columns: 0.8fr 1fr; gap: var(--bt-column-gap); align-items: start; color: var(--color-muted); font-size: 1.05rem; }
-.bookthing-page .bt-calendar__copy > p { margin-bottom: 0; }
-.bookthing-page .bt-news-detail__crops { display: grid; grid-template-columns: 0.8fr 1fr; gap: 1.5rem; align-items: start; padding: 1.25rem; background: var(--color-card); }
-.bookthing-page .bt-news-detail__archive { width: 100%; max-width: 15rem; }
+.bookthing-page .bt-calendar__secondary { display: grid; grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr); gap: var(--bt-column-gap); align-items: start; max-width: var(--bt-intro-width); margin: 4rem auto 0; }
+.bookthing-page .bt-calendar__copy { max-width: 40ch; padding-top: 0.5rem; color: var(--color-muted); font-size: 1.05rem; }
+.bookthing-page .bt-calendar__copy p { margin: 0; }
+.bookthing-page .bt-news-detail__crops { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: 1.25rem; align-items: start; padding: 1.25rem; background: var(--color-card); }
+.bookthing-page .bt-news-detail__archive { width: 100%; }
 .bookthing-page .bt-calendar__mobile-detail { display: none; }
 
-/* One identity system: foundations alongside larger typography and application. */
-.bookthing-page .bt-identity__grid { display: grid; grid-template-columns: 0.8fr 1.25fr 1fr; grid-template-areas: "logo type application" "color type application"; gap: 2rem; align-items: start; margin-top: var(--bt-related-space); }
-.bookthing-page .bt-identity__logo { grid-area: logo; }
-.bookthing-page .bt-identity__color { grid-area: color; }
-.bookthing-page .bt-identity__type { grid-area: type; }
-.bookthing-page .bt-identity__application { grid-area: application; }
+/* Twelve columns compose one identity: 3 foundations / 5 type / 4 application. */
+.bookthing-page .bt-identity__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2rem; align-items: start; margin-top: var(--bt-visual-space); padding-top: 2rem; border-top: 1px solid var(--color-border); }
+.bookthing-page .bt-identity__foundations { grid-column: span 3; display: grid; gap: 2.5rem; }
+.bookthing-page .bt-identity__type { grid-column: span 5; }
+.bookthing-page .bt-identity__application { grid-column: span 4; }
 .bookthing-page .bt-identity__grid h3 { font-size: 1.05rem; }
-.bookthing-page .bt-identity__surface { padding: 1.25rem; background: var(--color-white); border-radius: var(--radius-small); }
-.bookthing-page .bt-identity__logo .bt-identity__surface { display: grid; align-items: center; min-height: 10rem; }
-.bookthing-page .bt-identity__swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.4rem; padding: 0; margin: 0; list-style: none; }
-.bookthing-page .bt-identity__swatches li { min-width: 0; }
-.bookthing-page .bt-identity__swatches span { display: block; aspect-ratio: 1; border: 1px solid rgb(31 37 35 / 0.1); border-radius: var(--radius-small); }
-.bookthing-page .bt-identity__swatches code { display: block; margin-top: 0.5rem; font-family: inherit; font-size: 0.62rem; color: var(--color-muted); }
-.bookthing-page .bt-identity__application .bt-crop { border-radius: var(--radius-small); }
-.bookthing-page .bt-identity__card-faces { display: grid; gap: 1.25rem; }
+.bookthing-page .bt-identity__surface { padding: 0.5rem; background: var(--color-white); }
+.bookthing-page .bt-identity__swatches { display: grid; gap: 0.5rem; padding: 0; margin: 0; list-style: none; }
+.bookthing-page .bt-identity__swatches li { display: grid; grid-template-columns: minmax(2.5rem, 1fr) 5rem; align-items: center; gap: 0.875rem; }
+.bookthing-page .bt-identity__swatches span { display: block; height: 1.75rem; border: 1px solid rgb(31 37 35 / 0.1); }
+.bookthing-page .bt-identity__swatches code { font-family: inherit; font-size: 0.8rem; color: var(--color-muted); }
+.bookthing-page .bt-identity__card-faces { display: grid; gap: 1.75rem; }
 
-/* Final designs: full-rail primary screens, followed by a quieter support row. */
-.bookthing-page .bt-final { margin-top: clamp(8rem, 12vw, 10rem); }
-.bookthing-page .bt-gallery { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--bt-related-space) 1.5rem; align-items: start; margin-top: var(--bt-related-space); }
-.bookthing-page .bt-gallery__donate { grid-column: 1 / 10; }
-.bookthing-page .bt-gallery__calendar,
-.bookthing-page .bt-gallery__news { grid-column: 3 / -1; }
-.bookthing-page .bt-gallery .bt-crop { border-radius: var(--radius-small); }
-.bookthing-page .bt-support { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bt-column-gap); max-width: 68rem; margin: var(--bt-related-space) 0 0 auto; }
+/* Final payoff: a tall Donate screen anchors the two landscape task screens. */
+.bookthing-page .bt-final .bt-heading h2 { max-width: none; font-size: clamp(3rem, 4.5vw, 4rem); }
+.bookthing-page .bt-final__exhibition { margin-top: var(--bt-visual-space); }
+.bookthing-page .bt-gallery { display: grid; grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr); gap: 3rem; align-items: start; }
+.bookthing-page .bt-gallery__planning { display: grid; gap: 3rem; padding-top: 5rem; }
+.bookthing-page .bt-support { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; max-width: 880px; margin: 4rem auto 0; padding-top: 2rem; border-top: 1px solid var(--color-border); }
 
-/* Reflection returns to a reading composition after the wide gallery. */
-.bookthing-page .bt-outcome { display: grid; grid-template-columns: 0.8fr 1fr; gap: 3rem var(--bt-column-gap); align-items: start; margin-bottom: 6rem; padding-top: 3rem; border-top: 1px solid var(--color-border); }
+/* The ending steps down to a quiet reading scale and a narrow reflection. */
+.bookthing-page .bt-outcome { margin-bottom: 7rem; padding-top: 3rem; border-top: 1px solid var(--color-border); }
+.bookthing-page .bt-outcome__summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bt-column-gap); max-width: var(--bt-intro-width); margin-inline: auto; align-items: start; }
 .bookthing-page .bt-outcome .bt-heading { margin-bottom: 0; }
-.bookthing-page .bt-outcome__columns { display: grid; gap: 2.5rem; }
-.bookthing-page .bt-outcome__columns p { max-width: 65ch; margin-bottom: 0; color: var(--color-muted); }
-.bookthing-page .bt-outcome > .back-link { grid-column: 1 / -1; justify-self: start; }
+.bookthing-page .bt-outcome h2 { max-width: 19ch; font-size: clamp(2.6rem, 3.5vw, 3rem); }
+.bookthing-page .bt-outcome__copy p,
+.bookthing-page .bt-outcome__reflection p { max-width: var(--bt-reading-width); margin-bottom: 0; color: var(--color-muted); font-size: 1.05rem; }
+.bookthing-page .bt-outcome__reflection { max-width: var(--bt-reading-width); margin: 3rem auto 0; padding-top: 1.75rem; border-top: 1px solid var(--color-border); }
+.bookthing-page .bt-outcome > .back-link { margin-top: 3.5rem; font-size: 0.9rem; }
 
-@media (max-width: 1050px) {
-  .bookthing-page .bt-context { grid-template-columns: 1fr 1fr; }
-  .bookthing-page .bt-context > .bt-prose { padding-top: 0; }
-  .bookthing-page .bt-metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.75rem; }
-  .bookthing-page .bt-identity__grid { grid-template-columns: 1fr 1.2fr; grid-template-areas: "logo color" "type application"; gap: 3rem var(--bt-column-gap); }
-  .bookthing-page .bt-identity__logo .bt-identity__surface { min-height: 0; }
-  .bookthing-page .bt-calendar__copy { grid-template-columns: 1fr 1.1fr; }
+/* Collapse early: landscape screens need width to stay readable on tablets. */
+@media (max-width: 1100px) {
+  .bookthing-page .bt-case { --bt-column-gap: 2rem; }
+  .bookthing-page .bt-context__overview > .bt-prose { padding-top: 0; }
+  .bookthing-page .bt-evidence__supporting { max-width: 90%; }
+  .bookthing-page .bt-evidence__supporting .bt-evidence__copy { min-height: 14rem; }
+  .bookthing-page .bt-comparison__before { padding-top: 4rem; }
   .bookthing-page .bt-news-detail__crops { grid-template-columns: 1fr; }
-  .bookthing-page .bt-news-detail__archive { margin-inline: auto; }
-  .bookthing-page .bt-gallery { column-gap: 1rem; }
+  .bookthing-page .bt-news-detail__archive { max-width: 15rem; }
+  .bookthing-page .bt-identity__grid { gap: 2.5rem 2rem; }
+  .bookthing-page .bt-identity__foundations { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 3rem; }
+  .bookthing-page .bt-identity__type { grid-column: span 7; }
+  .bookthing-page .bt-identity__application { grid-column: span 5; }
+  .bookthing-page .bt-gallery { grid-template-columns: 1fr; gap: 3.5rem; }
+  .bookthing-page .bt-gallery__donate { width: 78%; }
+  .bookthing-page .bt-gallery__planning { width: 92%; margin-left: auto; padding-top: 0; }
+  .bookthing-page .bt-support { max-width: 80%; }
 }
 
 @media (max-width: 820px) {
-  .bookthing-page .bt-section { margin-top: 6rem; }
-  .bookthing-page .bt-context { grid-template-columns: 1fr; gap: 2rem; }
-  .bookthing-page .bt-context .bt-prose { max-width: 65ch; }
-  .bookthing-page .bt-evidence__opening { grid-template-columns: 1fr; gap: 0; }
-  .bookthing-page .bt-evidence__opening .bt-evidence__copy { max-width: 65ch; padding-top: 0; }
-  .bookthing-page .bt-evidence__news,
-  .bookthing-page .bt-evidence__donate { max-width: none; }
-  .bookthing-page .bt-comparison { grid-template-columns: 1fr; }
-  .bookthing-page .bt-comparison__before { width: 72%; }
-  .bookthing-page .bt-comparison__details { justify-self: stretch; }
-  .bookthing-page .bt-comparison__details h3 { font-size: 1.05rem; }
-  .bookthing-page .bt-calendar__copy { grid-template-columns: 1fr; gap: 2rem; }
-  .bookthing-page .bt-news-detail__crops { grid-template-columns: 0.8fr 1fr; }
-  .bookthing-page .bt-news-detail__archive { margin-inline: 0; }
-  .bookthing-page .bt-gallery { grid-template-columns: 1fr; gap: 3rem; }
-  .bookthing-page .bt-gallery > figure { grid-column: auto; }
-  .bookthing-page .bt-gallery__donate { width: 85%; }
-  .bookthing-page .bt-outcome { grid-template-columns: 1fr; gap: 2.5rem; }
+  .bookthing-page .bt-case { --bt-visual-space: 2.5rem; }
+  .bookthing-page .bt-case h1 { font-size: clamp(3.5rem, 8vw, 4.5rem); }
+  .bookthing-page .bt-context { margin-top: 4.5rem; }
+  .bookthing-page .bt-problem,
+  .bookthing-page .bt-identity { margin-top: 5.5rem; }
+  .bookthing-page .bt-ia,
+  .bookthing-page .bt-donate,
+  .bookthing-page .bt-outcome { margin-top: 6rem; }
+  .bookthing-page .bt-calendar,
+  .bookthing-page .bt-final { margin-top: 7rem; }
+  .bookthing-page .bt-context__overview,
+  .bookthing-page .bt-outcome__summary { grid-template-columns: 1fr; gap: 1.75rem; }
+  .bookthing-page .bt-context .bt-prose { max-width: var(--bt-reading-width); }
+  .bookthing-page .bt-metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.75rem; }
+  .bookthing-page .bt-evidence__opening { grid-template-columns: 1fr; gap: 1.75rem; }
+  .bookthing-page .bt-evidence__opening .bt-evidence__copy { max-width: var(--bt-reading-width); padding: 0; }
+  .bookthing-page .bt-evidence__supporting { max-width: none; }
+  .bookthing-page .bt-evidence__supporting .bt-evidence__copy { min-height: 16rem; }
+  .bookthing-page .bt-map--after { grid-template-columns: 1fr; gap: 1rem; }
+  .bookthing-page .bt-comparison__primary { grid-template-columns: 1fr; gap: 3rem; }
+  .bookthing-page .bt-comparison__before { width: 70%; padding-top: 0; }
+  .bookthing-page .bt-comparison__details { gap: 1.5rem; }
+  .bookthing-page .bt-comparison__details h3 { min-height: 6rem; }
+  .bookthing-page .bt-calendar__annotations { grid-template-columns: 1fr; gap: 1rem; }
+  .bookthing-page .bt-calendar__secondary { grid-template-columns: 1fr; gap: 1.75rem; margin-top: 2.5rem; }
+  .bookthing-page .bt-calendar__copy { max-width: var(--bt-reading-width); }
+  .bookthing-page .bt-news-detail { width: 85%; margin-left: auto; }
+  .bookthing-page .bt-news-detail__crops { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); }
+  .bookthing-page .bt-support { grid-template-columns: 1fr; }
+  .bookthing-page .bt-outcome__reflection { margin-inline: 0; }
 }
 
 @media (max-width: 600px) {
   .bookthing-page .bt-case { font-size: 1.05rem; }
-  .bookthing-page .bt-case h1 { font-size: clamp(3.1rem, 13vw, 4.5rem); }
-  .bookthing-page .bt-case h2 { font-size: clamp(2.2rem, 9vw, 2.7rem); line-height: 1.12; }
-  .bookthing-page .bt-case h3 { font-size: 1.1rem; }
-  .bookthing-page .bt-hero__top { justify-content: flex-start; margin-bottom: 2rem; }
+  .bookthing-page .bt-case h1 { font-size: clamp(2.6rem, 10vw, 3.75rem); }
+  .bookthing-page .bt-case h2,
+  .bookthing-page .bt-context h2,
+  .bookthing-page .bt-outcome h2 { font-size: clamp(2.1rem, 8.7vw, 2.7rem); line-height: 1.12; }
+  .bookthing-page .bt-final .bt-heading h2 { font-size: clamp(2.6rem, 10vw, 3.2rem); }
+  .bookthing-page .bt-case h3 { font-size: 1.05rem; }
+  .bookthing-page .bt-hero { padding-top: 1.5rem; }
+  .bookthing-page .bt-hero__top { margin-bottom: 1.5rem; }
+  .bookthing-page .bt-hero__statement { margin-top: 2.5rem; }
   .bookthing-page .bt-hero__description { font-size: 1.05rem; line-height: 1.7; }
-  /* Preserve the existing mobile hero crop, as well as all inline source crops. */
-  .bookthing-page .bt-hero__visual .bt-crop { aspect-ratio: 1.15 !important; }
-  .bookthing-page .bt-hero__visual .bt-crop > img { width: 150% !important; left: -7% !important; }
   .bookthing-page .bt-metadata { gap: 1.5rem 1.25rem; }
-  .bookthing-page .bt-metadata dd { font-size: 0.95rem; }
-  .bookthing-page .bt-evidence,
+  .bookthing-page .bt-metadata dd { font-size: 0.9rem; }
+  .bookthing-page .bt-evidence__supporting,
   .bookthing-page .bt-comparison__details,
   .bookthing-page .bt-support { grid-template-columns: 1fr; }
+  .bookthing-page .bt-evidence__supporting { margin-top: 2.5rem; gap: 2.5rem; }
+  .bookthing-page .bt-evidence__supporting .bt-evidence__copy { min-height: 0; }
+  .bookthing-page .bt-todo { padding: 1rem; }
   .bookthing-page .bt-comparison__before { width: 100%; }
-  .bookthing-page .bt-map__overview { padding: 0.75rem; }
-  .bookthing-page .bt-todo { padding: 1.5rem; }
+  .bookthing-page .bt-comparison h3 { min-height: 0; }
+  .bookthing-page .bt-comparison__details { margin-top: 2.5rem; gap: 2.5rem; }
   .bookthing-page .bt-calendar__visual > .bt-image-link { padding: 0.5rem; }
   .bookthing-page .bt-calendar__mobile-detail { display: block; margin-top: 1.25rem; }
+  .bookthing-page .bt-calendar__annotations { margin-top: 1.25rem; }
+  .bookthing-page .bt-news-detail { width: 100%; }
   .bookthing-page .bt-news-detail__crops { grid-template-columns: 1fr; padding: 1rem; }
   .bookthing-page .bt-news-detail__archive { max-width: 16rem; margin-inline: auto; }
-  .bookthing-page .bt-identity__grid { grid-template-columns: 1fr; grid-template-areas: "logo" "color" "type" "application"; gap: 2.5rem; }
-  .bookthing-page .bt-gallery__donate { width: 100%; }
-  .bookthing-page .bt-image-meta--captioned { gap: 0.5rem; }
-  .bookthing-page .bt-image-title { font-size: 0.85rem; }
-  .bookthing-page .bt-image-meta--captioned .bt-image-hint { font-size: 0.72rem; }
+  .bookthing-page .bt-identity__grid,
+  .bookthing-page .bt-identity__foundations { grid-template-columns: 1fr; gap: 2.5rem; }
+  .bookthing-page .bt-identity__foundations,
+  .bookthing-page .bt-identity__type,
+  .bookthing-page .bt-identity__application { grid-column: auto; }
+  .bookthing-page .bt-identity__swatches { max-width: 22rem; }
+  .bookthing-page .bt-gallery { gap: 2.5rem; }
+  .bookthing-page .bt-gallery__donate,
+  .bookthing-page .bt-gallery__planning { width: 100%; }
+  .bookthing-page .bt-gallery__planning { gap: 2.5rem; }
+  .bookthing-page .bt-support { max-width: none; margin-top: 2.5rem; }
   .bookthing-page .bt-outcome { padding-top: 2rem; margin-bottom: 4rem; }
+  .bookthing-page .bt-outcome__reflection { margin-top: 2rem; }
 }
