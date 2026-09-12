@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import { CaseStudyNav } from "../components/CaseStudyNav";
+import { Tradeoff } from "../components/Tradeoff";
 import "./BookThingPage.css";
+import "../components/CaseStudyHero.css";
 
 // Based on the read-only handoff and subsequent copy and image corrections.
 // Crop rectangles use source pixels; source files are never altered.
@@ -90,16 +92,16 @@ export function BookThingPage() {
 
   return <Layout className="bookthing-page">
     <article className="bt-case page-shell" aria-labelledby="bookthing-title">
-      <section className="bt-hero" aria-label="The BookThing of Baltimore">
+      <section className="bt-hero case-study-hero" aria-label="The BookThing of Baltimore">
         <div className="bt-hero__top">
           <Link className="back-link" to="/?section=projects"><span aria-hidden="true">←</span> Back to projects</Link>
         </div>
-        <div className="bt-hero__statement">
+        <div className="bt-hero__statement case-study-hero__intro">
           <p className="section-label">BookThing · Nonprofit website · Academic concept</p>
           <h1 id="bookthing-title">Free books.<br />Clearer ways to take part.</h1>
           <p className="bt-hero__description">This desktop website redesign helps visitors navigate the schedules and donation requirements of a Baltimore nonprofit that redistributes books for free. I restructured the information architecture and translated dense operational content into focused page layouts, visible donation choices, and a cohesive visual identity.</p>
         </div>
-        <dl className="bt-metadata">
+        <dl className="bt-metadata case-study-info">
           <div><dt>Role</dt><dd>Solo designer</dd></div>
           <div><dt>Timeline</dt><dd>September-December 2025</dd></div>
           <div><dt>Scope</dt><dd>Information architecture<br />Desktop UI · Visual design</dd></div>
@@ -110,7 +112,9 @@ export function BookThingPage() {
           <figcaption>One place to find an opening date and the hours for giving or receiving books.</figcaption>
         </figure>
       </section>
+      <div className="case-study-layout">
       <CaseStudyNav sections={[{id:"bookthing-problem",label:"Site analysis"},{id:"bookthing-ia",label:"Structure"},{id:"bookthing-donate",label:"Donation choices"},{id:"bookthing-calendar",label:"Opening dates"},{id:"bookthing-outcome",label:"Outcome"}]} />
+      <div className="case-study-layout__content">
 
       <section className="bt-section bt-context" aria-labelledby="bookthing-context">
         <div className="bt-context__overview">
@@ -244,6 +248,7 @@ export function BookThingPage() {
             </figure>
           </div>
         </div>
+        <Tradeoff text="I grouped detailed book rules under labeled disclosures and emphasized priority instructions in the introduction. The tradeoff is that a donor might overlook a requirement inside a section they never open." />
       </section>
 
       <section className="bt-section bt-calendar" aria-labelledby="bookthing-calendar">
@@ -304,6 +309,8 @@ export function BookThingPage() {
         <div className="bt-outcome__reflection"><h3>Next validation</h3><p>Ask visitors to find the next opening, donors to identify a payment option, and book donors to locate acceptance requirements. Observe missed navigation and overlooked disclosures, then test reading order when donation columns stack on narrow screens.</p></div>
         <Link className="back-link" to="/?section=projects"><span aria-hidden="true">←</span> Back to projects</Link>
       </section>
+      </div>
+      </div>
     </article>
   </Layout>;
 }

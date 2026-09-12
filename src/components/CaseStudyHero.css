@@ -1,0 +1,110 @@
+/* Shared information hierarchy, scoped to the two case-study heroes. */
+.site-layout .case-study-hero .case-study-hero__intro {
+  align-self: start;
+}
+
+.site-layout .case-study-hero .case-study-hero__intro h1 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.site-layout .case-study-hero .case-study-hero__intro > p:last-child {
+  max-width: 72ch;
+  margin-bottom: 0;
+}
+
+.site-layout .case-study-hero .case-study-info {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  justify-items: stretch;
+  align-items: start;
+  gap: 1.5rem 2rem;
+  margin: 2rem 0 0;
+  padding: 1.5rem 0;
+  border-block: 1px solid var(--color-border);
+}
+
+.site-layout .case-study-hero .case-study-info--five {
+  grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.2fr) minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
+}
+
+.site-layout .case-study-hero .case-study-info > div {
+  min-width: 0;
+  max-width: none;
+  text-align: left;
+}
+
+.site-layout .case-study-hero .case-study-info dt {
+  margin: 0 0 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.site-layout .case-study-hero .case-study-info dd {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 550;
+  line-height: 1.65;
+}
+
+/* The shared metadata row owns the rule; avoid a second rule on its wrapper. */
+.patsy-page .case-study-hero .ps-hero__details {
+  grid-row: 2;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.patsy-page .case-study-hero .ps-hero__visual {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.patsy-page .case-study-hero .ps-hero__contribution {
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 1100px) {
+  .site-layout .case-study-hero .case-study-info--five {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-layout .case-study-hero .case-study-info--five > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 820px) {
+  .site-layout .case-study-hero .case-study-info {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    padding-block: 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .patsy-page .case-study-hero .ps-hero__visual {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 2rem;
+  }
+
+  .site-layout .case-study-hero .case-study-info {
+    margin-top: 1.5rem;
+  }
+
+  .site-layout .case-study-hero .case-study-info dd {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-layout .case-study-hero .case-study-info {
+    grid-template-columns: 1fr;
+  }
+}

@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import { CaseStudyNav } from "../components/CaseStudyNav";
+import { Tradeoff } from "../components/Tradeoff";
 import "./PatsyPage.css";
+import "../components/CaseStudyHero.css";
 
 // Public copy and image treatments follow case-study-handoff/patsy-final.md.
 // Source exports remain intact; crops use original pixel coordinates in CSS.
@@ -107,23 +109,16 @@ export function PatsyPage() {
 
   return <Layout className="patsy-page">
     <article className="ps-case" aria-labelledby="patsy-title">
-      <section className="ps-hero" aria-labelledby="patsy-title">
+      <section className="ps-hero case-study-hero" aria-labelledby="patsy-title">
         <div className="ps-back"><Link className="back-link" to="/?section=projects"><span aria-hidden="true">←</span> Back to projects</Link></div>
         <div className="ps-hero__content">
-          <header className="ps-hero__intro">
+          <header className="ps-hero__intro case-study-hero__intro">
             <p className="section-label">Patsy’s Restaurant · Mobile website concept</p>
             <h1 id="patsy-title">Making the path from browsing<br />to action clearer on mobile</h1>
             <p>Our team explored how Patsy’s mobile website could help people evaluate a restaurant and take the next step. Research shaped the initial concept; formative testing exposed a missing pickup path and guided the revision.</p>
           </header>
-          <figure className="ps-hero__visual">
-            <div className="ps-hero__screens">
-              <Screen name="landing" crop={[0, 0, 804, 1035]} alt="Team mobile landing preview with restaurant image and separate reservation, menu, and pickup entry points" eager />
-              <Screen name="entrees" crop={[0, 0, 804, 1160]} alt="Team mobile menu preview with categories and complete Crab Cakes row" eager />
-            </div>
-            <figcaption>Team mobile prototype: menu browsing, reservations, and a proposed pickup path.</figcaption>
-          </figure>
           <div className="ps-hero__details">
-            <dl className="ps-metadata">
+            <dl className="ps-metadata case-study-info case-study-info--five">
               <div className="ps-metadata__role"><dt>Role</dt><dd>Research planning · Product analysis · Usability-test design &amp; observation · Focused UI refinement</dd></div>
               <div><dt>Team</dt><dd>Four-person academic project</dd></div>
               <div><dt>Scope</dt><dd>Mobile menu, reservations, and pickup concept</dd></div>
@@ -132,9 +127,18 @@ export function PatsyPage() {
             </dl>
             <p className="ps-hero__contribution">I helped design the questionnaire, asked questions in 3 of 12 interview sessions, and identified mobile readability and navigation issues through product review.</p>
           </div>
+          <figure className="ps-hero__visual">
+            <div className="ps-hero__screens">
+              <Screen name="landing" crop={[0, 0, 804, 1035]} alt="Team mobile landing preview with restaurant image and separate reservation, menu, and pickup entry points" eager />
+              <Screen name="entrees" crop={[0, 0, 804, 1160]} alt="Team mobile menu preview with categories and complete Crab Cakes row" eager />
+            </div>
+            <figcaption>Team mobile prototype: menu browsing, reservations, and a proposed pickup path.</figcaption>
+          </figure>
         </div>
       </section>
+      <div className="case-study-layout">
       <CaseStudyNav sections={[{id:"patsy-research",label:"Research"},{id:"patsy-priorities",label:"Mobile priorities"},{id:"patsy-pickup",label:"Pickup iteration"},{id:"patsy-reservation",label:"Reservation review"},{id:"patsy-outcome",label:"Outcome"}]} />
+      <div className="case-study-layout__content">
 
       <section className="ps-section ps-start" aria-labelledby="patsy-start">
         <Heading id="patsy-start" eyebrow="The starting point">The information was there. Reading it on a phone was the problem.</Heading>
@@ -185,7 +189,7 @@ export function PatsyPage() {
           <div className="ps-priorities__copy ps-prose">
             <p>My product review identified manual zooming and crowded content. The problem went beyond font size: the page needed to distinguish what someone could do from the information they could read.</p>
             <p>Our team separated reservations and menu browsing into distinct homepage actions; the revised version added Order Pickup. Contact links moved into a compact footer.</p>
-            <p>The tradeoff was less emphasis on practical information. Hours and seasonal closures mattered in the survey but are absent from the exported landing screen. I would revisit their placement.</p>
+            <Tradeoff text="The tradeoff was less emphasis on practical information. Hours and seasonal closures mattered in the survey but are absent from the exported landing screen. I would revisit their placement." />
           </div>
         </div>
         <div className="ps-priorities__comparison">
@@ -280,6 +284,8 @@ export function PatsyPage() {
         </div>
         <Link className="back-link" to="/?section=projects"><span aria-hidden="true">←</span> Back to projects</Link>
       </section>
+      </div>
+      </div>
     </article>
   </Layout>;
 }

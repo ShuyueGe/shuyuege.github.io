@@ -1,0 +1,28 @@
+aside.case-tradeoff {
+  max-width: 68ch;
+  margin-block: 2rem;
+  padding-block: 1.5rem;
+  border-block: 1px solid var(--color-border);
+}
+
+aside.case-tradeoff > h3.case-tradeoff__title {
+  margin: 0 0 0.75rem;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+aside.case-tradeoff > p.case-tradeoff__copy {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 600px) {
+  aside.case-tradeoff { padding-block: 1.25rem; }
+  aside.case-tradeoff > p.case-tradeoff__copy { font-size: 1rem; }
+}

@@ -1,0 +1,113 @@
+.case-study-layout {
+  --case-nav-top: 100px;
+  /* Exact existing .logo:hover .logo__name color in styles.css; no shared token exists. */
+  --case-nav-accent: #78a49b;
+  margin-top: 2.5rem;
+}
+
+.case-study-layout__content {
+  min-width: 0;
+  display: flow-root;
+}
+
+.case-study-nav {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-padding-inline: 1rem;
+  padding-block: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.case-study-nav > a {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.case-study-nav > a:hover,
+.case-study-nav > a[aria-current="location"] {
+  color: var(--case-nav-accent);
+}
+
+.case-study-nav > a[aria-current="location"] {
+  border-color: var(--case-nav-accent);
+  font-weight: 700;
+}
+
+.case-study-nav > a:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: -2px;
+}
+
+@media (max-width: 1023px) {
+  .case-study-nav[data-overflow-end] {
+    mask-image: linear-gradient(to right, #000 calc(100% - 1rem), transparent);
+  }
+
+  .case-study-layout > .case-study-layout__content > section:first-child {
+    margin-top: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .case-study-layout {
+    --case-nav-width: 9.5rem;
+    --case-nav-gap: clamp(1.5rem, 2.2vw, 2.25rem);
+    --case-body-width: min(calc(100vw - 2 * clamp(1.25rem, 2.5vw, 2.5rem)), calc(100% + var(--case-nav-width) + var(--case-nav-gap)));
+    display: grid;
+    grid-template-columns: var(--case-nav-width) minmax(0, 1fr);
+    column-gap: var(--case-nav-gap);
+    width: var(--case-body-width);
+    margin-inline: calc((100% - var(--case-body-width)) / 2);
+    margin-top: 4rem;
+  }
+
+  .case-study-layout > .case-study-nav {
+    position: sticky;
+    top: var(--case-nav-top);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    max-height: calc(100dvh - var(--case-nav-top) - 1.5rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+  }
+
+  .case-study-nav > a {
+    padding: 0.65rem 0.5rem 0.65rem 1rem;
+    border-bottom: 0;
+    border-left: 2px solid transparent;
+    overflow-wrap: anywhere;
+  }
+
+  .case-study-nav > a[aria-current="location"] {
+    border-left-color: var(--case-nav-accent);
+  }
+
+  /* Only the first body section loses its former gap below the horizontal nav. */
+  .case-study-layout > .case-study-layout__content > section:first-child {
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-study-nav > a { transition: none; }
+}
+
+@media print {
+  .case-study-layout { display: block; width: auto; margin-inline: 0; }
+  .case-study-nav { display: none; }
+}
