@@ -79,44 +79,59 @@ Keep the four metadata items on one compact row where space allows. Do not repla
 
 **Purpose**
 
-Use three focused evidence crops to establish the specific content and hierarchy problems addressed by the redesign.
+Establish overlapping content roles, donation hierarchy, and opening-date importance in the same order as Decisions 01, 02, and 03.
 
 **Layout**
 
-Brief introduction followed by three evidence groups. Each crop stays attached to its own caption. Add one small task strip beneath them if useful.
+Brief introduction followed by Finding 1 as the featured, full-width structural observation, with its explanation beside a grouped evidence composition. Place Findings 2 and 3 in two smaller, unframed columns beneath it: donation on the left, opening dates on the right. Keep each finding attached to its own evidence and caption; stack them in order 1, 2, 3 on narrow screens.
 
 **Portfolio copy**
 
 - Eyebrow: Site analysis
 - Headline: Essential information competed with the page around it
 - Body: My review focused on where operational information appeared and what surrounded it. I also used assumption-based proto-personas to keep four planning tasks in view: visit, donate, volunteer, and stay updated. These were planning tools, not findings from user interviews.
-- Optional captions/callouts:
-  1. **Opening dates required another step.** The homepage explained that openings were monthly, then directed visitors elsewhere for the actual dates.
-  2. **Schedules shared space with general updates.** Opening announcements appeared in the News feed beside other posts and an embedded Facebook panel.
-  3. **Money donations followed extensive book rules.** The project-era Donate page placed financial giving below the longer book-donation instructions.
-  4. Planning focus: Visit · Donate · Volunteer · Stay updated
+- Findings:
+  1. **Practical information had overlapping destinations**
+
+     Opening dates appeared through News, while Events remained a separate navigation destination and book-donation schedules lived on Donate. The structure gave announcements, events, and operational information overlapping roles instead of a clear place for each type of content.
+
+  2. **Financial giving followed lengthy book-donation rules**
+
+     The Donate page presented book-donation dates, limits, and acceptance rules before the Money Donations section. Reaching the financial-giving options meant scrolling past detailed instructions for a different type of contribution.
+
+  3. **Limited openings made the exact date essential**
+
+     Public openings were generally monthly, typically alternating between Saturdays and Sundays, with occasional extra openings. The homepage explained the general frequency, but specific dates were presented through individual News announcements, making the relevant update necessary for planning a visit.
 
 **Visual**
 
-【图片内容：裁切 `selected-assets/bookthing-original-homepage-first-screen.png`，保留顶部开放通知、完整导航和部分欢迎区；不要裁掉原站已有的 Donate 按钮或地址。】
+【Finding 1 / IA：使用组合证据，不伪造原站 sitemap。从 `raw-materials/04-wireframes-redesign/grid redesign.pdf` 第 1 页嵌入的 2025 年原站截图中提取导航条，以及 October opening 和 Booktoberfest 公告局部，保留 News、Events 独立导航项；旁边配 `raw-materials/04-wireframes-redesign/high didelity redesign compare-Donate rules.pdf` 第 1 页 Before 中的 Donate 页面标题、捐书日期与规则开头。分别标注 News 和 Donate，展示内容职责交叠与日程分布，不把独立裁片拼成一张连续页面。不使用重设计 sitemap 作为 Before。】
 
-【图片内容：从 `raw-materials/04-wireframes-redesign/grid redesign.pdf` 第 1 页提取项目期原站局部，突出开放公告、其他更新与 Facebook 侧栏；不使用带 2026 内容的独立 News 截图作为项目期证据。】
+【Finding 2 / Donation：使用 `selected-assets/bookthing-donate-before-after.png` 的 2025 年 Before 区域；需要更清晰局部时，从上述 Donate comparison PDF 的原站截图提取。先展示捐书日期、限制和规则，再展示规则末段到 Money Donations 的连续局部；若省略中段，明确标注省略，保留真实内容顺序。不使用 2026 年的 `selected-assets/bookthing-original-donate-rules.png`。】
 
-【图片内容：从 `selected-assets/bookthing-donate-before-after.png` 的 Before 区域裁切书籍规则末段到 Money Donations 标题，保留真实上下顺序。】
+【Finding 3 / Opening dates：从 `raw-materials/04-wireframes-redesign/grid redesign.pdf` 第 1 页嵌入的原站截图中提取 June / July / August 2025 开放公告，保留月份标题、摘要中的具体开放日期，以及 June double opening 的额外日期。按原截图顺序呈现；如需说明首页频率提示，可附一条小型 `selected-assets/bookthing-original-homepage-first-screen.png` 顶部通知裁片，但不标注未经确认的拍摄日期。不使用 2026 年的独立 News 截图作为课程期证据。】
 
 **Crop / emphasis**
 
-Each crop should prove only one caption. Preserve visible context, including the original Donate action and historical dates where verified.
+Give the grouped IA evidence the largest visual area. Use the navigation and opening/event pair to show content roles, the Donate comparison to show content order, and the monthly announcement excerpts to show date-specific information. Keep source labels and opening dates readable; do not confuse post publication dates with opening dates. Preserve the original Donate action and avoid repeating the same large News crop in Findings 1 and 3.
 
 **Annotations**
 
-① Monthly opening notice, without the next date.  
-② Opening announcements mixed with other updates.  
-③ Financial giving below book-donation instructions.
+① News carries opening and event announcements; book-donation schedules sit on Donate.  
+② Book-donation dates and rules precede Money Donations.  
+③ Specific opening dates appear in individual News summaries, including extra openings.
 
 **Implementation notes**
 
-Stack crop and caption as one unit on narrow screens. Do not label the standalone homepage capture with a project date unless its capture timing is confirmed.
+Keep Finding 1 visually primary and Findings 2 and 3 supporting, while maintaining the same reading order as the three later decisions. Use existing original-site crops, not a reconstructed original sitemap or the redesigned sitemap labeled as Before. Preserve legibility through enlargement rather than shrinking complete long pages into small panels.
+
+**Internal evidence notes**
+
+- The IA claim concerns overlapping content roles and destinations, not proven user confusion or a complete audit of every original page. The News screenshot shows opening announcements and event promotion despite a separate Events navigation item; Donate carries book-donation schedules and rules.
+- Public openings were generally monthly, typically alternating between Saturdays and Sundays, with occasional extra openings. The 2025 News evidence includes June 15 and 29, July 12, and August 10; do not describe the cadence as exactly once per month or completely unpredictable.
+- The homepage had frequency guidance. The available first-screen evidence does not show the specific next date, but this does not mean the entire homepage lacked dates; the original notice also directed visitors farther down the homepage or to News. The standalone homepage capture date remains unconfirmed.
+- Donation hierarchy must be evidenced by the course-period 2025 Before. The later 2026 standalone Donate capture has a different structure and must not support this finding. Describe content order, not a universal fourth-screen position.
+- These are site/content observations, not results from original-site user testing. Do not infer confusion, failed tasks, missed visits, donation abandonment, or measured improvement; proto-personas remain assumption-based planning tools.
 
 ## Section 04 — Giving Schedules and Donation Guidance Distinct Places
 
