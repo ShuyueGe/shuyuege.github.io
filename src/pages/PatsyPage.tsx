@@ -160,9 +160,9 @@ export function PatsyPage() {
             <SurveyCount count={15}>respondents were somewhat or very likely to visit a restaurant’s website before going.</SurveyCount>
             <SurveyCount count={21}>selected viewing the menu as a reason to use Patsy’s website.</SurveyCount>
             <p className="ps-small">Survey counts describe this project sample. The menu question allowed multiple selections.</p>
-            <blockquote><p>“I check the menu to see if there’s anything I would like to eat and also check prices.”</p><cite>Interview participant</cite></blockquote>
           </div>
         </div>
+        <blockquote><p>“I check the menu to see if there’s anything I would like to eat and also check prices.”</p><cite>Interview participant</cite></blockquote>
         <div className="ps-findings">
           <div><h3>Confirm the essentials</h3><p>Interviews emphasized menu options, prices, location, and hours.</p><p>This suggested the site should support quick confirmation. We prioritized direct access to menu browsing and reservation tasks.</p></div>
           <div><h3>Make information readable</h3><p>Survey comments and our product review identified small type, crowding, and mobile friction.</p><p>We translated these findings into a mobile layout with clearer spacing and prominent actions.</p></div>
@@ -193,7 +193,6 @@ export function PatsyPage() {
             <Heading id="patsy-pickup" eyebrow="Decision 02 · Follow the task beyond the menu">Testing exposed the gap between browsing and ordering</Heading>
             <p>Menu access was already a research priority. The first prototype grouped dishes into four categories with names, prices, and image placeholders. It supported browsing but lacked a pickup path.</p>
             <p>We ran formative think-aloud testing with two participants. I designed the protocol, observed sessions, and took notes. Tasks were to reserve dinner for two, find crab cakes and their price, and attempt pickup.</p>
-            <p>During the assigned pickup task, one participant searched for a cart without finding an ordering path. Another expected the crab-cake item to be clickable. Earlier research had raised online ordering; testing exposed the omitted path.</p>
           </div>
           <div className="ps-menu-comparison">
             <figure><h3>Tested V1 · Menu browsing</h3><Screen name="testedMenu" crop={[305, 55, 257, 560]} alt="Tested initial Entrées menu with category navigation, names, prices, image placeholders, and no ordering path" /></figure>
@@ -201,6 +200,7 @@ export function PatsyPage() {
             <p className="ps-menu-comparison__caption ps-small">Assigned pickup task → a missing cart path → a proposed ordering sequence.</p>
           </div>
         </div>
+        <p className="ps-pickup__turning-point">During the assigned pickup task, one participant searched for a cart without finding an ordering path. Another expected the crab-cake item to be clickable. Earlier research had raised online ordering; testing exposed the omitted path.</p>
         <div className="ps-pickup__revision ps-prose">
           <p>Extending the menu into a pickup sequence was our clearest testing-informed change. We added cart cues, an order summary, checkout with pickup information, and confirmation. Showing the sequence made the full path more explicit than a cart icon alone.</p>
           <p>My smaller menu refinement removed the redundant Menu heading to give categories more room, a design judgment, separate from the test findings.</p>
