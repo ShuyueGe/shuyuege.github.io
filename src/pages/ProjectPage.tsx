@@ -11,6 +11,7 @@ import { TextChart } from "../components/TextChart";
 import { getProjectBySlug, projects } from "../data/projects";
 import { NotFoundPage } from "./NotFoundPage";
 import { BookThingPage } from "./BookThingPage";
+import { PatsyPage } from "./PatsyPage";
 
 export function ProjectPage() {
   const { slug } = useParams();
@@ -18,6 +19,11 @@ export function ProjectPage() {
   // Keep the homepage link and GitHub Pages hash-routing convention intact.
   if (slug === "ngo-website-redesign") {
     return <BookThingPage />;
+  }
+
+  // Patsy uses the third project's existing slug and homepage link.
+  if (slug === "restaurant-website-redesign") {
+    return <PatsyPage />;
   }
 
   return <StandardProjectPage slug={slug} />;
