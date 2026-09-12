@@ -44,7 +44,7 @@ body:has(.bookthing-page) { background-image: none; }
 /* Break out of the content rail using the viewport's available width, excluding the scrollbar. */
 .bookthing-page .bt-hero__visual { width: 100cqw; margin-inline: calc(50% - 50cqw); }
 .bookthing-page .bt-hero__visual .bt-crop { border-radius: 0; background: transparent; }
-.bookthing-page .bt-hero__statement { max-width: var(--bt-intro-width); margin: clamp(3.5rem, 6vw, 5.5rem) auto 0; }
+.bookthing-page .bt-hero__statement { margin: clamp(3.5rem, 6vw, 5.5rem) 0 0; }
 .bookthing-page .bt-hero__description { max-width: 70ch; margin-bottom: 0; color: var(--color-muted); font-size: 1.125rem; line-height: 1.75; }
 
 /* No transforms, object-fit, or aspect-ratio overrides on source crops. */
@@ -65,11 +65,12 @@ body:has(.bookthing-page) { background-image: none; }
 .bookthing-page .bt-todo strong { max-width: 52ch; font-size: 0.95rem; line-height: 1.7; }
 
 /* Compact context sits over a full-width, ruled metadata strip. */
-.bookthing-page .bt-context__overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bt-column-gap); max-width: var(--bt-intro-width); margin-inline: auto; align-items: start; }
+.bookthing-page .bt-context__overview { display: grid; grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr); gap: var(--bt-column-gap); align-items: start; }
 .bookthing-page .bt-context .bt-heading { margin-bottom: 0; }
 .bookthing-page .bt-context h2 { font-size: clamp(2.6rem, 3.3vw, 3rem); }
-.bookthing-page .bt-context__overview > .bt-prose { padding-top: 2.3rem; font-size: 1.05rem; }
-.bookthing-page .bt-metadata { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin: 2.5rem 0 0; padding: 1.5rem 0; border-block: 1px solid var(--color-border); }
+.bookthing-page .bt-context__overview > .bt-prose { max-width: none; padding-top: 2.3rem; font-size: 1.05rem; }
+.bookthing-page .bt-metadata { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); justify-items: center; gap: 2rem; margin: 2.5rem auto 0; padding: 1.5rem clamp(1rem, 2vw, 2rem); border-block: 1px solid var(--color-border); }
+.bookthing-page .bt-metadata > div { max-width: 100%; text-align: left; }
 .bookthing-page .bt-metadata dt { margin-bottom: 0.5rem; color: var(--color-muted); font-size: 0.85rem; }
 .bookthing-page .bt-metadata dd { margin: 0; font-size: 0.95rem; line-height: 1.65; }
 
@@ -79,9 +80,12 @@ body:has(.bookthing-page) { background-image: none; }
 .bookthing-page .bt-evidence__opening .bt-evidence__copy { max-width: 34ch; padding-bottom: 3rem; }
 .bookthing-page .bt-evidence__opening h3 { font-size: 1.15rem; }
 .bookthing-page .bt-evidence__copy p { margin-bottom: 0; color: var(--color-muted); font-size: 1.05rem; line-height: 1.7; }
-.bookthing-page .bt-evidence__supporting { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bt-column-gap); max-width: 1040px; margin: 3.5rem 0 0 auto; }
-.bookthing-page .bt-evidence__supporting > div { display: grid; grid-template-rows: auto 1fr; align-content: start; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
-.bookthing-page .bt-evidence__supporting .bt-evidence__copy { min-height: 12rem; padding-bottom: 1.75rem; }
+.bookthing-page .bt-evidence__supporting { container-type: inline-size; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto; gap: 0 var(--bt-column-gap); max-width: 1040px; margin: 3.5rem auto 0; }
+.bookthing-page .bt-evidence__supporting > div { display: grid; grid-row: span 2; grid-template-rows: subgrid; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+.bookthing-page .bt-evidence__supporting .bt-evidence__copy { padding-bottom: 1.75rem; }
+/* Match image heights using the shorter crop's ratio, without changing either crop. */
+.bookthing-page .bt-evidence__supporting .bt-image-link { display: grid; grid-template-rows: calc((100cqw - var(--bt-column-gap)) * 0.5075) auto; }
+.bookthing-page .bt-evidence__supporting .bt-crop { height: 100%; width: auto; justify-self: center; }
 .bookthing-page .bt-evidence h3 { text-wrap: pretty; }
 
 /* The sitemap takes the entire rail; the pending after-state is a compact row. */
@@ -150,7 +154,6 @@ body:has(.bookthing-page) { background-image: none; }
   .bookthing-page .bt-case { --bt-column-gap: 2rem; }
   .bookthing-page .bt-context__overview > .bt-prose { padding-top: 0; }
   .bookthing-page .bt-evidence__supporting { max-width: 90%; }
-  .bookthing-page .bt-evidence__supporting .bt-evidence__copy { min-height: 14rem; }
   .bookthing-page .bt-comparison__before { padding-top: 4rem; }
   .bookthing-page .bt-news-detail__crops { grid-template-columns: 1fr; }
   .bookthing-page .bt-news-detail__archive { max-width: 15rem; }
@@ -182,7 +185,6 @@ body:has(.bookthing-page) { background-image: none; }
   .bookthing-page .bt-evidence__opening { grid-template-columns: 1fr; gap: 1.75rem; }
   .bookthing-page .bt-evidence__opening .bt-evidence__copy { max-width: var(--bt-reading-width); padding: 0; }
   .bookthing-page .bt-evidence__supporting { max-width: none; }
-  .bookthing-page .bt-evidence__supporting .bt-evidence__copy { min-height: 16rem; }
   .bookthing-page .bt-map--after { grid-template-columns: 1fr; gap: 1rem; }
   .bookthing-page .bt-comparison__primary { grid-template-columns: 1fr; gap: 3rem; }
   .bookthing-page .bt-comparison__before { width: 70%; padding-top: 0; }
@@ -209,13 +211,15 @@ body:has(.bookthing-page) { background-image: none; }
   .bookthing-page .bt-hero__top { margin-bottom: 1.5rem; }
   .bookthing-page .bt-hero__statement { margin-top: 2.5rem; }
   .bookthing-page .bt-hero__description { font-size: 1.05rem; line-height: 1.7; }
-  .bookthing-page .bt-metadata { gap: 1.5rem 1.25rem; }
+  .bookthing-page .bt-metadata { justify-items: stretch; gap: 1.5rem 1.25rem; padding-inline: 0; }
   .bookthing-page .bt-metadata dd { font-size: 0.9rem; }
   .bookthing-page .bt-evidence__supporting,
   .bookthing-page .bt-comparison__details,
   .bookthing-page .bt-support { grid-template-columns: 1fr; }
-  .bookthing-page .bt-evidence__supporting { margin-top: 2.5rem; gap: 2.5rem; }
-  .bookthing-page .bt-evidence__supporting .bt-evidence__copy { min-height: 0; }
+  .bookthing-page .bt-evidence__supporting { grid-template-rows: none; margin-top: 2.5rem; gap: 2.5rem; }
+  .bookthing-page .bt-evidence__supporting > div { grid-row: auto; grid-template-rows: auto 1fr; }
+  .bookthing-page .bt-evidence__supporting .bt-image-link { display: block; }
+  .bookthing-page .bt-evidence__supporting .bt-crop { height: auto; width: 100%; }
   .bookthing-page .bt-todo { padding: 1rem; }
   .bookthing-page .bt-comparison__before { width: 100%; }
   .bookthing-page .bt-comparison h3 { min-height: 0; }
