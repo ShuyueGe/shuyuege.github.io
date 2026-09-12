@@ -5,8 +5,8 @@ export function Footer() {
   return <footer className="site-footer">
     <div className="page-shell site-footer__inner">
       <div className="site-footer__identity">
-        <h2 className="site-footer__title">Thanks for taking a look.</h2>
-        <p>Shuyue Ge · Product Designer</p>
+        <h2 className="site-footer__title">Let&apos;s Connect</h2>
+        <p>Feel free to reach out for collaborations or just a friendly hello 😀</p>
         {profile.email && <a className="site-footer__email" href={`mailto:${profile.email}`}>{profile.email}</a>}
       </div>
       <nav aria-label="Footer links">

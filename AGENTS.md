@@ -4,6 +4,18 @@
 Before significant visual, layout, interaction, responsive, typography, or case-study work, read `case-study-handoff/visual-design-guidelines.md`.
 For BookThing also read `case-study-handoff/bookthing-final.md`; for Patsy read `case-study-handoff/patsy-final.md`. For future projects, read the corresponding final handoff.
 
+## Visual-Only Mode / Content Lock
+
+When a task is described as visual design, visual refinement, art direction, layout improvement, design exploration, design critic iteration, or visual polish, all existing user-facing copy is immutable unless the user explicitly requests content editing. This overrides general goals such as storytelling, recruiter scanability, clarity, concision, and hierarchy whenever pursuing them would change wording.
+
+Do not rewrite, shorten, summarize, expand, paraphrase, add, delete, or otherwise modify headings, paragraphs, captions, labels, buttons, project descriptions, metadata, dates, numbers, statistics, quotes, findings, outcomes, limitations, or reflection text. Preserve words and punctuation exactly. Typography, measure, alignment, spacing, grid, image treatment, color, and responsive presentation may change. Wrappers may split existing text only when the rendered wording and punctuation stay identical.
+
+Preserve semantic content order. A major narrative reorder requires explicit user approval. Solve dense content through visual composition and typography, not prose edits. Every alternative design direction must use exactly identical wording.
+
+Before and after visual work, compare user-facing content against the frozen starting version. Preserve pre-existing user edits. Use the final handoffs as references, not permission to reinterpret or rewrite copy. If history, handoffs, or the correspondence between old and new content positions is ambiguous, leave the affected content unchanged and report the exact conflict.
+
+Critics evaluate visual execution only. They must not recommend copy changes; discard any such recommendation and solve the issue visually. Every future critic invocation must include both content-lock rules in the permanent prompt below. A content restoration request does not authorize a new visual iteration, commit, or push.
+
 ## Sources of truth
 Final handoff documents contain factual project content. Do not invent research, quotes, metrics, findings, outcomes, client requirements, usability-test results, or process steps. Separate academic concepts from launched work, team contributions from personal contributions, observations from assumptions, and future validation from completed testing. Preserve source images and their provenance. Do not edit a handoff to rationalize a visual change.
 

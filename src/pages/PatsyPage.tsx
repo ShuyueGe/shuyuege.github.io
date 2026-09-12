@@ -64,7 +64,7 @@ function Screen({ name, alt, crop, eager = false }: {
           loading={eager ? "eager" : "lazy"} fetchPriority={eager ? "high" : undefined}
           decoding="async" onError={() => setFailed(true)} />
       </span>
-      <span className="ps-image__hint" aria-hidden="true">↗</span>
+      <span className="ps-image__hint" aria-hidden="true">Click to enlarge ↗</span>
     </button>
     {expanded && <dialog ref={dialogRef} className="ps-viewer" aria-label={alt}
       onClose={() => setExpanded(false)}
@@ -86,7 +86,7 @@ function Screen({ name, alt, crop, eager = false }: {
 }
 
 function Heading({ id, eyebrow, children }: { id: string; eyebrow: string; children: ReactNode }) {
-  return <header className="ps-heading">{["patsy-research", "patsy-pickup", "patsy-final"].includes(id) && <p className="section-label">{eyebrow.replace(/Decision \d+ · /, "")}</p>}<h2 id={id}>{children}</h2></header>;
+  return <header className="ps-heading">{["patsy-research", "patsy-pickup", "patsy-final"].includes(id) && <p className="section-label">{eyebrow}</p>}<h2 id={id}>{children}</h2></header>;
 }
 
 function Note({ number, children }: { number: number; children: ReactNode }) {
@@ -112,7 +112,7 @@ export function PatsyPage() {
         <div className="ps-hero__content">
           <header className="ps-hero__intro">
             <p className="section-label">Patsy’s Restaurant · Mobile website concept</p>
-            <h1 id="patsy-title">From menu browsing<br />to pickup.</h1>
+            <h1 id="patsy-title">Making the path from browsing<br />to action clearer on mobile</h1>
             <p>Our team explored how Patsy’s mobile website could help people evaluate a restaurant and take the next step. Research shaped the initial concept; formative testing exposed a missing pickup path and guided the revision.</p>
           </header>
           <figure className="ps-hero__visual">
@@ -206,7 +206,7 @@ export function PatsyPage() {
       <section className="ps-section ps-pickup" aria-labelledby="patsy-pickup">
         <div className="ps-pickup__opening">
           <Heading id="patsy-pickup" eyebrow="Decision 02 · Follow the task beyond the menu">Testing exposed the gap between browsing and ordering</Heading>
-          <p className="ps-pickup__observation">During the assigned pickup task, one participant searched for a cart without finding an ordering path. Another expected the crab-cake item to be clickable.</p>
+          <p className="ps-pickup__observation">During the assigned pickup task, one participant searched for a cart without finding an ordering path. Another expected the crab-cake item to be clickable. Earlier research had raised online ordering; testing exposed the omitted path.</p>
           <div className="ps-pickup__intro ps-prose">
             <p>Menu access was already a research priority. The first prototype grouped dishes into four categories with names, prices, and image placeholders. It supported browsing but lacked a pickup path.</p>
             <p>We ran formative think-aloud testing with two participants. I designed the protocol, observed sessions, and took notes. Tasks were to reserve dinner for two, find crab cakes and their price, and attempt pickup.</p>
@@ -222,16 +222,16 @@ export function PatsyPage() {
         <div className="ps-pickup__finding">
           <div className="ps-pickup__revision ps-prose">
             <p>Extending the menu into a pickup sequence was our clearest testing-informed change. We added cart cues, an order summary, checkout with pickup information, and confirmation. Showing the sequence made the full path more explicit than a cart icon alone.</p>
-            <p>My smaller menu refinement removed the redundant Menu heading to give categories more room, a design judgment separate from the test findings. The team-version screens shown here precede that refinement.</p>
+            <p>My smaller menu refinement removed the redundant Menu heading to give categories more room, a design judgment, separate from the test findings.</p>
             <p>Next-step buttons advance through preset states, but add-to-cart does not work. The revised flow has not yet been retested.</p>
           </div>
         </div>
         <div className="ps-pickup__flow-stage">
           <div className="ps-flow-intro"><h3>The proposed pickup path</h3><p className="ps-flow-label">Preset prototype screens · Not a working checkout</p></div>
           <ol className="ps-flow" aria-label="Intended pickup sequence">
-            <li><h4>1. Review the order</h4><figure><Screen name="cart" crop={[35, 1150, 730, 575]} alt="Cart detail: sample order totals and the Continue action" /><figcaption>Review sample totals before continuing.</figcaption></figure></li>
-            <li><h4>2. Arrange pickup</h4><figure><Screen name="checkout" crop={[35, 720, 730, 1005]} alt="Checkout detail: pickup address, in-person collection instructions, order summary, and Place Order action" /><figcaption>Collection instructions sit above the order summary and final action.</figcaption></figure></li>
-            <li><h4>3. Confirm the next step</h4><figure><Screen name="orderConfirmation" crop={[35, 1180, 735, 555]} alt="Confirmation detail: sample pickup estimate and Return to Home action" /><figcaption>A preset confirmation explains what would happen next.</figcaption></figure></li>
+            <li><h4>1. Review the order</h4><figure><Screen name="cart" crop={[35, 1150, 730, 575]} alt="Cart detail: sample order totals and the Continue action" /><figcaption>Review the intended order before checkout.</figcaption></figure></li>
+            <li><h4>2. Arrange pickup</h4><figure><Screen name="checkout" crop={[35, 720, 730, 1005]} alt="Checkout detail: pickup address, in-person collection instructions, order summary, and Place Order action" /><figcaption>Pickup information appears beside payment choices.</figcaption></figure></li>
+            <li><h4>3. Confirm the next step</h4><figure><Screen name="orderConfirmation" crop={[35, 1180, 735, 555]} alt="Confirmation detail: sample pickup estimate and Return to Home action" /><figcaption>Show what happens after the proposed order.</figcaption></figure></li>
           </ol>
         </div>
       </section>
@@ -251,8 +251,8 @@ export function PatsyPage() {
 
       <section className="ps-section ps-final" aria-labelledby="patsy-final">
         <div className="ps-final__opening">
-          <Heading id="patsy-final" eyebrow="The resulting concept">Beyond the pickup path</Heading>
-          <p className="ps-prose">The team concept also supports food-category browsing and reservation confirmation. These selected details show the additional scope; each opens the complete screen.</p>
+          <Heading id="patsy-final" eyebrow="The resulting concept">The revised mobile experience, together</Heading>
+          <p className="ps-prose">Selected team-prototype screens bring homepage actions, menu browsing, and reservation confirmation into one mobile experience.</p>
         </div>
         <div className="ps-final__stage">
           <div className="ps-gallery">

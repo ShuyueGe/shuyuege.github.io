@@ -1,5 +1,17 @@
 # Portfolio Visual Design Guidelines
 
+## Visual-Only Mode / Content Lock
+
+When a task is described as visual design, visual refinement, art direction, layout improvement, design exploration, design critic iteration, or visual polish, all existing user-facing copy is immutable unless the user explicitly requests content editing. This overrides general goals such as storytelling, recruiter scanability, clarity, concision, and hierarchy whenever pursuing them would change wording.
+
+Do not rewrite, shorten, summarize, expand, paraphrase, add, delete, or otherwise modify headings, paragraphs, captions, labels, buttons, project descriptions, metadata, dates, numbers, statistics, quotes, findings, outcomes, limitations, or reflection text. Preserve words and punctuation exactly. Typography, measure, alignment, spacing, grid, image treatment, color, and responsive presentation may change. Wrappers may split existing text only when the rendered wording and punctuation stay identical.
+
+Preserve semantic content order. A major narrative reorder requires explicit user approval. Solve dense content through visual composition and typography, not prose edits. Every alternative design direction must use exactly identical wording.
+
+Before and after visual work, compare user-facing content against the frozen starting version. Preserve pre-existing user edits. Use the final handoffs as references, not permission to reinterpret or rewrite copy. If history, handoffs, or the correspondence between old and new content positions is ambiguous, leave the affected content unchanged and report the exact conflict.
+
+Critics evaluate visual execution only. They must not recommend copy changes; discard any such recommendation and solve the issue visually. Every future critic invocation must include both content-lock rules in the permanent prompt below. A content restoration request does not authorize a new visual iteration, commit, or push.
+
 ## 1. Portfolio Goal and Audience
 This Product Designer / UI/UX / HCI portfolio supports hiring. Recruiters need a quick scan; Product Design hiring managers, senior designers, and Design Directors need credible evidence on close reading. Optimize for visual confidence, scanability, storytelling, clear contribution, design thinking, strong typography, polished composition, and memorable project identity. Make problem, role, evidence, decisions, final design, and limitations easy to locate.
 
@@ -28,7 +40,7 @@ The core font is Manrope; DM Sans supports the existing wordmark and footer. Bot
 - Body: approximately 17–18 px, 1.6–1.75 line height, 60–65ch measure. Use dark enough text for comfortable long reading.
 - Captions and metadata: approximately 13–15 px with clear labels, close to the relevant image. Never shrink evidence to make it fit.
 - Labels: sparse, meaningful, and compact. Avoid repeating numbered micro-headings above every title.
-- Keep paragraphs short enough to scan without removing factual nuance. Use typographic emphasis for the important decision; do not inflate every statement.
+- Use reading measure, spacing, and typographic emphasis to make existing paragraphs scannable. Do not shorten, split into rewritten copy, or delete any wording.
 - Check font fallback, wrapping, and hierarchy at all three evaluation widths.
 
 ## 6. Layout and Spacing
@@ -40,7 +52,7 @@ Every image must introduce the concept, prove an observation, explain a decision
 Keep source-pixel crops proportional, contextual, labeled, and reversible. Preserve visible image/source marks. Captions sit outside images. Full screenshots should be available through keyboard-accessible enlargement; critical details must also be legible in the page. Use intrinsic dimensions/aspect ratio to reserve space and lazy loading below the first screen. Do not fabricate research artifacts or treat generated imagery as real research or client deliverables.
 
 ## 8. Case Study Storytelling
-Use context → problem → evidence → reasoning → decision → design → outcome / limitation as a reasoning chain, not a rigid section template. A skimming reader should understand the contribution and strongest decision without reading every paragraph. Make that chain visible through composition, hierarchy, focused image crops, captions, and simple editable diagrams.
+Make the existing reasoning chain visible through composition, hierarchy, and image placement while preserving every word and the existing semantic order. Evaluate storytelling through visual presentation only. Do not move research, decisions, or outcomes into a different narrative stage without explicit permission.
 
 BookThing is a solo academic, unlaunched desktop concept without formal usability testing. Patsy is a four-person academic mobile Figma concept; preserve 21 survey responses, 12 interview sessions, participation in 3 sessions, and 2 formative-test participants. Use only the handoff-approved public counts (15/21 and 21/21). Distinguish the tested initial prototype from the revised team exports and personal refinements that still need exports. Keep prototype limitations adjacent to the relevant flow.
 
@@ -70,7 +82,7 @@ Use motion for orientation, hierarchy, comprehension, or lightweight feedback. P
 2. Capture fresh current screenshots of each important page at desktop/mobile, plus full-page overviews and readable close-ups of important sections. Include tablet in implementation QA.
 3. Start a **new independent critic context** every time, using the environment's actual separate agent invocation. Prefer the strongest appropriate vision-capable OpenAI model / reviewer configuration available in the current Codex environment. Never invent a model name or claim a specific model was used unless the runtime confirms it. Do not install external critic tooling or configure external paid APIs.
 4. Supply **only** the current screenshots, actual reference screenshots if used, and the unchanged prompt below. Do not share source/CSS, architecture, rationale, technical difficulty, previous designs, reviews, scores, iteration history, effort, or the completion criterion. Do not use the implementer's full conversation context. Screenshot paths are permissible solely for opening those images.
-5. Record the actual model, score, gaps, and next steps in the local review log. The implementation agent selects the highest-impact 1–5 changes. Composition feedback calls for composition changes; do not answer structural criticism with tiny token tweaks.
+5. Record the actual model, score, gaps, and next steps in the local review log. Select the highest-impact 1–5 visual changes. Reject any recommendation to rewrite, shorten, expand, add, delete, or change copy; solve density with layout and typography using the frozen content.
 6. Implement, build, render, inspect, and request a new fresh critique. Inspect convergence after the first two iterations. Allow approximately five major iterations per page in a session. Stop when two consecutive iterations do not materially improve, feedback becomes contradictory, or missing truthful content/assets block progress. Report unresolved issues and next actions honestly.
 7. **Implementer-only completion criterion, never send to the critic:** each page must independently score at least 9.0/10 to be complete. A lower score is unfinished under this workflow. Do not conceal plateauing or claim success from self-assessment.
 
@@ -87,12 +99,18 @@ Run `npm run dev -- --host 127.0.0.1` and then `node scripts/design-review.mjs b
 
 `REVIEW_URL` can target the production preview server. Output: `.design-review.local/<stage>/` with full pages, first viewports, section crops, reading-order contact sheets, and `checks.json`. The folder is git-ignored by `*.local`. Keep the exact prompt, actual critiques, score history, and final verification available for handoff; do not share the log with a critic.
 
-### Exact critic prompt (verbatim)
+Historical reviews above predate the Content Lock patch. Their scores describe those earlier artifacts, not the copy-restored version. No new design iteration or critic review is part of the restoration task.
+
+### Exact critic prompt (including the user-requested Content Lock patch)
 
 ```text
 You are an independent senior design critic evaluating a Product Designer portfolio.
 
 You are seeing the current rendered design as screenshots. Judge the artifact itself, not the effort that may have gone into creating it.
+
+CONTENT IS LOCKED. Treat all visible wording, factual content, headings, captions, labels, numbers, and narrative copy as immutable. Do not recommend rewriting, shortening, expanding, deleting, or adding text. If content density or scanability is a problem, propose a visual/layout/typographic solution using the existing content unchanged.
+
+Evaluate storytelling only in terms of visual presentation, hierarchy, sequencing, emphasis, and scanability. Do not evaluate or rewrite the prose itself.
 
 First, infer the aesthetic and visual direction the design is attempting to achieve.
 

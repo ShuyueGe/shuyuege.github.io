@@ -38,8 +38,8 @@ function assetUrl(name: AssetName) {
 
 function ImageTodo({ children }: { children: ReactNode }) {
   return <div className="bt-todo">
-    <span>Image unavailable</span>
-    <strong>Image unavailable: {children}</strong>
+    <span>Development placeholder</span>
+    <strong>[IMAGE TODO — {children}]</strong>
   </div>;
 }
 
@@ -74,7 +74,7 @@ function Asset({ name, alt, crop, className = "", eager = false, expand = true, 
 
 function SectionHeading({ id, eyebrow, children }: { id: string; eyebrow: string; children: ReactNode }) {
   return <header className="bt-heading">
-    {["bookthing-problem", "bookthing-donate", "bookthing-final"].includes(id) && <p className="section-label">{eyebrow.replace(/Decision \d+ · /, "")}</p>}
+    {["bookthing-problem", "bookthing-donate", "bookthing-final"].includes(id) && <p className="section-label">{eyebrow}</p>}
     <h2 id={id}>{children}</h2>
   </header>;
 }
@@ -97,7 +97,7 @@ export function BookThingPage() {
         <div className="bt-hero__statement">
           <p className="section-label">BookThing · Nonprofit website · Academic concept</p>
           <h1 id="bookthing-title">Free books.<br />Clearer ways to take part.</h1>
-          <p className="bt-hero__description">Reorganizing a Baltimore nonprofit’s desktop website around visiting, donating, and participating.</p>
+          <p className="bt-hero__description">This desktop website redesign helps visitors navigate the schedules and donation requirements of a Baltimore nonprofit that redistributes books for free. I restructured the information architecture and translated dense operational content into focused page layouts, visible donation choices, and a cohesive visual identity.</p>
         </div>
         <dl className="bt-metadata">
           <div><dt>Role</dt><dd>Solo designer</dd></div>
@@ -115,7 +115,7 @@ export function BookThingPage() {
       <section className="bt-section bt-context" aria-labelledby="bookthing-context">
         <div className="bt-context__overview">
           <SectionHeading id="bookthing-context" eyebrow="Context and scope">A community mission with time-sensitive information</SectionHeading>
-          <p className="bt-prose">The Book Thing of Baltimore redistributes donated books for free. Monthly openings and detailed donation policies made information organization central to the redesign. I independently developed the site analysis, information architecture, desktop interface, and visual direction with instructor and peer critique. This was a school concept, not a commissioned or launched redesign.</p>
+          <p className="bt-prose">The Book Thing of Baltimore redistributes donated books for free. Monthly openings and detailed donation policies made schedule information and donation requirements central to the redesign. I independently developed the information architecture, desktop website UI prototype, and visual direction, incorporating feedback from instructor and peer critiques.</p>
         </div>
       </section>
 
@@ -228,18 +228,18 @@ export function BookThingPage() {
               <figcaption className="bt-comparison__explanation">Book guidance, acceptance rules, and side content dominated the page. Financial giving appeared much farther down, making it easy to miss when scanning.</figcaption>
             </figure>
             <figure className="bt-comparison__after">
-              <h3>Concept · Two ways to give, visible together</h3>
+              <h3>After 1 · Two ways to give, visible together.</h3>
               <Asset name="donate" crop={[20, 205, 960, 885]} alt="Opening content of the Donate concept: money donation options beside book-donation guidance and disclosures" />
-              <figcaption className="bt-comparison__explanation">Both paths begin in the first content row. Money donors see payment choices; book donors get a wider column for requirements.</figcaption>
+              <figcaption className="bt-comparison__explanation">Money donors can compare the two payment options without passing through book rules. Book donors have a separate column for schedules and requirements, giving each task an appropriate amount of space. The shared first row makes the choice visible before either set of details.</figcaption>
             </figure>
           </div>
           <div className="bt-comparison__details">
             <figure>
-              <h3>Location cues beside payment options</h3>
+              <h3>After 2 · Location cues beside payment options.</h3>
               <Asset name="donate" crop={[27, 280, 392, 360]} alt="Money donation detail showing out-of-state instructions next to PayPal and Maryland residency instructions directly above Donorbox" />
             </figure>
             <figure>
-              <h3>Detailed rules under descriptive labels</h3>
+              <h3>After 3 · Detailed rules under descriptive labels.</h3>
               <Asset name="donate" crop={[453, 273, 527, 484]} alt="Book donation detail showing the priority notice and labeled Books We Accept and Other rules disclosures" />
             </figure>
           </div>
@@ -254,7 +254,7 @@ export function BookThingPage() {
         <div className="bt-calendar__layout">
           <figure className="bt-calendar__visual">
             <Asset name="calendar" crop={[1790, 682, 1440, 404]} alt="Calendar opening card listing book giveaway hours of 9am-5pm separately from donation hours of 9am-2pm" />
-            <figcaption>Opening-card detail · Different hours for different tasks</figcaption>
+            <figcaption>Calendar · Operational schedules</figcaption>
             <div className="bt-calendar__annotations">
               <Callout number={1}>Dates connect to written schedule details.</Callout>
               <Callout number={2}>Giveaway and donation hours stay separate.</Callout>
@@ -263,7 +263,7 @@ export function BookThingPage() {
           </figure>
           <div className="bt-calendar__secondary">
             <div className="bt-calendar__copy">
-              <p>Calendar holds operational schedules; Newsroom retains announcements and archives. A live version would need a reliable publishing process to keep dates consistent across these destinations.</p>
+              <p>Calendar holds schedules and separate giveaway and donation hours; Newsroom retains announcements and archives. This gives the two content types distinct roles.</p>
             </div>
             <figure className="bt-news-detail">
               <div className="bt-news-detail__crops">
@@ -278,20 +278,20 @@ export function BookThingPage() {
 
       <section className="bt-section bt-identity" aria-labelledby="bookthing-identity">
         <div className="bt-identity__compact">
-          <figure><Asset name="logo" alt="BookThing book-as-door identity with the Open the Door to Free Knowledge and Joy tagline" expand={false} /></figure>
-          <div><h2 id="bookthing-identity">A shared visual language</h2><p className="bt-prose">The book-as-door mark and blue-led interface treatments reinforce an approachable community tone. Repeated actions, light-blue content groups, headings, and disclosures give different tasks a common visual direction.</p></div>
+          <figure><Asset name="logo" alt="BookThing logo direction: a blue book cover becomes a door, with the Open the Door to Free Knowledge and Joy tagline" expand={false} /></figure>
+          <div><h2 id="bookthing-identity">Building a warmer, more cohesive visual identity</h2><p className="bt-prose">Alongside the site structure, I developed a book-and-door logo direction and a blue-led visual language. Distinct treatments for page titles, actions, content groups, and disclosures give the desktop pages a shared direction while accommodating different amounts of information.</p></div>
         </div>
       </section>
 
       <section className="bt-section bt-final" aria-labelledby="bookthing-final">
         <div className="bt-section-intro">
           <SectionHeading id="bookthing-final" eyebrow="Final design">One system, different tasks</SectionHeading>
-          <p className="bt-prose">Two further pages carry the same hierarchy into support needs and common questions. Wishlist organizes ways to contribute; FAQ groups answers behind expandable headings.</p>
+          <p className="bt-prose">The final screens apply a shared hierarchy and visual language to pages with very different content needs.</p>
         </div>
         <div className="bt-final__exhibition">
           <div className="bt-gallery bt-gallery--supporting">
-            <figure><Asset name="wishlist" caption="Wishlist · Ways to contribute" alt="Complete Wishlist concept with donation guidance and categories for volunteer support, gift cards, cleaning supplies, and office tools" /></figure>
-            <figure><Asset name="faq" caption="FAQ · Answers by topic" alt="Complete FAQ concept grouping About Books and Other Questions, with donation receipt guidance expanded" /></figure>
+            <figure><Asset name="wishlist" caption="Wishlist page" alt="Complete Wishlist concept with donation guidance and categories for volunteer support, gift cards, cleaning supplies, and office tools" /></figure>
+            <figure><Asset name="faq" caption="FAQ page" alt="Complete FAQ concept grouping About Books and Other Questions, with donation receipt guidance expanded" /></figure>
           </div>
         </div>
       </section>
@@ -299,7 +299,7 @@ export function BookThingPage() {
       <section className="bt-section bt-outcome" aria-labelledby="bookthing-outcome">
         <div className="bt-outcome__summary">
           <SectionHeading id="bookthing-outcome" eyebrow="Outcome and next validation">Designed, with understanding still to test</SectionHeading>
-          <div className="bt-outcome__copy"><h3>What changed</h3><p>Five desktop concept pages give donation choices, opening schedules, and announcements distinct roles. A shared visual language connects them. Their effectiveness remains unverified: the project had no formal user research, usability testing, or launch metrics.</p></div>
+          <div className="bt-outcome__copy"><h3>Outcome</h3><p>The Donate concept brings both ways to give into the first content row, making financial giving visible alongside book donations. Calendar pairs opening dates with separate giveaway and donation hours, while Newsroom keeps announcements and archives distinct. Across five desktop prototype pages, a shared visual identity reinforces these content roles and gives the nonprofit a cohesive presence. These changes clarify the intended paths to visiting and contributing; their effectiveness remains unverified by formal user research, usability testing, or launch metrics.</p></div>
         </div>
         <div className="bt-outcome__reflection"><h3>Next validation</h3><p>Ask visitors to find the next opening, donors to identify a payment option, and book donors to locate acceptance requirements. Observe missed navigation and overlooked disclosures, then test reading order when donation columns stack on narrow screens.</p></div>
         <Link className="back-link" to="/?section=projects"><span aria-hidden="true">←</span> Back to projects</Link>
