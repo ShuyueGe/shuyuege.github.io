@@ -1,10 +1,10 @@
-/* Patsy uses the portfolio typeface and palette; the task story controls scale. */
+/* An editorial composition using only the portfolio's typeface and palette. */
 body:has(.patsy-page) { background-image: none; }
 .patsy-page .ps-case {
-  --ps-gutter: clamp(1.25rem, 3vw, 3rem);
-  --ps-gap: clamp(2rem, 4vw, 4rem);
-  --ps-visual-space: clamp(2.5rem, 4vw, 3.5rem);
-  max-width: calc(1280px + 2 * var(--ps-gutter));
+  --ps-gutter: clamp(1.25rem, 2.5vw, 2.5rem);
+  --ps-gap: clamp(2rem, 4vw, 3.5rem);
+  --ps-flow-gap: 3rem;
+  max-width: calc(1320px + 2 * var(--ps-gutter));
   padding-inline: var(--ps-gutter);
   margin: 0 auto;
   font-size: 1.125rem;
@@ -12,34 +12,34 @@ body:has(.patsy-page) { background-image: none; }
 }
 .patsy-page .ps-case h1,
 .patsy-page .ps-case h2 { font-family: inherit; font-weight: 500; letter-spacing: -0.045em; }
-.patsy-page .ps-case h1 { margin-bottom: 1.5rem; font-size: clamp(3.5rem, 4.6vw, 4.5rem); line-height: 1.06; }
-.patsy-page .ps-case h2 { max-width: 25ch; margin: 0; font-size: clamp(2.4rem, 3.5vw, 3.2rem); line-height: 1.12; }
+.patsy-page .ps-case h1 { margin-bottom: 1.75rem; font-size: clamp(3.6rem, 5.5vw, 4.8rem); line-height: 1.03; }
+.patsy-page .ps-case h2 { max-width: 25ch; margin: 0; font-size: clamp(2.6rem, 3.8vw, 3.3rem); line-height: 1.12; }
 .patsy-page .ps-case h3 { margin-bottom: 1rem; font-size: 1.075rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.5; }
 .patsy-page .ps-case :where(p) { margin-bottom: 1.25rem; }
 .patsy-page .ps-case :where(figure) { min-width: 0; margin: 0; }
 .patsy-page .ps-case figcaption,
 .patsy-page .ps-small { margin-top: 0.75rem; color: var(--color-muted); font-size: 0.825rem; line-height: 1.65; }
 .patsy-page .ps-prose { max-width: 62ch; color: var(--color-muted); }
-.patsy-page .ps-heading { margin-bottom: 1.5rem; color: var(--color-text); }
+.patsy-page .ps-heading { margin-bottom: 1.75rem; color: var(--color-text); }
 .patsy-page .ps-heading .section-label { margin-bottom: 1rem; }
 .patsy-page .ps-section { margin-top: clamp(6rem, 8vw, 7.5rem); }
 .patsy-page .ps-back { display: flex; justify-content: flex-end; padding: 2.5rem 0; }
 .patsy-page .ps-back .back-link { font-size: 0.85rem; }
 
-/* Hero: an authoritative title, quiet project details, and two offset screens. */
-.patsy-page .ps-hero__layout { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); grid-template-areas: "intro visual" "metadata visual" "contribution visual"; column-gap: var(--ps-gap); align-items: start; }
-.patsy-page .ps-hero__intro > .section-label { margin-bottom: 1.25rem; }
-.patsy-page .ps-hero__intro { grid-area: intro; }
-.patsy-page .ps-hero__intro > p:last-child { max-width: 55ch; color: var(--color-muted); }
-.patsy-page .ps-metadata { grid-area: metadata; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.5rem; margin: 1rem 0 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--color-border); font-size: 0.85rem; line-height: 1.6; }
+/* A five-column story and a seven-column image stage have independent rhythms. */
+.patsy-page .ps-hero__spread { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--ps-gap); align-items: start; }
+.patsy-page .ps-hero__story { grid-column: span 5; min-width: 0; }
+.patsy-page .ps-hero__intro > .section-label { max-width: 36ch; margin-bottom: 1.5rem; }
+.patsy-page .ps-hero__intro > p:last-child { max-width: 55ch; color: var(--color-muted); font-size: 1.05rem; }
+.patsy-page .ps-hero__details { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+.patsy-page .ps-metadata { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.5rem; margin: 0 0 1.75rem; font-size: 0.85rem; line-height: 1.6; }
 .patsy-page .ps-metadata__role { grid-column: 1 / -1; }
-.patsy-page .ps-metadata dt { margin-bottom: 0.3rem; color: var(--color-muted); }
+.patsy-page .ps-metadata dt { margin-bottom: 0.25rem; color: var(--color-muted); }
 .patsy-page .ps-metadata dd { margin: 0; font-weight: 500; }
-.patsy-page .ps-hero__visual { grid-area: visual; padding-top: 2.75rem; }
+.patsy-page .ps-hero__visual { grid-column: span 7; padding-top: 2.5rem; }
 .patsy-page .ps-hero__screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; align-items: start; }
-.patsy-page .ps-hero__screens > div:last-child { margin-top: 3rem; }
-.patsy-page .ps-hero__contribution { grid-area: contribution; max-width: 55ch; font-size: 0.9rem; color: var(--color-muted); }
-
+.patsy-page .ps-hero__screens > div:last-child { margin-top: 4.5rem; }
+.patsy-page .ps-hero__contribution { max-width: 55ch; margin-bottom: 0; font-size: 0.875rem; color: var(--color-muted); }
 /* Preserve source-pixel crops and the existing full-image dialog. */
 .patsy-page .ps-image { display: block; width: 100%; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: zoom-in; }
 .patsy-page .ps-image__frame { position: relative; display: block; overflow: hidden; width: 100%; background: var(--color-white); outline: 1px solid var(--color-border); }
@@ -55,165 +55,199 @@ body:has(.patsy-page) { background-image: none; }
 .patsy-page .ps-viewer__toolbar button { display: flex; align-items: center; gap: 0.75rem; min-height: 44px; padding: 0.5rem 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-small); color: var(--color-text); background: var(--color-white); cursor: pointer; font-weight: 600; }
 .patsy-page .ps-viewer__image { width: auto; max-width: 100%; height: auto; margin: auto; }
 
-/* Starting evidence is intentionally more compact than the design responses. */
-.patsy-page .ps-start > .ps-heading { margin-bottom: var(--ps-visual-space); }
-.patsy-page .ps-start .ps-heading h2 { max-width: 28ch; font-size: clamp(2.2rem, 3.2vw, 2.8rem); }
-.patsy-page .ps-start__layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); grid-template-rows: auto 1fr; grid-template-areas: "home copy" "home menu"; gap: 1.5rem var(--ps-gap); max-width: 70rem; align-items: start; }
-.patsy-page .ps-start__home { grid-area: home; max-width: 31rem; }
-.patsy-page .ps-start__copy { grid-area: copy; font-size: 1.05rem; }
+/* A short evidence spread: primary capture, explanatory text, secondary detail. */
+.patsy-page .ps-start > .ps-heading { max-width: 60%; margin-bottom: 2.75rem; }
+.patsy-page .ps-start .ps-heading h2 { max-width: 30ch; font-size: clamp(2.4rem, 3.4vw, 2.9rem); }
+.patsy-page .ps-start__spread { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--ps-gap); align-items: start; }
+.patsy-page .ps-start__home { width: min(100%, 29rem); margin-left: 7%; }
+.patsy-page .ps-start__support { max-width: 32rem; }
+.patsy-page .ps-start__copy { font-size: 1.05rem; }
 .patsy-page .ps-start__copy > p:last-child { margin-bottom: 0; }
-.patsy-page .ps-start__menu { grid-area: menu; width: min(100%, 16.25rem); }
+.patsy-page .ps-start__menu { width: min(100%, 14rem); margin: 1.75rem 0 0 auto; }
 .patsy-page .ps-case .ps-annotation { display: flex; gap: 0.75rem; margin: 0.65rem 0 0; }
 .patsy-page .ps-annotation__number { flex: 0 0 1.5rem; height: 1.5rem; display: inline-grid; place-items: center; border: 1px solid var(--color-border); border-radius: 50%; color: var(--color-text); font-size: 0.75rem; font-weight: 700; }
 
-/* Research: native-text counts, a human voice, then uneven editorial columns. */
-.patsy-page .ps-research { margin-top: clamp(6.5rem, 9vw, 8rem); }
-.patsy-page .ps-research__top { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--ps-gap); align-items: start; }
-.patsy-page .ps-research__results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; padding-top: 2.2rem; }
+/* Research is three bands: data, participant voice, then interpretation. */
+.patsy-page .ps-research { margin-top: clamp(7.5rem, 10vw, 9rem); }
+.patsy-page .ps-research__data-band { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: calc(var(--ps-gap) * 1.5); align-items: start; }
+.patsy-page .ps-research__opening .ps-prose { font-size: 1.05rem; }
+.patsy-page .ps-research__results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; padding-top: 2.25rem; }
 .patsy-page .ps-stat { display: flex; flex-direction: column; }
-.patsy-page .ps-stat p { margin-bottom: 1.25rem; font-size: 1.05rem; line-height: 1.7; }
-.patsy-page .ps-stat strong { display: block; margin-bottom: 0.75rem; color: var(--color-text); font-size: clamp(3rem, 4vw, 4rem); font-weight: 500; letter-spacing: -0.045em; line-height: 1.1; }
+.patsy-page .ps-stat p { margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.7; }
+.patsy-page .ps-stat strong { display: block; margin-bottom: 1rem; color: var(--color-text); font-size: clamp(3.5rem, 5vw, 4.5rem); font-weight: 500; letter-spacing: -0.045em; line-height: 1.05; }
 .patsy-page .ps-stat strong span { color: var(--color-muted); font-size: 1.5rem; letter-spacing: -0.02em; }
 .patsy-page .ps-stat__units { display: grid; grid-template-columns: repeat(21, minmax(0, 1fr)); gap: 3px; margin-top: auto; }
 .patsy-page .ps-stat__units span { height: 0.8rem; border: 1px solid var(--color-primary); }
 .patsy-page .ps-stat__units .is-filled { background: var(--color-primary); }
 .patsy-page .ps-research__results > .ps-small { grid-column: 1 / -1; max-width: 65ch; margin: 0; }
-.patsy-page .ps-research blockquote { max-width: 44rem; margin: 3.5rem 0 3.5rem auto; padding-left: 1.75rem; border-left: 2px solid var(--color-primary); }
-.patsy-page .ps-research blockquote p { max-width: 36ch; margin-bottom: 1rem; font-size: clamp(1.6rem, 2.2vw, 2rem); letter-spacing: -0.025em; line-height: 1.45; }
+.patsy-page .ps-research__quote-band { margin: 4rem 0; padding: 3rem 0; border-block: 1px solid var(--color-border); }
+.patsy-page .ps-research blockquote { width: 72%; max-width: 58rem; margin: 0 auto; }
+.patsy-page .ps-research blockquote p { margin-bottom: 1.25rem; font-size: clamp(1.8rem, 2.5vw, 2.2rem); letter-spacing: -0.025em; line-height: 1.45; }
 .patsy-page .ps-research cite { color: var(--color-muted); font-size: 0.825rem; font-style: normal; }
-.patsy-page .ps-findings { display: grid; grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr)); gap: var(--ps-gap); }
-.patsy-page .ps-findings p { color: var(--color-muted); font-size: 1rem; line-height: 1.7; }
+.patsy-page .ps-findings { display: grid; grid-template-columns: minmax(0, 4fr) repeat(2, minmax(0, 3fr)); gap: var(--ps-gap); }
+.patsy-page .ps-findings p { max-width: 48ch; color: var(--color-muted); font-size: 1rem; line-height: 1.7; }
 .patsy-page .ps-findings p + p::before { display: block; width: 2rem; margin: 1.25rem 0; border-top: 1px solid var(--color-border); content: ""; }
 .patsy-page .ps-research__limit { max-width: 85ch; padding-top: 1rem; }
 
-/* Decision 01: rationale, a smaller original, and a larger design response. */
-.patsy-page .ps-priorities { display: grid; grid-template-columns: minmax(0, 0.58fr) minmax(0, 1fr); gap: var(--ps-gap); margin-top: clamp(7.5rem, 10vw, 9rem); }
-.patsy-page .ps-priorities__copy { font-size: 1.05rem; }
-.patsy-page .ps-priorities__screens { display: grid; grid-template-columns: minmax(0, 0.53fr) minmax(0, 1fr); gap: 1.75rem; align-items: start; }
-.patsy-page .ps-priorities__before { max-width: 14.375rem; }
-.patsy-page .ps-priorities__after { width: 100%; max-width: 27rem; justify-self: end; }
-.patsy-page .ps-footer-detail { max-width: 21rem; margin: 1.75rem 0 0 auto; }
+/* Decision 01 moves from a narrow rationale into a full-width comparison. */
+.patsy-page .ps-priorities { margin-top: clamp(8rem, 11vw, 10rem); }
+.patsy-page .ps-priorities__opening { max-width: 62ch; }
+.patsy-page .ps-priorities__opening h2 { max-width: 21ch; }
+.patsy-page .ps-priorities__copy { max-width: 60ch; font-size: 1.05rem; }
+.patsy-page .ps-priorities__comparison { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.5rem; align-items: start; margin-top: 3.5rem; }
+.patsy-page .ps-priorities__before { grid-column: 1 / 5; width: 100%; margin-top: 3rem; }
+.patsy-page .ps-priorities__after { grid-column: 6 / 13; width: 100%; }
+.patsy-page .ps-footer-detail { width: 62%; margin: 2.5rem 0 0 auto; }
 .patsy-page .ps-footer-detail h3 { font-size: 0.95rem; }
 
-/* Decision 02 is the narrative peak: tested screens, observation, complete flow. */
-.patsy-page .ps-pickup { margin-top: clamp(8rem, 11vw, 9.375rem); }
-.patsy-page .ps-pickup__top { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: var(--ps-gap); align-items: start; }
-.patsy-page .ps-pickup__copy { grid-column: 2; grid-row: 1; }
-.patsy-page .ps-menu-comparison { grid-column: 1; grid-row: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem; }
-.patsy-page .ps-menu-comparison figure { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 1rem; align-content: start; }
+/* Decision 02 has four independent beats, culminating in the widest sequence. */
+.patsy-page .ps-pickup { margin-top: clamp(8rem, 11vw, 10rem); }
+.patsy-page .ps-pickup__opening { max-width: 60ch; }
+.patsy-page .ps-pickup__opening h2 { max-width: 23ch; }
+.patsy-page .ps-pickup__intro { max-width: 55ch; }
+.patsy-page .ps-pickup__comparison-stage { margin-top: 3.5rem; }
+.patsy-page .ps-menu-comparison { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr); gap: 1.5rem 4rem; width: min(100%, 58rem); margin-inline: auto; }
+.patsy-page .ps-menu-comparison figure { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 1.25rem; align-content: start; }
 .patsy-page .ps-menu-comparison h3 { margin: 0; font-size: 1rem; }
 .patsy-page .ps-menu-comparison .ps-image { align-self: start; }
-.patsy-page .ps-menu-comparison__caption { grid-column: 1 / -1; max-width: 60ch; }
-.patsy-page .ps-case .ps-pickup__turning-point { max-width: 58ch; margin: 3.5rem 0 0; padding-top: 2rem; border-top: 1px solid var(--color-border); color: var(--color-text); font-size: clamp(1.3rem, 1.8vw, 1.6rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.55; }
-.patsy-page .ps-pickup__revision { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr); gap: 1rem var(--ps-gap); max-width: none; margin-top: 2.5rem; }
-.patsy-page .ps-pickup__revision > p { margin-bottom: 0; }
-.patsy-page .ps-pickup__revision > p:nth-child(2) { grid-column: 2; grid-row: 1 / 3; align-self: start; padding-left: 1.5rem; border-left: 1px solid var(--color-border); font-size: 0.9rem; }
+.patsy-page .ps-menu-comparison__caption { grid-column: 1 / -1; max-width: 60ch; margin-top: 0; }
+.patsy-page .ps-pickup__finding { margin-top: 4.5rem; padding-top: 3rem; border-top: 1px solid var(--color-border); }
+.patsy-page .ps-case .ps-pickup__turning-point { max-width: 55rem; margin: 0; color: var(--color-text); font-size: clamp(1.6rem, 2.3vw, 2rem); font-weight: 500; letter-spacing: -0.025em; line-height: 1.5; }
+.patsy-page .ps-pickup__revision { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 1.25rem 5rem; max-width: none; margin-top: 2.5rem; }
+.patsy-page .ps-pickup__revision > p { max-width: 62ch; margin-bottom: 0; }
+.patsy-page .ps-pickup__revision > p:nth-child(2) { grid-column: 2; grid-row: 1 / 3; align-self: start; max-width: 42ch; padding-left: 1.5rem; border-left: 1px solid var(--color-border); font-size: 0.9rem; }
 .patsy-page .ps-pickup__revision > p:last-child { grid-column: 1; font-size: 0.9rem; }
-.patsy-page .ps-flow-label { margin-top: 3rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border); font-size: 0.875rem; font-weight: 600; }
-.patsy-page .ps-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.patsy-page .ps-pickup__flow-stage { margin-top: 4rem; }
+.patsy-page .ps-flow-label { padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border); font-size: 0.875rem; font-weight: 600; }
+.patsy-page .ps-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ps-flow-gap); margin: 2rem 0 0; padding: 0; list-style: none; align-items: start; }
 .patsy-page .ps-flow > li { position: relative; min-width: 0; }
-.patsy-page .ps-flow > li:not(:last-child)::after { position: absolute; top: 45%; left: calc(100% + 22px); font-size: 1.5rem; color: var(--color-muted); content: "→"; }
+.patsy-page .ps-flow > li:nth-child(2) { margin-top: 3rem; }
+.patsy-page .ps-flow > li:nth-child(3) { margin-top: 6rem; }
+.patsy-page .ps-flow > li:not(:last-child)::after { position: absolute; top: 45%; left: calc(100% + var(--ps-flow-gap) / 2); transform: translateX(-50%); font-size: 1.5rem; color: var(--color-muted); content: "→"; }
 
-/* Reservation is a smaller refinement, with the booking evidence kept nearby. */
-.patsy-page .ps-reservation { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--ps-gap); align-items: start; margin-top: clamp(5.625rem, 7vw, 6.5rem); }
+/* Reservation is a compact supporting strip, rather than a third visual peak. */
+.patsy-page .ps-reservation { margin-top: clamp(5.5rem, 7vw, 6.5rem); padding-block: 2.5rem; border-block: 1px solid var(--color-border); }
+.patsy-page .ps-reservation__strip { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--ps-gap); align-items: start; }
 .patsy-page .ps-reservation__copy { font-size: 1.05rem; }
-.patsy-page .ps-reservation .ps-heading h2 { font-size: clamp(2.2rem, 3.2vw, 2.8rem); }
-.patsy-page .ps-reservation__original { max-width: 31rem; margin: 1.5rem 0; }
+.patsy-page .ps-reservation .ps-heading h2 { max-width: 25ch; font-size: clamp(2.4rem, 3.4vw, 2.8rem); }
+.patsy-page .ps-reservation__original { max-width: 23rem; margin: 1.75rem 0 0; }
 .patsy-page .ps-reservation__original h3,
 .patsy-page .ps-reservation__review h3 { font-size: 0.95rem; }
-.patsy-page .ps-reservation__review { width: min(100%, 23rem); justify-self: center; margin-top: 2.5rem; }
+.patsy-page .ps-reservation__review { width: min(100%, 25rem); justify-self: center; }
 
-/* The final screens stand freely on the page; the menu has a modest emphasis. */
-.patsy-page .ps-final { margin-top: clamp(8rem, 11vw, 9.375rem); }
-.patsy-page .ps-final > .ps-prose { max-width: 62ch; }
-.patsy-page .ps-gallery { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr) minmax(0, 0.95fr); gap: var(--ps-gap); align-items: start; margin-top: var(--ps-visual-space); }
-.patsy-page .ps-gallery > figure:nth-child(2) { margin-top: 2rem; }
-.patsy-page .ps-gallery__caption { padding-top: 0.5rem; text-align: center; }
+/* A second visual peak: three free-standing screens with a larger central menu. */
+.patsy-page .ps-final { margin-top: clamp(8rem, 11vw, 10rem); }
+.patsy-page .ps-final__opening { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--ps-gap); align-items: end; }
+.patsy-page .ps-final__opening .ps-heading { margin-bottom: 0; }
+.patsy-page .ps-final__opening .ps-prose { max-width: 42ch; margin-bottom: 0; font-size: 1.05rem; }
+.patsy-page .ps-final__stage { margin-top: 3.5rem; }
+.patsy-page .ps-gallery { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr) minmax(0, 0.95fr); gap: var(--ps-gap); align-items: start; max-width: 80rem; margin-inline: auto; }
+.patsy-page .ps-gallery > figure:nth-child(2) { margin-top: 5rem; }
+.patsy-page .ps-gallery__caption { padding-top: 1rem; text-align: center; }
 
-/* A calm ending separates what was made, tested, and remains unvalidated. */
-.patsy-page .ps-outcome { padding-top: 3rem; margin-top: clamp(6rem, 8vw, 7.5rem); margin-bottom: 5rem; border-top: 1px solid var(--color-border); }
-.patsy-page .ps-outcome__top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--ps-gap); }
+/* The conclusion returns to a quiet, narrow reading column. */
+.patsy-page .ps-outcome { padding-top: 3rem; margin-top: clamp(9rem, 12vw, 11rem); margin-bottom: 5rem; border-top: 1px solid var(--color-border); }
+.patsy-page .ps-outcome__spread { display: grid; grid-template-columns: minmax(0, 4.5fr) minmax(0, 5.5fr); gap: var(--ps-gap); }
+.patsy-page .ps-outcome__spread h2 { max-width: 19ch; font-size: clamp(2.5rem, 3.5vw, 3rem); }
+.patsy-page .ps-outcome__content { max-width: 62ch; }
 .patsy-page .ps-outcome__scope { margin: 0; }
 .patsy-page .ps-outcome__scope > div { padding: 1.25rem 0; border-top: 1px solid var(--color-border); }
 .patsy-page .ps-outcome__scope > div:first-child { padding-top: 0; border-top: 0; }
 .patsy-page .ps-outcome__scope dt { margin-bottom: 0.5rem; font-size: 1rem; font-weight: 700; }
 .patsy-page .ps-outcome__scope dd { margin: 0; color: var(--color-muted); font-size: 1.05rem; }
-.patsy-page .ps-outcome__reflection { max-width: 62ch; margin: 2.5rem 0 2rem auto; font-size: 1.05rem; }
+.patsy-page .ps-outcome__reflection { margin: 2rem 0 0; font-size: 1.05rem; }
+.patsy-page .ps-outcome > .back-link { margin-top: 2.5rem; }
 
-@media (max-width: 1050px) {
-  .patsy-page .ps-hero__layout { grid-template-columns: 1fr; grid-template-areas: "intro" "visual" "metadata" "contribution"; gap: 1.75rem; }
-  .patsy-page .ps-hero__intro { max-width: 65ch; }
-  .patsy-page .ps-hero__visual { width: min(100%, 50rem); justify-self: center; padding-top: 0; }
-  .patsy-page .ps-metadata { grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; }
-  .patsy-page .ps-hero__contribution { max-width: 65ch; }
-  .patsy-page .ps-research__top { grid-template-columns: 1fr; gap: 1.5rem; }
-  .patsy-page .ps-research__top > div:first-child { max-width: 65ch; }
-  .patsy-page .ps-research__results { padding-top: 0; }
-  .patsy-page .ps-priorities,
-  .patsy-page .ps-pickup__top { grid-template-columns: 1fr; gap: 2rem; }
-  .patsy-page .ps-priorities__copy,
-  .patsy-page .ps-pickup__copy { max-width: 65ch; }
-  .patsy-page .ps-priorities__screens { width: min(100%, 46rem); margin-inline: auto; }
-  .patsy-page .ps-pickup__copy { grid-column: auto; grid-row: auto; }
-  .patsy-page .ps-menu-comparison { grid-column: auto; grid-row: auto; width: min(100%, 50rem); margin-inline: auto; }
-  .patsy-page .ps-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 51rem; margin-inline: auto; }
+@media (max-width: 1100px) {
+  .patsy-page .ps-hero__spread { grid-template-columns: 1fr; gap: 3rem; }
+  .patsy-page .ps-hero__story { grid-column: auto; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--ps-gap); }
+  .patsy-page .ps-hero__details { margin-top: 0; }
+  .patsy-page .ps-hero__visual { grid-column: auto; width: min(100%, 54rem); justify-self: center; padding-top: 0; }
+  .patsy-page .ps-research__data-band { grid-template-columns: 1fr; gap: 1.5rem; }
+  .patsy-page .ps-research__opening { max-width: 62ch; }
+  .patsy-page .ps-research__results { padding-top: 0; max-width: 52rem; }
+  .patsy-page .ps-start__spread { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+  .patsy-page .ps-start__home { margin-left: 0; }
+  .patsy-page .ps-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 54rem; margin-inline: auto; }
+  .patsy-page .ps-flow > li:nth-child(2),
+  .patsy-page .ps-flow > li:nth-child(3) { margin-top: 0; }
   .patsy-page .ps-flow > li:last-child { grid-column: 2; }
-  .patsy-page .ps-flow > li:nth-child(2)::after { top: auto; bottom: -42px; left: calc(50% - 0.5rem); content: "↓"; }
-  .patsy-page .ps-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .patsy-page .ps-flow > li:nth-child(2)::after { top: auto; bottom: -2.65rem; left: 50%; content: "↓"; }
+  .patsy-page .ps-pickup__revision { gap: 1.25rem var(--ps-gap); }
+  .patsy-page .ps-reservation__strip { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+  .patsy-page .ps-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 54rem; }
   .patsy-page .ps-gallery > figure:last-child { grid-column: 1 / -1; width: calc((100% - var(--ps-gap)) / 2); justify-self: center; }
 }
 
 @media (max-width: 820px) {
-  .patsy-page .ps-start__layout { grid-template-columns: 1fr; grid-template-rows: auto; grid-template-areas: "copy" "home" "menu"; gap: 1.75rem; }
-  .patsy-page .ps-start__home { width: min(100%, 31rem); }
-  .patsy-page .ps-start__menu { justify-self: end; }
+  .patsy-page .ps-hero__story { grid-template-columns: 1fr; gap: 0; }
+  .patsy-page .ps-hero__intro { max-width: 65ch; }
+  .patsy-page .ps-hero__details { margin-top: 1.5rem; }
+  .patsy-page .ps-metadata { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .patsy-page .ps-hero__contribution { max-width: 65ch; }
+  .patsy-page .ps-start > .ps-heading { max-width: 100%; }
+  .patsy-page .ps-start__spread { grid-template-columns: 1fr; gap: 2rem; }
+  .patsy-page .ps-start__home { width: min(100%, 29rem); }
+  .patsy-page .ps-start__support { max-width: 62ch; }
+  .patsy-page .ps-start__menu { margin-right: 0; }
+  .patsy-page .ps-research blockquote { width: 85%; }
+  .patsy-page .ps-findings { grid-template-columns: 1fr; gap: 1.5rem; }
+  .patsy-page .ps-findings p { max-width: 62ch; }
   .patsy-page .ps-pickup__revision { grid-template-columns: 1fr; }
   .patsy-page .ps-pickup__revision > p:nth-child(2),
   .patsy-page .ps-pickup__revision > p:last-child { grid-column: auto; grid-row: auto; }
-  .patsy-page .ps-reservation { grid-template-columns: 1fr; gap: 1.5rem; }
-  .patsy-page .ps-reservation__review { justify-self: start; margin-top: 0; }
+  .patsy-page .ps-reservation__strip { grid-template-columns: 1fr; gap: 2.5rem; }
+  .patsy-page .ps-reservation__review { justify-self: start; }
+  .patsy-page .ps-final__opening { grid-template-columns: 1fr; gap: 1.5rem; }
+  .patsy-page .ps-final__opening .ps-prose { max-width: 62ch; }
   .patsy-page .ps-gallery { grid-template-columns: minmax(0, 26rem); justify-content: center; gap: 3rem; }
   .patsy-page .ps-gallery > figure:nth-child(2) { margin-top: 0; }
   .patsy-page .ps-gallery > figure:last-child { grid-column: auto; width: 100%; }
-  .patsy-page .ps-outcome__top { grid-template-columns: 1fr; gap: 1.75rem; }
-  .patsy-page .ps-outcome__reflection { margin-left: 0; }
+  .patsy-page .ps-outcome__spread { grid-template-columns: 1fr; gap: 1.75rem; }
+  .patsy-page .ps-outcome__spread h2 { max-width: 25ch; }
 }
 
 @media (max-width: 767px) {
   .patsy-page .ps-case { font-size: 1.05rem; }
-  .patsy-page .ps-case h1 { font-size: clamp(2.4rem, 8.8vw, 3.5rem); }
+  .patsy-page .ps-case h1 { font-size: clamp(2.6rem, 9.5vw, 3.7rem); }
   .patsy-page .ps-case h2,
   .patsy-page .ps-start .ps-heading h2,
-  .patsy-page .ps-reservation .ps-heading h2 { font-size: clamp(2rem, 8vw, 2.6rem); }
+  .patsy-page .ps-reservation .ps-heading h2,
+  .patsy-page .ps-outcome__spread h2 { font-size: clamp(2rem, 8vw, 2.6rem); }
   .patsy-page .ps-section { margin-top: 4.5rem; }
   .patsy-page .ps-priorities,
   .patsy-page .ps-pickup,
   .patsy-page .ps-final { margin-top: 6rem; }
-  .patsy-page .ps-reservation { margin-top: 4rem; }
+  .patsy-page .ps-reservation { margin-top: 4rem; padding-block: 2rem; }
   .patsy-page .ps-back { justify-content: flex-start; padding: 2rem 0; }
-  .patsy-page .ps-hero__layout { grid-template-areas: "intro" "metadata" "visual" "contribution"; }
   .patsy-page .ps-metadata { grid-template-columns: 1fr 1fr; }
-  .patsy-page .ps-hero__screens { grid-template-columns: minmax(0, 23.75rem); justify-content: center; gap: 2rem; }
+  .patsy-page .ps-hero__screens { grid-template-columns: minmax(0, 25rem); justify-content: center; gap: 2rem; }
   .patsy-page .ps-hero__screens > div:last-child { margin-top: 0; }
-  .patsy-page .ps-start__menu { justify-self: center; }
+  .patsy-page .ps-start__menu { margin-inline: auto; }
   .patsy-page .ps-research__results { column-gap: 1.25rem; }
   .patsy-page .ps-stat strong { font-size: 3rem; }
   .patsy-page .ps-stat strong span { font-size: 1.1rem; }
   .patsy-page .ps-stat p { font-size: 0.95rem; }
   .patsy-page .ps-stat__units { gap: 2px; }
-  .patsy-page .ps-research blockquote { margin: 2.5rem 0; padding-left: 1.25rem; }
-  .patsy-page .ps-findings { grid-template-columns: 1fr; gap: 1.5rem; }
-  .patsy-page .ps-priorities__screens { grid-template-columns: 1fr; gap: 2rem; }
-  .patsy-page .ps-priorities__before,
-  .patsy-page .ps-priorities__after { width: 100%; justify-self: center; }
-  .patsy-page .ps-menu-comparison { grid-template-columns: minmax(0, 23.75rem); justify-content: center; gap: 1.75rem; }
+  .patsy-page .ps-research__quote-band { margin-block: 2.5rem; padding-block: 2rem; }
+  .patsy-page .ps-research blockquote { width: 100%; }
+  .patsy-page .ps-research blockquote p { font-size: 1.8rem; }
+  .patsy-page .ps-priorities__comparison { grid-template-columns: 1fr; gap: 2rem; margin-top: 2.5rem; }
+  .patsy-page .ps-priorities__before { grid-column: auto; width: min(72%, 20rem); margin-top: 0; justify-self: center; }
+  .patsy-page .ps-priorities__after { grid-column: auto; width: min(100%, 34rem); justify-self: center; }
+  .patsy-page .ps-footer-detail { width: 80%; margin-top: 2rem; }
+  .patsy-page .ps-pickup__comparison-stage { margin-top: 2.5rem; }
+  .patsy-page .ps-menu-comparison { grid-template-columns: minmax(0, 26rem); justify-content: center; gap: 2.5rem; }
   .patsy-page .ps-menu-comparison figure { grid-row: auto; grid-template-rows: auto auto; row-gap: 1rem; width: 100%; }
-  .patsy-page .ps-menu-comparison figure:first-child { max-width: 18.75rem; justify-self: center; }
+  .patsy-page .ps-menu-comparison figure:first-child { max-width: 22rem; justify-self: center; }
   .patsy-page .ps-menu-comparison__caption { grid-column: auto; }
-  .patsy-page .ps-case .ps-pickup__turning-point { margin-top: 2.5rem; padding-top: 1.5rem; }
+  .patsy-page .ps-pickup__finding { margin-top: 3rem; padding-top: 2rem; }
+  .patsy-page .ps-case .ps-pickup__turning-point { font-size: 1.6rem; }
   .patsy-page .ps-pickup__revision { margin-top: 1.75rem; }
-  .patsy-page .ps-flow { grid-template-columns: minmax(0, 25rem); justify-content: center; gap: 3.5rem; }
+  .patsy-page .ps-pickup__flow-stage { margin-top: 2.5rem; }
+  .patsy-page .ps-flow { grid-template-columns: minmax(0, 26rem); justify-content: center; gap: 3.5rem; }
   .patsy-page .ps-flow > li:last-child { grid-column: auto; width: 100%; }
-  .patsy-page .ps-flow > li:not(:last-child)::after { top: auto; bottom: -42px; left: calc(50% - 0.5rem); content: "↓"; }
-  .patsy-page .ps-outcome { padding-top: 2rem; margin-bottom: 4rem; }
+  .patsy-page .ps-flow > li:not(:last-child)::after { top: auto; bottom: -2.65rem; left: 50%; content: "↓"; }
+  .patsy-page .ps-final__stage { margin-top: 2.5rem; }
+  .patsy-page .ps-outcome { padding-top: 2rem; margin-top: 6rem; margin-bottom: 4rem; }
 }
