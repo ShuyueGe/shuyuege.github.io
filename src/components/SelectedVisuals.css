@@ -31,7 +31,6 @@
   gap: 1.25rem;
   overflow-x: auto;
   overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
   scrollbar-width: thin;
   scrollbar-color: var(--color-border) transparent;
   margin: 0;
@@ -43,7 +42,6 @@
 .selected-visuals__item {
   flex: 0 0 auto;
   width: calc(var(--visual-height) * var(--visual-ratio));
-  scroll-snap-align: start;
 }
 
 .selected-visuals__work {
