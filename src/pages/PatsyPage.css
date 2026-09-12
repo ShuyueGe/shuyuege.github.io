@@ -360,7 +360,7 @@ body:has(.patsy-page) { background-image: none; }
 .patsy-page .ps-hero__visual { background: transparent; padding: 0 0 0 1.5rem; }
 .patsy-page .ps-hero__intro h1 { font-size: clamp(2.6rem, 4.15vw, 3.65rem); }
 .patsy-page .ps-image { position: relative; }
-.patsy-page .ps-image__hint { position: absolute; right: 0; bottom: -1.8rem; padding: 0; font-size: 1rem; text-decoration: none; }
+.patsy-page .ps-image__hint { position: static; min-height: 2.75rem; padding: 0.5rem 0 0; font-size: 1rem; text-decoration: none; }
 .patsy-page .ps-case figcaption { padding-right: 1.5rem; color: #414e47; }
 .patsy-page .ps-menu-comparison figure { display: block; }
 .patsy-page .ps-menu-comparison h3 { min-height: 2.8rem; margin-bottom: 1rem; }
@@ -395,4 +395,184 @@ body:has(.patsy-page) { background-image: none; }
 
 @media (min-width: 821px) {
   .patsy-page .ps-flow > li:not(:last-child)::after { top: 8rem; }
+}
+
+/* The pickup states share a label track and image-start baseline. Each caption
+   stays with its own authentic crop, so unequal heights do not detach labels. */
+.patsy-page .ps-pickup__flow-stage {
+  margin-top: 0.5rem;
+  padding: 2rem 0 0;
+  background: transparent;
+}
+.patsy-page .ps-flow-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+.patsy-page .ps-flow-intro h3 { margin: 0; }
+.patsy-page .ps-flow-label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: right;
+}
+.patsy-page .ps-flow {
+  --ps-flow-gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  align-items: stretch;
+  max-width: none;
+  gap: 0 var(--ps-flow-gap);
+  margin: 2rem 0 0;
+}
+.patsy-page .ps-flow > li {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  grid-column: auto;
+  margin: 0;
+  padding: 0;
+}
+.patsy-page .ps-flow > li:nth-child(2),
+.patsy-page .ps-flow > li:nth-child(3) { margin-top: 0; }
+.patsy-page .ps-flow h4 {
+  position: relative;
+  align-self: start;
+  margin: 0 0 1.5rem;
+  padding-top: 1rem;
+}
+.patsy-page .ps-flow > li:not(:last-child) h4::before {
+  position: absolute;
+  top: -2px;
+  left: 100%;
+  width: var(--ps-flow-gap);
+  border-top: 2px solid #bc772e;
+  content: "";
+}
+.patsy-page .ps-flow > li:not(:last-child)::after {
+  top: 0.8rem;
+  bottom: auto;
+  left: calc(100% + var(--ps-flow-gap) / 2);
+  transform: translateX(-50%);
+  content: "→";
+}
+.patsy-page .ps-flow figure { display: block; }
+.patsy-page .ps-flow .ps-image { align-self: start; }
+.patsy-page .ps-flow figcaption {
+  align-self: start;
+  margin: 0;
+  padding: 0.85rem 0 0;
+  border-top: 1px solid var(--color-border);
+}
+
+/* The two resulting tasks form one wide exhibit. Menu evidence is the anchor;
+   confirmation is a supporting state, not the next step in a made-up flow. */
+.patsy-page .ps-final { margin-top: clamp(6rem, 9vw, 8rem); }
+.patsy-page .ps-final__opening {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 3rem;
+}
+.patsy-page .ps-final__opening .ps-prose { margin: 0; }
+.patsy-page .ps-final__stage {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+.patsy-page .ps-gallery {
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: stretch;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  gap: 0 3rem;
+}
+.patsy-page .ps-gallery > figure,
+.patsy-page .ps-gallery > figure:nth-child(2),
+.patsy-page .ps-gallery > figure:last-child {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  grid-column: auto;
+  width: 100%;
+  margin: 0;
+  align-self: stretch;
+}
+.patsy-page .ps-gallery .ps-image { align-self: end; }
+.patsy-page .ps-gallery figcaption {
+  margin: 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid var(--color-border);
+}
+.patsy-page .ps-gallery__caption {
+  margin-top: 2rem;
+  padding-top: 0;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  /* A side rail retains the state progression when three screens cannot remain
+     readable side by side. Labels, image, and caption keep their DOM order. */
+  .patsy-page .ps-flow-intro { display: block; }
+  .patsy-page .ps-flow-label { margin-top: 0.5rem; text-align: left; }
+  .patsy-page .ps-flow {
+    display: block;
+    max-width: 42rem;
+    margin: 2rem auto 0;
+  }
+  .patsy-page .ps-flow > li,
+  .patsy-page .ps-flow > li:nth-child(2),
+  .patsy-page .ps-flow > li:nth-child(3) {
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: 0 2rem;
+    margin: 0;
+    padding: 0 0 2.5rem 1.5rem;
+    border-left: 2px solid #bc772e;
+  }
+  .patsy-page .ps-flow h4 { grid-column: 1; grid-row: 1 / 3; border: 0; padding: 0; }
+  .patsy-page .ps-flow figure { display: contents; }
+  .patsy-page .ps-flow .ps-image { grid-column: 2; align-self: start; }
+  .patsy-page .ps-flow figcaption { grid-column: 2; }
+  .patsy-page .ps-flow > li:not(:last-child) h4::before { display: none; }
+  .patsy-page .ps-flow > li:not(:last-child)::after {
+    top: auto;
+    bottom: 0.65rem;
+    left: -1px;
+    padding-block: 0.15rem;
+    background: var(--color-bg);
+    content: "↓";
+  }
+  .patsy-page .ps-final__opening { grid-template-columns: 1fr; gap: 1.5rem; }
+  .patsy-page .ps-gallery { gap: 0 2rem; }
+}
+
+@media (max-width: 600px) {
+  .patsy-page .ps-pickup__flow-stage { padding-top: 1rem; }
+  .patsy-page .ps-flow > li,
+  .patsy-page .ps-flow > li:nth-child(2),
+  .patsy-page .ps-flow > li:nth-child(3) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    padding-left: 1.25rem;
+  }
+  .patsy-page .ps-flow h4,
+  .patsy-page .ps-flow .ps-image,
+  .patsy-page .ps-flow figcaption { grid-column: 1; grid-row: auto; }
+  .patsy-page .ps-flow h4 { margin-bottom: 1rem; }
+  .patsy-page .ps-final { margin-top: 5rem; }
+  .patsy-page .ps-final__stage { margin-top: 2rem; padding-top: 2rem; }
+  .patsy-page .ps-gallery {
+    display: block;
+    max-width: none;
+  }
+  .patsy-page .ps-gallery > figure,
+  .patsy-page .ps-gallery > figure:nth-child(2),
+  .patsy-page .ps-gallery > figure:last-child { display: block; }
+  .patsy-page .ps-gallery > figure:nth-child(2) { width: 84%; margin: 2.5rem 0 0 auto; }
+  .patsy-page .ps-gallery__caption { margin-top: 1.75rem; }
 }

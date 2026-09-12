@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { AboutSection } from "../components/AboutSection";
 import { Layout } from "../components/Layout";
 import { ProjectShowcase } from "../components/ProjectShowcase";
+import { SelectedVisuals } from "../components/SelectedVisuals";
 
 export function HomePage() {
   const location = useLocation();
@@ -26,6 +27,7 @@ export function HomePage() {
     <Layout className="home-page">
       <AboutSection />
       <ProjectShowcase />
+      <SelectedVisuals />
     </Layout>
   );
 }
