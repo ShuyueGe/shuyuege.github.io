@@ -15,8 +15,9 @@ export function Layout({
 }: LayoutProps) {
   return (
     <div className={`site-layout ${className}`.trim()} style={style}>
+      <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById("main-content")?.focus(); }}>Skip to content</a>
       <Navbar />
-      <main>{children}</main>
+      <main id="main-content" tabIndex={-1}>{children}</main>
       <Footer />
     </div>
   );

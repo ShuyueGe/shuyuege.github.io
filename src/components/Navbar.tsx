@@ -1,6 +1,7 @@
 import type { MouseEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Logo } from "./Logo";
+import { profile } from "../data/profile";
 
 export function Navbar() {
   const location = useLocation();
@@ -14,7 +15,7 @@ export function Navbar() {
     event.preventDefault();
     document
       .getElementById("projects")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      ?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" });
     navigate("/?section=projects", { replace: true });
   };
 
@@ -33,14 +34,14 @@ export function Navbar() {
           >
             Projects
           </Link>
-          <a
+          {profile.resume ? <a
             className="site-nav__link"
-            href={`${import.meta.env.BASE_URL}resume.pdf`}
+            href={profile.resume}
             target="_blank"
             rel="noopener noreferrer"
           >
             Resume
-          </a>
+          </a> : <span className="site-nav__link site-nav__link--unavailable" aria-disabled="true" title="Résumé not yet available">Resume</span>}
         </nav>
       </div>
     </header>

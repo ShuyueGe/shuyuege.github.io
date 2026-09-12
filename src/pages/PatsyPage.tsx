@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
+import { CaseStudyNav } from "../components/CaseStudyNav";
 import "./PatsyPage.css";
 
 // Public copy and image treatments follow case-study-handoff/patsy-final.md.
@@ -63,7 +64,7 @@ function Screen({ name, alt, crop, eager = false }: {
           loading={eager ? "eager" : "lazy"} fetchPriority={eager ? "high" : undefined}
           decoding="async" onError={() => setFailed(true)} />
       </span>
-      <span className="ps-image__hint" aria-hidden="true">Click to enlarge <span>↗</span></span>
+      <span className="ps-image__hint" aria-hidden="true">↗</span>
     </button>
     {expanded && <dialog ref={dialogRef} className="ps-viewer" aria-label={alt}
       onClose={() => setExpanded(false)}
@@ -85,7 +86,7 @@ function Screen({ name, alt, crop, eager = false }: {
 }
 
 function Heading({ id, eyebrow, children }: { id: string; eyebrow: string; children: ReactNode }) {
-  return <header className="ps-heading"><p className="section-label">{eyebrow}</p><h2 id={id}>{children}</h2></header>;
+  return <header className="ps-heading">{["patsy-research", "patsy-pickup", "patsy-final"].includes(id) && <p className="section-label">{eyebrow.replace(/Decision \d+ · /, "")}</p>}<h2 id={id}>{children}</h2></header>;
 }
 
 function Note({ number, children }: { number: number; children: ReactNode }) {
@@ -111,9 +112,16 @@ export function PatsyPage() {
         <div className="ps-hero__content">
           <header className="ps-hero__intro">
             <p className="section-label">Patsy’s Restaurant · Mobile website concept</p>
-            <h1 id="patsy-title">Making the path from browsing to action clearer on mobile</h1>
+            <h1 id="patsy-title">From menu browsing<br />to pickup.</h1>
             <p>Our team explored how Patsy’s mobile website could help people evaluate a restaurant and take the next step. Research shaped the initial concept; formative testing exposed a missing pickup path and guided the revision.</p>
           </header>
+          <figure className="ps-hero__visual">
+            <div className="ps-hero__screens">
+              <Screen name="landing" crop={[0, 0, 804, 1035]} alt="Team mobile landing preview with restaurant image and separate reservation, menu, and pickup entry points" eager />
+              <Screen name="entrees" crop={[0, 0, 804, 1160]} alt="Team mobile menu preview with categories and complete Crab Cakes row" eager />
+            </div>
+            <figcaption>Team mobile prototype: menu browsing, reservations, and a proposed pickup path.</figcaption>
+          </figure>
           <div className="ps-hero__details">
             <dl className="ps-metadata">
               <div className="ps-metadata__role"><dt>Role</dt><dd>Research planning · Product analysis · Usability-test design &amp; observation · Focused UI refinement</dd></div>
@@ -126,6 +134,7 @@ export function PatsyPage() {
           </div>
         </div>
       </section>
+      <CaseStudyNav sections={[{id:"patsy-research",label:"Research"},{id:"patsy-priorities",label:"Mobile priorities"},{id:"patsy-pickup",label:"Pickup iteration"},{id:"patsy-reservation",label:"Reservation review"},{id:"patsy-outcome",label:"Outcome"}]} />
 
       <section className="ps-section ps-start" aria-labelledby="patsy-start">
         <Heading id="patsy-start" eyebrow="The starting point">The information was there. Reading it on a phone was the problem.</Heading>
@@ -154,10 +163,6 @@ export function PatsyPage() {
           <div className="ps-research__results">
             <SurveyCount count={15}>respondents were somewhat or very likely to visit a restaurant’s website before going.</SurveyCount>
             <SurveyCount count={21}>selected viewing the menu as a reason to use Patsy’s website.</SurveyCount>
-            {/* Full project report, Section 4.1: Figure 7 (image14.png); Appendix A, Q11 (image42.jpg). */}
-            <SurveyCount count={14}>selected evaluating Patsy’s vibe, cuisine, and price as a reason to use its website (multiple selections allowed).</SurveyCount>
-            {/* Full project report, Section 4.1: Figure 5 (image10.png); Appendix A, Q8 (image41.jpg). */}
-            <SurveyCount count={10}>selected a third-party ordering app with in-person pickup as a likely takeout method (multiple selections allowed).</SurveyCount>
             <p className="ps-small">Survey counts describe this project sample. The menu question allowed multiple selections.</p>
           </div>
         </div>
@@ -193,6 +198,7 @@ export function PatsyPage() {
             <p className="ps-comparison-label">AFTER</p>
             <Screen name="landing" crop={[0, 0, 804, 1040]} alt="Revised landing detail with the building image and all three task buttons" />
             <figcaption>Revised team prototype: reservations, menu browsing, and pickup have separate entry points.</figcaption>
+            <div className="ps-footer-detail"><h3>Footer detail</h3><Screen name="landing" crop={[0, 1635, 804, 123]} alt="Separate footer detail with contact and location links" /><p className="ps-small">Contact links moved below the main tasks; hours still need a visible home.</p></div>
           </figure>
         </div>
       </section>
@@ -200,6 +206,7 @@ export function PatsyPage() {
       <section className="ps-section ps-pickup" aria-labelledby="patsy-pickup">
         <div className="ps-pickup__opening">
           <Heading id="patsy-pickup" eyebrow="Decision 02 · Follow the task beyond the menu">Testing exposed the gap between browsing and ordering</Heading>
+          <p className="ps-pickup__observation">During the assigned pickup task, one participant searched for a cart without finding an ordering path. Another expected the crab-cake item to be clickable.</p>
           <div className="ps-pickup__intro ps-prose">
             <p>Menu access was already a research priority. The first prototype grouped dishes into four categories with names, prices, and image placeholders. It supported browsing but lacked a pickup path.</p>
             <p>We ran formative think-aloud testing with two participants. I designed the protocol, observed sessions, and took notes. Tasks were to reserve dinner for two, find crab cakes and their price, and attempt pickup.</p>
@@ -207,25 +214,24 @@ export function PatsyPage() {
         </div>
         <div className="ps-pickup__comparison-stage">
           <div className="ps-menu-comparison">
-            <figure><h3>Tested V1 · Menu browsing</h3><Screen name="testedMenu" crop={[305, 55, 257, 560]} alt="Tested initial Entrées menu with category navigation, names, prices, image placeholders, and no ordering path" /></figure>
-            <figure><h3>Revised team prototype · Ordering cues</h3><Screen name="entrees" alt="Revised team Entrées menu retaining the Menu heading, with cart and plus cues and unresolved market-price explanation" /></figure>
+            <figure><h3>Tested V1 · Menu browsing</h3><Screen name="testedMenu" crop={[305, 55, 257, 220]} alt="Initial menu detail with navigation and the first dish, but no ordering entry" /><figcaption>No ordering entry: participants could browse, but could not reach pickup.</figcaption></figure>
+            <figure><h3>Revised team prototype · Ordering cues</h3><Screen name="entrees" crop={[0, 0, 804, 695]} alt="Revised menu detail showing the cart at the top and the plus beside the first dish" /><figcaption>Cart at the top; a plus beside each dish. Add-to-cart remains nonfunctional.</figcaption></figure>
             <p className="ps-menu-comparison__caption ps-small">Assigned pickup task → a missing cart path → a proposed ordering sequence.</p>
           </div>
         </div>
         <div className="ps-pickup__finding">
-          <p className="ps-pickup__turning-point">During the assigned pickup task, one participant searched for a cart without finding an ordering path. Another expected the crab-cake item to be clickable. Earlier research had raised online ordering; testing exposed the omitted path.</p>
           <div className="ps-pickup__revision ps-prose">
             <p>Extending the menu into a pickup sequence was our clearest testing-informed change. We added cart cues, an order summary, checkout with pickup information, and confirmation. Showing the sequence made the full path more explicit than a cart icon alone.</p>
-            <p>My smaller menu refinement removed the redundant Menu heading to give categories more room, a design judgment, separate from the test findings.</p>
+            <p>My smaller menu refinement removed the redundant Menu heading to give categories more room, a design judgment separate from the test findings. The team-version screens shown here precede that refinement.</p>
             <p>Next-step buttons advance through preset states, but add-to-cart does not work. The revised flow has not yet been retested.</p>
           </div>
         </div>
         <div className="ps-pickup__flow-stage">
-          <p className="ps-flow-label">Preset prototype screens · Not a working checkout</p>
+          <div className="ps-flow-intro"><h3>The proposed pickup path</h3><p className="ps-flow-label">Preset prototype screens · Not a working checkout</p></div>
           <ol className="ps-flow" aria-label="Intended pickup sequence">
-            <li><figure><Screen name="cart" alt="Preset populated cart and order summary with sample items and totals" /><figcaption>Review the intended order before checkout.</figcaption></figure></li>
-            <li><figure><Screen name="checkout" alt="Preset checkout screen with payment choices, pickup information, and order summary" /><figcaption>Pickup information appears beside payment choices.</figcaption></figure></li>
-            <li><figure><Screen name="orderConfirmation" alt="Preset order-confirmation overlay with a sample pickup estimate and return action" /><figcaption>Show what happens after the proposed order.</figcaption></figure></li>
+            <li><h4>1. Review the order</h4><figure><Screen name="cart" crop={[35, 1150, 730, 575]} alt="Cart detail: sample order totals and the Continue action" /><figcaption>Review sample totals before continuing.</figcaption></figure></li>
+            <li><h4>2. Arrange pickup</h4><figure><Screen name="checkout" crop={[35, 720, 730, 1005]} alt="Checkout detail: pickup address, in-person collection instructions, order summary, and Place Order action" /><figcaption>Collection instructions sit above the order summary and final action.</figcaption></figure></li>
+            <li><h4>3. Confirm the next step</h4><figure><Screen name="orderConfirmation" crop={[35, 1180, 735, 555]} alt="Confirmation detail: sample pickup estimate and Return to Home action" /><figcaption>A preset confirmation explains what would happen next.</figcaption></figure></li>
           </ol>
         </div>
       </section>
@@ -245,14 +251,13 @@ export function PatsyPage() {
 
       <section className="ps-section ps-final" aria-labelledby="patsy-final">
         <div className="ps-final__opening">
-          <Heading id="patsy-final" eyebrow="The resulting concept">The revised mobile experience, together</Heading>
-          <p className="ps-prose">Selected team-prototype screens bring homepage actions, menu browsing, and reservation confirmation into one mobile experience.</p>
+          <Heading id="patsy-final" eyebrow="The resulting concept">Beyond the pickup path</Heading>
+          <p className="ps-prose">The team concept also supports food-category browsing and reservation confirmation. These selected details show the additional scope; each opens the complete screen.</p>
         </div>
         <div className="ps-final__stage">
           <div className="ps-gallery">
-            <figure><Screen name="landing" alt="Complete team mobile landing screen including task buttons, featured menu, and contact footer" /><figcaption>Choose a task from the homepage.</figcaption></figure>
-            <figure><Screen name="starters" alt="Complete team Starters menu screen with category navigation, dish descriptions, prices, and ordering cues" /><figcaption>Browse dishes by category.</figcaption></figure>
-            <figure><Screen name="reservationConfirmation" alt="Complete team reservation-confirmation screen with guest count, date, address, and Return to Home action" /><figcaption>Review the reservation confirmation.</figcaption></figure>
+            <figure><Screen name="starters" crop={[0, 175, 804, 690]} alt="Starters menu detail with category navigation, dish descriptions, prices, and ordering cues" /><figcaption>Browse dishes by category.</figcaption></figure>
+            <figure><Screen name="reservationConfirmation" crop={[35, 950, 735, 775]} alt="Reservation confirmation detail with guest count, date, address, and Return to Home action" /><figcaption>Review the reservation confirmation.</figcaption></figure>
           </div>
           <p className="ps-small ps-gallery__caption">Team mobile prototype · Concept screens</p>
         </div>
