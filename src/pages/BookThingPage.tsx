@@ -85,8 +85,8 @@ export function BookThingPage() {
   }, []);
 
   return <Layout className="bookthing-page">
-    <article className="bt-case page-shell" aria-labelledby="bookthing-title">
-      <section className="bt-hero" aria-labelledby="bookthing-title">
+    <article className="bt-case page-shell" aria-label="The BookThing of Baltimore">
+      <section className="bt-hero" aria-label="The BookThing of Baltimore">
         <div className="bt-hero__top">
           <Link className="back-link" to="/?section=projects"><span aria-hidden="true">←</span> Back to projects</Link>
         </div>
@@ -94,7 +94,6 @@ export function BookThingPage() {
           <Asset name="hero" alt="BookThing desktop concept with Calendar in front of Newsroom, showing the month selector, date grid, and schedule cards" eager expand={false} />
         </figure>
         <div className="bt-hero__statement">
-          <h1 id="bookthing-title">The BookThing of Baltimore</h1>
           <p className="bt-hero__description">This desktop website redesign helps visitors navigate the schedules and donation requirements of a Baltimore nonprofit that redistributes books for free.<br />I restructured the information architecture and translated dense operational content into focused page layouts, visible donation choices, and a cohesive visual identity.</p>
         </div>
       </section>

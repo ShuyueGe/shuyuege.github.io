@@ -37,9 +37,12 @@ body:has(.bookthing-page) { background-image: none; }
 .bookthing-page .bt-outcome { margin-top: clamp(7rem, 10.5vw, 9.25rem); }
 
 /* Opening image first, followed by a separate, inset project statement. */
+.bookthing-page > main { container-type: inline-size; }
 .bookthing-page .bt-hero { padding-top: 2rem; }
 .bookthing-page .bt-hero__top { margin-bottom: 1.75rem; }
 .bookthing-page .bt-hero__top .back-link { font-size: 0.85rem; }
+/* Break out of the content rail using the viewport's available width, excluding the scrollbar. */
+.bookthing-page .bt-hero__visual { width: 100cqw; margin-inline: calc(50% - 50cqw); }
 .bookthing-page .bt-hero__visual .bt-crop { border-radius: 0; background: transparent; }
 .bookthing-page .bt-hero__statement { max-width: var(--bt-intro-width); margin: clamp(3.5rem, 6vw, 5.5rem) auto 0; }
 .bookthing-page .bt-hero__description { max-width: 70ch; margin-bottom: 0; color: var(--color-muted); font-size: 1.125rem; line-height: 1.75; }
