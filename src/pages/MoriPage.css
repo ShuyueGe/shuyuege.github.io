@@ -21,7 +21,7 @@ body:has(.mori-page) { background-image: none; }
 .mori-case .mori-key { max-width: 60ch; font-size: 1.125rem; line-height: 1.65; font-weight: 600; color: var(--color-text); }
 .mori-case .mori-eyebrow { margin-bottom: 1.25rem; color: var(--color-muted); font-size: 0.8125rem; font-weight: 600; line-height: 1.5; }
 .mori-case figcaption { margin-top: 0.75rem; color: var(--color-muted); font-size: 0.825rem; line-height: 1.65; }
-.mori-case .mori-version { margin-bottom: 1rem; color: var(--color-muted); font-size: 0.8125rem; line-height: 1.5; }
+.mori-case .mori-version { margin-bottom: 1rem; color: var(--color-muted); font-size: 0.8125rem; font-weight: 550; line-height: 1.5; }
 .mori-case .mori-figure-label { margin-bottom: 1rem; font-size: 0.9rem; font-weight: 600; line-height: 1.5; }
 .mori-case .mori-annotation { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.875rem; font-size: 0.8125rem; line-height: 1.5; }
 .mori-annotation > span { color: var(--color-muted); font-size: 0.75rem; }
@@ -81,6 +81,10 @@ body:has(.mori-page) { background-image: none; }
 /* 04. Proposal and platform constraint share a row. Shipped sequences are
    the only composition allowed beyond the normal rail. */
 .mori-navigation > .mori-prose { max-width: 65ch; }
+.mori-navigation > .mori-heading,
+.mori-health > .mori-heading,
+.mori-modes__original > .mori-heading { padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+.mori-navigation > .mori-heading h2 { font-size: clamp(2.25rem, 3.8vw, 3.4rem); font-weight: 550; }
 .mori-proposal { display: grid; grid-template-columns: minmax(0, 0.55fr) minmax(0, 0.45fr); gap: var(--mori-gap); margin-top: 2.75rem; align-items: center; }
 .mori-proposal__screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem; padding: 1.5rem 2rem; background: var(--mori-surface); }
 .mori-proposal__screens > div { width: 100%; max-width: 174px; justify-self: center; }
@@ -92,11 +96,11 @@ body:has(.mori-page) { background-image: none; }
 .mori-constraint .mori-key { margin-bottom: 0; }
 .mori-shipped-intro { max-width: 720px; margin: 3.5rem 0 2rem; }
 .mori-case .mori-return { width: min(110%, calc(100cqw - 2rem)); margin-inline: calc((100% - min(110%, calc(100cqw - 2rem))) / 2); }
-.mori-return__stage { padding: 1.75rem clamp(1.5rem, 4.5vw, 4rem) 2.5rem; }
-.mori-sequence { display: grid; grid-template-columns: minmax(0, 0.25fr) minmax(0, 0.75fr); gap: 2rem; align-items: center; padding-block: 1.75rem; }
+.mori-return__stage { padding: 1.5rem clamp(1.5rem, 4.5vw, 4rem); background: color-mix(in srgb, var(--color-border) 44%, var(--color-bg)); }
+.mori-sequence { display: grid; grid-template-columns: 1fr; gap: 1rem; width: min(100%, 600px); margin-inline: auto; padding-block: 1.5rem; }
 .mori-sequence + .mori-sequence { border-top: 1px solid var(--color-border); }
-.mori-case .mori-sequence__label { margin: 0; max-width: 19ch; font-size: clamp(1.375rem, 1.8vw, 1.625rem); line-height: 1.4; letter-spacing: -0.025em; font-weight: 550; }
-.mori-sequence__frames { display: grid; grid-template-columns: minmax(0, 220px) 3rem minmax(0, 220px); justify-content: center; align-items: center; gap: clamp(1rem, 2.5vw, 2.5rem); }
+.mori-case .mori-sequence__label { margin: 0; font-size: clamp(1.25rem, 1.6vw, 1.375rem); line-height: 1.4; letter-spacing: -0.025em; font-weight: 600; }
+.mori-sequence__frames { display: grid; grid-template-columns: minmax(0, 218px) 3rem minmax(0, 218px); justify-content: space-between; align-items: center; gap: clamp(1rem, 2.5vw, 2.5rem); }
 .mori-sequence__arrow { color: var(--color-muted); font-size: 2.25rem; text-align: center; }
 .mori-return > figcaption { padding-inline: clamp(1.5rem, 4.5vw, 4rem); }
 .mori-case .mori-tradeoff { max-width: 65ch; margin: 1.75rem 0; color: var(--color-muted); }
@@ -107,16 +111,21 @@ body:has(.mori-page) { background-image: none; }
 .mori-exploration summary:focus-visible { outline-color: var(--color-text); outline-offset: 4px; }
 
 /* 05. Two honest original contexts, one shipped entry, one subordinate form. */
-.mori-health__comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.mori-health { --mori-health-gap: 2rem; --mori-health-before-pad: 1.75rem; --mori-health-before-gap: 1.5rem; }
+.mori-health__comparison { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--mori-health-gap); }
+/* Join the original recording-control column and shipped entry to the same form. */
+.mori-health__comparison::after { position: absolute; left: calc((100% - var(--mori-health-gap)) * 0.375 - var(--mori-health-before-pad) / 2 + var(--mori-health-before-gap) / 4); right: calc(25% - var(--mori-health-gap) / 4); bottom: -1rem; height: 1rem; border: 1px solid var(--color-muted); border-top: 0; content: ""; }
 .mori-health__comparison > figure { display: grid; grid-template-rows: auto 1fr; }
-.mori-health__before { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: center; gap: 1.5rem; padding: 1.75rem; background: transparent; border-top: 1px solid var(--color-border); }
+.mori-health__before { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: center; gap: var(--mori-health-before-gap); padding: var(--mori-health-before-pad); background: transparent; border-top: 1px solid var(--color-border); }
 .mori-health__before > div { width: 100%; max-width: 165px; }
 .mori-health__after { display: grid; place-items: center; padding: 1.75rem; background: transparent; border-top: 1px solid var(--color-border); }
 .mori-health__after > div { width: 100%; max-width: 165px; }
 .mori-health__after .mori-annotation { width: max-content; max-width: 240px; margin-left: 50%; transform: translateX(-50%); }
-.mori-health__result { display: grid; grid-template-columns: minmax(0, 0.62fr) minmax(0, 0.38fr); gap: var(--mori-gap); align-items: center; margin-top: 2rem; }
+.mori-health__result { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--mori-health-gap); align-items: center; margin-top: 2rem; }
 .mori-health__result .mori-key { font-weight: 500; font-size: 1.25rem; }
-.mori-health__form { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 1.5rem; align-items: center; }
+.mori-health__form { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 128px minmax(0, 1fr); gap: 1rem; align-items: center; }
+.mori-health__form::before { position: absolute; top: -1rem; left: 50%; height: 1rem; border-left: 1px solid var(--color-muted); content: ""; }
+.mori-health__form > :first-child { grid-column: 2; }
 .mori-health__form figcaption { margin-top: 0; }
 
 /* 06. Compact original pair → unboxed options → stronger shipped pair. */
@@ -128,8 +137,10 @@ body:has(.mori-page) { background-image: none; }
 .mori-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--mori-gap); margin-block: 3rem 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--color-border); }
 .mori-options h3 { font-size: 1.125rem; letter-spacing: -0.02em; font-weight: 600; }
 .mori-options p { max-width: 38ch; margin-bottom: 0; font-size: 0.95rem; color: var(--color-muted); }
+.mori-options > div { padding-top: 1rem; border-top: 2px solid transparent; }
+.mori-options > .mori-options__chosen { border-top-color: var(--color-text); }
 .mori-options__chosen h3 { font-weight: 750; }
-.mori-options__chosen p { color: var(--color-text); text-decoration: underline; text-underline-offset: 0.4em; }
+.mori-options__chosen p { color: var(--color-text); font-weight: 700; }
 .mori-modes__principle { max-width: 760px; margin-bottom: 2.25rem; }
 .mori-mode-pair--shipped .mori-mode-pair__screens { padding-block: 2rem; background: var(--mori-surface); }
 .mori-mode-pair--shipped .mori-mode-pair__screens > div { max-width: 244px; }
@@ -151,6 +162,11 @@ body:has(.mori-page) { background-image: none; }
 .mori-closing__reflection { grid-column: 1 / -1; width: min(100%, 64ch); margin-inline: auto; }
 .mori-closing__reflection > :last-child { margin-bottom: 0; }
 
+@media (min-width: 821px) {
+  .mori-sequence + .mori-sequence .mori-sequence__frames { grid-template-columns: minmax(0, 190px) 3rem minmax(0, 190px); justify-content: center; }
+  .mori-sequence + .mori-sequence .mori-sequence__label { font-size: 1.125rem; font-weight: 500; }
+}
+
 @media (max-width: 1100px) {
   .mori-hero { column-gap: 2rem; grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr); }
   .mori-case h1 { font-size: clamp(2.3rem, 4vw, 2.75rem); }
@@ -160,8 +176,7 @@ body:has(.mori-page) { background-image: none; }
   .mori-rules__press-pair { gap: 0.5rem; }
   .mori-proposal__screens { padding: 1.25rem; gap: 1rem; }
   .mori-constraint { padding-left: 1.25rem; }
-  .mori-sequence { grid-template-columns: minmax(0, 0.32fr) minmax(0, 0.68fr); }
-  .mori-health__before { gap: 1rem; padding: 1.25rem; }
+  .mori-health { --mori-health-before-pad: 1.25rem; --mori-health-before-gap: 1rem; }
   .mori-health__after { padding: 1.25rem; }
   .mori-health__form { gap: 1rem; }
   .mori-mode-pair__screens { gap: 1.25rem; }
@@ -185,9 +200,9 @@ body:has(.mori-page) { background-image: none; }
   .mori-return__stage { padding-inline: 1.5rem; }
   .mori-sequence { gap: 1.5rem; }
   .mori-sequence__frames { grid-template-columns: minmax(0, 175px) 1.5rem minmax(0, 175px); gap: 0.875rem; }
-  .mori-health__comparison { gap: 1.5rem; }
-  .mori-health__result { grid-template-columns: minmax(0, 0.6fr) minmax(0, 0.4fr); }
-  .mori-health__form { grid-template-columns: 118px minmax(0, 1fr); }
+  .mori-health { --mori-health-gap: 1.5rem; }
+  .mori-health__result { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mori-health__form { grid-template-columns: minmax(0, 1fr) 118px minmax(0, 1fr); }
   .mori-modes__original { grid-template-columns: 1fr; }
   .mori-modes__original h2 { max-width: 25ch; }
   .mori-modes__original .mori-heading { margin-bottom: 0; }
@@ -235,15 +250,18 @@ body:has(.mori-page) { background-image: none; }
   .mori-return > figcaption { padding-inline: 0; }
   .mori-exploration__status { display: block; margin: 0.5rem 0 0 1rem; }
   .mori-health__comparison { grid-template-columns: 1fr; gap: 1.75rem; }
-  .mori-health__before { padding: 1.25rem; gap: 1rem; }
+  .mori-health__comparison::after { display: none; }
   .mori-health__after > div { max-width: 174px; }
   .mori-health__result { grid-template-columns: 1fr; gap: 1.25rem; }
   .mori-health__form { grid-template-columns: 128px minmax(0, 1fr); gap: 1.5rem; }
+  .mori-health__form > :first-child { grid-column: 1; }
+  .mori-health__form::before { display: none; }
   .mori-options { grid-template-columns: 1fr; gap: 1.75rem; margin-block: 2.5rem; }
   .mori-options p { max-width: 44ch; }
-  .mori-mode-pair__screens { grid-template-columns: 1fr; gap: 2rem; }
-  .mori-mode-pair__screens > div { max-width: 185px; }
-  .mori-mode-pair--shipped .mori-mode-pair__screens > div { max-width: 225px; }
+  .mori-mode-pair__screens { grid-template-columns: 1fr; gap: 0.75rem; padding: 0.75rem 0; }
+  .mori-mode-pair__screens > div { max-width: 160px; }
+  .mori-mode-pair--shipped .mori-mode-pair__screens { padding: 1.25rem 1rem; }
+  .mori-mode-pair--shipped .mori-mode-pair__screens > div { max-width: 190px; }
   .mori-modes__principle h3 { font-size: 1.625rem; }
   .mori-details__strip { gap: 1.5rem 1rem; }
   .mori-media--detail { aspect-ratio: 3 / 4; }
