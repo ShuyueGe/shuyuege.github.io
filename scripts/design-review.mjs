@@ -16,11 +16,12 @@ const routes = [
   ['home', '/'],
   ['bookthing', '/projects/ngo-website-redesign'],
   ['patsy', '/projects/restaurant-website-redesign'],
+  ['mori', '/projects/ai-health-web-app-upgrade'],
 ];
 const results = [];
 try {
   for (const [name, route] of routes.filter(([name]) => !process.env.REVIEW_PAGES || process.env.REVIEW_PAGES.split(',').includes(name))) {
-    for (const width of [1440, 820, 390]) {
+    for (const width of (process.env.REVIEW_WIDTHS?.split(',').map(Number) || [1440, 820, 390])) {
       const page = await browser.newPage({ viewport: { width, height: 1000 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
       const errors = [];
       page.on('pageerror', error => errors.push(error.message));
@@ -56,7 +57,7 @@ try {
       }
       await sharp({ create: { width: columns * (cellWidth + 16) - 16, height: cellHeight, channels: 3, background: '#deded8' } }).composite(slices).png().toFile(path.join(out, `${name}-${width}-overview.png`));
       if (width === 1440 || width === 390) {
-        for (const selector of name === 'home' ? ['#projects'] : name === 'bookthing' ? ['.bt-ia', '.bt-donate', '.bt-calendar', '.bt-final'] : ['.ps-research', '.ps-pickup', '.ps-final']) {
+        for (const selector of name === 'home' ? ['#projects'] : name === 'bookthing' ? ['.bt-ia', '.bt-donate', '.bt-calendar', '.bt-final'] : name === 'mori' ? ['.mori-hero', '.mori-diagnosis', '.mori-proposal', '.mori-return', '.mori-health', '.mori-modes', '.mori-closing'] : ['.ps-research', '.ps-pickup', '.ps-final']) {
           const section = page.locator(selector);
           if (await section.count()) await section.screenshot({ path: path.join(out, `${name}-${width}-${selector.replace(/[.#]/g, '')}.png`) });
         }

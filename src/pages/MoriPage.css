@@ -1,0 +1,271 @@
+/* MORI: existing portfolio tokens, eight distinct editorial compositions.
+   Design variance 6 / motion 2 / density 4. Copy and evidence stay locked. */
+body:has(.mori-page) { background-image: none; }
+.mori-page > main { container-type: inline-size; }
+.mori-case {
+  --mori-gap: clamp(1.75rem, 4vw, 3.5rem);
+  --mori-surface: color-mix(in srgb, var(--color-border) 26%, var(--color-bg));
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  padding-bottom: clamp(4.5rem, 7vw, 7rem);
+}
+.mori-case :where(figure, div, header) { min-width: 0; }
+.mori-case figure { margin: 0; }
+.mori-case :where(h1, h2, h3) { font-family: inherit; color: var(--color-text); }
+.mori-case h1 { margin: 0 0 1.5rem; font-size: clamp(2.5rem, 3.3vw, 3rem); line-height: 1.1; letter-spacing: -0.045em; font-weight: 550; }
+.mori-case h2 { max-width: 25ch; margin: 0 0 1.5rem; font-size: clamp(2rem, 3.4vw, 3.1rem); line-height: 1.15; letter-spacing: -0.045em; font-weight: 500; }
+.mori-case h3 { margin: 0 0 1.125rem; font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.3; letter-spacing: -0.03em; font-weight: 550; }
+.mori-case p { margin: 0 0 1.25rem; }
+.mori-case .mori-prose { max-width: 64ch; color: var(--color-muted); }
+.mori-case .mori-deck { max-width: 54ch; color: var(--color-muted); font-size: 1.125rem; line-height: 1.7; }
+.mori-case .mori-key { max-width: 60ch; font-size: 1.125rem; line-height: 1.65; font-weight: 600; color: var(--color-text); }
+.mori-case .mori-eyebrow { margin-bottom: 1.25rem; color: var(--color-muted); font-size: 0.8125rem; font-weight: 600; line-height: 1.5; }
+.mori-case figcaption { margin-top: 0.75rem; color: var(--color-muted); font-size: 0.825rem; line-height: 1.65; }
+.mori-case .mori-version { margin-bottom: 1rem; color: var(--color-muted); font-size: 0.8125rem; line-height: 1.5; }
+.mori-case .mori-figure-label { margin-bottom: 1rem; font-size: 0.9rem; font-weight: 600; line-height: 1.5; }
+.mori-case .mori-annotation { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.875rem; font-size: 0.8125rem; line-height: 1.5; }
+.mori-annotation > span { color: var(--color-muted); font-size: 0.75rem; }
+.mori-section { margin-top: clamp(5rem, 8.5vw, 8rem); }
+.mori-heading { max-width: 840px; margin-bottom: 2rem; }
+.mori-stage { background: var(--mori-surface); }
+.mori-back { padding-block: 2rem 2.75rem; }
+.mori-back .back-link { min-height: 44px; font-size: 0.85rem; }
+
+/* Shared replaceable evidence slot. Full screens are always mobile portrait.
+   Detail exports are explicitly fragments; the logo uses an artwork canvas. */
+.mori-media { position: relative; display: grid; place-items: center; width: 100%; border: 1px solid var(--color-border); border-radius: var(--radius-small); background: var(--color-card); overflow: hidden; }
+.mori-media--phone { aspect-ratio: 9 / 19.5; }
+.mori-media--detail { aspect-ratio: 5 / 4; }
+.mori-media--artwork { aspect-ratio: 2.4 / 1; border: 0; border-radius: 0; background: var(--mori-surface); }
+.mori-media__identity { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; width: 100%; padding: 0.75rem; color: var(--color-muted); text-align: center; line-height: 1.5; }
+.mori-media__id { font-size: 0.6875rem; font-weight: 650; overflow-wrap: anywhere; }
+.mori-media__state { max-width: 23ch; font-size: 0.75rem; }
+.mori-media__status { font-size: 0.6875rem; }
+.mori-media > img { width: 100%; height: auto; }
+.mori-media-link { display: block; width: 100%; cursor: zoom-in; }
+.mori-media-link:focus-visible { outline-color: var(--color-text); }
+
+/* 01. The figure occupies the right column; mobile ownership follows it. */
+.mori-hero { display: grid; grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr); column-gap: var(--mori-gap); row-gap: 1.75rem; }
+.mori-hero__intro { grid-column: 1; }
+.mori-hero__intro .mori-deck { max-width: 46ch; margin-bottom: 0; }
+.mori-metadata { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.125rem 1.5rem; grid-column: 1; margin: 0; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+.mori-metadata dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.mori-metadata dd { margin: 0; font-size: 0.8125rem; line-height: 1.7; }
+.mori-metadata > :first-child { font-weight: 650; }
+.mori-metadata > :last-child { grid-column: 1 / -1; }
+.mori-hero__visual { grid-column: 2; grid-row: 1 / 4; align-self: stretch; display: flex; flex-direction: column; }
+.mori-hero__stage { display: grid; flex: 1; place-items: center; padding: 2.5rem; }
+.mori-hero__stage > :is(.mori-media, .mori-media-link) { width: min(100%, 258px); }
+.mori-case .mori-hero__ownership { grid-column: 1; margin: 0; max-width: 58ch; color: var(--color-muted); font-size: 0.875rem; line-height: 1.7; }
+
+/* 02. A prominent full screen plus two smaller, separately labeled examples. */
+.mori-diagnosis { display: grid; grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr); grid-template-rows: min-content 1fr; column-gap: var(--mori-gap); row-gap: 1.5rem; align-items: start; }
+.mori-diagnosis__intro { grid-column: 1; }
+.mori-diagnosis__intro h2 { font-size: clamp(2rem, 2.8vw, 2.6rem); }
+.mori-diagnosis__intro p { margin-bottom: 0; }
+.mori-rules { grid-column: 2; grid-row: 1 / 3; }
+.mori-rules__collage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.75rem; padding: 1.5rem; background: var(--mori-surface); }
+.mori-rules__visible { grid-row: 1 / 3; align-self: center; }
+.mori-rules__visible > :is(.mori-media, .mori-media-link) { max-width: 240px; margin-inline: auto; }
+.mori-rules__press-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.625rem; max-width: 260px; }
+.mori-rules__gesture > :is(.mori-media, .mori-media-link) { width: 125px; margin-inline: auto; }
+.mori-diagnosis__insight { grid-column: 1; align-self: start; }
+.mori-diagnosis__insight .mori-key { margin: 1.5rem 0 0; }
+
+/* 03. A short conceptual hinge, not a viewport-sized quote. */
+.mori-principle { width: 75%; margin-inline: auto; padding-block: clamp(4.5rem, 7vw, 6.5rem); }
+.mori-principle h2 { max-width: 32ch; font-size: clamp(1.75rem, 2.6vw, 2.375rem); }
+.mori-principle p { max-width: 70ch; margin-bottom: 0; color: var(--color-muted); }
+
+/* 04. Proposal and platform constraint share a row. Shipped sequences are
+   the only composition allowed beyond the normal rail. */
+.mori-navigation > .mori-prose { max-width: 65ch; }
+.mori-proposal { display: grid; grid-template-columns: minmax(0, 0.55fr) minmax(0, 0.45fr); gap: var(--mori-gap); margin-top: 2.75rem; align-items: center; }
+.mori-proposal__screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem; padding: 1.5rem 2rem; background: var(--mori-surface); }
+.mori-proposal__screens > div { width: 100%; max-width: 174px; justify-self: center; }
+.mori-proposal__screens .mori-figure-label { font-size: 0.8125rem; }
+.mori-proposal__screens .mori-figure-label span { padding-left: 0.375rem; }
+.mori-constraint { padding-left: 1.75rem; border-left: 2px solid var(--color-border); }
+.mori-constraint h3 { max-width: 22ch; }
+.mori-constraint .mori-prose { max-width: 45ch; }
+.mori-constraint .mori-key { margin-bottom: 0; }
+.mori-shipped-intro { max-width: 720px; margin: 3.5rem 0 2rem; }
+.mori-case .mori-return { width: min(110%, calc(100cqw - 2rem)); margin-inline: calc((100% - min(110%, calc(100cqw - 2rem))) / 2); }
+.mori-return__stage { padding: 1.75rem clamp(1.5rem, 4.5vw, 4rem) 2.5rem; }
+.mori-sequence { display: grid; grid-template-columns: minmax(0, 0.25fr) minmax(0, 0.75fr); gap: 2rem; align-items: center; padding-block: 1.75rem; }
+.mori-sequence + .mori-sequence { border-top: 1px solid var(--color-border); }
+.mori-case .mori-sequence__label { margin: 0; max-width: 19ch; font-size: clamp(1.375rem, 1.8vw, 1.625rem); line-height: 1.4; letter-spacing: -0.025em; font-weight: 550; }
+.mori-sequence__frames { display: grid; grid-template-columns: minmax(0, 220px) 3rem minmax(0, 220px); justify-content: center; align-items: center; gap: clamp(1rem, 2.5vw, 2.5rem); }
+.mori-sequence__arrow { color: var(--color-muted); font-size: 2.25rem; text-align: center; }
+.mori-return > figcaption { padding-inline: clamp(1.5rem, 4.5vw, 4rem); }
+.mori-case .mori-tradeoff { max-width: 65ch; margin: 1.75rem 0; color: var(--color-muted); }
+.mori-exploration { max-width: 760px; border-block: 1px solid var(--color-border); }
+.mori-exploration summary { position: relative; cursor: pointer; padding: 1.1rem 1.5rem 1.1rem 0; font-size: 0.9rem; font-weight: 600; }
+.mori-exploration__status { display: inline-block; margin-left: 1rem; color: var(--color-muted); font-size: 0.8125rem; font-weight: 400; }
+.mori-exploration > p { max-width: 65ch; padding-top: 0.5rem; }
+.mori-exploration summary:focus-visible { outline-color: var(--color-text); outline-offset: 4px; }
+
+/* 05. Two honest original contexts, one shipped entry, one subordinate form. */
+.mori-health__comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.mori-health__comparison > figure { display: grid; grid-template-rows: auto 1fr; }
+.mori-health__before { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: center; gap: 1.5rem; padding: 1.75rem; background: transparent; border-top: 1px solid var(--color-border); }
+.mori-health__before > div { width: 100%; max-width: 165px; }
+.mori-health__after { display: grid; place-items: center; padding: 1.75rem; background: transparent; border-top: 1px solid var(--color-border); }
+.mori-health__after > div { width: 100%; max-width: 165px; }
+.mori-health__after .mori-annotation { width: max-content; max-width: 240px; margin-left: 50%; transform: translateX(-50%); }
+.mori-health__result { display: grid; grid-template-columns: minmax(0, 0.62fr) minmax(0, 0.38fr); gap: var(--mori-gap); align-items: center; margin-top: 2rem; }
+.mori-health__result .mori-key { font-weight: 500; font-size: 1.25rem; }
+.mori-health__form { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 1.5rem; align-items: center; }
+.mori-health__form figcaption { margin-top: 0; }
+
+/* 06. Compact original pair → unboxed options → stronger shipped pair. */
+.mori-modes__original { display: grid; grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr); gap: var(--mori-gap); align-items: center; }
+.mori-modes__original h2 { max-width: 18ch; }
+.mori-mode-pair__screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; justify-items: center; padding: 1.5rem; }
+.mori-mode-pair__screens > div { width: 100%; max-width: 160px; }
+.mori-mode-pair__screens .mori-figure-label { font-size: 0.8125rem; }
+.mori-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--mori-gap); margin-block: 3rem 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--color-border); }
+.mori-options h3 { font-size: 1.125rem; letter-spacing: -0.02em; font-weight: 600; }
+.mori-options p { max-width: 38ch; margin-bottom: 0; font-size: 0.95rem; color: var(--color-muted); }
+.mori-options__chosen h3 { font-weight: 750; }
+.mori-options__chosen p { color: var(--color-text); text-decoration: underline; text-underline-offset: 0.4em; }
+.mori-modes__principle { max-width: 760px; margin-bottom: 2.25rem; }
+.mori-mode-pair--shipped .mori-mode-pair__screens { padding-block: 2rem; background: var(--mori-surface); }
+.mori-mode-pair--shipped .mori-mode-pair__screens > div { max-width: 244px; }
+.mori-mode-pair--shipped .mori-figure-label { font-size: 0.95rem; }
+.mori-details { margin-top: 2rem; }
+.mori-details__strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+.mori-details__strip figcaption { color: var(--color-text); }
+
+/* 07–08. A short artwork interlude and a plainly stated shipped closing. */
+.mori-visual { display: grid; grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr); gap: var(--mori-gap); align-items: center; }
+.mori-visual h2 { font-size: 1.625rem; letter-spacing: -0.025em; }
+.mori-closing { display: grid; grid-template-columns: minmax(0, 0.3fr) minmax(0, 0.7fr); gap: 3.5rem var(--mori-gap); }
+.mori-closing h2 { font-size: clamp(2rem, 2.8vw, 2.625rem); }
+.mori-closing dl { margin: 0 0 1.5rem; }
+.mori-closing dl > div { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1.5rem; padding-block: 1.125rem; border-top: 1px solid var(--color-border); }
+.mori-closing dt { font-size: 0.95rem; font-weight: 650; }
+.mori-closing dd { margin: 0; color: var(--color-muted); }
+.mori-closing__outcomes .mori-key { margin: 0; }
+.mori-closing__reflection { grid-column: 1 / -1; width: min(100%, 64ch); margin-inline: auto; }
+.mori-closing__reflection > :last-child { margin-bottom: 0; }
+
+@media (max-width: 1100px) {
+  .mori-hero { column-gap: 2rem; grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr); }
+  .mori-case h1 { font-size: clamp(2.3rem, 4vw, 2.75rem); }
+  .mori-hero__stage { padding: 1.5rem; }
+  .mori-diagnosis { grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr); }
+  .mori-rules__collage { gap: 1.25rem; padding: 1rem; }
+  .mori-rules__press-pair { gap: 0.5rem; }
+  .mori-proposal__screens { padding: 1.25rem; gap: 1rem; }
+  .mori-constraint { padding-left: 1.25rem; }
+  .mori-sequence { grid-template-columns: minmax(0, 0.32fr) minmax(0, 0.68fr); }
+  .mori-health__before { gap: 1rem; padding: 1.25rem; }
+  .mori-health__after { padding: 1.25rem; }
+  .mori-health__form { gap: 1rem; }
+  .mori-mode-pair__screens { gap: 1.25rem; }
+  .mori-closing dl > div { grid-template-columns: 10rem minmax(0, 1fr); gap: 1rem; }
+}
+
+@media (max-width: 820px) {
+  .mori-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mori-metadata { column-gap: 1rem; }
+  .mori-diagnosis { grid-template-columns: 1fr; grid-template-rows: none; }
+  .mori-diagnosis__intro { max-width: 640px; }
+  .mori-rules { grid-column: 1; grid-row: auto; }
+  .mori-rules__collage { padding: 1.5rem; }
+  .mori-rules__visible > :is(.mori-media, .mori-media-link) { max-width: 225px; }
+  .mori-rules__press-pair { max-width: 270px; }
+  .mori-rules__gesture > :is(.mori-media, .mori-media-link) { width: 128px; }
+  .mori-diagnosis__insight { max-width: 640px; }
+  .mori-principle { width: 90%; }
+  .mori-proposal { grid-template-columns: minmax(0, 0.52fr) minmax(0, 0.48fr); gap: 1.5rem; }
+  .mori-constraint { padding-left: 1rem; }
+  .mori-return__stage { padding-inline: 1.5rem; }
+  .mori-sequence { gap: 1.5rem; }
+  .mori-sequence__frames { grid-template-columns: minmax(0, 175px) 1.5rem minmax(0, 175px); gap: 0.875rem; }
+  .mori-health__comparison { gap: 1.5rem; }
+  .mori-health__result { grid-template-columns: minmax(0, 0.6fr) minmax(0, 0.4fr); }
+  .mori-health__form { grid-template-columns: 118px minmax(0, 1fr); }
+  .mori-modes__original { grid-template-columns: 1fr; }
+  .mori-modes__original h2 { max-width: 25ch; }
+  .mori-modes__original .mori-heading { margin-bottom: 0; }
+  .mori-mode-pair__screens > div { max-width: 185px; }
+  .mori-mode-pair--shipped .mori-mode-pair__screens > div { max-width: 230px; }
+  .mori-options { gap: 1.5rem; }
+  .mori-details__strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mori-visual { grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr); }
+  .mori-media--artwork { aspect-ratio: 1.6 / 1; }
+  .mori-closing { grid-template-columns: 1fr; gap: 1.5rem; }
+  .mori-closing h2 { max-width: 25ch; margin-bottom: 0; }
+  .mori-closing__reflection { margin-top: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  .mori-case { --page-gutter: 24px; font-size: 1.0625rem; }
+  .mori-back { padding-block: 1.25rem 2rem; }
+  .mori-case h1 { font-size: clamp(2.125rem, 8.5vw, 2.75rem); line-height: 1.12; }
+  .mori-case h2 { font-size: 2rem; }
+  .mori-case .mori-deck { font-size: 1.0625rem; }
+  .mori-case .mori-eyebrow { font-size: 0.75rem; }
+  .mori-hero { grid-template-columns: 1fr; gap: 1.75rem; }
+  .mori-hero__visual { grid-column: 1; grid-row: auto; }
+  .mori-hero__stage { padding: 1.5rem; }
+  .mori-hero__stage > :is(.mori-media, .mori-media-link) { width: min(100%, 214px); }
+  .mori-section { margin-top: 4.75rem; }
+  .mori-rules__collage { grid-template-columns: 1fr; gap: 2rem; padding: 1.25rem; }
+  .mori-rules__visible { grid-row: auto; }
+  .mori-rules__visible > :is(.mori-media, .mori-media-link) { max-width: 200px; }
+  .mori-rules__press-pair { max-width: none; gap: 0.875rem; }
+  .mori-rules__gesture > :is(.mori-media, .mori-media-link) { width: min(100%, 200px); }
+  .mori-principle { width: 100%; padding-block: 3.5rem; }
+  .mori-principle h2 { font-size: 1.75rem; }
+  .mori-proposal { grid-template-columns: 1fr; gap: 2rem; margin-top: 2rem; }
+  .mori-proposal__screens { padding: 1rem; }
+  .mori-proposal__screens .mori-figure-label { min-height: 2.5em; }
+  .mori-constraint { padding-left: 1.25rem; }
+  .mori-shipped-intro { margin-top: 2.75rem; }
+  .mori-case .mori-return { width: 100%; margin-inline: 0; }
+  .mori-return__stage { padding: 1.25rem; }
+  .mori-sequence { grid-template-columns: 1fr; gap: 1.25rem; padding-block: 1.5rem; }
+  .mori-case .mori-sequence__label { max-width: 24ch; font-size: 1.25rem; }
+  .mori-sequence__frames { grid-template-columns: minmax(0, 1fr) 1.125rem minmax(0, 1fr); gap: 0.5rem; }
+  .mori-sequence__arrow { font-size: 1.75rem; }
+  .mori-return > figcaption { padding-inline: 0; }
+  .mori-exploration__status { display: block; margin: 0.5rem 0 0 1rem; }
+  .mori-health__comparison { grid-template-columns: 1fr; gap: 1.75rem; }
+  .mori-health__before { padding: 1.25rem; gap: 1rem; }
+  .mori-health__after > div { max-width: 174px; }
+  .mori-health__result { grid-template-columns: 1fr; gap: 1.25rem; }
+  .mori-health__form { grid-template-columns: 128px minmax(0, 1fr); gap: 1.5rem; }
+  .mori-options { grid-template-columns: 1fr; gap: 1.75rem; margin-block: 2.5rem; }
+  .mori-options p { max-width: 44ch; }
+  .mori-mode-pair__screens { grid-template-columns: 1fr; gap: 2rem; }
+  .mori-mode-pair__screens > div { max-width: 185px; }
+  .mori-mode-pair--shipped .mori-mode-pair__screens > div { max-width: 225px; }
+  .mori-modes__principle h3 { font-size: 1.625rem; }
+  .mori-details__strip { gap: 1.5rem 1rem; }
+  .mori-media--detail { aspect-ratio: 3 / 4; }
+  .mori-details__strip figcaption { font-size: 0.8125rem; }
+  .mori-visual { grid-template-columns: 1fr; gap: 1.25rem; }
+  .mori-visual h2 { font-size: 1.625rem; }
+  .mori-media--artwork { aspect-ratio: 1.5 / 1; }
+  .mori-closing dl > div { grid-template-columns: 1fr; gap: 0.25rem; }
+  .mori-closing__reflection { margin-top: 1rem; }
+}
+
+@media (max-width: 359px) {
+  .mori-metadata { grid-template-columns: 1fr; }
+  .mori-sequence__frames { grid-template-columns: 1fr; justify-items: center; gap: 1rem; }
+  .mori-sequence__frames > :is(.mori-media, .mori-media-link) { max-width: 170px; }
+  .mori-sequence__arrow { transform: rotate(90deg); }
+  .mori-details__strip { grid-template-columns: 1fr; }
+  .mori-media--detail { aspect-ratio: 5 / 4; }
+}
+
+@media print {
+  .mori-back { display: none; }
+  .mori-case .mori-return { width: 100%; margin-inline: 0; }
+  .mori-case figure { break-inside: avoid; }
+}

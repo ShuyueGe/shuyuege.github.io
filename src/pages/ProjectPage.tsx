@@ -12,6 +12,7 @@ import { getProjectBySlug, projects } from "../data/projects";
 import { NotFoundPage } from "./NotFoundPage";
 import { BookThingPage } from "./BookThingPage";
 import { PatsyPage } from "./PatsyPage";
+import { MoriPage } from "./MoriPage";
 
 export function ProjectPage() {
   const { slug } = useParams();
@@ -24,6 +25,10 @@ export function ProjectPage() {
   // Patsy uses the third project's existing slug and homepage link.
   if (slug === "restaurant-website-redesign") {
     return <PatsyPage />;
+  }
+
+  if (slug === "ai-health-web-app-upgrade") {
+    return <MoriPage />;
   }
 
   return <StandardProjectPage slug={slug} />;
