@@ -9,6 +9,14 @@ export interface MoriAsset {
   image?: { src: string; alt: string; width: number; height: number };
 }
 
+/** Separate exports: a complete screen is never stretched into a detail crop. */
+export function MoriResponsiveMedia({ context, detail }: { context: MoriAsset; detail: MoriAsset }) {
+  return <div className="mori-responsive-media">
+    <div className="mori-responsive-media__context"><MoriMedia asset={context} /></div>
+    <div className="mori-responsive-media__detail"><MoriMedia asset={detail} kind="detail" /></div>
+  </div>;
+}
+
 /** Neutral evidence slot, never a simulated product screen. */
 export function MoriMedia({ asset, kind = "phone", eager = false }: {
   asset: MoriAsset;

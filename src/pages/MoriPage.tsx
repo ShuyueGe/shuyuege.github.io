@@ -1,23 +1,11 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
-import { MoriMedia } from "../components/MoriMedia";
-import type { MoriAsset } from "../components/MoriMedia";
-import { moriAssets as a } from "../data/moriAssets";
+import { MoriMedia, MoriResponsiveMedia } from "../components/MoriMedia";
+import { MoriOriginalRules, MoriProposalEvidence, MoriShippedModel } from "../components/MoriNavigationEvidence";
+import { moriAssets as a, moriDetailAssets as d } from "../data/moriAssets";
 import "./MoriPage.css";
-
-function ReturnSequence({ label, start, destination }: {
-  label: string; start: MoriAsset; destination: MoriAsset;
-}) {
-  return <div className="mori-sequence" role="group" aria-label={label}>
-    <p className="mori-sequence__label">{label}</p>
-    <div className="mori-sequence__frames">
-      <MoriMedia asset={start} />
-      <span className="mori-sequence__arrow" aria-hidden="true">→</span>
-      <MoriMedia asset={destination} />
-    </div>
-  </div>;
-}
+import "./MoriEvidence.css";
 
 function ModePair({ shipped = false }: { shipped?: boolean }) {
   return <figure className={`mori-mode-pair${shipped ? " mori-mode-pair--shipped" : ""}`}>
@@ -25,11 +13,11 @@ function ModePair({ shipped = false }: { shipped?: boolean }) {
     <div className="mori-mode-pair__screens">
       <div>
         <p className="mori-figure-label">Heart Companion</p>
-        <MoriMedia asset={shipped ? a.companionShipped : a.companionOriginal} />
+        <MoriResponsiveMedia context={shipped ? a.companionShipped : a.companionOriginal} detail={shipped ? d.companionShipped : d.companionOriginal} />
       </div>
       <div>
         <p className="mori-figure-label">Health Guardian</p>
-        <MoriMedia asset={shipped ? a.guardianShipped : a.guardianOriginal} />
+        <MoriResponsiveMedia context={shipped ? a.guardianShipped : a.guardianOriginal} detail={shipped ? d.guardianShipped : d.guardianOriginal} />
       </div>
     </div>
     <figcaption>{shipped
@@ -83,11 +71,11 @@ export function MoriPage() {
             </div>
             <div className="mori-rules__press">
               <p className="mori-annotation"><span aria-hidden="true">2</span>Press to reveal</p>
-              <div className="mori-rules__press-pair"><MoriMedia asset={a.pressBefore} /><MoriMedia asset={a.pressAfter} /></div>
+              <div className="mori-rules__press-pair"><MoriMedia asset={d.pressBefore} kind="detail" /><MoriMedia asset={d.pressAfter} kind="detail" /></div>
             </div>
             <div className="mori-rules__gesture">
               <p className="mori-annotation"><span aria-hidden="true">3</span>Gesture or empty-space action</p>
-              <MoriMedia asset={a.gesture} />
+              <MoriMedia asset={d.gesture} kind="detail" />
             </div>
           </div>
           <figcaption>Original interaction rules, annotated from my product review.</figcaption>
@@ -109,17 +97,20 @@ export function MoriPage() {
           <h2 id="mori-navigation">Making navigation predictable without adding more UI.</h2>
           <p className="mori-deck">A shared return model had to work across screens and real devices.</p>
         </header>
-        <p className="mori-prose">Return controls varied by screen: the Mori cloud, a downward triangle, empty space, or gestures. I proposed a shared model with the cloud as the primary anchor and a right swipe as the secondary path.</p>
+        <div className="mori-navigation__orientation">
+          <p className="mori-prose">Return controls varied by screen: the Mori cloud, a downward triangle, empty space, or gestures. I proposed a shared model with the cloud as the primary anchor and a right swipe as the secondary path.</p>
+          <figure className="mori-cloud-context">
+            <div className="mori-cloud-context__frame">
+              <MoriMedia asset={a.cloudStart} />
+              {/* The annotation target is provisional, not a documented location or hitbox. */}
+              <span className="mori-cloud-context__callout" data-diagram-label>Mori cloud</span>
+            </div>
+          </figure>
+          <MoriOriginalRules />
+        </div>
 
         <div className="mori-proposal">
-          <figure>
-            <p className="mori-version">Initial direction — not shipped</p>
-            <div className="mori-proposal__screens">
-              <div><p className="mori-figure-label">Tap the Mori cloud</p><MoriMedia asset={a.proposalCloud} /></div>
-              <div><p className="mori-figure-label">Swipe right <span aria-hidden="true">→</span></p><MoriMedia asset={a.proposalSwipe} /></div>
-            </div>
-            <figcaption>The initial model paired a shared anchor with a gesture alternative.</figcaption>
-          </figure>
+          <MoriProposalEvidence />
           <div className="mori-constraint">
             <h3>Android made the swipe unreliable.</h3>
             <p className="mori-prose">Engineering pointed out that a right swipe could conflict with Android’s native navigation on some devices. That made it unreliable as an in-product return action.</p>
@@ -131,14 +122,7 @@ export function MoriPage() {
           <h3>What shipped: two ways back to the previous layer.</h3>
           <p className="mori-prose">The final design used cloud taps and empty-space taps across the redesigned screens, avoiding the proposed swipe conflict.</p>
         </div>
-        <figure className="mori-return">
-          <div className="mori-return__stage mori-stage">
-            <p className="mori-version">Shipped implementation.</p>
-            <ReturnSequence label="Primary — tap the Mori cloud" start={a.cloudStart} destination={a.cloudDestination} />
-            <ReturnSequence label="Secondary — tap empty space" start={a.emptyStart} destination={a.emptyDestination} />
-          </div>
-          <figcaption>Both shipped actions return to the previous layer.</figcaption>
-        </figure>
+        <MoriShippedModel />
         <p className="mori-tradeoff">Empty space can be difficult to find on content-heavy screens, while sparse screens leave room for accidental taps. We accepted those limitations to keep a return model that fit the implementation and MORI’s character.</p>
         <details className="mori-exploration">
           <summary><span>Another direction explored</span><span className="mori-exploration__status">Exploration — not shipped</span></summary>
@@ -157,14 +141,14 @@ export function MoriPage() {
           <figure>
             <p className="mori-figure-label">Before · Separate information and recording access</p>
             <div className="mori-stage mori-health__before">
-              <div><p className="mori-annotation">Health information</p><MoriMedia asset={a.healthInformation} /></div>
-              <div><p className="mori-annotation">Recording controls</p><MoriMedia asset={a.healthControls} /></div>
+              <div><p className="mori-annotation">Health information</p><MoriMedia asset={d.healthInformation} kind="detail" /></div>
+              <div><p className="mori-annotation">Recording controls</p><MoriMedia asset={d.healthControls} kind="detail" /></div>
             </div>
           </figure>
           <figure>
             <p className="mori-figure-label">Shipped · Record directly from the data item</p>
             <div className="mori-stage mori-health__after">
-              <div><p className="mori-annotation">Data item opens recording</p><MoriMedia asset={a.healthShipped} /></div>
+              <div><p className="mori-annotation">Data item opens recording</p><MoriMedia asset={d.healthShipped} kind="detail" /></div>
             </div>
           </figure>
         </div>
@@ -174,7 +158,7 @@ export function MoriPage() {
             <p className="mori-key">The redesign connected the information people were viewing with the action of recording it.</p>
           </div>
           <figure className="mori-health__form">
-            <MoriMedia asset={a.healthForm} />
+            <MoriMedia asset={d.healthForm} kind="detail" />
             <figcaption>Both entry patterns opened this existing form.</figcaption>
           </figure>
         </div>
@@ -202,11 +186,14 @@ export function MoriPage() {
         <div className="mori-details">
           <p className="mori-version">Shipped Health Guardian · Detail crops.</p>
           <div className="mori-details__strip">
-            {[{ label: "Opening guidance", asset: a.guidance }, { label: "Revised placeholder", asset: a.inputPlaceholder }, { label: "Taller input area", asset: a.inputHeight }, { label: "Smaller corner radius", asset: a.inputRadius }].map(({ label, asset }) =>
-              <figure key={label}>
-                <MoriMedia asset={asset} kind="detail" />
-                <figcaption>{label}</figcaption>
-              </figure>)}
+            <figure>
+              <MoriMedia asset={a.guidance} kind="detail" />
+              <figcaption>Opening guidance</figcaption>
+            </figure>
+            <figure>
+              <MoriMedia asset={d.input} kind="detail" />
+              <figcaption className="mori-details__input-labels"><span>Revised placeholder</span>{" "}<span>Taller input area</span>{" "}<span>Smaller corner radius</span></figcaption>
+            </figure>
           </div>
         </div>
       </section>

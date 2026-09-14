@@ -29,3 +29,24 @@ export const moriAssets = {
   inputRadius: { id: "MORI-MODES-03D", state: "Smaller corner radius", status: "Shipped · Detail crop", description: "Verified Health Guardian input boundary detail showing corner radius" },
   logo: { id: "MORI-VISUAL-01", state: "Logo artwork", status: "Logo design", description: "Actual MORI logo artwork, complete and at native proportions; production use is unconfirmed" },
 } satisfies Record<string, MoriAsset>;
+
+// Independent, still-empty crop slots. Do not inherit a full-screen `image`:
+// a future crop must be verified and supplied with its own native dimensions.
+function detailSlot(source: MoriAsset, description: string): MoriAsset {
+  return { id: `${source.id}-DETAIL`, state: source.state, status: `${source.status} · Detail crop`, description };
+}
+
+export const moriDetailAssets = {
+  pressBefore: detailSlot(moriAssets.pressBefore, "Original control area before press, preserving enough context to match the after-press crop"),
+  pressAfter: detailSlot(moriAssets.pressAfter, "Matching original control area after press; a separate state, not a fabricated composite"),
+  gesture: detailSlot(moriAssets.gesture, "Original gesture or empty-space action region with identifiable surrounding context"),
+  healthInformation: detailSlot(moriAssets.healthInformation, "Complete original 2 × 2 data group with local context"),
+  healthControls: detailSlot(moriAssets.healthControls, "Complete original 1 × 3 recording controls, visibly separate from the data-group crop"),
+  healthShipped: detailSlot(moriAssets.healthShipped, "Shipped data item and surrounding context at a confirmed recording entry point"),
+  healthForm: detailSlot(moriAssets.healthForm, "Complete reused form boundary and underlying context, supplied as a separate crop"),
+  companionOriginal: detailSlot(moriAssets.companionOriginal, "Original Heart Companion conversation and input region, matched to the Health Guardian crop"),
+  guardianOriginal: detailSlot(moriAssets.guardianOriginal, "Original Health Guardian conversation and input region, matched to the Heart Companion crop"),
+  companionShipped: detailSlot(moriAssets.companionShipped, "Shipped Heart Companion conversation and input region, matched to the Health Guardian crop"),
+  guardianShipped: detailSlot(moriAssets.guardianShipped, "Same-release Health Guardian conversation and input region, matched to the Heart Companion crop"),
+  input: { id: "MORI-MODES-03B-D", state: "Revised placeholder", status: "Shipped · Detail crop", description: "Same-release Health Guardian input crop retaining the complete placeholder and input boundary, including height and corner radius" },
+} satisfies Record<string, MoriAsset>;
