@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import type { Project } from "../types/project";
 
 interface ProjectNameListProps {
-  projects: Project[];
+  projects: readonly (Pick<Project, "slug" | "title"> & {
+    tags: readonly string[];
+  })[];
   activeProject: string | null;
   onActivate: (slug: string) => void;
   onDeactivate: () => void;
@@ -32,7 +34,7 @@ export function ProjectNameList({
             </span>
             <span className="project-name-list__content">
               <strong>{project.title}</strong>
-              <small>{project.tools.join(" · ")}</small>
+              <small>{project.tags.join(" · ")}</small>
             </span>
           </Link>
         </li>

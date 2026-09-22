@@ -5,6 +5,25 @@ import { projects } from "../data/projects";
 import type { Project } from "../types/project";
 import { ProjectNameList } from "./ProjectNameList";
 
+// Homepage preview copy and order are independent of the case-study data.
+const recentWork = [
+  {
+    slug: "ai-health-web-app-upgrade",
+    title: "AI-native wellbeing product",
+    tags: ["Product Design", "Live product", "Shipped"],
+  },
+  {
+    slug: "ngo-website-redesign",
+    title: "Nonprofit website redesign",
+    tags: ["Information architecture", "Solo design"],
+  },
+  {
+    slug: "restaurant-website-redesign",
+    title: "Restaurant experience redesign",
+    tags: ["UX research", "Team prototype"],
+  },
+] as const;
+
 const projectArtworkPaths: Record<string, string> = {
   "ngo-website-redesign": "/images/projects/ngo-hover.png",
   "ai-health-web-app-upgrade": "/images/projects/ai-health-hover.png",
@@ -80,7 +99,7 @@ export function ProjectShowcase() {
           onMouseLeave={clearActiveProject}
         >
           <ProjectNameList
-            projects={projects}
+            projects={recentWork}
             activeProject={activeProject}
             onActivate={setActiveProject}
             onDeactivate={clearActiveProject}
@@ -96,14 +115,14 @@ export function ProjectShowcase() {
         </div>
 
         <div className="project-editorial__mobile">
-          {projects.map((project, index) => (
+          {recentWork.map((project, index) => (
             <article className="project-mobile-entry" key={project.slug}>
               <Link to={`/projects/${project.slug}`}>
                 <div className="project-mobile-entry__heading">
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <div>
                     <h3>{project.title}</h3>
-                    <p>{project.tools.join(" · ")}</p>
+                    <p>{project.tags.join(" · ")}</p>
                   </div>
                 </div>
               </Link>
