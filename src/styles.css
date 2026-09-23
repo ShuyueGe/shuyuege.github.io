@@ -1282,10 +1282,10 @@ p {
 }
 
 .home-page .project-editorial .project-name-list__content strong {
-  max-width: 18ch;
+  max-width: 26ch;
   min-height: 0;
   font-family: "Avenir Next", "Manrope", "Segoe UI", sans-serif;
-  font-size: clamp(1.65rem, 3.1vw, 3.15rem);
+  font-size: clamp(1.4rem, 2.3vw, 2.3rem);
   font-weight: 500;
   letter-spacing: -0.055em;
   line-height: 1.02;
@@ -1326,7 +1326,7 @@ p {
 
 @media (max-width: 1050px) {
   .home-page .project-editorial .project-name-list__content strong {
-    font-size: clamp(1.45rem, 2.8vw, 2.35rem);
+    font-size: clamp(1.3rem, 2.3vw, 1.85rem);
   }
 }
 
@@ -1373,11 +1373,11 @@ p {
     letter-spacing: 0.08em;
   }
 
-  .project-mobile-entry__heading h3 {
-    max-width: 21ch;
+  .home-page .project-mobile-entry__heading h3 {
+    max-width: 24ch;
     margin-bottom: 0.65rem;
     font-family: "Avenir Next", "Manrope", "Segoe UI", sans-serif;
-    font-size: clamp(1.65rem, 6vw, 2.5rem);
+    font-size: clamp(1.4rem, 5.6vw, 2rem);
     font-weight: 520;
     letter-spacing: -0.05em;
     line-height: 1.06;

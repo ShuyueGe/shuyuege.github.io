@@ -9,18 +9,18 @@ import { ProjectNameList } from "./ProjectNameList";
 const recentWork = [
   {
     slug: "ai-health-web-app-upgrade",
-    title: "AI-native wellbeing product",
-    tags: ["Product Design", "Live product", "Shipped"],
+    title: "Designing predictability for an AI-native product",
+    tags: ["Live product", "3 shipped improvements"],
   },
   {
     slug: "ngo-website-redesign",
-    title: "Nonprofit website redesign",
-    tags: ["Information architecture", "Solo design"],
+    title: "Information architecture for a nonprofit",
+    tags: ["Solo design", "Visual system"],
   },
   {
     slug: "restaurant-website-redesign",
-    title: "Restaurant experience redesign",
-    tags: ["UX research", "Team prototype"],
+    title: "Research-led service experience",
+    tags: ["21 participants", "Team prototype"],
   },
 ] as const;
 
