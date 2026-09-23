@@ -21,11 +21,11 @@ const assets = {
   analysisNews2025: { file: "bookthing-analysis-news-2025.png", width: 1264, height: 2740 },
   analysisDonate2025: { file: "bookthing-analysis-donate-2025.png", width: 1152, height: 4096 },
   sitemap: { file: "bookthing-sitemap-clean-annotated.png", width: 1377, height: 462 },
-  donate: { file: "bookthing-final-donate-page.png", width: 1000, height: 1590 },
+  donate: { file: "bookthing-final-donate-page.png", width: 2560, height: 1960 },
   calendar: { file: "bookthing-final-calendar-page.png", width: 3840, height: 2496 },
   news: { file: "bookthing-final-news.png", width: 3840, height: 2496 },
-  wishlist: { file: "bookthing-final-wishlist.png", width: 1000, height: 1184 },
-  faq: { file: "bookthing-FAQ.png", width: 1000, height: 1254 },
+  wishlist: { file: "bookthing-final-wishlist.png", width: 2560, height: 1672 },
+  faq: { file: "bookthing-final-FAQ-page.png", width: 2560, height: 1672 },
   logo: { file: "bookthing-visual-system-support-logo.png", width: 727, height: 320 },
   typography: { file: "typography.png", width: 920, height: 978 },
   businessCard: { file: "bookthing-visual-system-support-business card.png", width: 462, height: 564 },
@@ -33,7 +33,7 @@ const assets = {
 type AssetName = keyof typeof assets;
 type Crop = [x: number, y: number, width: number, height: number];
 // Refresh same-name exports in browser caches without changing the source files.
-const assetRevisions: Partial<Record<AssetName, string>> = { donate: "c878d77c358b", originalNews: "a7c454cdefd0" };
+const assetRevisions: Partial<Record<AssetName, string>> = { donate: "7fec9a85f894", news: "165edb34d2e6", wishlist: "6242aeae8602", originalNews: "a7c454cdefd0" };
 function assetUrl(name: AssetName) {
   const revision = assetRevisions[name];
   return `${import.meta.env.BASE_URL}images/projects/bookthing/${assets[name].file}${revision ? `?v=${revision}` : ""}`;
@@ -185,18 +185,18 @@ export function BookThingPage() {
             <figure className="bt-map"><Asset name="sitemap" alt="Planning sitemap with Homepage and all six top-level branches" /><div className="bt-map__mobile"><Asset name="sitemap" crop={[65,120,395,315]} alt="Larger News and Events and Donate branches from the planning sitemap" /></div><figcaption>{copy[3].captions[0]}</figcaption></figure>
             <div className="bt-menus">
               <figure><Asset name="news" crop={[1250,120,600,405]} alt="News and Events dropdown: Calendar, Newsroom, and Social Media" /><figcaption>{copy[3].annotations[0]}</figcaption></figure>
-              <figure><Asset name="donate" crop={[350,85,235,160]} alt="Donate dropdown: Donation Rules, Donation schedule, and Wish List" /><figcaption>{copy[3].annotations[1]}</figcaption></figure>
+              <figure><Asset name="donate" crop={[1240,75,350,250]} alt="Donate dropdown: Donation Rules, Donation schedule, and Wish List" /><figcaption>{copy[3].annotations[1]}</figcaption></figure>
             </div>
           </section>
           <section className="bt-section bt-donate" data-copy-section="S05" aria-labelledby="bookthing-donate">
             <div className="bt-section-intro"><Heading index={4} id="bookthing-donate" /><p className="bt-prose">{copy[4].body[0]}</p></div>
             <div className="bt-comparison">
               <figure className="bt-comparison__before"><Asset name="analysisDonate2025" crop={[20,1420,735,1165]} alt="Continuous project-era Donate page excerpt: book rules lead into Money Donations" /><figcaption>{copy[4].captions[0]}</figcaption></figure>
-              <figure className="bt-comparison__after"><Asset name="donate" crop={[20,205,960,300]} alt="Concept donation headings, payment actions, and book-donation instructions in the first content row" /><figcaption>{copy[4].captions[1]}</figcaption></figure>
+              <figure className="bt-comparison__after"><Asset name="donate" crop={[220,295,2130,350]} alt="Concept donation headings, payment actions, and book-donation instructions in the first content row" /><figcaption>{copy[4].captions[1]}</figcaption></figure>
             </div>
             <div className="bt-donate__deep-dive">
               <div className="bt-donate__reasoning"><p className="bt-prose">{copy[4].body[1]}</p><p className="bt-prose">{copy[4].body[2]}</p><div className="bt-annotations">{copy[4].annotations.map(text=><p key={text}>{text}</p>)}</div></div>
-              <figure><Asset name="donate" crop={[20,205,960,1005]} alt="Donation concept detail with unequal money and book columns, residency cues, both payment options, and expanded book rules" /></figure>
+              <figure><Asset name="donate" crop={[220,295,2130,1260]} alt="Donation concept detail with unequal money and book columns, residency cues, both payment options, and expanded book rules" /></figure>
             </div>
             <figure className="bt-journey"><div className="bt-journey__steps">
               {([[278,289,182,49],[278,440,182,49],[269,622,213,49],[247,691,249,53],[264,766,213,49],[244,837,254,52]] as Crop[]).map((crop,index)=><Asset key={index} name="journey" crop={crop} alt={['Open website','Click donate in menu','Click money amount and donate button','Redirect to payment page','Insert payment information','Output donation receipt'][index]} expand={false} />)}
@@ -212,7 +212,7 @@ export function BookThingPage() {
           <section className="bt-section bt-final" data-copy-section="S07" aria-labelledby="bookthing-final">
             <div className="bt-section-intro"><Heading index={6} id="bookthing-final" /><p className="bt-prose">{copy[6].body[0]}</p></div>
             <figure className="bt-gallery"><div className="bt-gallery__composition"><Asset name="donate" alt="Complete Donate desktop concept" /><div className="bt-gallery__planning"><PendingVisual label="Calendar · corrected full-page export pending" /><PendingVisual label="Newsroom · matching header export pending" /></div></div><figcaption>{copy[6].captions[0]}</figcaption></figure>
-            <div className="bt-support"><p className="bt-prose">{copy[6].body[1]}</p><figure><div className="bt-support__strip"><Asset name="wishlist" crop={[30,435,920,395]} alt="Wishlist categories for volunteer support, gift cards, cleaning supplies, and office tools" /><Asset name="logo" alt="Book-as-door identity artwork" /><Asset name="donate" crop={[32,422,380,50]} alt="Blue PayPal donation action" /><div className="bt-support__disclosures"><Asset name="donate" crop={[458,440,520,65]} alt="Books We Accept disclosure heading" /><Asset name="faq" crop={[40,365,450,68]} alt="Are the books free disclosure heading from the FAQ concept" /></div></div><figcaption>{copy[6].captions[1]}</figcaption></figure></div>
+            <div className="bt-support"><p className="bt-prose">{copy[6].body[1]}</p><figure><div className="bt-support__strip"><Asset name="wishlist" crop={[230,620,1990,620]} alt="Wishlist categories for volunteer support, gift cards, cleaning supplies, and office tools" /><Asset name="logo" alt="Book-as-door identity artwork" /><Asset name="donate" crop={[430,530,450,65]} alt="Blue PayPal donation action" /><div className="bt-support__disclosures"><Asset name="donate" crop={[1230,570,1110,65]} alt="Books We Accept disclosure heading" /><Asset name="faq" crop={[220,540,1020,90]} alt="Are the books free disclosure heading from the FAQ concept" /></div></div><figcaption>{copy[6].captions[1]}</figcaption></figure></div>
           </section>
           <section className="bt-section bt-outcome" data-copy-section="S08" aria-labelledby="bookthing-outcome"><Heading index={7} id="bookthing-outcome" /><div className="bt-outcome__columns"><p>{copy[7].body[0]}</p><p>{copy[7].body[1]}</p></div><div className="bt-outcome__reflection"><p>{copy[7].body[2]}</p><p className="bt-key">{copy[7].captions[0]}</p></div></section>
         </div>
