@@ -28,6 +28,7 @@ const assets = {
   faq: { file: "bookthing-final-FAQ-page.png", width: 2560, height: 1672 },
   logo: { file: "bookthing-visual-system-support-logo.png", width: 727, height: 320 },
   typography: { file: "typography.png", width: 920, height: 978 },
+  palette: { file: "bookthing-visual-system-support-color platte.png", width: 950, height: 934 },
   businessCard: { file: "bookthing-visual-system-support-business card.png", width: 462, height: 564 },
 };
 type AssetName = keyof typeof assets;
@@ -76,18 +77,27 @@ function Asset({ name, alt, crop, className = "", eager = false, expand = true, 
 }
 
 
-function Heading({ index, id }: { index: number; id: string }) {
-  return <header className="bt-heading"><p className="bt-eyebrow">{copy[index].eyebrow}</p><h2 id={id}>{copy[index].title}</h2></header>;
+function Heading({ section, id }: { section: { eyebrow: string; title: string }; id: string }) {
+  return <header className="bt-heading">
+    <p className="bt-eyebrow">{section.eyebrow}</p>
+    <h2 id={id}>{section.title}</h2>
+  </header>;
 }
 
-function Callout({ number, children }: { number: number; children: ReactNode }) {
-  return <p className="bt-callout"><span className="bt-number">{["①", "②", "③"][number - 1]}</span><span>{children}</span></p>;
+function SourceGroup({ name, alt, children }: { name: AssetName; alt: string; children: ReactNode }) {
+  return <a className="bt-image-link" href={assetUrl(name)} target="_blank" rel="noopener noreferrer"
+    aria-label={`View full-size image: ${alt} (new tab)`}>
+    <div className="bt-source-group">{children}</div>
+    <span className="bt-image-meta"><span className="bt-image-hint" aria-hidden="true">Click to view full size <span>↗</span></span></span>
+  </a>;
 }
 
-// The handoff identifies conflicting dates and inconsistent header exports.
-// Keep source files untouched; these full-image positions await checked exports.
-function PendingVisual({ label, ratio = "3840 / 2496" }: { label: string; ratio?: string }) {
-  return <div className="bt-pending" role="img" aria-label={label} style={{ aspectRatio: ratio }} />;
+function Finding({ index }: { index: 0 | 1 | 2 }) {
+  const finding = copy.problem.findings[index];
+  return <div className="bt-evidence__copy">
+    <h3><span className="bt-evidence__index">{finding.title.slice(0, 5)}</span>{finding.title.slice(5)}</h3>
+    <p>{finding.body}</p>
+  </div>;
 }
 
 export function BookThingPage() {
@@ -96,125 +106,150 @@ export function BookThingPage() {
     <article className="bt-case page-shell" aria-labelledby="bookthing-title">
       <div className="bt-back"><Link className="back-link" to="/?section=projects"><span aria-hidden="true">←</span> Back to projects</Link></div>
       <section className="bt-hero" data-copy-section="S01" aria-labelledby="bookthing-title">
-        <header className="bt-hero__statement"><p className="bt-eyebrow">{copy[0].eyebrow}</p><h1 id="bookthing-title">{copy[0].title}</h1><p className="bt-deck">{copy[0].body[0]}</p><p className="bt-hero__meta">{copy[0].captions[0]}</p></header>
-        <figure className="bt-hero__visual"><PendingVisual label="Calendar and Newsroom · corrected hero export pending" ratio="2.6 / 1" /><figcaption>{copy[0].captions[1]}</figcaption></figure>
+        <header className="bt-hero__statement">
+          <p className="bt-eyebrow">{copy.hero.eyebrow}</p>
+          <h1 id="bookthing-title">{copy.hero.title}</h1>
+          <p className="bt-deck">{copy.hero.body[0]}</p>
+          <div className="bt-metadata">{copy.hero.metadata.map(text => <p key={text}><strong>{text.slice(0, text.indexOf(":") + 1)}</strong>{" "}{text.slice(text.indexOf(":") + 2)}</p>)}</div>
+        </header>
+        <figure className="bt-hero__visual">
+          <div className="bt-hero__screens">
+            <Asset name="calendar" crop={[560, 380, 2680, 1270]} alt="Calendar concept showing the December grid beside opening and event details" eager />
+            <Asset name="news" crop={[0, 0, 3840, 1950]} alt="Newsroom concept with its captured menu, archive, and announcements" eager />
+          </div>
+          <figcaption>{copy.hero.caption}</figcaption>
+        </figure>
       </section>
       <div className="case-study-layout">
-        <CaseStudyNav sections={[{id:"bookthing-problem",label:"Site analysis"},{id:"bookthing-ia",label:"Structure"},{id:"bookthing-donate",label:"Donation choices"},{id:"bookthing-calendar",label:"Opening dates"},{id:"bookthing-outcome",label:"Outcome"}]} />
+        <CaseStudyNav sections={[
+          { id: "bookthing-problem", label: "Site analysis" },
+          { id: "bookthing-ia", label: "Structure" },
+          { id: "bookthing-donate", label: "Donation choices" },
+          { id: "bookthing-calendar", label: "Opening dates" },
+          { id: "bookthing-outcome", label: "Outcome" },
+        ]} />
         <div className="case-study-layout__content">
-          <section className="bt-section bt-context" data-copy-section="S02" aria-labelledby="bookthing-context">
-            <div className="bt-context__reading"><Heading index={1} id="bookthing-context" />{copy[1].body.map(text=><p className="bt-prose" key={text}>{text}</p>)}</div>
-            <div className="bt-metadata">{copy[1].captions.map(text=><p key={text}><strong>{text.slice(0,text.indexOf(":")+1)}</strong>{text.slice(text.indexOf(":" )+1)}</p>)}</div>
-          </section>
-          <section className="bt-section bt-problem" data-copy-section="S03" aria-labelledby="bookthing-problem">
-            <div className="bt-section-intro"><Heading index={2} id="bookthing-problem" /><p className="bt-prose">{copy[2].body[0]}</p></div>
-        <div className="bt-evidence">
-          <div className="bt-evidence__featured">
-            <div className="bt-evidence__copy">
-              <h3><span className="bt-evidence__index">01</span>Practical information had overlapping destinations</h3>
-              <p>Opening dates appeared through News, while Events remained a separate navigation destination and book-donation schedules lived on Donate. The structure gave announcements, events, and operational information overlapping roles instead of a clear place for each type of content.</p>
+          <section className="bt-section bt-problem" data-copy-section="S02" aria-labelledby="bookthing-problem">
+            <div className="bt-section-intro"><Heading section={copy.problem} id="bookthing-problem" /></div>
+            <div className="bt-evidence__featured">
+              <Finding index={0} />
+              <div className="bt-evidence__destinations">
+                <Asset name="analysisNews2025" crop={[480, 110, 705, 72]} alt="Original 2025 navigation with separate News and Events destinations and Donate" />
+                <div className="bt-evidence__paired">
+                  <SourceGroup name="analysisNews2025" alt="October opening and Booktoberfest excerpts from the original 2025 News page">
+                    <Asset name="analysisNews2025" crop={[390, 550, 405, 150]} alt="October 2025 opening announcement with the October 12 date" expand={false} />
+                    <Asset name="analysisNews2025" crop={[390, 805, 405, 155]} alt="Booktoberfest 2025 announcement with the October 30 event date" expand={false} />
+                  </SourceGroup>
+                  <SourceGroup name="analysisDonate2025" alt="Original Donations title and separate schedule excerpt">
+                    <div className="bt-evidence__donate-title"><Asset name="analysisDonate2025" crop={[390, 285, 390, 115]} alt="Original Donations page title" expand={false} /></div>
+                    <Asset name="analysisDonate2025" crop={[20, 850, 735, 405]} alt="Original book-donation dates, hours, and first rules" expand={false} />
+                  </SourceGroup>
+                </div>
+              </div>
             </div>
-            <figure className="bt-evidence__destinations">
-              <div className="bt-evidence__navigation">
-                <p className="bt-evidence__source-label">News · Original navigation</p>
-                <Asset name="analysisNews2025" crop={[480, 110, 705, 72]} alt="2025 News page navigation with separate News and Events destinations and the original Donate action" />
+            <div className="bt-evidence__supporting">
+              <div>
+                <Finding index={1} />
+                <figure><Asset name="analysisDonate2025" crop={[20, 2070, 730, 515]} alt="Continuous original excerpt from the final book-donation rules into Money Donations and PayPal" /></figure>
               </div>
-              <div className="bt-evidence__paired">
-                <div>
-                  <p className="bt-evidence__source-label">News · Announcement excerpts</p>
-                  <a className="bt-image-link" href={assetUrl("analysisNews2025")} target="_blank" rel="noopener noreferrer" aria-label="View full-size image: October opening and Booktoberfest announcements in the 2025 News page (new tab)">
-                    <div className="bt-evidence__news-excerpts">
-                      <Asset name="analysisNews2025" crop={[390, 550, 405, 150]} alt="October 2025 opening announcement with the October 12 date" expand={false} />
-                      <Asset name="analysisNews2025" crop={[390, 805, 405, 155]} alt="Booktoberfest 2025 announcement with the October 30 event date" expand={false} />
-                    </div>
-                    <span className="bt-image-meta"><span className="bt-image-hint" aria-hidden="true">Click to view full size <span>↗</span></span></span>
-                  </a>
-                </div>
-                <div>
-                  <p className="bt-evidence__source-label">Donate</p>
-                  <a className="bt-image-link bt-evidence__donate-source" href={assetUrl("analysisDonate2025")} target="_blank" rel="noopener noreferrer" aria-label="View full-size image: 2025 Donate page title, book-donation dates, and rules (new tab)">
-                    <div className="bt-evidence__donate-title"><Asset name="analysisDonate2025" crop={[390, 285, 390, 115]} alt="Original Donations page title: how to donate books and/or money" expand={false} /></div>
-                    <span className="bt-evidence__excerpt-label">Book-donation dates &amp; rules · excerpt</span>
-                    <Asset name="analysisDonate2025" crop={[20, 850, 735, 405]} alt="2025 book-donation dates and donation hours, followed by the first book-donation rules" expand={false} />
-                    <span className="bt-image-meta"><span className="bt-image-hint" aria-hidden="true">Click to view full size <span>↗</span></span></span>
-                  </a>
-                </div>
+              <div>
+                <Finding index={2} />
+                <figure><SourceGroup name="analysisNews2025" alt="August, July, and June 2025 opening summaries in their original order">
+                  <Asset name="analysisNews2025" crop={[390, 1305, 405, 155]} alt="August 2025 announcement with the August 10 opening date" expand={false} />
+                  <Asset name="analysisNews2025" crop={[390, 1555, 405, 155]} alt="July 2025 announcement with the July 12 opening date" expand={false} />
+                  <Asset name="analysisNews2025" crop={[390, 1805, 405, 190]} alt="June 2025 double opening, including June 15 and June 29" expand={false} />
+                </SourceGroup></figure>
               </div>
-              <figcaption><Callout number={1}>News carries opening and event announcements; book-donation schedules sit on Donate.</Callout></figcaption>
+            </div>
+          </section>
+
+          <section className="bt-section bt-ia" data-copy-section="S03" aria-labelledby="bookthing-ia">
+            <div className="bt-section-intro">
+              <Heading section={copy.structure} id="bookthing-ia" />
+              <p className="bt-prose">{copy.structure.body[0]}</p>
+            </div>
+            <figure className="bt-map">
+              <Asset name="sitemap" alt="Revised planning sitemap with Homepage and six top-level branches" />
+              <div className="bt-map__mobile"><Asset name="sitemap" crop={[0, 120, 460, 330]} alt="Larger News and Events and Donate branches with their complete planning notes" /></div>
             </figure>
-          </div>
-          <div className="bt-evidence__supporting">
-            <div className="bt-evidence__donate">
-              <div className="bt-evidence__copy">
-                <h3><span className="bt-evidence__index">02</span>Financial giving followed lengthy book-donation rules</h3>
-                <p>The Donate page presented book-donation dates, limits, and acceptance rules before the Money Donations section. Reaching the financial-giving options meant scrolling past detailed instructions for a different type of contribution.</p>
-              </div>
-              <figure>
-                <a className="bt-image-link" href={assetUrl("analysisDonate2025")} target="_blank" rel="noopener noreferrer" aria-label="View full-size image: 2025 Donate page showing book-donation rules before Money Donations (new tab)">
-                  <Asset name="analysisDonate2025" crop={[20, 725, 735, 595]} alt="Book-donation schedule and the beginning of donation rules, including the seven-box limit" expand={false} />
-                  <span className="bt-evidence__omission">Additional book-donation rules omitted</span>
-                  <Asset name="analysisDonate2025" crop={[20, 2070, 730, 515]} alt="Continuous original Donate excerpt from the final book-donation rules to Money Donations and the PayPal action" expand={false} />
-                  <span className="bt-image-meta"><span className="bt-image-hint" aria-hidden="true">Click to view full size <span>↗</span></span></span>
-                </a>
-                <figcaption><Callout number={2}>Book-donation dates and rules precede Money Donations.</Callout></figcaption>
-              </figure>
-            </div>
-            <div className="bt-evidence__dates">
-              <div className="bt-evidence__copy">
-                <h3><span className="bt-evidence__index">03</span>Limited openings made the exact date essential</h3>
-                <p>Public openings were generally monthly, typically alternating between Saturdays and Sundays, with occasional extra openings. The homepage explained the general frequency, but specific dates were presented through individual News announcements, making the relevant update necessary for planning a visit.</p>
-              </div>
-              <figure>
-                <a className="bt-image-link" href={assetUrl("analysisNews2025")} target="_blank" rel="noopener noreferrer" aria-label="View full-size image: August, July, and June 2025 News summaries in original order, including the June double opening (new tab)">
-                  <span className="bt-evidence__excerpt-label bt-evidence__excerpt-label--first">News · Opening-announcement excerpts</span>
-                  <div className="bt-evidence__news-excerpts">
-                    <Asset name="analysisNews2025" crop={[390, 1305, 405, 155]} alt="August 2025 News summary with the August 10 opening date" expand={false} />
-                    <Asset name="analysisNews2025" crop={[390, 1555, 405, 155]} alt="July 2025 News summary with the July 12 opening date" expand={false} />
-                    <Asset name="analysisNews2025" crop={[390, 1805, 405, 190]} alt="June 2025 double-opening summary with both June 15 and June 29" expand={false} />
-                  </div>
-                  <span className="bt-image-meta"><span className="bt-image-hint" aria-hidden="true">Click to view full size <span>↗</span></span></span>
-                </a>
-                <figcaption><Callout number={3}>Specific opening dates appear in individual News summaries, including extra openings.</Callout></figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-          </section>
-          <section className="bt-section bt-ia" data-copy-section="S04" aria-labelledby="bookthing-ia">
-            <div className="bt-section-intro"><Heading index={3} id="bookthing-ia" />{copy[3].body.map(text=><p className="bt-prose" key={text}>{text}</p>)}</div>
-            <figure className="bt-map"><Asset name="sitemap" alt="Planning sitemap with Homepage and all six top-level branches" /><div className="bt-map__mobile"><Asset name="sitemap" crop={[65,120,395,315]} alt="Larger News and Events and Donate branches from the planning sitemap" /></div><figcaption>{copy[3].captions[0]}</figcaption></figure>
             <div className="bt-menus">
-              <figure><Asset name="news" crop={[1250,120,600,405]} alt="News and Events dropdown: Calendar, Newsroom, and Social Media" /><figcaption>{copy[3].annotations[0]}</figcaption></figure>
-              <figure><Asset name="donate" crop={[1240,75,350,250]} alt="Donate dropdown: Donation Rules, Donation schedule, and Wish List" /><figcaption>{copy[3].annotations[1]}</figcaption></figure>
+              <figure><Asset name="news" crop={[1298, 161, 462, 346]} alt="News and Events menu showing Calendar, Newsroom, and Social Media" /></figure>
+              <figure><SourceGroup name="donate" alt="Donate trigger and open menu showing Donation Rules, Donation schedule, and Wish List">
+                <div className="bt-menu-trigger"><Asset name="donate" crop={[1257, 84, 226, 84]} alt="Donate navigation trigger" expand={false} /></div>
+                <Asset name="donate" crop={[1257, 168, 322, 151]} alt="Complete donation menu: Donation Rules, Donation schedule, and Wish List" expand={false} />
+              </SourceGroup></figure>
             </div>
           </section>
-          <section className="bt-section bt-donate" data-copy-section="S05" aria-labelledby="bookthing-donate">
-            <div className="bt-section-intro"><Heading index={4} id="bookthing-donate" /><p className="bt-prose">{copy[4].body[0]}</p></div>
+
+          <section className="bt-section bt-donate" data-copy-section="S04" aria-labelledby="bookthing-donate">
+            <div className="bt-section-intro"><p className="bt-decision-lead" id="bookthing-donate">{copy.donate.body[0]}</p></div>
             <div className="bt-comparison">
-              <figure className="bt-comparison__before"><Asset name="analysisDonate2025" crop={[20,1420,735,1165]} alt="Continuous project-era Donate page excerpt: book rules lead into Money Donations" /><figcaption>{copy[4].captions[0]}</figcaption></figure>
-              <figure className="bt-comparison__after"><Asset name="donate" crop={[220,295,2130,350]} alt="Concept donation headings, payment actions, and book-donation instructions in the first content row" /><figcaption>{copy[4].captions[1]}</figcaption></figure>
+              <figure><Asset name="analysisDonate2025" crop={[20, 2070, 730, 515]} alt="Original Donate excerpt: book-donation rules precede Money Donations" /></figure>
+              <figure className="bt-comparison__after"><Asset name="donate" crop={[0, 0, 2560, 1625]} alt="Redesigned donation content with complete navigation, both donation paths, and book guidance" /></figure>
             </div>
-            <div className="bt-donate__deep-dive">
-              <div className="bt-donate__reasoning"><p className="bt-prose">{copy[4].body[1]}</p><p className="bt-prose">{copy[4].body[2]}</p><div className="bt-annotations">{copy[4].annotations.map(text=><p key={text}>{text}</p>)}</div></div>
-              <figure><Asset name="donate" crop={[220,295,2130,1260]} alt="Donation concept detail with unequal money and book columns, residency cues, both payment options, and expanded book rules" /></figure>
+            <div className="bt-donate__details">
+              <div>
+                <p className="bt-prose">{copy.donate.body[1]}</p>
+                <figure><Asset name="donate" crop={[220, 295, 950, 865]} alt="Money-donation heading, complete location guidance, PayPal action, and Donorbox form" /></figure>
+              </div>
+              <div>
+                <p className="bt-prose">{copy.donate.body[2]}</p>
+                <figure><Asset name="donate" crop={[1225, 395, 1130, 1145]} alt="Book-donation introduction, complete disclosure headings, expanded rules, and donation-hours guidance" /></figure>
+              </div>
             </div>
-            <figure className="bt-journey"><div className="bt-journey__steps">
-              {([[278,289,182,49],[278,440,182,49],[269,622,213,49],[247,691,249,53],[264,766,213,49],[244,837,254,52]] as Crop[]).map((crop,index)=><Asset key={index} name="journey" crop={crop} alt={['Open website','Click donate in menu','Click money amount and donate button','Redirect to payment page','Insert payment information','Output donation receipt'][index]} expand={false} />)}
-            </div><figcaption>{copy[4].captions[2]}</figcaption></figure>
           </section>
-          <section className="bt-section bt-calendar" data-copy-section="S06" aria-labelledby="bookthing-calendar">
-            <div className="bt-section-intro"><Heading index={5} id="bookthing-calendar" /><p className="bt-prose">{copy[5].body[0]}</p></div>
+
+          <section className="bt-section bt-calendar" data-copy-section="S05" aria-labelledby="bookthing-calendar">
+            <div className="bt-section-intro"><p className="bt-decision-lead" id="bookthing-calendar">{copy.calendar.body[0]}</p></div>
             <div className="bt-calendar__layout">
-              <figure className="bt-calendar__visual"><PendingVisual label="Calendar · corrected schedule export pending" /><Asset name="calendar" crop={[1790,682,1440,404]} alt="December opening detail with giveaway hours of 9am–5pm and donation hours of 9am–2pm" /><figcaption>{copy[5].captions[0]}</figcaption><div className="bt-annotations">{copy[5].annotations.map(text=><p key={text}>{text}</p>)}</div></figure>
-              <div className="bt-calendar__aside"><p className="bt-prose">{copy[5].body[1]}</p><figure className="bt-news-detail"><div className="bt-news-detail__crops"><Asset name="news" crop={[530,730,690,890]} alt="Newsroom archive with year groups and archived announcement titles" /><Asset name="news" crop={[1570,735,1680,315]} alt="Year-end Update announcement excerpt" /></div><figcaption>{copy[5].captions[1]}</figcaption></figure></div>
+              <p className="bt-prose">{copy.calendar.body[1]}</p>
+              <div className="bt-calendar__visual">
+                <Asset name="calendar" crop={[560, 380, 2680, 1270]} alt="Calendar title, filters, month grid, highlighted dates, and schedule panels" />
+                <div className="bt-calendar__mobile-grid"><Asset name="calendar" crop={[650, 650, 870, 890]} alt="December date grid with the star and highlighted December 14 and 20 dates" /></div>
+                <Asset name="calendar" crop={[1790, 682, 1440, 404]} alt="December 14 opening: giveaway hours 9am–5pm and book-donation hours 9am–2pm" />
+              </div>
             </div>
           </section>
-          <section className="bt-section bt-final" data-copy-section="S07" aria-labelledby="bookthing-final">
-            <div className="bt-section-intro"><Heading index={6} id="bookthing-final" /><p className="bt-prose">{copy[6].body[0]}</p></div>
-            <figure className="bt-gallery"><div className="bt-gallery__composition"><Asset name="donate" alt="Complete Donate desktop concept" /><div className="bt-gallery__planning"><PendingVisual label="Calendar · corrected full-page export pending" /><PendingVisual label="Newsroom · matching header export pending" /></div></div><figcaption>{copy[6].captions[0]}</figcaption></figure>
-            <div className="bt-support"><p className="bt-prose">{copy[6].body[1]}</p><figure><div className="bt-support__strip"><Asset name="wishlist" crop={[230,620,1990,620]} alt="Wishlist categories for volunteer support, gift cards, cleaning supplies, and office tools" /><Asset name="logo" alt="Book-as-door identity artwork" /><Asset name="donate" crop={[430,530,450,65]} alt="Blue PayPal donation action" /><div className="bt-support__disclosures"><Asset name="donate" crop={[1230,570,1110,65]} alt="Books We Accept disclosure heading" /><Asset name="faq" crop={[220,540,1020,90]} alt="Are the books free disclosure heading from the FAQ concept" /></div></div><figcaption>{copy[6].captions[1]}</figcaption></figure></div>
+
+          <section className="bt-section bt-final" data-copy-section="S06" aria-labelledby="bookthing-final">
+            <div className="bt-section-intro"><Heading section={copy.final} id="bookthing-final" /><p className="bt-prose">{copy.final.body[0]}</p></div>
+            <div className="bt-gallery">
+              <figure className="bt-gallery__lead"><Asset name="donate" alt="Complete Donate desktop concept" /></figure>
+              <div className="bt-gallery__pair">
+                <figure><Asset name="calendar" alt="Complete Calendar desktop concept" /></figure>
+                <figure><Asset name="news" alt="Complete Newsroom desktop concept" /></figure>
+              </div>
+              <div className="bt-gallery__pair">
+                <figure><Asset name="wishlist" alt="Complete Wishlist desktop concept" /></figure>
+                <figure><Asset name="faq" alt="Complete FAQ desktop concept" /></figure>
+              </div>
+            </div>
           </section>
-          <section className="bt-section bt-outcome" data-copy-section="S08" aria-labelledby="bookthing-outcome"><Heading index={7} id="bookthing-outcome" /><div className="bt-outcome__columns"><p>{copy[7].body[0]}</p><p>{copy[7].body[1]}</p></div><div className="bt-outcome__reflection"><p>{copy[7].body[2]}</p><p className="bt-key">{copy[7].captions[0]}</p></div></section>
+
+          <section className="bt-section bt-identity" data-copy-section="S07" aria-labelledby="bookthing-identity">
+            <div className="bt-section-intro"><Heading section={copy.identity} id="bookthing-identity" /><p className="bt-prose">{copy.identity.body[0]}</p></div>
+            <div className="bt-identity__foundations">
+              <figure className="bt-identity__type"><Asset name="typography" alt="Type specimen: NTR for navigation, Arima Madurai for headings, and Archivo Narrow for body copy" /></figure>
+              <figure className="bt-identity__palette">
+                <div className="bt-identity__palette-wide"><Asset name="palette" crop={[15, 15, 895, 160]} alt="Monochromatic blue study with five swatches and the original printed RGB and HEX labels" /></div>
+                <div className="bt-identity__palette-mobile">
+                  <SourceGroup name="palette" alt="Blue study shown in two source excerpts, with the full color study available">
+                    <Asset name="palette" crop={[15, 15, 530, 160]} alt="Monochromatic study heading and the first three blue swatches" expand={false} />
+                    <div className="bt-identity__palette-tail"><Asset name="palette" crop={[558, 65, 337, 110]} alt="The remaining two blue swatches and their original printed values" expand={false} /></div>
+                  </SourceGroup>
+                </div>
+              </figure>
+            </div>
+            <div className="bt-identity__applications">
+              <figure className="bt-identity__logo"><Asset name="logo" alt="Complete BookThing book-as-door mark, wordmark, and tagline" /></figure>
+              <figure className="bt-identity__card"><Asset name="businessCard" alt="Both sides of the BookThing concept business card" /></figure>
+            </div>
+          </section>
+
+          <section className="bt-section bt-outcome" data-copy-section="S08" aria-labelledby="bookthing-outcome">
+            <Heading section={copy.outcome} id="bookthing-outcome" />
+            <div className="bt-outcome__reading">{copy.outcome.body.map(text => <p className="bt-prose" key={text}>{text}</p>)}</div>
+          </section>
         </div>
       </div>
     </article>
