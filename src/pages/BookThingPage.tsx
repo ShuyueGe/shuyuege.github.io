@@ -20,7 +20,7 @@ const assets = {
   // compare-Donate rules.pdf, respectively; page 1, image xref 8 in each (2025).
   analysisNews2025: { file: "bookthing-analysis-news-2025.png", width: 1264, height: 2740 },
   analysisDonate2025: { file: "bookthing-analysis-donate-2025.png", width: 1152, height: 4096 },
-  sitemap: { file: "bookthing-sitemap-clean-annotated.png", width: 1377, height: 462 },
+  sitemap: { file: "bookthing-original-sitemap.png", width: 2172, height: 724 },
   donate: { file: "bookthing-final-donate-page.png", width: 2560, height: 1960 },
   calendar: { file: "bookthing-final-calendar-page.png", width: 3840, height: 2496 },
   news: { file: "bookthing-final-news.png", width: 3840, height: 2496 },
@@ -148,7 +148,7 @@ export function BookThingPage() {
             </div>
             <figure className="bt-map">
               <Asset name="sitemap" alt="Revised planning sitemap with Homepage and six top-level branches" />
-              <div className="bt-map__mobile"><Asset name="sitemap" crop={[0, 120, 460, 330]} alt="Larger News and Events and Donate branches with their complete planning notes" /></div>
+              <div className="bt-map__mobile"><Asset name="sitemap" crop={[50, 190, 675, 495]} alt="Larger News and Events and Donate branches from the sitemap" /></div>
             </figure>
             <div className="bt-menus">
               <figure><Asset name="news" crop={[1298, 161, 462, 346]} alt="News and Events menu showing Calendar, Newsroom, and Social Media" /></figure>
