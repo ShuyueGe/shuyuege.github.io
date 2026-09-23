@@ -113,10 +113,7 @@ export function BookThingPage() {
           <div className="bt-metadata">{copy.hero.metadata.map(text => <p key={text}><strong>{text.slice(0, text.indexOf(":") + 1)}</strong>{" "}{text.slice(text.indexOf(":") + 2)}</p>)}</div>
         </header>
         <figure className="bt-hero__visual">
-          <div className="bt-hero__screens">
-            <Asset name="calendar" crop={[560, 380, 2680, 1270]} alt="Calendar concept showing the December grid beside opening and event details" eager />
-            <Asset name="news" crop={[0, 0, 3840, 1950]} alt="Newsroom concept with its captured menu, archive, and announcements" eager />
-          </div>
+          <Asset name="hero" alt={copy.hero.caption} eager />
           <figcaption>{copy.hero.caption}</figcaption>
         </figure>
       </section>
@@ -133,32 +130,13 @@ export function BookThingPage() {
             <div className="bt-section-intro"><Heading section={copy.problem} id="bookthing-problem" /></div>
             <div className="bt-evidence__featured">
               <Finding index={0} />
-              <div className="bt-evidence__destinations">
-                <Asset name="analysisNews2025" crop={[480, 110, 705, 72]} alt="Original 2025 navigation with separate News and Events destinations and Donate" />
-                <div className="bt-evidence__paired">
-                  <SourceGroup name="analysisNews2025" alt="October opening and Booktoberfest excerpts from the original 2025 News page">
-                    <Asset name="analysisNews2025" crop={[390, 550, 405, 150]} alt="October 2025 opening announcement with the October 12 date" expand={false} />
-                    <Asset name="analysisNews2025" crop={[390, 805, 405, 155]} alt="Booktoberfest 2025 announcement with the October 30 event date" expand={false} />
-                  </SourceGroup>
-                  <SourceGroup name="analysisDonate2025" alt="Original Donations title and separate schedule excerpt">
-                    <div className="bt-evidence__donate-title"><Asset name="analysisDonate2025" crop={[390, 285, 390, 115]} alt="Original Donations page title" expand={false} /></div>
-                    <Asset name="analysisDonate2025" crop={[20, 850, 735, 405]} alt="Original book-donation dates, hours, and first rules" expand={false} />
-                  </SourceGroup>
-                </div>
-              </div>
             </div>
             <div className="bt-evidence__supporting">
               <div>
                 <Finding index={1} />
-                <figure><Asset name="analysisDonate2025" crop={[20, 2070, 730, 515]} alt="Continuous original excerpt from the final book-donation rules into Money Donations and PayPal" /></figure>
               </div>
               <div>
                 <Finding index={2} />
-                <figure><SourceGroup name="analysisNews2025" alt="August, July, and June 2025 opening summaries in their original order">
-                  <Asset name="analysisNews2025" crop={[390, 1305, 405, 155]} alt="August 2025 announcement with the August 10 opening date" expand={false} />
-                  <Asset name="analysisNews2025" crop={[390, 1555, 405, 155]} alt="July 2025 announcement with the July 12 opening date" expand={false} />
-                  <Asset name="analysisNews2025" crop={[390, 1805, 405, 190]} alt="June 2025 double opening, including June 15 and June 29" expand={false} />
-                </SourceGroup></figure>
               </div>
             </div>
           </section>
