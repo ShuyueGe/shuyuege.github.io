@@ -20,7 +20,9 @@ const assets = {
   // compare-Donate rules.pdf, respectively; page 1, image xref 8 in each (2025).
   analysisNews2025: { file: "bookthing-analysis-news-2025.png", width: 1264, height: 2740 },
   analysisDonate2025: { file: "bookthing-analysis-donate-2025.png", width: 1152, height: 4096 },
-  sitemap: { file: "bookthing-original-sitemap.png", width: 2172, height: 724 },
+  originalSitemap: { file: "bookthing-ia-original-sitemap.png", width: 4320, height: 1382 },
+  taskPaths: { file: "bookthing-ia-task-paths.png", width: 3126, height: 1408 },
+  revisedSitemap: { file: "bookthing-ia-revised-sitemap.png", width: 3628, height: 1408 },
   donate: { file: "bookthing-final-donate-page.png", width: 2560, height: 1960 },
   calendar: { file: "bookthing-final-calendar-page.png", width: 3840, height: 2496 },
   news: { file: "bookthing-final-news.png", width: 3840, height: 2496 },
@@ -84,16 +86,7 @@ function Heading({ section, id }: { section: { eyebrow: string; title: string };
   </header>;
 }
 
-function SourceGroup({ name, alt, children }: { name: AssetName; alt: string; children: ReactNode }) {
-  return <a className="bt-image-link" href={assetUrl(name)} target="_blank" rel="noopener noreferrer"
-    aria-label={`View full-size image: ${alt} (new tab)`}>
-    <div className="bt-source-group">{children}</div>
-    <span className="bt-image-meta"><span className="bt-image-hint" aria-hidden="true">Click to view full size <span>↗</span></span></span>
-  </a>;
-}
-
-function Finding({ index }: { index: 0 | 1 | 2 }) {
-  const finding = copy.problem.findings[index];
+function Finding({ finding }: { finding: typeof copy.problem.findings[number] }) {
   return <div className="bt-evidence__copy">
     <h3><span className="bt-evidence__index">{finding.title.slice(0, 5)}</span>{finding.title.slice(5)}</h3>
     <p>{finding.body}</p>
@@ -118,58 +111,53 @@ export function BookThingPage() {
         </figure>
       </section>
       <div className="case-study-layout">
-        <CaseStudyNav sections={[
-          { id: "bookthing-problem", label: "Site analysis" },
-          { id: "bookthing-ia", label: "Structure" },
-          { id: "bookthing-donate", label: "Donation choices" },
-          { id: "bookthing-calendar", label: "Opening dates" },
-          { id: "bookthing-outcome", label: "Outcome" },
-        ]} />
+        <CaseStudyNav sections={[...copy.navigation]} />
         <div className="case-study-layout__content">
           <section className="bt-section bt-problem" data-copy-section="S02" aria-labelledby="bookthing-problem">
             <div className="bt-section-intro"><Heading section={copy.problem} id="bookthing-problem" /></div>
-            <div className="bt-evidence__featured">
-              <Finding index={0} />
-            </div>
-            <div className="bt-evidence__supporting">
-              <div>
-                <Finding index={1} />
-              </div>
-              <div>
-                <Finding index={2} />
-              </div>
+            <div className="bt-findings">
+              {copy.problem.findings.map(finding => <Finding key={finding.title} finding={finding} />)}
             </div>
           </section>
 
+          <div className="bt-decisions" role="group" aria-label="Decisions">
           <section className="bt-section bt-ia" data-copy-section="S03" aria-labelledby="bookthing-ia">
             <div className="bt-section-intro">
               <Heading section={copy.structure} id="bookthing-ia" />
               <p className="bt-prose">{copy.structure.body[0]}</p>
             </div>
-            <figure className="bt-map">
-              <Asset name="sitemap" alt="Revised planning sitemap with Homepage and six top-level branches" />
-              <div className="bt-map__mobile"><Asset name="sitemap" crop={[50, 190, 675, 495]} alt="Larger News and Events and Donate branches from the sitemap" /></div>
-            </figure>
-            <div className="bt-menus">
-              <figure><Asset name="news" crop={[1298, 161, 462, 346]} alt="News and Events menu showing Calendar, Newsroom, and Social Media" /></figure>
-              <figure><SourceGroup name="donate" alt="Donate trigger and open menu showing Donation Rules, Donation schedule, and Wish List">
-                <div className="bt-menu-trigger"><Asset name="donate" crop={[1257, 84, 226, 84]} alt="Donate navigation trigger" expand={false} /></div>
-                <Asset name="donate" crop={[1257, 168, 322, 151]} alt="Complete donation menu: Donation Rules, Donation schedule, and Wish List" expand={false} />
-              </SourceGroup></figure>
+            <div className="bt-ia__sequence">
+              <figure className="bt-map">
+                <figcaption>{copy.structure.captions.original}</figcaption>
+                <Asset name="originalSitemap" alt="Original BookThing top-level navigation with page-content groups and information-architecture problems" />
+              </figure>
+              <figure className="bt-map">
+                <figcaption>{copy.structure.captions.tasks}</figcaption>
+                <Asset name="taskPaths" alt="Persona-informed key task paths for planning a visit, donating money, and participating" />
+              </figure>
+              <figure className="bt-map">
+                <figcaption>{copy.structure.captions.revised}</figcaption>
+                <Asset name="revisedSitemap" alt="Revised navigation with Calendar and Newsroom under News and Events, and donation resources under Donate" />
+              </figure>
             </div>
           </section>
 
           <section className="bt-section bt-donate" data-copy-section="S04" aria-labelledby="bookthing-donate">
-            <div className="bt-section-intro"><p className="bt-decision-lead" id="bookthing-donate">{copy.donate.body[0]}</p></div>
+            <div className="bt-section-intro">
+              <Heading section={copy.donate} id="bookthing-donate" />
+              <p className="bt-prose">{copy.donate.body[0]}</p>
+            </div>
             <div className="bt-comparison">
-              <figure><Asset name="analysisDonate2025" crop={[20, 2070, 730, 515]} alt="Original Donate excerpt: book-donation rules precede Money Donations" /></figure>
-              <figure className="bt-comparison__after"><Asset name="donate" crop={[0, 0, 2560, 1625]} alt="Redesigned donation content with complete navigation, both donation paths, and book guidance" /></figure>
+              <figure className="bt-comparison__original">
+                <figcaption>original website</figcaption>
+                <Asset name="originalDonate" alt="Complete original Donate page, from navigation through book-donation rules and financial giving to the footer" />
+              </figure>
+              <div className="bt-comparison__after">
+                <p className="bt-prose">{copy.donate.body[1]}</p>
+                <figure><Asset name="donate" alt="Complete redesigned Donate page with both donation paths, guidance, navigation, and footer" /></figure>
+              </div>
             </div>
             <div className="bt-donate__details">
-              <div>
-                <p className="bt-prose">{copy.donate.body[1]}</p>
-                <figure><Asset name="donate" crop={[220, 295, 950, 865]} alt="Money-donation heading, complete location guidance, PayPal action, and Donorbox form" /></figure>
-              </div>
               <div>
                 <p className="bt-prose">{copy.donate.body[2]}</p>
                 <figure><Asset name="donate" crop={[1225, 395, 1130, 1145]} alt="Book-donation introduction, complete disclosure headings, expanded rules, and donation-hours guidance" /></figure>
@@ -178,16 +166,16 @@ export function BookThingPage() {
           </section>
 
           <section className="bt-section bt-calendar" data-copy-section="S05" aria-labelledby="bookthing-calendar">
-            <div className="bt-section-intro"><p className="bt-decision-lead" id="bookthing-calendar">{copy.calendar.body[0]}</p></div>
-            <div className="bt-calendar__layout">
-              <p className="bt-prose">{copy.calendar.body[1]}</p>
-              <div className="bt-calendar__visual">
-                <Asset name="calendar" crop={[560, 380, 2680, 1270]} alt="Calendar title, filters, month grid, highlighted dates, and schedule panels" />
-                <div className="bt-calendar__mobile-grid"><Asset name="calendar" crop={[650, 650, 870, 890]} alt="December date grid with the star and highlighted December 14 and 20 dates" /></div>
-                <Asset name="calendar" crop={[1790, 682, 1440, 404]} alt="December 14 opening: giveaway hours 9am–5pm and book-donation hours 9am–2pm" />
-              </div>
+            <div className="bt-section-intro">
+              <Heading section={copy.calendar} id="bookthing-calendar" />
+              <p className="bt-prose">{copy.calendar.body[0]}</p>
             </div>
+            <p className="bt-prose">{copy.calendar.body[1]}</p>
+            <figure className="bt-calendar__visual">
+              <Asset name="calendar" alt="Complete Calendar desktop page, including navigation, filters, date grid, opening and event details, and footer" />
+            </figure>
           </section>
+          </div>
 
           <section className="bt-section bt-final" data-copy-section="S06" aria-labelledby="bookthing-final">
             <div className="bt-section-intro"><Heading section={copy.final} id="bookthing-final" /><p className="bt-prose">{copy.final.body[0]}</p></div>
@@ -207,20 +195,20 @@ export function BookThingPage() {
           <section className="bt-section bt-identity" data-copy-section="S07" aria-labelledby="bookthing-identity">
             <div className="bt-section-intro"><Heading section={copy.identity} id="bookthing-identity" /><p className="bt-prose">{copy.identity.body[0]}</p></div>
             <div className="bt-identity__foundations">
-              <figure className="bt-identity__type"><Asset name="typography" alt="Type specimen: NTR for navigation, Arima Madurai for headings, and Archivo Narrow for body copy" /></figure>
-              <figure className="bt-identity__palette">
-                <div className="bt-identity__palette-wide"><Asset name="palette" crop={[15, 15, 895, 160]} alt="Monochromatic blue study with five swatches and the original printed RGB and HEX labels" /></div>
-                <div className="bt-identity__palette-mobile">
-                  <SourceGroup name="palette" alt="Blue study shown in two source excerpts, with the full color study available">
-                    <Asset name="palette" crop={[15, 15, 530, 160]} alt="Monochromatic study heading and the first three blue swatches" expand={false} />
-                    <div className="bt-identity__palette-tail"><Asset name="palette" crop={[558, 65, 337, 110]} alt="The remaining two blue swatches and their original printed values" expand={false} /></div>
-                  </SourceGroup>
-                </div>
+              <figure className="bt-identity__type bt-static-artifact">
+                <Asset name="typography" alt="Type specimen: NTR for navigation, Arima Madurai for headings, and Archivo Narrow for body copy" expand={false} />
+              </figure>
+              <figure className="bt-identity__palette bt-static-artifact">
+                <Asset name="palette" alt="Complete color study with monochromatic, split-complementary, triadic, and analogous palettes and their original printed values" expand={false} />
               </figure>
             </div>
             <div className="bt-identity__applications">
-              <figure className="bt-identity__logo"><Asset name="logo" alt="Complete BookThing book-as-door mark, wordmark, and tagline" /></figure>
-              <figure className="bt-identity__card"><Asset name="businessCard" alt="Both sides of the BookThing concept business card" /></figure>
+              <figure className="bt-identity__logo bt-static-artifact">
+                <Asset name="logo" alt="Complete BookThing book-as-door mark, wordmark, and tagline" expand={false} />
+              </figure>
+              <figure className="bt-identity__card bt-static-artifact">
+                <Asset name="businessCard" alt="Both sides of the BookThing concept business card" expand={false} />
+              </figure>
             </div>
           </section>
 

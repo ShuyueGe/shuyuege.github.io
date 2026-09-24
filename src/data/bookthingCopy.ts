@@ -1,6 +1,13 @@
 // Public text transcribed verbatim from the latest bookthing-final.md.
 // Layout work must preserve these strings.
 export const bookthingCopy = {
+  "navigation": [
+    { "id": "bookthing-problem", "label": "Problem" },
+    { "id": "bookthing-ia", "label": "Decisions" },
+    { "id": "bookthing-final", "label": "Final Interface" },
+    { "id": "bookthing-identity", "label": "Visual Itentity" },
+    { "id": "bookthing-outcome", "label": "Outcome" }
+  ],
   "hero": {
     "eyebrow": "Nonprofit website",
     "title": "Reorganizing BookThing around visiting, donating, and participating",
@@ -17,11 +24,11 @@ export const bookthingCopy = {
   },
   "problem": {
     "eyebrow": "Problem Identified",
-    "title": "Essential information competed with the page around it",
+    "title": "Important information was hard to locate and scan",
     "findings": [
       {
-        "title": "01 · Practical information had no clear home",
-        "body": "Opening dates, events, and donation schedules were scattered across the site."
+        "title": "01 · The structure did not match user tasks",
+        "body": "Information needed for common tasks was split across multiple pages, forcing visitors to piece together what they needed."
       },
       {
         "title": "02 · Financial giving was easy to miss",
@@ -29,7 +36,11 @@ export const bookthingCopy = {
       },
       {
         "title": "03 · Opening dates were hard to find",
-        "body": "Specific dates were buried across individual News and Events pages."
+        "body": "Visitors had to find specific News or/and Events posts to confirm upcoming opening dates."
+      },
+      {
+        "title": "04 · Dense content was difficult to scan",
+        "body": "Long blocks of rules and instructions had little grouping or visual hierarchy."
       }
     ]
   },
@@ -38,9 +49,16 @@ export const bookthingCopy = {
     "title": "Reorganizing the site around user tasks",
     "body": [
       "I reorganized the sitemap based on persona goals and common tasks, grouping related content into clearer sections. The revised sitemap then guided the final navigation and dropdown menu structure."
-    ]
+    ],
+    "captions": {
+      "original": "The original site relied mainly on top-level destinations, with related information distributed across multiple pages.",
+      "tasks": "Persona goals and recurring tasks helped define which information needed a clearer, more predictable destination.",
+      "revised": "The revised structure separates schedules from news, keeps donation resources together, and carries those groupings into the final navigation."
+    }
   },
   "donate": {
+    "eyebrow": "Decision 02 · Donation",
+    "title": "Showing both ways to donate before the detailed rules",
     "body": [
       "Financial giving was buried beneath detailed book-donation rules.",
       "I brought both donation options to the top of the page, using a compact action area for financial donations and more space for book-donation schedules and guidance.",
@@ -48,6 +66,8 @@ export const bookthingCopy = {
     ]
   },
   "calendar": {
+    "eyebrow": "Decision 03 · Calendar",
+    "title": "Making visit planning a schedule, not a news search",
     "body": [
       "Specific dates were scattered across News and Events, making visit planning difficult.",
       "I created a filterable calendar that marks public openings with a star, highlights scheduled openings and events, and lets visitors browse by month and year. A detail panel shows separate giveaway and book-donation hours for each date."
