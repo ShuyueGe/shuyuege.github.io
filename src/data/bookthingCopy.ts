@@ -5,7 +5,7 @@ export const bookthingCopy = {
     { "id": "bookthing-problem", "label": "Problem" },
     { "id": "bookthing-ia", "label": "Decisions" },
     { "id": "bookthing-final", "label": "Final Interface" },
-    { "id": "bookthing-identity", "label": "Visual Itentity" },
+    { "id": "bookthing-identity", "label": "Visual identity" },
     { "id": "bookthing-outcome", "label": "Outcome" }
   ],
   "hero": {
