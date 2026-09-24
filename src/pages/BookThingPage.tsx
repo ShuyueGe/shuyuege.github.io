@@ -36,7 +36,7 @@ const assets = {
 type AssetName = keyof typeof assets;
 type Crop = [x: number, y: number, width: number, height: number];
 // Refresh same-name exports in browser caches without changing the source files.
-const assetRevisions: Partial<Record<AssetName, string>> = { donate: "7fec9a85f894", news: "165edb34d2e6", wishlist: "6242aeae8602", originalNews: "a7c454cdefd0", typography: "eb8e8d4309c5", palette: "a45e19386533" };
+const assetRevisions: Partial<Record<AssetName, string>> = { donate: "7fec9a85f894", news: "165edb34d2e6", wishlist: "6242aeae8602", originalNews: "a7c454cdefd0", typography: "eb8e8d4309c5", palette: "c19352e568e2" };
 function assetUrl(name: AssetName) {
   const revision = assetRevisions[name];
   return `${import.meta.env.BASE_URL}images/projects/bookthing/${assets[name].file}${revision ? `?v=${revision}` : ""}`;
