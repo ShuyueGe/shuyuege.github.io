@@ -30,13 +30,13 @@ const assets = {
   faq: { file: "bookthing-final-FAQ-page.png", width: 2560, height: 1672 },
   logo: { file: "bookthing-visual-system-support-logo.png", width: 727, height: 320 },
   typography: { file: "typography.png", width: 920, height: 978 },
-  palette: { file: "bookthing-visual-system-support-color platte.png", width: 950, height: 934 },
+  palette: { file: "bookthing-visual-system-support-color platte.png", width: 702, height: 1096 },
   businessCard: { file: "bookthing-visual-system-support-business card.png", width: 462, height: 564 },
 };
 type AssetName = keyof typeof assets;
 type Crop = [x: number, y: number, width: number, height: number];
 // Refresh same-name exports in browser caches without changing the source files.
-const assetRevisions: Partial<Record<AssetName, string>> = { donate: "7fec9a85f894", news: "165edb34d2e6", wishlist: "6242aeae8602", originalNews: "a7c454cdefd0" };
+const assetRevisions: Partial<Record<AssetName, string>> = { donate: "7fec9a85f894", news: "165edb34d2e6", wishlist: "6242aeae8602", originalNews: "a7c454cdefd0", typography: "eb8e8d4309c5", palette: "a45e19386533" };
 function assetUrl(name: AssetName) {
   const revision = assetRevisions[name];
   return `${import.meta.env.BASE_URL}images/projects/bookthing/${assets[name].file}${revision ? `?v=${revision}` : ""}`;
@@ -194,20 +194,20 @@ export function BookThingPage() {
 
           <section className="bt-section bt-identity" data-copy-section="S07" aria-labelledby="bookthing-identity">
             <div className="bt-section-intro"><Heading section={copy.identity} id="bookthing-identity" /><p className="bt-prose">{copy.identity.body[0]}</p></div>
-            <div className="bt-identity__foundations">
+            <div className="bt-identity__grid">
+              <div className="bt-identity__applications">
+                <figure className="bt-identity__logo bt-static-artifact">
+                  <Asset name="logo" alt="Complete BookThing book-as-door mark, wordmark, and tagline" expand={false} />
+                </figure>
+                <figure className="bt-identity__card bt-static-artifact">
+                  <Asset name="businessCard" alt="Both sides of the BookThing concept business card" expand={false} />
+                </figure>
+              </div>
               <figure className="bt-identity__type bt-static-artifact">
                 <Asset name="typography" alt="Type specimen: NTR for navigation, Arima Madurai for headings, and Archivo Narrow for body copy" expand={false} />
               </figure>
               <figure className="bt-identity__palette bt-static-artifact">
                 <Asset name="palette" alt="Complete color study with monochromatic, split-complementary, triadic, and analogous palettes and their original printed values" expand={false} />
-              </figure>
-            </div>
-            <div className="bt-identity__applications">
-              <figure className="bt-identity__logo bt-static-artifact">
-                <Asset name="logo" alt="Complete BookThing book-as-door mark, wordmark, and tagline" expand={false} />
-              </figure>
-              <figure className="bt-identity__card bt-static-artifact">
-                <Asset name="businessCard" alt="Both sides of the BookThing concept business card" expand={false} />
               </figure>
             </div>
           </section>
