@@ -2573,6 +2573,7 @@ body { background: var(--color-bg); }
 .site-layout .site-footer p { font-size: 0.875rem; }
 .site-layout .site-footer nav a { font-size: 0.875rem; min-height: 44px; }
 .site-layout .site-footer__icon { display: none; }
+.site-layout .site-footer__link-icon { display: block; flex: 0 0 auto; width: 1.125rem; height: 1.125rem; }
 
 /* Work is visible in the first visit, on both pointer and touch screens. */
 .home-page .about-hero { padding-top: 3.5rem; padding-bottom: 3.5rem; }

@@ -2,6 +2,7 @@ import type { MouseEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Logo } from "./Logo";
 import { profile } from "../data/profile";
+import { siteVisibility } from "../data/siteVisibility";
 
 export function Navbar() {
   const location = useLocation();
@@ -24,9 +25,9 @@ export function Navbar() {
       <div className="site-header__inner page-shell">
         <Logo />
         <nav className="site-nav" aria-label="Primary navigation">
-          <Link className="site-nav__link" to="/about">
+          {siteVisibility.aboutPage && <Link className="site-nav__link" to="/about">
             About Me
-          </Link>
+          </Link>}
           <Link
             className="site-nav__link"
             to="/?section=projects"

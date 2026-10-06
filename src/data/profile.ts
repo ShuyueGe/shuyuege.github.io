@@ -6,8 +6,8 @@ export const profile: {
   resume: string | null;
   github: string;
 } = {
-  email: null,
-  linkedIn: null,
+  email: "shuyuegesy@gmail.com",
+  linkedIn: "https://www.linkedin.com/in/shuyuege",
   resume: null,
   github: "https://github.com/ShuyueGe",
 };
