@@ -30,20 +30,19 @@
   line-height: 1.4;
 }
 
+/* Equal-width columns retain each group's existing image order. */
 .selected-visuals__wall {
+  --visual-gap: 32px;
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 40px;
-  row-gap: 48px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--visual-gap);
   align-items: start;
 }
 
 .selected-visuals__cluster {
   display: grid;
-  grid-column: span 4;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  column-gap: 16px;
-  row-gap: 28px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--visual-gap);
   align-items: start;
   align-content: start;
   min-width: 0;
@@ -57,24 +56,7 @@
 .selected-visuals__item {
   min-width: 0;
   width: 100%;
-  justify-self: start;
 }
-
-/* Three related spreads share one top line and outer rail. The center poster
-   sits lower, so the anchors form a composition rather than a poster row. */
-.selected-visuals__cluster--left [data-placement="lead"] { grid-column: 1 / -1; grid-row: 1; }
-.selected-visuals__cluster--left [data-placement="upper"] { grid-column: 1; grid-row: 2; margin-top: 16px; }
-.selected-visuals__cluster--left [data-placement="detail"] { grid-column: 1; grid-row: 3; }
-.selected-visuals__cluster--left [data-placement="lower"] { grid-column: 2; grid-row: 2 / 4; margin-top: 56px; }
-
-.selected-visuals__cluster--center [data-placement="lead"] { grid-column: 1; grid-row: 1; }
-.selected-visuals__cluster--center [data-placement="upper"] { grid-column: 1 / -1; grid-row: 2; margin-top: 12px; }
-.selected-visuals__cluster--center [data-placement="lower"] { grid-column: 2; grid-row: 1; margin-top: 64px; }
-
-.selected-visuals__cluster--right [data-placement="lead"] { grid-column: 1 / -1; grid-row: 1; }
-.selected-visuals__cluster--right [data-placement="upper"] { grid-column: 1; grid-row: 2; margin-top: 48px; }
-.selected-visuals__cluster--right [data-placement="detail"] { grid-column: 2; grid-row: 2; }
-.selected-visuals__cluster--right [data-placement="lower"] { grid-column: 1; grid-row: 3; }
 
 .selected-visuals__work {
   position: relative;
@@ -188,34 +170,12 @@ dialog.visual-lightbox[open] {
 .visual-lightbox__caption p { margin: 0.25rem 0 0; color: var(--color-muted); font-size: 0.8125rem; line-height: 1.5; }
 
 @media (max-width: 1100px) {
-  .selected-visuals__wall {
-    column-gap: 32px;
-    row-gap: 48px;
-  }
-  .selected-visuals__cluster { grid-column: span 6; }
-  .selected-visuals__cluster--left [data-placement="lower"] { margin-top: 48px; }
-  .selected-visuals__cluster--center [data-placement="lower"] { margin-top: 56px; }
-  .selected-visuals__cluster--right {
-    grid-column: 1 / -1;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 24px;
-  }
-  .selected-visuals__cluster--right [data-placement="lead"] { grid-column: 1 / 6; grid-row: 1; }
-  .selected-visuals__cluster--right [data-placement="upper"] { grid-column: 6 / 10; grid-row: 1; margin-top: 32px; }
-  .selected-visuals__cluster--right [data-placement="detail"] { grid-column: 10 / -1; grid-row: 1; margin-top: 80px; }
-  .selected-visuals__cluster--right [data-placement="lower"] { grid-column: 6 / 10; grid-row: 1; margin-top: clamp(160px, 28vw, 320px); width: 100%; }
+  .selected-visuals__wall { --visual-gap: 24px; }
 }
 
 @media (max-width: 600px) {
   .selected-visuals__heading { margin-bottom: 2rem; }
-  .selected-visuals__wall { display: flex; flex-direction: column; gap: 24px; }
-  .selected-visuals__cluster { display: flex; flex-direction: column; width: 100%; gap: 20px; }
-  .selected-visuals__cluster .selected-visuals__item { margin: 0; width: 80%; }
-  .selected-visuals__cluster [data-thumbnail="portrait"] { width: 64%; align-self: flex-end; }
-  .selected-visuals__cluster [data-thumbnail="original"] { width: 100%; }
-  .selected-visuals__cluster--center [data-placement="lead"] { align-self: center; }
-  .selected-visuals__cluster--center [data-placement="upper"],
-  .selected-visuals__cluster--right [data-placement="lead"] { margin-top: 20px; }
+  .selected-visuals__wall { --visual-gap: 20px; grid-template-columns: minmax(0, 1fr); }
   dialog.visual-lightbox { padding: 0.5rem 0.75rem 0.75rem; }
 }
 
