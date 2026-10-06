@@ -18,7 +18,7 @@
   justify-content: space-between;
   gap: 1rem;
   min-height: 44px;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2.25rem;
 }
 
 .selected-visuals__heading h2 {
@@ -32,16 +32,18 @@
 
 .selected-visuals__wall {
   display: grid;
-  grid-template-columns: minmax(0, 356fr) minmax(0, 368fr) minmax(0, 356fr);
-  gap: 36px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 40px;
+  row-gap: 48px;
   align-items: start;
 }
 
 .selected-visuals__cluster {
   display: grid;
-  grid-template-columns: minmax(0, 150fr) minmax(0, 190fr);
-  grid-template-areas: "lead upper" "detail lower";
-  gap: 16px;
+  grid-column: span 4;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  column-gap: 16px;
+  row-gap: 28px;
   align-items: start;
   align-content: start;
   min-width: 0;
@@ -50,45 +52,29 @@
   list-style: none;
 }
 
-.selected-visuals__cluster--left { margin-top: 24px; }
-.selected-visuals__cluster--right { margin-top: 88px; }
-.selected-visuals__cluster--center {
-  grid-template-areas: "lead lead" "upper lower";
-}
-
 .selected-visuals__pair { display: contents; margin: 0; padding: 0; list-style: none; }
 
 .selected-visuals__item {
-  --visual-size: 190px;
-  --thumbnail-ratio: 4 / 3;
   min-width: 0;
-  width: min(100%, var(--visual-size));
+  width: 100%;
   justify-self: start;
 }
 
-.selected-visuals__item[data-size="small"] { --visual-size: 150px; }
-.selected-visuals__item[data-size="large"] { --visual-size: 260px; }
-.selected-visuals__item[data-thumbnail="portrait"] {
-  --thumbnail-ratio: 4 / 5;
-  width: min(100%, calc(var(--visual-size) * 0.8));
-}
-.selected-visuals__item[data-thumbnail="original"] {
-  --thumbnail-ratio: var(--source-ratio);
-  width: min(100%, calc(var(--visual-size) * var(--source-ratio)));
-}
-.selected-visuals__item[data-thumbnail="wide"] { --thumbnail-ratio: 3 / 2; }
+/* Three related spreads share one top line and outer rail. The center poster
+   sits lower, so the anchors form a composition rather than a poster row. */
+.selected-visuals__cluster--left [data-placement="lead"] { grid-column: 1 / -1; grid-row: 1; }
+.selected-visuals__cluster--left [data-placement="upper"] { grid-column: 1; grid-row: 2; margin-top: 16px; }
+.selected-visuals__cluster--left [data-placement="detail"] { grid-column: 1; grid-row: 3; }
+.selected-visuals__cluster--left [data-placement="lower"] { grid-column: 2; grid-row: 2 / 4; margin-top: 56px; }
 
-/* Shared local axes tie each lead to its supporting works. Upper images meet
-   the lead's baseline; the next pair begins exactly one local gap below it. */
-.selected-visuals__item[data-placement="lead"] { grid-area: lead; justify-self: end; }
-.selected-visuals__item[data-placement="upper"] { grid-area: upper; align-self: end; }
-.selected-visuals__item[data-placement="detail"] { grid-area: detail; justify-self: end; }
-.selected-visuals__item[data-placement="lower"] { grid-area: lower; }
-.selected-visuals__cluster--center [data-placement="lead"] { justify-self: center; }
-.selected-visuals__cluster--center [data-placement="upper"] { align-self: start; justify-self: end; }
+.selected-visuals__cluster--center [data-placement="lead"] { grid-column: 1; grid-row: 1; }
+.selected-visuals__cluster--center [data-placement="upper"] { grid-column: 1 / -1; grid-row: 2; margin-top: 12px; }
+.selected-visuals__cluster--center [data-placement="lower"] { grid-column: 2; grid-row: 1; margin-top: 64px; }
 
-/* Keep the goose near the right side of the waterfront photograph in its crop. */
-.selected-visuals__cluster--left [data-placement="upper"] img { object-position: 65% center; }
+.selected-visuals__cluster--right [data-placement="lead"] { grid-column: 1 / -1; grid-row: 1; }
+.selected-visuals__cluster--right [data-placement="upper"] { grid-column: 1; grid-row: 2; margin-top: 48px; }
+.selected-visuals__cluster--right [data-placement="detail"] { grid-column: 2; grid-row: 2; }
+.selected-visuals__cluster--right [data-placement="lower"] { grid-column: 1; grid-row: 3; }
 
 .selected-visuals__work {
   position: relative;
@@ -106,8 +92,7 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: var(--thumbnail-ratio);
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .selected-visuals__caption {
@@ -203,37 +188,34 @@ dialog.visual-lightbox[open] {
 .visual-lightbox__caption p { margin: 0.25rem 0 0; color: var(--color-muted); font-size: 0.8125rem; line-height: 1.5; }
 
 @media (max-width: 1100px) {
-  .selected-visuals__frame { max-width: 760px; }
   .selected-visuals__wall {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px;
+    column-gap: 32px;
+    row-gap: 48px;
   }
-  .selected-visuals__cluster--center {
-    grid-template-columns: minmax(0, 200fr) minmax(0, 152fr);
-    grid-template-areas: "lead upper" "lead lower";
-  }
-  .selected-visuals__cluster--center [data-placement="lead"] { align-self: center; }
-  .selected-visuals__cluster--center [data-placement="upper"] { justify-self: start; }
+  .selected-visuals__cluster { grid-column: span 6; }
+  .selected-visuals__cluster--left [data-placement="lower"] { margin-top: 48px; }
+  .selected-visuals__cluster--center [data-placement="lower"] { margin-top: 56px; }
   .selected-visuals__cluster--right {
     grid-column: 1 / -1;
-    width: min(100%, 356px);
-    justify-self: center;
-    margin-top: 0;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
   }
+  .selected-visuals__cluster--right [data-placement="lead"] { grid-column: 1 / 6; grid-row: 1; }
+  .selected-visuals__cluster--right [data-placement="upper"] { grid-column: 6 / 10; grid-row: 1; margin-top: 32px; }
+  .selected-visuals__cluster--right [data-placement="detail"] { grid-column: 10 / -1; grid-row: 1; margin-top: 80px; }
+  .selected-visuals__cluster--right [data-placement="lower"] { grid-column: 6 / 10; grid-row: 1; margin-top: clamp(160px, 28vw, 320px); width: 100%; }
 }
 
 @media (max-width: 600px) {
-  .selected-visuals__frame { max-width: 306px; }
-  .selected-visuals__wall { grid-template-columns: minmax(0, 130fr) minmax(0, 160fr); gap: 16px; align-items: end; }
-  .selected-visuals__cluster--left,
-  .selected-visuals__cluster--right,
-  .selected-visuals__cluster--right .selected-visuals__pair { display: contents; }
-  .selected-visuals__cluster--left .selected-visuals__item,
-  .selected-visuals__cluster--right .selected-visuals__item { grid-area: auto; align-self: end; }
-  .selected-visuals__item { --visual-size: 160px; }
-  .selected-visuals__item[data-size="small"] { --visual-size: 130px; }
-  .selected-visuals__item[data-size="large"] { --visual-size: 210px; }
-  .selected-visuals__cluster--center { grid-column: 1 / -1; margin-block: 24px; }
+  .selected-visuals__heading { margin-bottom: 2rem; }
+  .selected-visuals__wall { display: flex; flex-direction: column; gap: 24px; }
+  .selected-visuals__cluster { display: flex; flex-direction: column; width: 100%; gap: 20px; }
+  .selected-visuals__cluster .selected-visuals__item { margin: 0; width: 80%; }
+  .selected-visuals__cluster [data-thumbnail="portrait"] { width: 64%; align-self: flex-end; }
+  .selected-visuals__cluster [data-thumbnail="original"] { width: 100%; }
+  .selected-visuals__cluster--center [data-placement="lead"] { align-self: center; }
+  .selected-visuals__cluster--center [data-placement="upper"],
+  .selected-visuals__cluster--right [data-placement="lead"] { margin-top: 20px; }
   dialog.visual-lightbox { padding: 0.5rem 0.75rem 0.75rem; }
 }
 
