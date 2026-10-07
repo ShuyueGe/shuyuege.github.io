@@ -8,6 +8,6 @@ export const profile: {
 } = {
   email: "shuyuegesy@gmail.com",
   linkedIn: "https://www.linkedin.com/in/shuyuege",
-  resume: null,
+  resume: `${import.meta.env.BASE_URL}Shuyue-Resume.pdf`,
   github: "https://github.com/ShuyueGe",
 };
