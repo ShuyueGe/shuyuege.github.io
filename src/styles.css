@@ -2582,7 +2582,7 @@ body { background: var(--color-bg); }
 .home-page .about-hero__name { margin-inline: 0; border-radius: 3px; padding: 0 0.15em; font-weight: 650; }
 .home-page .about-hero__role { margin-left: 0.7rem; color: var(--color-muted); font-size: 0.85rem; }
 .home-page .about-hero__title { max-width: 100%; font-size: clamp(3.4rem, 5.2vw, 4.8rem); font-weight: 550; letter-spacing: -0.055em; line-height: 1.05; text-wrap: initial; }
-.home-page .about-hero__description { max-width: 55ch; margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.7; }
+.home-page .about-hero__description { width: var(--about-description-width, 100%); max-width: 100%; margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.7; }
 .selected-work__heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; border-top: 1px solid var(--color-border); padding-block: 1.25rem; }
 .selected-work__heading h2 { margin: 0; font-size: 1rem; font-weight: 650; }
 .selected-work__heading > span { font-size: 0.85rem; color: var(--color-muted); }
