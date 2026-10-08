@@ -26,8 +26,8 @@ const recentWork = [
 
 const projectArtworkPaths: Record<string, string> = {
   "ngo-website-redesign": "/images/projects/ngo-hover.png",
-  "ai-health-web-app-upgrade": "/images/projects/ai-health-hover.png",
-  "restaurant-website-redesign": "/images/projects/restaurant-hover.png",
+  "ai-health-web-app-upgrade": "/images/home/banner-mori.png",
+  "restaurant-website-redesign": "/images/home/banner-patsys.png",
   "church-ngo-website-redesign-implementation":
     "/images/projects/church-hover.png",
 };
