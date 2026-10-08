@@ -1,9 +1,78 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import { moriCopy as copy } from "../data/moriCopy";
 import "./MoriPage.css";
+
+function moriMediaUrl(file: string) {
+  return `${import.meta.env.BASE_URL}images/projects/mori/${encodeURIComponent(file)}`;
+}
+
+function MoriScreen({ file, alt, width = 1179, height = 2556 }: {
+  file: string; alt: string; width?: number; height?: number;
+}) {
+  const src = moriMediaUrl(file);
+  return <a className="mori-screen" href={src} target="_blank" rel="noopener noreferrer"
+    aria-label={`View full-size image: ${alt} (new tab)`}>
+    <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
+  </a>;
+}
+
+function MoriDuskVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const restartTimer = useRef<number | null>(null);
+
+  const clearRestart = () => {
+    if (restartTimer.current !== null) window.clearTimeout(restartTimer.current);
+    restartTimer.current = null;
+  };
+  const replay = () => {
+    clearRestart();
+    const video = videoRef.current;
+    if (!video) return;
+    video.currentTime = 0;
+    void video.play().catch(() => {});
+  };
+  const holdLastFrame = () => {
+    clearRestart();
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      restartTimer.current = window.setTimeout(replay, 5000);
+    }
+  };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePlayback = () => {
+      clearRestart();
+      video.autoplay = !preference.matches;
+      if (preference.matches) video.pause();
+      else void video.play().catch(() => {});
+    };
+    updatePlayback();
+    preference.addEventListener("change", updatePlayback);
+    return () => {
+      clearRestart();
+      preference.removeEventListener("change", updatePlayback);
+    };
+  }, []);
+
+  return <div className="mori-video">
+    <video ref={videoRef} width={1180} height={2556} controls muted playsInline preload="metadata"
+      onEnded={holdLastFrame} onPlay={clearRestart} onSeeking={clearRestart}
+      aria-label="MORI interface and atmosphere at dusk">
+      <source src={moriMediaUrl("黄昏-hero-web.mp4")} type="video/mp4" />
+    </video>
+    <button className="mori-video__replay" type="button" onClick={replay}>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+        <path d="M3 10a9 9 0 1 1 .9 6" /><path d="M3 4v6h6" />
+      </svg>
+      Replay
+    </button>
+  </div>;
+}
 
 function LabeledLine({ text }: { text: string }) {
   const separator = text.indexOf(" — ");
@@ -62,14 +131,17 @@ export function MoriPage() {
       </section>
 
       <section className="mori-diagnosis mori-section" aria-labelledby="mori-diagnosis" data-copy-section="S02">
-        <div className="mori-diagnosis__intro">
-          <h2 data-copy id="mori-diagnosis">{copy.diagnosis.title}</h2>
-          <p data-copy className="mori-prose">{copy.diagnosis.body}</p>
-          <p data-copy className="mori-prose">{copy.diagnosis.prompt}</p>
+        <div className="mori-diagnosis__copy">
+          <div className="mori-diagnosis__intro">
+            <h2 data-copy id="mori-diagnosis">{copy.diagnosis.title}</h2>
+            <p data-copy className="mori-prose">{copy.diagnosis.body}</p>
+            <p data-copy className="mori-prose">{copy.diagnosis.prompt}</p>
+          </div>
+          <div className="mori-questions">
+            {copy.diagnosis.questions.map(text => <p data-copy key={text}><LabeledLine text={text} /></p>)}
+          </div>
         </div>
-        <div className="mori-questions">
-          {copy.diagnosis.questions.map(text => <p data-copy key={text}><LabeledLine text={text} /></p>)}
-        </div>
+        <MoriDuskVideo />
       </section>
 
       <section className="mori-navigation mori-section" aria-labelledby="mori-navigation" data-copy-section="S03">
@@ -125,6 +197,10 @@ export function MoriPage() {
           <p data-copy className="mori-prose">{copy.modes.solution}</p>
           <p data-copy className="mori-key"><strong>{copy.modes.conclusion}</strong></p>
         </div>
+        <div className="mori-media-pair" aria-label="Final conversational mode interfaces">
+          <MoriScreen file="新-聊天-黄昏.png" alt="Revised Heart Companion conversation at dusk, with an open-ended chat and Tell Mori input." />
+          <MoriScreen file="新-记录-黄昏.png" alt="Revised Health Guardian interface at dusk, with a structured supplement record, confirmation, and Start today's log input." />
+        </div>
       </section>
 
       <section className="mori-health mori-section" aria-labelledby="mori-health" data-copy-section="S05">
@@ -146,6 +222,16 @@ export function MoriPage() {
           <p data-copy className="mori-flow-label"><strong>{copy.health.newHeading}</strong></p>
           <TaskFlow text={copy.health.newFlow} resolved />
           <p data-copy className="mori-prose">{copy.health.result}</p>
+        </div>
+        <div className="mori-media-pair" aria-label="Original and revised health-recording interfaces">
+          <figure className="mori-comparison">
+            <figcaption>Before</figcaption>
+            <MoriScreen file="旧-身心节律.png" width={724} height={1854} alt="Original Rhythm page, with health data cards above a separate set of recording controls." />
+          </figure>
+          <figure className="mori-comparison">
+            <figcaption>After</figcaption>
+            <MoriScreen file="新-身心节律.png" alt="Revised Rhythm page, with Record actions inside the health data cards and Today's Focus below." />
+          </figure>
         </div>
       </section>
 

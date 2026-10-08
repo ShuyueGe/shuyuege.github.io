@@ -159,3 +159,27 @@ body:has(.mori-page) { background-image: none; }
   .mori-back { display: none; }
   .mori-section { break-inside: avoid; }
 }
+
+/* Supplied product media: complete native screens, without changing copy layouts. */
+.mori-media-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--mori-gap); max-width: 856px; margin: 3rem auto 0; align-items: start; }
+.mori-screen { display: block; min-width: 0; }
+.mori-screen img { display: block; width: 100%; height: auto; object-fit: contain; }
+.mori-screen:focus-visible { outline: 2px solid var(--mori-rule); outline-offset: 4px; }
+@media (max-width: 600px) {
+  .mori-media-pair { margin-top: 2rem; }
+  .mori-media-pair { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+}
+
+/* Interaction questions stay together beside the dusk recording. */
+.mori-diagnosis { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+.mori-diagnosis__copy .mori-questions { margin-top: 2rem; }
+.mori-video { display: grid; justify-items: center; align-content: start; gap: 0.75rem; }
+.mori-video video { display: block; width: min(100%, 24rem); height: auto; aspect-ratio: 1180 / 2556; }
+.mori-video__replay { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 44px; padding: 0.5rem 0.9rem; border: 1px solid var(--color-border); background: var(--color-bg); color: var(--color-text); font: inherit; font-size: 0.875rem; line-height: 1.5; cursor: pointer; }
+.mori-video__replay:hover { border-color: var(--mori-rule); }
+.mori-video__replay:focus-visible { outline: 2px solid var(--mori-rule); outline-offset: 3px; }
+.mori-comparison { min-width: 0; margin: 0; }
+.mori-comparison figcaption { margin-bottom: 0.75rem; font-size: 0.8125rem; line-height: 1.5; font-weight: 650; }
+@media (max-width: 600px) {
+  .mori-diagnosis { grid-template-columns: minmax(0, 1fr); }
+}
