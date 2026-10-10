@@ -1228,7 +1228,7 @@ p {
 .home-page .projects-section--editorial {
   --projects-active-color: var(--color-primary-soft);
   isolation: isolate;
-  padding-bottom: clamp(6rem, 11vw, 10rem);
+  padding-bottom: clamp(3rem, 5.5vw, 5rem);
 }
 
 .home-page .projects-section--editorial .projects-section__intro {
@@ -1396,7 +1396,7 @@ p {
 @media (max-width: 600px) {
   .home-page .projects-section--editorial {
     padding-top: 4.5rem;
-    padding-bottom: 6rem;
+    padding-bottom: 3rem;
   }
 
   .home-page .projects-section--editorial .projects-section__intro {
@@ -1417,7 +1417,7 @@ p {
 .home-page .project-editorial {
   position: static;
   display: block;
-  min-height: clamp(42rem, 58vw, 52rem);
+  min-height: calc((clamp(42rem, 58vw, 52rem) + var(--project-list-height, 32rem)) / 2);
 }
 
 .home-page .project-editorial .project-name-list {
@@ -1451,9 +1451,10 @@ p {
   right: 0;
   z-index: 2;
   display: block;
-  width: 100vw;
+  width: 80vw;
   height: auto;
   max-width: none;
+  max-height: 100%;
   opacity: 1;
   visibility: visible;
   pointer-events: none;
@@ -1476,7 +1477,7 @@ p {
 
 @media (max-width: 1050px) {
   .home-page .project-editorial {
-    min-height: 41rem;
+    min-height: calc((41rem + var(--project-list-height, 32rem)) / 2);
   }
 
   .home-page .project-editorial .project-name-list {

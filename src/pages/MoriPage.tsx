@@ -22,6 +22,8 @@ function MoriScreen({ file, alt, width = 1179, height = 2556 }: {
 function MoriDuskVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const restartTimer = useRef<number | null>(null);
+  const inView = useRef(false);
+  const manuallyPaused = useRef(false);
 
   const clearRestart = () => {
     if (restartTimer.current !== null) window.clearTimeout(restartTimer.current);
@@ -29,6 +31,7 @@ function MoriDuskVideo() {
   };
   const replay = () => {
     clearRestart();
+    manuallyPaused.current = false;
     const video = videoRef.current;
     if (!video) return;
     video.currentTime = 0;
@@ -36,8 +39,26 @@ function MoriDuskVideo() {
   };
   const holdLastFrame = () => {
     clearRestart();
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      restartTimer.current = window.setTimeout(replay, 5000);
+    const video = videoRef.current;
+    if (video?.ended && inView.current && !manuallyPaused.current &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      restartTimer.current = window.setTimeout(() => {
+        restartTimer.current = null;
+        if (video.ended && inView.current && !manuallyPaused.current &&
+          !window.matchMedia("(prefers-reduced-motion: reduce)").matches) replay();
+      }, 5000);
+    }
+  };
+  const togglePlayback = () => {
+    clearRestart();
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      manuallyPaused.current = false;
+      void video.play().catch(() => {});
+    } else {
+      manuallyPaused.current = true;
+      video.pause();
     }
   };
 
@@ -47,20 +68,36 @@ function MoriDuskVideo() {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updatePlayback = () => {
       clearRestart();
-      video.autoplay = !preference.matches;
-      if (preference.matches) video.pause();
+      if (!inView.current || preference.matches || manuallyPaused.current) video.pause();
+      else if (video.ended) holdLastFrame();
       else void video.play().catch(() => {});
     };
-    updatePlayback();
+    const observer = new IntersectionObserver(entries => {
+      const entry = entries[entries.length - 1];
+      if (!entry || inView.current === entry.isIntersecting) return;
+      inView.current = entry.isIntersecting;
+      updatePlayback();
+    });
+    observer.observe(video);
     preference.addEventListener("change", updatePlayback);
     return () => {
+      inView.current = false;
       clearRestart();
+      observer.disconnect();
       preference.removeEventListener("change", updatePlayback);
+      video.pause();
     };
   }, []);
 
   return <div className="mori-video">
-    <video ref={videoRef} width={1180} height={2556} controls muted playsInline preload="metadata"
+    <video ref={videoRef} width={1180} height={2556} muted playsInline preload="auto"
+      tabIndex={0} aria-keyshortcuts="Enter Space" onClick={togglePlayback}
+      onKeyDown={event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          if (!event.repeat) togglePlayback();
+        }
+      }}
       onEnded={holdLastFrame} onPlay={clearRestart} onSeeking={clearRestart}
       aria-label="MORI interface and atmosphere at dusk">
       <source src={moriMediaUrl("黄昏-hero-web.mp4")} type="video/mp4" />

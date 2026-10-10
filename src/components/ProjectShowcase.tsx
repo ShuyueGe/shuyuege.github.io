@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import type { Project } from "../types/project";
@@ -63,6 +63,23 @@ function ProjectArtwork({ project }: ProjectArtworkProps) {
 }
 
 export function ProjectShowcase() {
+  const projectAreaRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const area = projectAreaRef.current;
+    const list = area?.querySelector(".project-name-list");
+    if (!area || !list) return;
+    let active = true;
+    const updateListHeight = () => {
+      if (active) area.style.setProperty("--project-list-height", list.getBoundingClientRect().height + "px");
+    };
+    updateListHeight();
+    const observer = new ResizeObserver(updateListHeight);
+    observer.observe(list);
+    void document.fonts.ready.then(updateListHeight);
+    return () => { active = false; observer.disconnect(); };
+  }, []);
+
   const [activeProject, setActiveProject] = useState<string | null>(null);
   const clearActiveProject = () => setActiveProject(null);
   const activeProjectIndex = projects.findIndex(
@@ -96,6 +113,7 @@ export function ProjectShowcase() {
 
         <div
           className="project-showcase__desktop project-editorial"
+          ref={projectAreaRef}
           onMouseLeave={clearActiveProject}
         >
           <ProjectNameList
