@@ -101,3 +101,6 @@
   .preview-v2 .mori-v2-navigation-grid { grid-template-columns: 1fr; }
   .preview-v2 .mori-v2-return-evidence { max-width: 240px; }
 }
+/* Keep the consequence adjacent to its rule; align the concise opening with media. */
+.preview-v2 .mori-v2-hero { align-items: start; }
+.preview-v2 .mori-v2-navigation-grid .v2-note { margin: 24px 0 0; }

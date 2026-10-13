@@ -7,7 +7,7 @@
 .preview-v2--bookthing .bookthing-v2-section-intro { display: grid; grid-template-columns: minmax(0, .4fr) minmax(0, .6fr); gap: 48px; align-items: start; margin-bottom: 30px; }
 .preview-v2--bookthing .bookthing-v2-section-intro .v2-section-heading { margin-bottom: 0; }
 .preview-v2--bookthing .bookthing-v2-section-intro h2 { max-width: 22ch; font-size: clamp(30px, 2.4vw, 34px); margin-bottom: 0; }
-.preview-v2--bookthing .bookthing-v2-section-copy { padding-top: 31px; }
+.preview-v2--bookthing .bookthing-v2-section-copy { padding-top: 0; }
 .preview-v2--bookthing .bookthing-v2-section-copy .v2-prose { max-width: 64ch; }
 .preview-v2--bookthing .bookthing-v2-section-copy .v2-prose:last-child { margin-bottom: 0; }
 .preview-v2--bookthing .v2-image-trigger img { border: 1px solid #dce2dc; padding: 7px; background: #fff; }
@@ -72,4 +72,19 @@
   .preview-v2--bookthing .bookthing-v2-donation-mobile h3 { font-size: 17px; margin-bottom: 14px; }
   .preview-v2--bookthing .bookthing-v2-calendar h2 { font-size: 28px; }
   .preview-v2--bookthing .bookthing-v2-supporting-columns { grid-template-columns: 1fr; gap: 25px; }
+}
+/* Let the concise introduction occupy intentional desktop measures. */
+@media (min-width: 901px) {
+  .preview-v2--bookthing .bookthing-v2-hero { grid-template-columns: minmax(0,.58fr) minmax(0,.42fr); }
+  .preview-v2--bookthing .bookthing-v2-hero h1 { max-width: 29ch; }
+  .preview-v2--bookthing .bookthing-v2-hero .v2-lead { max-width: 34ch; }
+}
+@media (max-width: 600px) {
+  .preview-v2--bookthing .v2-section-nav { display: flex; flex-wrap: nowrap; gap: 20px; }
+}
+/* Tablet uses the same authentic detail crops so donation controls remain inspectable. */
+@media (min-width: 601px) and (max-width: 900px) {
+  .preview-v2--bookthing .bookthing-v2-donation-desktop { display: none; }
+  .preview-v2--bookthing .bookthing-v2-donation-mobile { display: grid; gap: 28px; max-width: 640px; }
+  .preview-v2--bookthing .bookthing-v2-donation-mobile h3 { font-size: 17px; margin-bottom: 14px; }
 }

@@ -49,6 +49,20 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 
 原工作区保持 `main` 与原 HEAD，无未提交修改；133 个原受控文件和四份 handoff 哈希一致。原页面按源码、DOM、元素坐标、素材地址和样式核验并保持一致；原始位图有局部栅格化差异，不宣称逐像素一致。
 
-最终截图：`.design-review.local/v2-completed/`；检查、原工作区校验和历史截图：`.design-review.local/verification/`。MORI 本轮独立评审 7.6，随后完成指定的主次和重复录屏尺度修正；Patsy’s/BookThing 前轮为 7.9，本轮局部样式未重新评分。不声称达到 9 分目标。
+精简前历史截图保留在 `.design-review.local/v2-completed/`。本轮最终截图：`.design-review.local/concise-final/`；九组交互、内容与样式隔离检查及平板捐赠补查：`.design-review.local/concise-verification/`。原工作区 133 个文件的哈希再次核对，无变化。
 
 复现截图使用 `scripts/design-review.mjs`，设置 `REVIEW_VARIANT=v2`、`REVIEW_PAGES=mori,patsy,bookthing`、`REVIEW_URL=http://127.0.0.1:5188`，以及环境提供的 `PLAYWRIGHT_MODULE`、`SHARP_MODULE`。没有新增项目依赖。
+
+## 本轮 250–300 词编辑
+
+| 页面 | 1440 px | 820 px | 390 px |
+| --- | ---: | ---: | ---: |
+| MORI | 273 | 273 | 273 |
+| Patsy’s | 286 | 286 | 286 |
+| BookThing | 263 | 278 | 278 |
+
+按实际默认可见英文文字计数，包含标题、正文、metadata、图注、页内导航和放大提示；不计全站导航/页脚、alt、图片内的产品 UI 文字及关闭的补充材料。连字符和英文缩写计一个词，数字按词计，箭头与纯标点不计。BookThing 的差异来自响应式局部图说明。
+
+精简通过合并重复解释、删除重复标签和降级补充材料完成，未缩小字体或图片。Patsy’s 的个人贡献位于开头文字区，预约确认只保留一个短例子；下单三屏分别证明 review、checkout/pickup 和 confirmation，没有追加成品 gallery。MORI 的返回约束、3/5 记录预期、AI 用途与交付边界，以及 BookThing 的具体 IA 分支、捐赠披露风险和验证问题均保持默认可见。
+
+本轮三页新鲜上下文独立视觉评审分别为 7.5、7.5、7.7；少量排版修正后的整组复核为 7.7/10（调用配置：gpt-6-astra / high）。随后仅补查并修正 BookThing 820px 捐赠局部呈现。未达到 9 分视觉目标：MORI 录屏仍占较多高度，Patsy’s 平板流程纵向较长，素材本身的界面排版仍是限制。本轮未扩大为整套视觉重做，也未采用缩小图片和窄三栏来压缩页面。评审记录保存在 `.design-review.local/review-history.json`，原始反馈在聊天记录中。

@@ -15,18 +15,12 @@ export function BookThingV2() {
 
     <section className="v2-section bookthing-v2-ia" aria-labelledby={copy.sections[0].id}>
       <div className="bookthing-v2-section-intro">
-        <SectionHeading id={copy.sections[0].id} kicker={copy.ia.kicker} title={copy.ia.title} />
+        <SectionHeading id={copy.sections[0].id} title={copy.ia.title} />
         <div className="bookthing-v2-section-copy"><p className="v2-prose">{copy.ia.body}</p></div>
       </div>
       <div className="bookthing-v2-map-comparison">
         <div><h3>{copy.ia.originalLabel}</h3><EvidenceImage {...assets.originalBranches} /></div>
         <div><h3>{copy.ia.revisedLabel}</h3><EvidenceImage {...assets.revisedBranches} /></div>
-      </div>
-      <div className="bookthing-v2-task-logic">
-        <h3>{copy.ia.taskLabel}</h3>
-        <dl>{copy.ia.taskPaths.map(task => <div key={task.task}>
-          <dt>{task.task}</dt><dd className="bookthing-v2-task-path">{task.path}</dd><dd>{task.reason}</dd>
-        </div>)}</dl>
       </div>
       <details className="v2-details bookthing-v2-full-diagrams">
         <summary>{copy.ia.fullEvidenceLabel}</summary>
@@ -38,7 +32,7 @@ export function BookThingV2() {
 
     <section className="v2-section bookthing-v2-donation" aria-labelledby={copy.sections[1].id}>
       <div className="bookthing-v2-section-intro">
-        <SectionHeading id={copy.sections[1].id} kicker={copy.donation.kicker} title={copy.donation.title} />
+        <SectionHeading id={copy.sections[1].id} title={copy.donation.title} />
         <div className="bookthing-v2-section-copy">
           {copy.donation.body.map(paragraph => <p className="v2-prose" key={paragraph}>{paragraph}</p>)}
           <a className="bookthing-v2-source-link" href={assetUrl(assets.originalDonation)} target="_blank" rel="noopener noreferrer"
@@ -55,7 +49,7 @@ export function BookThingV2() {
 
     <section className="v2-section v2-section--support bookthing-v2-calendar" aria-labelledby={copy.sections[2].id}>
       <div className="bookthing-v2-section-intro">
-        <SectionHeading id={copy.sections[2].id} kicker={copy.calendar.kicker} title={copy.calendar.title} />
+        <SectionHeading id={copy.sections[2].id} title={copy.calendar.title} />
         <div className="bookthing-v2-section-copy"><p className="v2-prose">{copy.calendar.body}</p></div>
       </div>
       <div className="bookthing-v2-calendar-desktop"><EvidenceImage {...assets.calendarContext} /></div>
@@ -66,7 +60,7 @@ export function BookThingV2() {
     </section>
 
     <section className="v2-ending bookthing-v2-ending" aria-labelledby={copy.sections[3].id}>
-      <SectionHeading id={copy.sections[3].id} kicker={copy.outcome.kicker} title={copy.outcome.title} />
+      <SectionHeading id={copy.sections[3].id} title={copy.outcome.title} />
       {copy.outcome.body.map(paragraph => <p className="v2-prose" key={paragraph}>{paragraph}</p>)}
       <details className="v2-details bookthing-v2-supporting">
         <summary>{copy.outcome.supportingLabel}</summary>
