@@ -1,81 +1,84 @@
-/* Patsy V2 art direction is confined to the preview root. */
-.preview-v2--patsy .patsy-v2-hero { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(260px,.85fr); column-gap: 70px; row-gap: 36px; align-items: start; }
+/* Patsy V2: quiet research evidence, aligned comparison, and a task-state sequence. */
+.preview-v2--patsy .patsy-v2-hero { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(260px,.85fr); gap: 36px 64px; align-items: start; }
 .preview-v2--patsy .patsy-v2-hero-copy { min-width: 0; }
 .preview-v2--patsy .patsy-v2-hero h1 { max-width: 22ch; }
-.preview-v2--patsy .patsy-v2-hero-image { width: 100%; max-width: 390px; justify-self: end; padding: 20px; background: #f0ede5; }
-.preview-v2--patsy .patsy-v2-contribution { grid-column: 1 / -1; display: grid; grid-template-columns: .6fr 2.15fr; gap: 36px; padding-top: 26px; border-top: 1px solid var(--color-border); }
-.preview-v2--patsy .patsy-v2-contribution h2 { font-size: 17px; line-height: 1.6; letter-spacing: -.015em; margin: 0; }
-.preview-v2--patsy .patsy-v2-contribution p { font-size: 17px; margin: 0; max-width: 70ch; }
-.preview-v2--patsy .patsy-v2-research { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(240px,.85fr); gap: 28px 56px; padding: 38px 40px 30px; background: #edf0e8; }
-.preview-v2--patsy .patsy-v2-research .v2-section-heading { margin-bottom: 24px; }
-.preview-v2--patsy .patsy-v2-research h2 { font-size: clamp(28px,2.5vw,34px); }
-.preview-v2--patsy .patsy-v2-survey { margin: 28px 0; padding: 0 0 0 20px; border-left: 2px solid #6c8979; }
-.preview-v2--patsy .patsy-v2-survey p { font-size: 17px; margin-bottom: 18px; }
-.preview-v2--patsy .patsy-v2-survey strong { font-size: inherit; font-weight: 750; }
-.preview-v2--patsy .patsy-v2-small, .preview-v2--patsy .patsy-v2-survey .patsy-v2-small { color: #526159; font-size: 14px; line-height: 1.65; }
-.preview-v2--patsy .patsy-v2-research-content .v2-prose, .preview-v2--patsy .patsy-v2-survey { max-width: 60ch; }
-.preview-v2--patsy .patsy-v2-original { width: 100%; max-width: 310px; align-self: start; justify-self: end; margin-top: calc(2 * 1.22 * clamp(28px,2.5vw,34px) + 24px); }
-.preview-v2--patsy .patsy-v2-research-sample { grid-column: 1 / -1; padding-top: 22px; margin: 0; border-top: 1px solid #ced6cb; max-width: 95ch; }
+.preview-v2--patsy .patsy-v2-hero-image { width: 100%; max-width: 390px; justify-self: end; }
+/* The comparison has a shared frame; standalone prototype views remain open. */
+.preview-v2--patsy .patsy-v2-original { padding: 16px; border: 1px solid #d2d8cf; background: transparent; }
+.preview-v2--patsy .patsy-v2-contribution { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--color-border); }
+.preview-v2--patsy .patsy-v2-contribution h2 { font-size: 17px; line-height: 1.6; letter-spacing: -.015em; margin: 0 0 8px; }
+.preview-v2--patsy .patsy-v2-contribution p { font-size: 17px; line-height: 1.7; margin: 0; max-width: 70ch; }
+.preview-v2--patsy .patsy-v2-research { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(300px,.85fr); gap: 28px 32px; padding: 34px 40px; background: #eef0ea; align-items: start; }
+.preview-v2--patsy .patsy-v2-research .v2-section-heading { margin-bottom: 22px; }
+.preview-v2--patsy .patsy-v2-research h2 { font-size: clamp(28px,2.5vw,34px); max-width: 25ch; }
+.preview-v2--patsy .patsy-v2-research-content .v2-prose { max-width: 60ch; }
+.preview-v2--patsy .patsy-v2-small { color: #526159; font-size: 14px; line-height: 1.65; margin: 0; max-width: 62ch; }
+.preview-v2--patsy .patsy-v2-original { width: 100%; max-width: 350px; justify-self: start; }
 .preview-v2--patsy .patsy-v2-ordering h2 { max-width: 31ch; }
-.preview-v2--patsy .patsy-v2-ordering-intro { max-width: 75ch; margin-bottom: 38px; }
 .preview-v2--patsy .patsy-v2-decision-grid { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1.4fr); gap: 48px; align-items: start; }
-.preview-v2--patsy .patsy-v2-decision-copy { font-size: 17px; }
-.preview-v2--patsy .patsy-v2-decision-copy h3 { font-size: 18px; }
+.preview-v2--patsy .patsy-v2-decision-copy { font-size: 17px; line-height: 1.7; }
 .preview-v2--patsy .patsy-v2-decision-copy p { margin-bottom: 0; }
 .preview-v2--patsy .patsy-v2-revision { margin-top: 24px; }
 .preview-v2--patsy .patsy-v2-observation { border-left: 3px solid #d89449; padding-left: 20px; }
-.preview-v2--patsy .patsy-v2-hotspot { margin: 28px 0; padding: 24px 0; border-block: 1px solid var(--color-border); }
-.preview-v2--patsy .patsy-v2-menu-comparison { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; align-items: start; padding: 20px; background: #f0ede5; }
-.preview-v2--patsy .patsy-v2-tested { min-width: 0; }
-.preview-v2--patsy .patsy-v2-revised { min-width: 0; }
-.preview-v2--patsy .patsy-v2-evidence-label { font-size: 14px; line-height: 1.6; min-height: 45px; margin: 0 0 8px; font-weight: 650; }
-.preview-v2--patsy .patsy-v2-flow-stage { margin-top: 44px; padding: 30px 30px 34px; background: #f0ede5; }
-.preview-v2--patsy .patsy-v2-flow-stage > h3 { font-size: 23px; margin: 0 0 22px; }
-.preview-v2--patsy .patsy-v2-flow-limitation { border-color: #c7833e; max-width: 90ch; margin: 0 0 30px; }
-.preview-v2--patsy .patsy-v2-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 26px; align-items: start; }
+.preview-v2--patsy .patsy-v2-menu-comparison { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; align-items: start; padding: 20px; border: 1px solid #d2d8cf; }
+.preview-v2--patsy .patsy-v2-tested, .preview-v2--patsy .patsy-v2-revised { min-width: 0; }
+.preview-v2--patsy .patsy-v2-evidence-label { font-size: 14px; line-height: 1.6; margin: 0 0 14px; font-weight: 650; }
+/* Both comparison surfaces start at their authentic phone interface; the complete report remains available. */
+.preview-v2--patsy .patsy-v2-menu-comparison .v2-image-trigger { display: block; padding: 0; background: transparent; }
+/* Source header centers relative to the crops: tested y=43/256; revised y=134/804. */
+.preview-v2--patsy .patsy-v2-revised .v2-image-trigger { padding-top: .131%; }
+.preview-v2--patsy .patsy-v2-flow-stage { margin-top: 44px; padding: 30px 30px 28px; background: #f0ede5; }
+.preview-v2--patsy .patsy-v2-flow-stage > h3 { font-size: 23px; margin: 0 0 18px; }
+.preview-v2--patsy .patsy-v2-flow-limitation { border-color: #c7833e; max-width: 90ch; margin: 0 0 28px; }
+.preview-v2--patsy .patsy-v2-flow { list-style: none; margin: 0; padding: 20px 0 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 26px; align-items: start; border-top: 1px solid #c8bda9; }
 .preview-v2--patsy .patsy-v2-flow li { min-width: 0; }
-.preview-v2--patsy .patsy-v2-flow h4 { display: flex; align-items: baseline; min-height: 52px; margin: 0 0 18px; font-size: 16px; font-weight: 650; line-height: 1.5; letter-spacing: -.015em; }
+.preview-v2--patsy .patsy-v2-flow .v2-source-regions { display: grid; gap: 16px; }
+.preview-v2--patsy .patsy-v2-flow h4 { display: flex; align-items: baseline; margin: 0 0 18px; font-size: 16px; font-weight: 650; line-height: 1.6; letter-spacing: -.015em; }
 .preview-v2--patsy .patsy-v2-step-number { flex: 0 0 auto; color: #94511f; margin-right: 12px; font-weight: 750; }
-.preview-v2--patsy .patsy-v2-reservation { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(250px,.85fr); gap: 90px; align-items: center; }
-.preview-v2--patsy .patsy-v2-reservation h2 { font-size: clamp(28px,2.5vw,34px); }
-.preview-v2--patsy .patsy-v2-reservation-image { width: 100%; max-width: 390px; justify-self: end; }
+.preview-v2--patsy .patsy-v2-reservation { display: grid; grid-template-columns: minmax(0,1.88fr) minmax(0,1fr); gap: 36px; align-items: start; max-width: 1016px; margin-left: auto; }
+.preview-v2--patsy .patsy-v2-reservation h2 { font-size: clamp(28px,2.5vw,34px); max-width: 22ch; }
+.preview-v2--patsy .patsy-v2-reservation-image { width: 100%; max-width: 340px; justify-self: end; }
 .preview-v2--patsy .patsy-v2-ending { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.3fr); gap: 32px; }
-.preview-v2--patsy .patsy-v2-ending .v2-section-heading { margin-bottom: 0; }
-.preview-v2--patsy .patsy-v2-ending h2 { margin-bottom: 0; }
-.preview-v2--patsy .patsy-v2-ending .v2-prose:last-child { margin-bottom: 0; }
-.preview-v2--patsy .patsy-v2-menu-comparison .v2-image-trigger { display: block; aspect-ratio: auto; padding: 0; background: transparent; }
+.preview-v2--patsy .patsy-v2-ending .v2-section-heading, .preview-v2--patsy .patsy-v2-ending h2, .preview-v2--patsy .patsy-v2-ending .v2-prose { margin-bottom: 0; }
 @media (max-width: 1000px) {
   .preview-v2--patsy .patsy-v2-hero { column-gap: 36px; }
-  .preview-v2--patsy .patsy-v2-research { padding: 32px; gap: 24px 34px; }
-  .preview-v2--patsy .patsy-v2-decision-grid { grid-template-columns: 1fr; gap: 22px; padding: 26px; background: #f0ede5; }
+  .preview-v2--patsy .patsy-v2-research { padding: 30px; gap: 24px 28px; grid-template-columns: minmax(0,1.35fr) minmax(260px,.85fr); }
+  .preview-v2--patsy .patsy-v2-decision-grid { grid-template-columns: 1fr; gap: 28px; }
   .preview-v2--patsy .patsy-v2-decision-copy { max-width: 68ch; }
-  .preview-v2--patsy .patsy-v2-hotspot { margin: 22px 0; padding: 20px 0; }
-  .preview-v2--patsy .patsy-v2-menu-comparison { max-width: 680px; width: 100%; margin: auto; gap: 26px; padding: 22px 0 0; border-top: 1px solid #d6d8ce; background: transparent; }
-  .preview-v2--patsy .patsy-v2-flow { grid-template-columns: 1fr; gap: 40px; }
-  .preview-v2--patsy .patsy-v2-flow li { width: 100%; max-width: 350px; margin: auto; }
-  .preview-v2--patsy .patsy-v2-flow h4 { min-height: 0; }
-  .preview-v2--patsy .patsy-v2-reservation { gap: 42px; }
-  .preview-v2--patsy .patsy-v2-ending { gap: 32px; }
+  .preview-v2--patsy .patsy-v2-menu-comparison { max-width: 680px; width: 100%; margin-inline: auto; padding: 22px; gap: 24px; }
+  .preview-v2--patsy .patsy-v2-flow { grid-template-columns: 1fr; gap: 20px; max-width: 540px; margin-inline: auto; padding: 0 0 0 20px; border-top: 0; border-left: 1px solid #c8bda9; }
+  .preview-v2--patsy .patsy-v2-flow li { display: grid; grid-template-columns: minmax(0,140px) minmax(0,360px); gap: 20px; align-items: start; }
+  .preview-v2--patsy .patsy-v2-flow h4 { margin-top: 6px; }
+  .preview-v2--patsy .patsy-v2-flow .v2-evidence { width: 100%; max-width: 360px; justify-self: start; }
+  .preview-v2--patsy .patsy-v2-reservation { gap: 32px; grid-template-columns: minmax(0,1.55fr) minmax(0,1fr); }
 }
 @media (max-width: 700px) {
-  .preview-v2--patsy .patsy-v2-hero { grid-template-columns: 1fr; gap: 32px; }
-  .preview-v2--patsy .patsy-v2-hero-image { max-width: 340px; justify-self: start; }
-  .preview-v2--patsy .patsy-v2-contribution { grid-template-columns: 1fr; gap: 12px; }
-  .preview-v2--patsy .patsy-v2-research { grid-template-columns: 1fr; padding: 26px 24px; }
-  .preview-v2--patsy .patsy-v2-original { max-width: 265px; justify-self: start; margin-top: 0; }
-  .preview-v2--patsy .patsy-v2-research-sample { grid-column: auto; }
-  .preview-v2--patsy .patsy-v2-menu-comparison { grid-template-columns: 1fr; gap: 26px; }
-  .preview-v2--patsy .patsy-v2-decision-grid { padding: 22px 20px; }
-  .preview-v2--patsy .patsy-v2-tested { width: 100%; max-width: 350px; }
-  .preview-v2--patsy .patsy-v2-revised { width: 100%; max-width: 350px; }
-  .preview-v2--patsy .patsy-v2-evidence-label { min-height: 0; }
-  .preview-v2--patsy .patsy-v2-flow-stage { padding: 26px 20px; }
-  .preview-v2--patsy .patsy-v2-reservation { grid-template-columns: 1fr; gap: 26px; }
-  .preview-v2--patsy .patsy-v2-reservation-image { justify-self: start; max-width: 350px; }
+  .preview-v2--patsy .v2-article { padding-top: 4px; }
+  .preview-v2--patsy .v2-section-nav { margin: 4px 0 14px; padding-block: 4px; gap: 0 12px; border-bottom: 1px solid var(--color-border); }
+  .preview-v2--patsy .patsy-v2-hero { grid-template-columns: 1fr; gap: 12px; }
+  .preview-v2--patsy .patsy-v2-hero .v2-label { margin-bottom: 8px; }
+  .preview-v2--patsy .patsy-v2-hero h1 { margin-bottom: 12px; }
+  .preview-v2--patsy .patsy-v2-hero .v2-lead { margin-bottom: 12px; }
+  .preview-v2--patsy .patsy-v2-hero .v2-meta { grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+  .preview-v2--patsy .patsy-v2-hero .v2-meta > div { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 12px; }
+  .preview-v2--patsy .patsy-v2-hero .v2-meta dt { margin: 0; align-self: baseline; }
+  .preview-v2--patsy .patsy-v2-hero-image { max-width: 350px; justify-self: start; }
+  .preview-v2--patsy .patsy-v2-contribution { margin-top: 12px; padding-top: 8px; }
+  .preview-v2--patsy .patsy-v2-contribution h2 { margin-bottom: 4px; }
+  .preview-v2--patsy .patsy-v2-contribution p { line-height: 1.6; }
+  .preview-v2--patsy .patsy-v2-research { grid-template-columns: 1fr; padding: 26px 16px; gap: 24px; }
+  .preview-v2--patsy .patsy-v2-original { max-width: 320px; justify-self: start; padding: 0; border: 0; }
+  .preview-v2--patsy .patsy-v2-menu-comparison { grid-template-columns: 1fr; gap: 16px; padding: 20px 16px; }
+  .preview-v2--patsy .patsy-v2-tested { padding-bottom: 16px; border-bottom: 1px solid #c8bda9; }
+  .preview-v2--patsy .patsy-v2-revised .v2-image-trigger { padding-top: 0; }
+  .preview-v2--patsy .patsy-v2-tested, .preview-v2--patsy .patsy-v2-revised { width: 100%; max-width: 350px; }
+  .preview-v2--patsy .patsy-v2-flow-stage { padding: 26px 0 20px; }
+  .preview-v2--patsy .patsy-v2-flow-stage > h3, .preview-v2--patsy .patsy-v2-flow-limitation { margin-inline: 20px; }
+  .preview-v2--patsy .patsy-v2-flow { max-width: none; margin-inline: 0; padding-left: 18px; gap: 20px; }
+  .preview-v2--patsy .patsy-v2-flow li { grid-template-columns: 1fr; gap: 10px; }
+  .preview-v2--patsy .patsy-v2-flow h4 { margin: 0; }
+  .preview-v2--patsy .patsy-v2-flow .v2-evidence { width: calc(100% + 18px); max-width: none; margin-left: -18px; justify-self: start; }
+  .preview-v2--patsy .patsy-v2-reservation { grid-template-columns: 1fr; gap: 24px; }
+  .preview-v2--patsy .patsy-v2-reservation-image { max-width: none; justify-self: end; }
   .preview-v2--patsy .patsy-v2-ending { grid-template-columns: 1fr; gap: 20px; }
 }
-/* Role information joins the opening text rather than following the hero screen. */
-.preview-v2--patsy .patsy-v2-hero-copy .patsy-v2-contribution { display: block; margin-top: 28px; padding-top: 20px; }
-.preview-v2--patsy .patsy-v2-hero-copy .patsy-v2-contribution h2 { margin-bottom: 10px; }
-.preview-v2--patsy .patsy-v2-menu-comparison { background: transparent; padding: 20px 0; }
-.preview-v2--patsy .patsy-v2-original { margin-top: 0; }

@@ -1,106 +1,152 @@
-.preview-v2 .mori-v2-hero { display: grid; grid-template-columns: minmax(0,1fr) 250px; gap: 80px; align-items: center; }
-.preview-v2 .mori-v2-hero h1 { max-width: 25ch; }
-.preview-v2 .mori-v2-overview { margin: 30px 0 0; }
-.preview-v2 .mori-v2-dusk { margin: 0; }
-.preview-v2 .mori-v2-dusk video { display: block; width: 100%; height: auto; background: #e7ede5; }
-.preview-v2 .mori-v2-dusk figcaption { font-size: 13px; color: #526158; line-height: 1.6; margin-top: 12px; }
-.preview-v2 .mori-v2-navigation-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: start; }
-.preview-v2 .mori-v2-rules { border-top: 2px solid #5b8b77; }
-.preview-v2 .mori-v2-rules > div { padding: 22px 0; border-bottom: 1px solid #c7d4ca; }
-.preview-v2 .mori-v2-rules .v2-label { display: block; margin-bottom: 8px; }
-.preview-v2 .mori-v2-rules p { font-size: 15px; margin-bottom: 0; }
-.preview-v2 .mori-v2-pending { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; padding: 20px 0; border-block: 1px dashed #bdc7bf; }
-.preview-v2 .mori-v2-pending h3 { font-size: 15px; line-height: 1.6; margin: 0; }
-.preview-v2 .mori-v2-pending p { font-size: 14px; max-width: 72ch; margin: 0; color: #536158; }
-.preview-v2 .mori-v2-finding { font-weight: 600; }
-.preview-v2 .mori-v2-health-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 48px; max-width: 960px; }
-.preview-v2 .mori-v2-health-pair .v2-evidence { max-width: 350px; }
-.preview-v2 .mori-v2-health-pair h3 { font-size: 17px; max-width: 32ch; min-height: 46px; }
-.preview-v2 .mori-v2-task-path { font-size: 14px; line-height: 1.7; padding: 16px 0; border-top: 1px solid #d0d6ce; margin: 22px 0 0; max-width: 350px; }
-.preview-v2 .mori-v2-task-path--new { border-top: 2px solid #5b8b77; font-weight: 650; }
-.preview-v2 .mori-v2-mode-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 44px; max-width: 1000px; margin-top: 24px; }
-.preview-v2 .mori-v2-mode-pair h3 { font-size: 18px; }
+/* MORI V2: return rules, a focused comparison, and input-level mode evidence.
+   Source windows omit unrelated regions; original files and full-image access remain intact. */
+.preview-v2--mori .mori-v2-hero { display: grid; grid-template-columns: minmax(0,1fr) 230px; gap: 70px; align-items: center; margin-bottom: 60px; }
+.preview-v2--mori .mori-v2-hero h1 { max-width: 25ch; }
+.preview-v2--mori .mori-v2-hero .v2-lead { max-width: 57ch; }
+.preview-v2--mori .mori-v2-dusk { margin: 0; padding: 10px; background: #e8eae0; }
+.preview-v2--mori .mori-v2-dusk video { display: block; width: 100%; height: auto; }
+.preview-v2--mori .mori-v2-dusk figcaption { font-size: 14px; color: #405348; line-height: 1.6; margin-top: 12px; }
+.preview-v2--mori .v2-section { border-top: 1px solid #cbd4ca; padding-top: 42px; margin-bottom: 68px; }
+.preview-v2--mori .mori-v2-navigation-grid { display: grid; grid-template-columns: minmax(0,1fr) 285px; gap: 38px; max-width: 1100px; align-items: start; }
+.preview-v2--mori .mori-v2-rules { background: #e4ede3; padding: 8px 28px; }
+.preview-v2--mori .mori-v2-rules > div { padding: 24px 0; }
+.preview-v2--mori .mori-v2-rules > div + div { border-top: 1px solid #bdccbf; padding-block: 18px; }
+.preview-v2--mori .mori-v2-rules .v2-label { display: block; margin-bottom: 8px; }
+.preview-v2--mori .mori-v2-rules h3 { font-size: 30px; margin: 0; }
+.preview-v2--mori .mori-v2-rules > div + div h3 { font-size: 22px; }
+.preview-v2--mori .mori-v2-navigation-grid .v2-note { margin: 22px 0 0; }
+.preview-v2--mori .mori-v2-return-evidence { padding-top: 80px; }
+.preview-v2--mori .mori-v2-return-evidence h3 { font-size: 16px; margin-bottom: 14px; }
+.preview-v2--mori .mori-v2-return-video { display: block; padding: 0; background: none; max-width: 280px; }
+.preview-v2--mori .mori-v2-return-video video { width: 200px; }
+.preview-v2--mori .mori-v2-return-video figcaption { margin: 14px 0 0; padding: 0; }
+.preview-v2--mori .mori-v2-finding { font-weight: 650; }
+.preview-v2--mori .mori-v2-health-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 44px; align-items: start; max-width: 1100px; }
+.preview-v2--mori .mori-v2-health-pair h3 { font-size: 17px; margin-bottom: 16px; }
+.preview-v2--mori .mori-v2-health-pair > div:last-child { border-top: 0; padding-top: 0; }
+.preview-v2--mori .mori-v2-health-pair .v2-image-trigger > img { border: 1px solid #b8c6b9; padding: 10px; background: #e8ede4; }
+.preview-v2--mori .v2-source-regions { display: grid; gap: 22px; padding: 10px; border: 1px solid #b8c6b9; background: #e8ede4; }
+.preview-v2--mori .v2-source-window { position: relative; overflow: hidden; border: 0; background: #eef0e8; }
+.preview-v2--mori .v2-source-window img { padding: 0; border: 0; }
+.preview-v2--mori .mori-v2-health-pair .v2-note { margin-top: 22px; padding-left: 0; border: 0; }
+.preview-v2--mori .mori-v2-modes h2 { font-size: clamp(28px,2.5vw,34px); }
+.preview-v2--mori .mori-v2-mode-pair { display: grid; gap: 34px; max-width: 910px; margin-top: 28px; }
+.preview-v2--mori .mori-v2-mode-pair > div { display: grid; grid-template-columns: 170px minmax(0,1fr); gap: 30px; align-items: start; padding-top: 22px; border-top: 1px solid #cbd4ca; }
+.preview-v2--mori .mori-v2-mode-pair h3 { font-size: 19px; margin-top: 8px; }
+.preview-v2--mori .v2-evidence figcaption { color: #405348; font-weight: 500; }
+.preview-v2--mori .v2-ending .v2-two-col { display: block; max-width: 67ch; }
+.preview-v2--mori .v2-ending .v2-prose:last-child { font-size: 26px; line-height: 1.45; font-weight: 600; margin-top: 24px; max-width: 24ch; }
 @media (max-width: 900px) {
-  .preview-v2 .mori-v2-hero { gap: 32px; grid-template-columns: minmax(0,1fr) 220px; align-items: start; }
-  .preview-v2 .mori-v2-navigation-grid { gap: 30px; }
-  .preview-v2 .mori-v2-health-pair { gap: 30px; }
+  .preview-v2--mori .mori-v2-hero { gap: 34px; grid-template-columns: minmax(0,1fr) 210px; }
+  .preview-v2--mori .mori-v2-navigation-grid { grid-template-columns: minmax(0,1fr) 215px; gap: 34px; }
+  .preview-v2--mori .mori-v2-return-video { display: block; }
+  .preview-v2--mori .mori-v2-return-video video { max-width: 180px; }
+  .preview-v2--mori .mori-v2-return-video figcaption { margin-top: 12px; }
+  .preview-v2--mori .mori-v2-health-pair { gap: 28px; }
+  .preview-v2--mori .mori-v2-mode-pair > div { grid-template-columns: 150px minmax(0,1fr); gap: 28px; }
 }
 @media (max-width: 600px) {
-  .preview-v2 .mori-v2-hero, .preview-v2 .mori-v2-navigation-grid, .preview-v2 .mori-v2-health-pair, .preview-v2 .mori-v2-mode-pair, .preview-v2 .mori-v2-pending { grid-template-columns: 1fr; gap: 28px; }
-  .preview-v2 .mori-v2-dusk { max-width: 250px; margin: 4px auto 0; }
-  .preview-v2 .mori-v2-health-pair { gap: 36px; }
-  .preview-v2 .mori-v2-health-pair h3 { min-height: 0; }
-  .preview-v2 .mori-v2-pending { gap: 8px; }
+  .preview-v2--mori .mori-v2-hero { grid-template-columns: 1fr; gap: 24px; margin-bottom: 42px; }
+  .preview-v2--mori .mori-v2-hero .v2-meta { margin-top: 20px; gap: 12px 18px; }
+  .preview-v2--mori .mori-v2-dusk { max-width: 156px; margin-inline: auto; }
+  .preview-v2--mori .v2-section { padding-top: 28px; margin-bottom: 48px; }
+  .preview-v2--mori .mori-v2-navigation-grid, .preview-v2--mori .mori-v2-health-pair { grid-template-columns: 1fr; gap: 28px; }
+  .preview-v2--mori .mori-v2-rules { padding-inline: 24px; }
+  .preview-v2--mori .mori-v2-rules h3 { font-size: 26px; }
+  .preview-v2--mori .mori-v2-return-evidence { width: 100%; padding-top: 0; }
+  .preview-v2--mori .mori-v2-return-video { max-width: 280px; display: block; margin: 0; }
+  .preview-v2--mori .mori-v2-return-video video { width: 160px; max-width: none; }
+  .preview-v2--mori .mori-v2-return-video figcaption { margin-top: 12px; }
+  .preview-v2--mori .mori-v2-mode-pair > div { grid-template-columns: 1fr; gap: 12px; }
+  .preview-v2--mori .mori-v2-mode-pair h3 { margin-top: 0; }
 }
-/* Reviewer iteration: stronger rule field and consistent evidence boundaries. */
-.preview-v2 .mori-v2-hero { grid-template-columns: minmax(0,1fr) 290px; gap: 52px; }
-.preview-v2 .mori-v2-dusk { background: #e8eae0; padding: 18px; }
-.preview-v2 .mori-v2-hero .v2-lead { max-width: 55ch; }
-.preview-v2 .mori-v2-overview { max-width: 58ch; }
-.preview-v2 .mori-v2-navigation-grid { grid-template-columns: 1fr 1.05fr; gap: 48px; }
-.preview-v2 .mori-v2-rules { background: #e4ede3; border: 0; padding: 16px 30px; }
-.preview-v2 .mori-v2-rules > div { padding: 26px 0; }
-.preview-v2 .mori-v2-rules > div:last-child { border-bottom: 0; }
-.preview-v2 .mori-v2-rules h3 { font-size: 28px; letter-spacing: -.025em; }
-.preview-v2 .mori-v2-health-pair { max-width: 1000px; gap: 44px; }
-.preview-v2 .mori-v2-health-pair .v2-evidence { max-width: none; }
-.preview-v2 .mori-v2-health-pair .v2-image-trigger img { width: 100%; }
-.preview-v2 .mori-v2-task-path { max-width: none; }
-.preview-v2 .mori-v2-health-pair h3 { max-width: none; }
-@media (max-width: 900px) {
-  .preview-v2 .mori-v2-hero { grid-template-columns: minmax(0,1fr) 230px; gap: 30px; }
-  .preview-v2 .mori-v2-navigation-grid { gap: 30px; }
-  .preview-v2 .mori-v2-rules { padding: 12px 22px; }
-  .preview-v2 .mori-v2-rules h3 { font-size: 24px; }
+
+.preview-v2--mori .v2-ending { padding-top: 34px; }
+.preview-v2--mori .v2-article { padding-bottom: 68px; }
+
+/* Comparable source scale and a shared figure datum on larger screens. */
+@media (min-width: 901px) {
+  .preview-v2--mori .mori-v2-health-pair { max-width: 1060px; gap: 42px; }
+  .preview-v2--mori .mori-v2-health-pair .v2-image-trigger { display: grid; grid-template-rows: 612px auto; align-items: start; }
+  .preview-v2--mori .mori-v2-health-pair .v2-source-regions { align-self: start; }
+  .preview-v2--mori .mori-v2-health-pair .v2-image-trigger > img { max-height: 612px; object-fit: contain; }
+  .preview-v2--mori .mori-v2-health-pair .v2-note { margin-top: 12px; }
 }
-@media (max-width: 600px) {
-  .preview-v2 .mori-v2-hero, .preview-v2 .mori-v2-navigation-grid { grid-template-columns: 1fr; gap: 20px; }
-  .preview-v2 .mori-v2-dusk { max-width: 300px; padding: 14px; }
-  .preview-v2 .mori-v2-overview { margin-top: 22px; }
-  .preview-v2 .mori-v2-health-pair { gap: 36px; }
-}
-.preview-v2 .mori-v2-health-pair .mori-v2-pending { grid-template-columns: 1fr; gap: 8px; }
-.preview-v2 .mori-v2-mode-prose { max-width: 1000px; gap: 44px; }
-.preview-v2 .mori-v2-health-pair .v2-image-trigger img { padding: 10px; border: 1px solid #c3ccc2; background: #e4e8df; }
-.preview-v2 .mori-v2-pending { border-bottom: 0; border-top: 1px solid #ccd3ca; }
-.preview-v2 .mori-v2-health-pair .v2-note { border-left: 0; padding-left: 0; }
-.preview-v2 .mori-v2-modes h2 { font-size: clamp(27px,2.6vw,34px); }
-@media (max-width: 600px) {
-  .preview-v2 .mori-v2-hero .v2-lead { line-height: 1.6; margin-bottom: 16px; }
-  .preview-v2 .mori-v2-hero .v2-meta { margin-top: 18px; }
-  .preview-v2 .mori-v2-overview { margin-top: 18px; }
-  .preview-v2 .mori-v2-mode-prose { gap: 22px; }
-}
-/* V1 context recording, shared by the two return rules as requested. */
-.preview-v2 .mori-v2-navigation-grid { grid-template-columns: minmax(0,1fr) 290px; gap: 54px; max-width: 1000px; }
-.preview-v2 .mori-v2-return-evidence h3 { font-size: 16px; line-height: 1.55; margin-bottom: 14px; }
-.preview-v2 .mori-v2-return-video { padding: 10px; background: #e8eae0; }
-.preview-v2 .mori-v2-return-video figcaption { color: #44564b; font-size: 14px; }
-.preview-v2 .mori-v2-navigation .v2-note { margin-top: 24px; }
-.preview-v2 .mori-v2-mode-pair .v2-image-trigger img { padding: 10px; border: 1px solid #c3ccc2; background: #e4e8df; }
-@media (max-width: 900px) {
-  .preview-v2 .mori-v2-navigation-grid { grid-template-columns: minmax(0,1fr) 250px; gap: 32px; }
+.preview-v2--mori .v2-ending { border-top: 2px solid #73927f; padding-top: 28px; }
+.preview-v2--mori .v2-ending .v2-two-col { max-width: 64ch; }
+.preview-v2--mori .v2-article { padding-bottom: 44px; }
+
+/* Round four: align the decision and its recording on one grid. */
+.preview-v2--mori .mori-v2-navigation-grid { grid-template-columns: minmax(0,600px) minmax(0,300px); gap: 22px 40px; max-width: 940px; grid-template-rows: auto max-content 1fr; }
+.preview-v2--mori .mori-v2-navigation-grid > div:first-child { display: contents; }
+.preview-v2--mori .mori-v2-navigation-grid > div:first-child > .v2-prose { grid-column: 1 / -1; margin-bottom: 0; }
+.preview-v2--mori .mori-v2-rules { grid-column: 1; grid-row: 2; }
+.preview-v2--mori .mori-v2-navigation-grid .v2-note { grid-column: 1; grid-row: 3; margin-top: 0; }
+.preview-v2--mori .mori-v2-return-evidence { grid-column: 2; grid-row: 2 / span 2; padding-top: 0; }
+.preview-v2--mori .mori-v2-return-video video { width: 230px; }
+.preview-v2--mori .mori-v2-mode-pair { max-width: 1060px; }
+.preview-v2--mori .mori-v2-mode-pair > div { grid-template-columns: 210px minmax(0,1fr); gap: 42px; }
+@media (max-width: 900px) and (min-width: 601px) {
+  .preview-v2--mori .mori-v2-navigation-grid { grid-template-columns: minmax(0,1fr) 215px; gap: 22px 30px; }
+  .preview-v2--mori .mori-v2-return-video video { width: 180px; }
+  .preview-v2--mori .mori-v2-mode-pair > div { grid-template-columns: 150px minmax(0,1fr); gap: 28px; }
 }
 @media (max-width: 600px) {
-  .preview-v2 .mori-v2-navigation-grid { grid-template-columns: 1fr; gap: 28px; }
-  .preview-v2 .mori-v2-return-evidence { max-width: 300px; width: 100%; margin-inline: auto; }
-  .preview-v2 .mori-v2-hero .v2-meta { gap: 12px 20px; margin-top: 16px; }
-  .preview-v2 .mori-v2-hero h1 { margin-bottom: 16px; }
-  .preview-v2 .mori-v2-overview { margin-top: 16px; line-height: 1.6; }
-}
-/* The repeated V1 context clip is supporting evidence; primary return stays dominant. */
-.preview-v2 .mori-v2-navigation-grid { grid-template-columns: minmax(0,1fr) 240px; }
-.preview-v2 .mori-v2-return-video { max-width: 220px; }
-.preview-v2 .mori-v2-rules > div:nth-child(2) { padding-block: 18px; }
-.preview-v2 .mori-v2-rules > div:nth-child(2) h3 { font-size: 22px; }
-.preview-v2 .mori-v2-rules > div:first-child h3 { font-weight: 750; }
-@media (max-width: 900px) {
-  .preview-v2 .mori-v2-navigation-grid { grid-template-columns: minmax(0,1fr) 220px; }
+  .preview-v2--mori .v2-article { padding-top: 4px; }
+  .preview-v2--mori .v2-section-nav { margin: 0 0 12px; padding-top: 0; }
+  .preview-v2--mori .mori-v2-hero .v2-label { margin-bottom: 10px; }
+  .preview-v2--mori .mori-v2-hero h1 { margin-bottom: 16px; }
+  .preview-v2--mori .mori-v2-hero .v2-meta { margin-top: 14px; row-gap: 8px; }
+  .preview-v2--mori .mori-v2-hero { gap: 18px; }
+  .preview-v2--mori .mori-v2-dusk { max-width: 140px; margin-inline: 0; }
+  .preview-v2--mori .mori-v2-navigation-grid { display: block; }
+  .preview-v2--mori .mori-v2-navigation-grid > div:first-child { display: block; }
+  .preview-v2--mori .mori-v2-navigation-grid > div:first-child > .v2-prose { margin-bottom: 22px; }
+  .preview-v2--mori .mori-v2-navigation-grid .v2-note { margin-top: 20px; }
+  .preview-v2--mori .mori-v2-return-evidence { margin-top: 24px; }
+  .preview-v2--mori .mori-v2-return-video { max-width: 280px; padding: 0; }
+  .preview-v2--mori .mori-v2-return-video video { width: 160px; }
+  .preview-v2--mori .mori-v2-health-pair { gap: 24px; padding-block: 18px; border-block: 1px solid #b8c6b9; background: #edf0e7; }
+  .preview-v2--mori .mori-v2-health-pair h3 { margin-bottom: 12px; }
+  .preview-v2--mori .mori-v2-health-pair .v2-source-regions { padding: 0; border: 0; background: transparent; }
+  .preview-v2--mori .mori-v2-health-pair .v2-image-trigger > img { padding: 0; border: 0; background: transparent; }
+  .preview-v2--mori .mori-v2-health-pair > div + div { padding-top: 18px; border-top: 1px solid #b8c6b9; }
+  .preview-v2--mori .mori-v2-mode-pair > div { grid-template-columns: 1fr; gap: 12px; }
 }
 @media (max-width: 600px) {
-  .preview-v2 .mori-v2-navigation-grid { grid-template-columns: 1fr; }
-  .preview-v2 .mori-v2-return-evidence { max-width: 240px; }
+  .preview-v2--mori .mori-v2-hero { grid-template-columns: minmax(0,1fr) 140px; gap: 18px 20px; align-items: start; }
+  .preview-v2--mori .mori-v2-hero > div:first-child { display: contents; }
+  .preview-v2--mori .mori-v2-hero > div:first-child > .v2-label,
+  .preview-v2--mori .mori-v2-hero h1,
+  .preview-v2--mori .mori-v2-hero .v2-lead { grid-column: 1 / -1; margin-bottom: 0; }
+  .preview-v2--mori .mori-v2-hero .v2-meta { grid-column: 1; grid-row: 4; grid-template-columns: 1fr; gap: 12px; margin-top: 0; }
+  .preview-v2--mori .mori-v2-hero > .mori-v2-dusk { grid-column: 2; grid-row: 4; padding: 0; background: transparent; }
 }
-/* Keep the consequence adjacent to its rule; align the concise opening with media. */
-.preview-v2 .mori-v2-hero { align-items: start; }
-.preview-v2 .mori-v2-navigation-grid .v2-note { margin: 24px 0 0; }
+/* Final round: proportionate evidence, distinct comparisons, and a bounded navigation band. */
+.preview-v2--mori .mori-v2-return-video { max-width: 250px; }
+.preview-v2--mori .mori-v2-return-video video { width: 185px; }
+.preview-v2--mori .mori-v2-return-video figcaption { max-width: 29ch; }
+.preview-v2--mori .mori-v2-mode-pair { max-width: 960px; }
+.preview-v2--mori .mori-v2-mode-pair > div { grid-template-columns: 180px minmax(0,1fr); gap: 28px; }
+@media (max-width: 900px) and (min-width: 601px) {
+  .preview-v2--mori .mori-v2-mode-pair > div { grid-template-columns: 150px minmax(0,1fr); }
+  .preview-v2--mori .mori-v2-return-video video { width: 180px; }
+}
+@media (max-width: 600px) {
+  .preview-v2--mori .v2-section-nav { border-bottom: 1px solid #cbd4ca; padding-block: 4px; gap: 0 12px; margin-bottom: 18px; }
+  .preview-v2--mori .mori-v2-return-evidence { width: 250px; max-width: 100%; margin-inline: auto; }
+  .preview-v2--mori .mori-v2-return-video { max-width: 250px; margin-inline: auto; }
+  .preview-v2--mori .mori-v2-return-video video { width: 185px; margin-inline: auto; }
+  .preview-v2--mori .mori-v2-return-video figcaption { max-width: 29ch; }
+  .preview-v2--mori .mori-v2-health-pair { gap: 24px; padding: 0; border: 0; background: transparent; }
+  .preview-v2--mori .mori-v2-health-pair > div { padding: 16px 0; border: 1px solid #b8c6b9; background: #edf0e7; }
+  .preview-v2--mori .mori-v2-health-pair > div + div { padding-top: 16px; border: 1px solid #b8c6b9; }
+  .preview-v2--mori .mori-v2-health-pair h3,
+  .preview-v2--mori .mori-v2-health-pair figcaption,
+  .preview-v2--mori .mori-v2-health-pair .v2-note { padding-inline: 14px; }
+  .preview-v2--mori .mori-v2-health-pair .v2-image-hint { padding-inline: 14px; }
+  .preview-v2--mori .mori-v2-mode-pair > div { grid-template-columns: 1fr; gap: 12px; }
+}
+@media (max-width: 600px) {
+  .preview-v2--mori .mori-v2-health-pair > div:last-child { padding-top: 16px; border-top: 1px solid #b8c6b9; }
+}

@@ -71,9 +71,10 @@ export function assetUrl(src: string) {
   return `${import.meta.env.BASE_URL}${src.replace(/^\//, "").split("/").map(encodeURIComponent).join("/")}`;
 }
 
-export function EvidenceImage({ src, fullSrc, alt, caption, width, height, className = "", crop }: {
+export function EvidenceImage({ src, fullSrc, alt, caption, width, height, className = "", crop, regions }: {
   src: string; fullSrc?: string; alt: string; caption?: string; width: number; height: number;
   className?: string; crop?: { ratio: string; position?: string };
+  regions?: readonly { left: number; top: number; width: number; height: number }[];
 }) {
   const [open, setOpen] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -98,8 +99,13 @@ export function EvidenceImage({ src, fullSrc, alt, caption, width, height, class
   return <figure className={`v2-evidence ${className}`}>
     <button ref={trigger} className="v2-image-trigger" type="button" onClick={() => setOpen(true)}
       aria-label={`View full image: ${alt}`}>
-      <img src={url} alt={alt} width={width} height={height} loading="lazy" decoding="async"
-        style={crop ? { aspectRatio: crop.ratio, objectFit: "cover", objectPosition: crop.position ?? "top", height: "auto" } : undefined} />
+      {regions ? <span className="v2-source-regions">{regions.map((region, index) =>
+        <span className="v2-source-window" key={`${region.left}-${region.top}`} style={{ aspectRatio: `${region.width} / ${region.height}` }}>
+          <img src={url} alt={index === 0 ? alt : ""} aria-hidden={index > 0 ? true : undefined}
+            width={width} height={height} loading="lazy" decoding="async"
+            style={{ position: "absolute", width: `${width / region.width * 100}%`, maxWidth: "none", height: "auto", left: `${-region.left / region.width * 100}%`, top: `${-region.top / region.height * 100}%` }} />
+        </span>)}</span> : <img src={url} alt={alt} width={width} height={height} loading="lazy" decoding="async"
+          style={crop ? { aspectRatio: crop.ratio, objectFit: "cover", objectPosition: crop.position ?? "top", height: "auto" } : undefined} />}
       <span className="v2-image-hint">View full image ↗</span>
     </button>
     {caption && <figcaption>{caption}</figcaption>}

@@ -48,8 +48,10 @@ try {
         scrollWidth: document.documentElement.scrollWidth,
         height: document.documentElement.scrollHeight,
         missingImages: Array.from(document.images).filter(img => !img.complete || !img.naturalWidth).map(img => img.src),
+        missingImageRegions: Array.from(document.querySelectorAll(".v2-source-window")).filter(el => { const r = el.getBoundingClientRect(); const img = el.querySelector("img")?.getBoundingClientRect(); return el.getClientRects().length > 0 && (r.width < 1 || r.height < 1 || !img || Math.min(r.right, img.right) <= Math.max(r.left, img.left) || Math.min(r.bottom, img.bottom) <= Math.max(r.top, img.top)); }).map(el => el.className),
         links: Array.from(document.querySelectorAll('a'), a => ({ text: a.textContent.trim(), href: a.getAttribute('href') })),
       }));
+      if (check.missingImages.length || check.missingImageRegions.length || check.scrollWidth > width || errors.length) process.exitCode = 1;
       // Contact sheet preserves the entire page in reading-order columns.
       const full = path.join(out, `${name}-${width}-full.png`);
       const cellWidth = width === 390 ? 260 : 480;
@@ -74,7 +76,7 @@ try {
     }
   }
   await writeFile(path.join(out, 'checks.json'), JSON.stringify(results, null, 2));
-  console.log(JSON.stringify(results.map(({name, width, scrollWidth, height, h1, missingImages, errors}) => ({name, width, scrollWidth, height, h1, missingImages, errors})), null, 2));
+  console.log(JSON.stringify(results.map(({name, width, scrollWidth, height, h1, missingImages, missingImageRegions, errors}) => ({name, width, scrollWidth, height, h1, missingImages, missingImageRegions, errors})), null, 2));
   console.log(`Screenshots: ${out}`);
 } finally {
   await browser.close();

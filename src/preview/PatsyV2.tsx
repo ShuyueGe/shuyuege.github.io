@@ -26,7 +26,7 @@ export function PatsyV2() {
         <p className="patsy-v2-small">{copy.research.sample}</p>
       </div>
       <EvidenceImage {...copy.assets.original} className="patsy-v2-original"
-        crop={{ ratio: "992 / 1080", position: "top" }} />
+        crop={{ ratio: "992 / 900", position: "top" }} />
     </section>
 
     <section className="v2-section patsy-v2-ordering" aria-labelledby="patsy-v2-ordering">
@@ -39,7 +39,7 @@ export function PatsyV2() {
         <div className="patsy-v2-menu-comparison">
           <div className="patsy-v2-tested">
             <p className="patsy-v2-evidence-label">{copy.ordering.testedLabel}</p>
-            <EvidenceImage {...copy.assets.testedMenu} crop={{ ratio: "292 / 638", position: "right top" }} />
+            <EvidenceImage {...copy.assets.testedMenu} regions={[{ left: 305, top: 55, width: 256, height: 365 }]} />
           </div>
           <div className="patsy-v2-revised">
             <p className="patsy-v2-evidence-label">{copy.ordering.revisedLabel}</p>
@@ -53,7 +53,9 @@ export function PatsyV2() {
         <ol className="patsy-v2-flow">
           {copy.ordering.sequence.map((step, index) => <li key={step.asset}>
             <h4><span className="patsy-v2-step-number" aria-hidden="true">{index + 1}</span>{step.title}</h4>
-            <EvidenceImage {...copy.assets[step.asset]} />
+            <EvidenceImage {...copy.assets[step.asset]}
+              crop={index === 1 ? undefined : { ratio: index === 0 ? "804 / 670" : "804 / 660", position: "bottom" }}
+              regions={index === 1 ? [{ left: 0, top: 734, width: 804, height: 402 }, { left: 0, top: 1590, width: 804, height: 168 }] : undefined} />
           </li>)}
         </ol>
       </div>

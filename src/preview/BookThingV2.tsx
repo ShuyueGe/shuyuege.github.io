@@ -39,10 +39,10 @@ export function BookThingV2() {
             aria-label={`${copy.donation.originalLink} (${copy.supportingFiles.newTab})`}>{copy.donation.originalLink}</a>
         </div>
       </div>
-      <div className="bookthing-v2-donation-desktop"><EvidenceImage {...assets.donationContext} /></div>
+      <div className="bookthing-v2-donation-desktop"><EvidenceImage {...assets.donationContext} className="bookthing-v2-donation-context" regions={[{ left: 0, top: 0, width: 2560, height: 1620 }, { left: 1234, top: 569, width: 1098, height: 145 }, { left: 1234, top: 1430, width: 1098, height: 110 }]} /></div>
       <div className="bookthing-v2-donation-mobile">
-        <div><h3>{copy.donation.moneyLabel}</h3><EvidenceImage {...assets.donationMoney} /></div>
-        <div><h3>{copy.donation.booksLabel}</h3><EvidenceImage {...assets.donationBooks} /></div>
+        <div><h3>{copy.donation.moneyLabel}</h3><EvidenceImage {...assets.donationMoney} className="bookthing-v2-donation-money" regions={[{ left: 0, top: 0, width: 930, height: 864 }]} /></div>
+        <div><h3>{copy.donation.booksLabel}</h3><EvidenceImage {...assets.donationBooks} className="bookthing-v2-donation-books" regions={[{ left: 9, top: 174, width: 520, height: 145 }, { left: 9, top: 1046, width: 650, height: 42 }, { left: 657, top: 1046, width: 453, height: 42 }, { left: 9, top: 1089, width: 650, height: 43 }, { left: 657, top: 1089, width: 453, height: 43 }]} /></div>
       </div>
       <p className="v2-note bookthing-v2-tradeoff">{copy.donation.tradeoff}</p>
     </section>
@@ -55,7 +55,7 @@ export function BookThingV2() {
       <div className="bookthing-v2-calendar-desktop"><EvidenceImage {...assets.calendarContext} /></div>
       <div className="bookthing-v2-calendar-mobile">
         <EvidenceImage {...assets.calendarGrid} />
-        <EvidenceImage {...assets.calendarHours} />
+        <EvidenceImage {...assets.calendarHours} className="bookthing-v2-calendar-hours" regions={[{ left: 0, top: 0, width: 1140, height: 325 }]} />
       </div>
     </section>
 

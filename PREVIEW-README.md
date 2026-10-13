@@ -78,3 +78,21 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 入口源码分别为 `public/casestudy1v2/index.html`、`public/casestudy2v2/index.html`、`public/casestudy3v2/index.html`。静态入口用 `location.replace` 跳转到已有 HashRouter 页面，包含 noindex、无 JavaScript 时的 meta refresh 与备用链接；地址栏最终显示对应 hash 路由。没有新增首页、导航或项目卡片链接。
 
 生产构建本地检查记录：`.design-review.local/aliases-local/`；线上直接访问与刷新记录：`.design-review.local/aliases-online/`。既有 5188 开发预览持续保留。
+
+## 五轮盲审视觉修改（2026-10-13）
+
+本次按用户新授权，各页完成五次修改；基线及每次修改后均使用全新独立上下文，只提供截图与仓库固定 rubric（包含 Content Lock），调用配置为 gpt-6-astra / high。以下评分完整保留，未选取最高分冒充最终结果。
+
+| 页面 | 基线 | 第1轮 | 第2轮 | 第3轮 | 第4轮 | 第5轮（最终） |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| MORI | 7.1 | 7.5 | 7.7 | 7.7 | 8.1 | 8.1 |
+| Patsy’s | 7.0 | 7.4 | 7.8 | 7.3 | 7.7 | 8.0 |
+| BookThing | 7.1 | 7.8 | 7.1 | 8.1 | 7.8 | 8.0 |
+
+三页均未达到8.5；按五次修改上限停止，未启动第六轮。剩余问题包括 MORI 桌面返回区的空间分配与柔和原图的边界、Patsy’s 手机对照和下单序列的纵向长度、BookThing 桌面局部图的分组及平板有界图片的对齐。原素材的排版与对比度保持真实，未重绘证据。
+
+此次只改 V2 构图、图片局部、图注间距与响应式组织。文案源文件和九组默认可见文字均与本轮冻结版本一致，词数仍为273 /286 /263–278。局部图采用原图像素窗口；完整原图仍可放大，source文件不变。BookThing 第二轮曾出现日历局部零高度的回归，第三轮修复，截图脚本现检查真实可见面积。
+
+最终构建与九组浏览器检查通过：直接访问/刷新、锚点与历史、放大与焦点恢复、折叠、图片和来源链接、视频控制/单视频播放/离屏暂停/reduced motion、横向溢出和预览metadata清理。首页与原三页在加载全部预览样式后的DOM及计算样式一致；位图受现有动态内容和栅格化影响，不宣称逐像素一致。原工作区133个文件的SHA-256、HEAD和干净状态不变；5188预览仍仅监听127.0.0.1。
+
+截图保存在 `.design-review.local/blind-v2-baseline/` 与 `blind-v2-r1/` 至 `blind-v2-r5/`；最终验证在 `blind-v2-verification/`；独立评分及剩余问题追加在 `review-history.json`，原始反馈保留在聊天记录。线上地址继续使用上方三个短地址，并跳转至原有hash路由。部署后实测记录在 `blind-v2-online/`，包含最新构建指纹和九组直接访问/刷新结果。

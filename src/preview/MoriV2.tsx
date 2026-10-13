@@ -54,7 +54,7 @@ export function MoriV2() {
       <div className="mori-v2-health-pair">
         <div><h3>{copy.health.beforeLabel}</h3>
           <EvidenceImage {...assets.healthBefore} alt={copy.health.beforeAlt}
-            caption={copy.health.beforeCaption} />
+            caption={copy.health.beforeCaption} regions={[{ left: 0, top: 0, width: 724, height: 350 }, { left: 0, top: 924, width: 724, height: 476 }]} />
         </div>
         <div><h3>{copy.health.afterLabel}</h3>
           <EvidenceImage {...assets.healthAfter} alt={copy.health.afterAlt}
@@ -70,10 +70,10 @@ export function MoriV2() {
       <div className="mori-v2-mode-pair">
         <div><h3>{copy.modes.companion.heading}</h3><EvidenceImage {...assets.companion}
           alt={copy.modes.companion.alt} caption={copy.modes.companion.caption}
-          crop={{ ratio: "3 / 4", position: "bottom" }} /></div>
+          regions={[{ left: 0, top: 2236, width: 1179, height: 320 }]} /></div>
         <div><h3>{copy.modes.guardian.heading}</h3><EvidenceImage {...assets.guardian}
           alt={copy.modes.guardian.alt} caption={copy.modes.guardian.caption}
-          crop={{ ratio: "3 / 4", position: "bottom" }} /></div>
+          regions={[{ left: 0, top: 1430, width: 1179, height: 375 }, { left: 0, top: 2240, width: 1179, height: 316 }]} /></div>
       </div>
     </section>
     <section className="v2-ending" aria-labelledby={copy.sections[3].id}>
