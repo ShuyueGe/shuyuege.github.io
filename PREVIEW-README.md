@@ -4,7 +4,7 @@
 分支：`preview/case-study-v2`
 基线：`ea2f1f5fbc0533328f5f603e781aaa0987e41565`。
 
-用户已授权补完并推送此预览分支。保留独立 worktree，不合并 `main`，不替换正式页面；现有部署 workflow 只监听 `main`。
+用户已授权补完、推送，并进一步要求三个指定的线上预览地址。保留独立 worktree 和此预览分支；因现有 GitHub Pages 环境只允许 `main` 发布，将验证后的 V2 与短地址同步到远程 `main`。首页、正式页面、导航、页脚和现有部署设置保持不变。
 
 ## 浏览、启动与停止
 
@@ -66,3 +66,15 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 精简通过合并重复解释、删除重复标签和降级补充材料完成，未缩小字体或图片。Patsy’s 的个人贡献位于开头文字区，预约确认只保留一个短例子；下单三屏分别证明 review、checkout/pickup 和 confirmation，没有追加成品 gallery。MORI 的返回约束、3/5 记录预期、AI 用途与交付边界，以及 BookThing 的具体 IA 分支、捐赠披露风险和验证问题均保持默认可见。
 
 本轮三页新鲜上下文独立视觉评审分别为 7.5、7.5、7.7；少量排版修正后的整组复核为 7.7/10（调用配置：gpt-6-astra / high）。随后仅补查并修正 BookThing 820px 捐赠局部呈现。未达到 9 分视觉目标：MORI 录屏仍占较多高度，Patsy’s 平板流程纵向较长，素材本身的界面排版仍是限制。本轮未扩大为整套视觉重做，也未采用缩小图片和窄三栏来压缩页面。评审记录保存在 `.design-review.local/review-history.json`，原始反馈在聊天记录中。
+
+## 线上短地址
+
+| 项目 | 地址 | 页面路由 |
+| --- | --- | --- |
+| BookThing | https://shuyuege.github.io/casestudy1v2 | `/#/projects/bookthing-v2` |
+| MORI | https://shuyuege.github.io/casestudy2v2 | `/#/projects/mori-v2` |
+| Patsy’s | https://shuyuege.github.io/casestudy3v2 | `/#/projects/patsy-v2` |
+
+入口源码分别为 `public/casestudy1v2/index.html`、`public/casestudy2v2/index.html`、`public/casestudy3v2/index.html`。静态入口用 `location.replace` 跳转到已有 HashRouter 页面，包含 noindex、无 JavaScript 时的 meta refresh 与备用链接；地址栏最终显示对应 hash 路由。没有新增首页、导航或项目卡片链接。
+
+生产构建本地检查记录：`.design-review.local/aliases-local/`；线上直接访问与刷新记录：`.design-review.local/aliases-online/`。既有 5188 开发预览持续保留。
