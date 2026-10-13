@@ -1,0 +1,102 @@
+export const patsyV2 = {
+  project: "Patsy’s Restaurant",
+  label: "Patsy’s · Mobile website concept",
+  title: "From menu browsing to a complete pickup path",
+  intro: "Our four-person team explored a mobile redesign for Patsy’s Restaurant. Research made menu browsing a priority; testing revealed that the first prototype stopped before ordering.",
+  meta: [
+    { label: "Project", value: "Four-person academic project" },
+    { label: "My role", value: "Research planning, product analysis, test design and observation" },
+    { label: "Delivery", value: "Mobile Figma prototype · Unlaunched" },
+    { label: "Report submitted", value: "May 3, 2026" },
+  ],
+  contributionTitle: "My contribution",
+  contribution: "I helped design the questionnaire and asked questions in 3 of 12 interview sessions. My product review identified mobile crowding and the need to zoom. I also designed the think-aloud protocol, observed the sessions, and took notes. The interface and pickup sequence shown here are team work.",
+  sections: [
+    { id: "patsy-v2-research", label: "Menu priority" },
+    { id: "patsy-v2-ordering", label: "Pickup iteration" },
+    { id: "patsy-v2-reservation", label: "Reservation review" },
+    { id: "patsy-v2-boundary", label: "Evidence boundary" },
+  ],
+  research: {
+    title: "Make the menu useful for a dining decision",
+    text: "Our team collected 21 survey responses and conducted 12 semi-structured interview sessions. Interviews suggested that people often discovered restaurants through maps, reviews, or social media, then used the restaurant website to confirm menu options, prices, location, and hours.",
+    counts: [
+      { lead: "15 of 21", text: "said they were somewhat or very likely to visit a restaurant’s website before going." },
+      { lead: "21 of 21", text: "selected viewing the menu as a reason they would use Patsy’s website." },
+    ],
+    countNote: "These describe stated intentions in this sample. The menu question allowed multiple selections.",
+    decision: "We prioritized direct menu access and readable categories, item descriptions, and prices. The original site already held useful information, but its dense desktop composition required manual zooming on a phone.",
+    sample: "The sample included UMBC students and team members’ families. No survey respondent lived in Bethany Beach, and only one had previously visited Patsy’s.",
+  },
+  ordering: {
+    title: "Testing exposed the gap between browsing and ordering",
+    intro: "The initial prototype supported reservations and four menu categories, but did not include a pickup path. We tested it with two participants using three tasks: reserve dinner for two, find crab cakes and their price, and attempt pickup.",
+    observationTitle: "The missing path",
+    observation: "During the assigned pickup task, one participant looked for a cart and could not find an ordering route. That observation exposed a gap in task coverage: menu browsing had an endpoint, but pickup did not.",
+    hotspotTitle: "A separate prototype issue",
+    hotspot: "Another participant tried tapping the crab-cake item, but it did not respond. That records an unsupported interaction in the tested prototype; it does not establish that a working ordering route was available and hard to discover.",
+    revisedTitle: "The team’s revision",
+    revision: "We added a pickup entry on the homepage, cart and plus cues on the menu, and an intended sequence through order review, checkout, pickup information, and confirmation. This extended the task beyond a cart icon and made the proposed next steps visible.",
+    testedLabel: "Tested V1 · Browsing only",
+    revisedLabel: "Revised team export · Ordering cues",
+    sequenceLabel: "Proposed pickup sequence",
+    sequence: [
+      { title: "Review the order", asset: "cart" },
+      { title: "Choose payment and see pickup details", asset: "checkout" },
+      { title: "Confirm the next step", asset: "confirmation" },
+    ],
+    limitation: "These are preset prototype states. Next-step buttons advance, but add-to-cart is not functional. The revised pickup flow has not been retested; it is not a working checkout or evidence of higher task success.",
+  },
+  reservation: {
+    title: "Keep reservation review focused on edit or confirm",
+    text: "Both participants completed the initial reservation task without major difficulty. One hesitated over time selection; the review screen’s X control also caused confusion. The team removed that control and retained two explicit actions: Make Edits and Reserve.",
+    tradeoff: "This was a focused clarification, rather than a response to widespread reservation failure. The click-through reservation flow reaches confirmation, but time-selection feedback remains unresolved. The revised review screen has not been validated in a follow-up test.",
+  },
+  boundary: {
+    title: "A more complete concept, with validation still ahead",
+    text: "We delivered a revised mobile Figma concept, not an implemented restaurant website. Testing covered the initial prototype with two participants; there are no measured post-redesign results or restaurant stakeholder approval.",
+    reflection: "The useful lesson was to check task coverage alongside favorable impressions. Next, I would make item selection and cart updates functional, retest pickup with local and returning diners, and revisit hours visibility, touch-based price explanations, and reservation feedback.",
+  },
+  assets: {
+    landing: {
+      src: "/images/projects/patsy/after-Landing Page.png", width: 804, height: 1758,
+      alt: "Revised team mobile homepage with separate reservation, menu, and pickup entry points",
+      caption: "Revised team prototype: separate entry points for the three main tasks.",
+    },
+    original: {
+      src: "/images/projects/patsy/report-original-phone.jpg", width: 992, height: 2048,
+      alt: "Original Patsy’s website phone capture with small text and a dense desktop composition",
+      caption: "Original phone view · useful information in a dense layout.",
+    },
+    testedMenu: {
+      src: "/images/projects/patsy/report-tested-menu.png", width: 584, height: 638,
+      alt: "Tested low-fidelity menu with categories and item placeholders, without a cart or pickup route",
+      caption: "V1 supported browsing. It did not include pickup ordering.",
+    },
+    revisedMenu: {
+      src: "/images/projects/patsy/after-Menu 2.png", width: 804, height: 1758,
+      alt: "Revised team Entrées screen with a cart indicator and plus controls beside menu items including Crab Cakes",
+      caption: "The revision shows cart and item-selection cues; the plus controls are not functional.",
+    },
+    cart: {
+      src: "/images/projects/patsy/after-Cart step2.png", width: 804, height: 1758,
+      alt: "Preset cart screen containing example dishes, an order summary, and a Continue action",
+      caption: "An example order and total before checkout.",
+    },
+    checkout: {
+      src: "/images/projects/patsy/after-Cart step3.png", width: 804, height: 1758,
+      alt: "Preset checkout screen showing payment choices, the pickup address, and Place Order",
+      caption: "Payment choices and in-person pickup information.",
+    },
+    confirmation: {
+      src: "/images/projects/patsy/after-Cart step4.png", width: 804, height: 1758,
+      alt: "Preset order-confirmation overlay containing a sample pickup estimate and Return to Home",
+      caption: "A proposed confirmation with a sample pickup estimate.",
+    },
+    reservation: {
+      src: "/images/projects/patsy/after-Reservation step3.png", width: 804, height: 1758,
+      alt: "Revised reservation review with guest count, date and location, plus Make Edits and Reserve actions",
+      caption: "Revised team review screen: check details, then edit or reserve.",
+    },
+  },
+} as const;

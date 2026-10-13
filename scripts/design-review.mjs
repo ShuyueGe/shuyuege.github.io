@@ -12,7 +12,12 @@ const out = path.resolve('.design-review.local', stage);
 const base = process.env.REVIEW_URL || 'http://127.0.0.1:5173';
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch({ headless: true, channel: process.env.REVIEW_BROWSER || 'msedge' });
-const routes = [
+const v2 = process.env.REVIEW_VARIANT === 'v2';
+const routes = v2 ? [
+  ['mori', '/projects/mori-v2'],
+  ['patsy', '/projects/patsy-v2'],
+  ['bookthing', '/projects/bookthing-v2'],
+] : [
   ['home', '/'],
   ['bookthing', '/projects/ngo-website-redesign'],
   ['patsy', '/projects/restaurant-website-redesign'],
@@ -27,10 +32,12 @@ try {
       page.on('pageerror', error => errors.push(error.message));
       page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
       await page.goto(`${base}/#${route}`, { waitUntil: 'networkidle' });
+      await page.waitForFunction((name) => { const title = document.querySelector('h1')?.textContent; return name === 'home' ? !!title?.includes('Product Designer') : name === 'mori' ? !!title?.includes('Designing clearer interaction rules') : name === 'patsy' ? (!!title?.includes('Making the path from browsing') || !!title?.includes('From menu browsing')) : !!title?.includes('Reorganizing BookThing'); }, name);
       await page.evaluate(async () => {
         await document.fonts.ready;
         document.querySelectorAll('img').forEach(img => img.loading = 'eager');
         await Promise.all(Array.from(document.images, img => img.decode().catch(() => {})));
+        if (document.querySelector('.preview-v2')) { for (const video of document.querySelectorAll('video')) { video.pause(); if (video.readyState < 2) await new Promise(resolve => { video.addEventListener('loadeddata', resolve, { once: true }); video.load(); }); video.currentTime = .1; } }
       });
       await page.screenshot({ path: path.join(out, `${name}-${width}-top.png`) });
       await page.screenshot({ path: path.join(out, `${name}-${width}-full.png`), fullPage: true });
@@ -57,7 +64,7 @@ try {
       }
       await sharp({ create: { width: columns * (cellWidth + 16) - 16, height: cellHeight, channels: 3, background: '#deded8' } }).composite(slices).png().toFile(path.join(out, `${name}-${width}-overview.png`));
       if (width === 1440 || width === 390) {
-        for (const selector of name === 'home' ? ['#projects'] : name === 'bookthing' ? ['.bt-ia', '.bt-donate', '.bt-calendar', '.bt-final'] : name === 'mori' ? ['.mori-hero', '.mori-diagnosis', '.mori-proposal', '.mori-return', '.mori-health', '.mori-modes', '.mori-closing'] : ['.ps-research', '.ps-pickup', '.ps-final']) {
+        for (const selector of v2 ? (name === 'mori' ? ['.mori-v2-hero', '.mori-v2-navigation', '.mori-v2-health', '.mori-v2-modes'] : name === 'patsy' ? ['.patsy-v2-hero', '.patsy-v2-research', '.patsy-v2-ordering', '.patsy-v2-reservation'] : ['.bookthing-v2-ia', '.bookthing-v2-donation', '.bookthing-v2-calendar']) : name === 'home' ? ['#projects'] : name === 'bookthing' ? ['.bt-ia', '.bt-donate', '.bt-calendar', '.bt-final'] : name === 'mori' ? ['.mori-hero', '.mori-diagnosis', '.mori-proposal', '.mori-return', '.mori-health', '.mori-modes', '.mori-closing'] : ['.ps-research', '.ps-pickup', '.ps-final']) {
           const section = page.locator(selector);
           if (await section.count()) await section.screenshot({ path: path.join(out, `${name}-${width}-${selector.replace(/[.#]/g, '')}.png`) });
         }

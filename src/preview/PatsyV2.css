@@ -1,0 +1,75 @@
+/* Patsy V2 art direction is confined to the preview root. */
+.preview-v2--patsy .patsy-v2-hero { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(260px,.85fr); column-gap: 70px; row-gap: 36px; align-items: start; }
+.preview-v2--patsy .patsy-v2-hero-copy { min-width: 0; }
+.preview-v2--patsy .patsy-v2-hero h1 { max-width: 22ch; }
+.preview-v2--patsy .patsy-v2-hero-image { width: 100%; max-width: 390px; justify-self: end; padding: 20px; background: #f0ede5; }
+.preview-v2--patsy .patsy-v2-contribution { grid-column: 1 / -1; display: grid; grid-template-columns: .6fr 2.15fr; gap: 36px; padding-top: 26px; border-top: 1px solid var(--color-border); }
+.preview-v2--patsy .patsy-v2-contribution h2 { font-size: 17px; line-height: 1.6; letter-spacing: -.015em; margin: 0; }
+.preview-v2--patsy .patsy-v2-contribution p { font-size: 17px; margin: 0; max-width: 70ch; }
+.preview-v2--patsy .patsy-v2-research { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(240px,.85fr); gap: 28px 56px; padding: 38px 40px 30px; background: #edf0e8; }
+.preview-v2--patsy .patsy-v2-research .v2-section-heading { margin-bottom: 24px; }
+.preview-v2--patsy .patsy-v2-research h2 { font-size: clamp(28px,2.5vw,34px); }
+.preview-v2--patsy .patsy-v2-survey { margin: 28px 0; padding: 0 0 0 20px; border-left: 2px solid #6c8979; }
+.preview-v2--patsy .patsy-v2-survey p { font-size: 17px; margin-bottom: 18px; }
+.preview-v2--patsy .patsy-v2-survey strong { font-size: inherit; font-weight: 750; }
+.preview-v2--patsy .patsy-v2-small, .preview-v2--patsy .patsy-v2-survey .patsy-v2-small { color: #526159; font-size: 14px; line-height: 1.65; }
+.preview-v2--patsy .patsy-v2-research-content .v2-prose, .preview-v2--patsy .patsy-v2-survey { max-width: 60ch; }
+.preview-v2--patsy .patsy-v2-original { width: 100%; max-width: 310px; align-self: start; justify-self: end; margin-top: calc(2 * 1.22 * clamp(28px,2.5vw,34px) + 24px); }
+.preview-v2--patsy .patsy-v2-research-sample { grid-column: 1 / -1; padding-top: 22px; margin: 0; border-top: 1px solid #ced6cb; max-width: 95ch; }
+.preview-v2--patsy .patsy-v2-ordering h2 { max-width: 31ch; }
+.preview-v2--patsy .patsy-v2-ordering-intro { max-width: 75ch; margin-bottom: 38px; }
+.preview-v2--patsy .patsy-v2-decision-grid { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1.4fr); gap: 48px; align-items: start; }
+.preview-v2--patsy .patsy-v2-decision-copy { font-size: 17px; }
+.preview-v2--patsy .patsy-v2-decision-copy h3 { font-size: 18px; }
+.preview-v2--patsy .patsy-v2-decision-copy p { margin-bottom: 0; }
+.preview-v2--patsy .patsy-v2-observation { border-left: 3px solid #d89449; padding-left: 20px; }
+.preview-v2--patsy .patsy-v2-hotspot { margin: 28px 0; padding: 24px 0; border-block: 1px solid var(--color-border); }
+.preview-v2--patsy .patsy-v2-menu-comparison { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; align-items: start; padding: 20px; background: #f0ede5; }
+.preview-v2--patsy .patsy-v2-tested { min-width: 0; }
+.preview-v2--patsy .patsy-v2-revised { min-width: 0; }
+.preview-v2--patsy .patsy-v2-evidence-label { font-size: 14px; line-height: 1.6; min-height: 45px; margin: 0 0 8px; font-weight: 650; }
+.preview-v2--patsy .patsy-v2-flow-stage { margin-top: 44px; padding: 30px 30px 34px; background: #f0ede5; }
+.preview-v2--patsy .patsy-v2-flow-stage > h3 { font-size: 23px; margin: 0 0 22px; }
+.preview-v2--patsy .patsy-v2-flow-limitation { border-color: #c7833e; max-width: 90ch; margin: 0 0 30px; }
+.preview-v2--patsy .patsy-v2-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 26px; align-items: start; }
+.preview-v2--patsy .patsy-v2-flow li { min-width: 0; }
+.preview-v2--patsy .patsy-v2-flow h4 { display: flex; align-items: baseline; min-height: 52px; margin: 0 0 18px; font-size: 16px; font-weight: 650; line-height: 1.5; letter-spacing: -.015em; }
+.preview-v2--patsy .patsy-v2-step-number { flex: 0 0 auto; color: #94511f; margin-right: 12px; font-weight: 750; }
+.preview-v2--patsy .patsy-v2-reservation { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(250px,.85fr); gap: 90px; align-items: center; }
+.preview-v2--patsy .patsy-v2-reservation h2 { font-size: clamp(28px,2.5vw,34px); }
+.preview-v2--patsy .patsy-v2-reservation-image { width: 100%; max-width: 390px; justify-self: end; }
+.preview-v2--patsy .patsy-v2-ending { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.3fr); gap: 32px; }
+.preview-v2--patsy .patsy-v2-ending .v2-section-heading { margin-bottom: 0; }
+.preview-v2--patsy .patsy-v2-ending h2 { margin-bottom: 0; }
+.preview-v2--patsy .patsy-v2-ending .v2-prose:last-child { margin-bottom: 0; }
+.preview-v2--patsy .patsy-v2-menu-comparison .v2-image-trigger { display: block; aspect-ratio: auto; padding: 0; background: transparent; }
+@media (max-width: 1000px) {
+  .preview-v2--patsy .patsy-v2-hero { column-gap: 36px; }
+  .preview-v2--patsy .patsy-v2-research { padding: 32px; gap: 24px 34px; }
+  .preview-v2--patsy .patsy-v2-decision-grid { grid-template-columns: 1fr; gap: 22px; padding: 26px; background: #f0ede5; }
+  .preview-v2--patsy .patsy-v2-decision-copy { max-width: 68ch; }
+  .preview-v2--patsy .patsy-v2-hotspot { margin: 22px 0; padding: 20px 0; }
+  .preview-v2--patsy .patsy-v2-menu-comparison { max-width: 680px; width: 100%; margin: auto; gap: 26px; padding: 22px 0 0; border-top: 1px solid #d6d8ce; background: transparent; }
+  .preview-v2--patsy .patsy-v2-flow { grid-template-columns: 1fr; gap: 40px; }
+  .preview-v2--patsy .patsy-v2-flow li { width: 100%; max-width: 350px; margin: auto; }
+  .preview-v2--patsy .patsy-v2-flow h4 { min-height: 0; }
+  .preview-v2--patsy .patsy-v2-reservation { gap: 42px; }
+  .preview-v2--patsy .patsy-v2-ending { gap: 32px; }
+}
+@media (max-width: 700px) {
+  .preview-v2--patsy .patsy-v2-hero { grid-template-columns: 1fr; gap: 32px; }
+  .preview-v2--patsy .patsy-v2-hero-image { max-width: 340px; justify-self: start; }
+  .preview-v2--patsy .patsy-v2-contribution { grid-template-columns: 1fr; gap: 12px; }
+  .preview-v2--patsy .patsy-v2-research { grid-template-columns: 1fr; padding: 26px 24px; }
+  .preview-v2--patsy .patsy-v2-original { max-width: 265px; justify-self: start; margin-top: 0; }
+  .preview-v2--patsy .patsy-v2-research-sample { grid-column: auto; }
+  .preview-v2--patsy .patsy-v2-menu-comparison { grid-template-columns: 1fr; gap: 26px; }
+  .preview-v2--patsy .patsy-v2-decision-grid { padding: 22px 20px; }
+  .preview-v2--patsy .patsy-v2-tested { width: 100%; max-width: 350px; }
+  .preview-v2--patsy .patsy-v2-revised { width: 100%; max-width: 350px; }
+  .preview-v2--patsy .patsy-v2-evidence-label { min-height: 0; }
+  .preview-v2--patsy .patsy-v2-flow-stage { padding: 26px 20px; }
+  .preview-v2--patsy .patsy-v2-reservation { grid-template-columns: 1fr; gap: 26px; }
+  .preview-v2--patsy .patsy-v2-reservation-image { justify-self: start; max-width: 350px; }
+  .preview-v2--patsy .patsy-v2-ending { grid-template-columns: 1fr; gap: 20px; }
+}
