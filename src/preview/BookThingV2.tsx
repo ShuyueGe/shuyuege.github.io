@@ -69,13 +69,22 @@ export function BookThingV2() {
       <details className="v2-details bookthing-v2-supporting">
         <summary id={copy.sections[3].id}>{copy.supporting.label}</summary>
         <p className="v2-prose">{copy.supporting.body}</p>
-        <div className="bookthing-v2-supporting-columns">
-          <div><h3>{copy.supporting.prototypeLabel}</h3><ul>{copy.supporting.prototype.map(file => <li key={file.label}>
-            <a href={assetUrl(file.src)} target="_blank" rel="noopener noreferrer" aria-label={`${file.label} (${copy.supporting.newTab})`}>{file.label}<span aria-hidden="true"> ↗</span></a>
-          </li>)}</ul></div>
-          <div><h3>{copy.supporting.identityLabel}</h3><ul>{copy.supporting.identity.map(file => <li key={file.label}>
-            <a href={assetUrl(file.src)} target="_blank" rel="noopener noreferrer" aria-label={`${file.label} (${copy.supporting.newTab})`}>{file.label}<span aria-hidden="true"> ↗</span></a>
-          </li>)}</ul></div>
+        <div className="bookthing-v2-supporting-prototype-group">
+          <h3>{copy.supporting.prototypeLabel}</h3>
+          <div className="bookthing-v2-supporting-prototypes">{copy.supporting.prototype.map((file, index) =>
+            <SupportingArtwork key={file.label} file={file} width={prototypeDimensions[index][0]} height={prototypeDimensions[index][1]} />
+          )}</div>
+        </div>
+        <div className="bookthing-v2-supporting-identity-group">
+          <h3>{copy.supporting.identityLabel}</h3>
+          <div className="bookthing-v2-supporting-identity">
+            <div className="bookthing-v2-supporting-applications">
+              <SupportingArtwork file={copy.supporting.identity[2]} width={727} height={320} />
+              <SupportingArtwork file={copy.supporting.identity[3]} width={462} height={564} />
+            </div>
+            <SupportingArtwork file={copy.supporting.identity[0]} width={920} height={978} />
+            <SupportingArtwork file={copy.supporting.identity[1]} width={702} height={1096} />
+          </div>
         </div>
       </details>
     </section>
@@ -85,4 +94,17 @@ export function BookThingV2() {
       <div className="bookthing-v2-ending-copy">{copy.outcome.body.map(paragraph => <p className="v2-prose" key={paragraph}>{paragraph}</p>)}</div>
     </section>
   </PreviewShell>;
+}
+
+
+const prototypeDimensions = [[2560, 1960], [3840, 2496], [3840, 2496], [2560, 1672], [2560, 1672]] as const;
+
+function SupportingArtwork({ file, width, height }: { file: { label: string; src: string }; width: number; height: number }) {
+  return <figure className="bookthing-v2-supporting-artwork">
+    <a href={assetUrl(file.src)} target="_blank" rel="noopener noreferrer"
+      aria-label={`${file.label} (${copy.supporting.newTab})`}>
+      <img src={assetUrl(file.src)} alt={file.label} width={width} height={height} loading="lazy" decoding="async" />
+      <span className="bookthing-v2-supporting-caption">{file.label}<span aria-hidden="true"> ↗</span></span>
+    </a>
+  </figure>;
 }
