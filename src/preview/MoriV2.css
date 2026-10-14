@@ -44,3 +44,21 @@
  .preview-v2--mori .mori-v2-navigation-grid > div:first-child > .v2-note { margin-top: 20px; }
  .preview-v2--mori .mori-v2-return-evidence { margin-top: 24px; }
 }
+/* Modes only: complete source images and a compact two-direction comparison. */
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations { width: min(100%,64ch); table-layout: fixed; border-collapse: collapse; font-size: 17px; line-height: 1.7; margin: 0 0 24px; }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations th, .preview-v2--mori .mori-v2-modes .mori-v2-explorations td { text-align: left; vertical-align: top; padding: 0 0 16px; }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations th:first-child { width: 34%; padding-right: 24px; }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations thead th { font-size: 14px; font-weight: 650; }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody th { font-weight: 600; }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child th, .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child td { padding-bottom: 0; }
+.preview-v2--mori .mori-v2-modes .v2-image-trigger > img { display: block; width: 100%; height: auto; object-fit: contain; }
+@media (max-width: 600px) {
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations { display: block; }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations thead, .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody { display: block; }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations thead tr { display: grid; grid-template-columns: 1fr; gap: 2px; margin-bottom: 16px; }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr { display: block; margin-bottom: 20px; }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations th, .preview-v2--mori .mori-v2-modes .mori-v2-explorations td { display: block; width: auto; padding: 0; }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations th:first-child { width: auto; padding-right: 0; }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody th { margin-bottom: 8px; }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child { margin-bottom: 0; }
+}

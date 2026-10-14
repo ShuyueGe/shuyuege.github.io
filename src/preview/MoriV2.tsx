@@ -70,16 +70,17 @@ export function MoriV2() {
     </section>
     <section className="v2-section v2-section--support mori-v2-modes" aria-labelledby={copy.sections[2].id}>
       <SectionHeading id={copy.sections[2].id} title={copy.modes.title} />
-      <div className="mori-v2-mode-prose"><p className="v2-prose">{copy.modes.body}</p>
-        <p className="v2-prose">{copy.modes.alternatives}</p>
-      </div>
+      <p className="v2-prose">{copy.modes.body}</p>
+      <table className="mori-v2-explorations">
+        <thead><tr><th scope="col">{copy.modes.exploredDirectionLabel}</th><th scope="col">{copy.modes.rejectedReasonLabel}</th></tr></thead>
+        <tbody>{copy.modes.explorations.map(option => <tr key={option.direction}>
+          <th scope="row">{option.direction}</th><td>{option.reason}</td>
+        </tr>)}</tbody>
+      </table>
+      <p className="v2-prose">{copy.modes.decision}</p>
       <div className="mori-v2-mode-pair">
-        <div><h3>{copy.modes.companion.heading}</h3><EvidenceImage {...assets.companion}
-          alt={copy.modes.companion.alt} caption={copy.modes.companion.caption}
-          regions={[{ left: 0, top: 2236, width: 1179, height: 320 }]} /></div>
-        <div><h3>{copy.modes.guardian.heading}</h3><EvidenceImage {...assets.guardian}
-          alt={copy.modes.guardian.alt} caption={copy.modes.guardian.caption}
-          regions={[{ left: 0, top: 1430, width: 1179, height: 375 }, { left: 0, top: 2240, width: 1179, height: 316 }]} /></div>
+        <div><h3>{copy.modes.companion.heading}</h3><EvidenceImage {...assets.companion} alt={copy.modes.companion.alt} /></div>
+        <div><h3>{copy.modes.guardian.heading}</h3><EvidenceImage {...assets.guardian} alt={copy.modes.guardian.alt} /></div>
       </div>
     </section>
     <section className="v2-ending" aria-labelledby={copy.sections[3].id}>

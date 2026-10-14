@@ -52,17 +52,21 @@ export const moriV2 = {
   },
   modes: {
     title: "Shared structure, distinct purposes",
-    body: "Heart Companion supported open-ended conversation; Health Guardian collected structured health data. Nearly identical chat interfaces made different purposes look interchangeable.",
-    alternatives: "Different backgrounds separated appearance without explaining function. Different layouts distinguished roles but weakened consistency. I kept shared structure, using opening guidance, task-specific placeholders, and structured inputs to communicate purpose.",
+    body: "Different purposes needed cues without becoming separate products.",
+    exploredDirectionLabel: "Explored direction",
+    rejectedReasonLabel: "Why it was not selected",
+    explorations: [
+      { direction: "Entirely different background patterns", reason: "MORI’s dynamic weather- and mood-responsive backgrounds, alongside fixed backgrounds, already varied; extra patterns risked complexity and visual fatigue." },
+      { direction: "Guardian recording-tile entry", reason: "Multiple entry choices would add scanning, understanding, and decision load." },
+    ],
+    decision: "Task-specific placeholders clarify actions within shared chat. Heart Companion uses a pill-shaped input and theme-tinted, semi-transparent MORI reply bubbles intended for human warmth; Health Guardian uses a taller rectangular input with smaller corner radii and semi-transparent white MORI reply bubbles.",
     companion: {
       heading: "Heart Companion",
-      caption: "“Tell Mori…” invites an open-ended message.",
-      alt: "Heart Companion with a conversational response and Tell Mori input",
+      alt: "Full Heart Companion conversation, theme-tinted MORI replies, and pill-shaped input",
     },
     guardian: {
       heading: "Health Guardian",
-      caption: "“Start today’s log” names the task; Supplement Record and Confirm support structured review.",
-      alt: "Health Guardian with Supplement Record, Confirm action, suggested entries, and Start today’s log input",
+      alt: "Full Health Guardian conversation, semi-transparent white MORI replies, and taller rectangular input with smaller rounded corners",
     },
   },
   ending: {
