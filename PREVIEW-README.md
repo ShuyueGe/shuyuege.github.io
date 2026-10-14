@@ -127,7 +127,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 
 | 项目 | 修改前全部说明 | 修改后全部说明 | 硬上限 |
 | --- | ---: | ---: | ---: |
-| BookThing | 639 | 358 | 400 |
+| BookThing | 640 | 358 | 400 |
 | MORI | 656 | 428 | 450 |
 | Patsy’s | 774 | 333 | 350 |
 
