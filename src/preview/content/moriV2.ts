@@ -13,10 +13,10 @@ export const moriV2 = {
   heroCaption: "Existing product recording.",
   heroAlt: "MORI product interface at dusk",
   sections: [
-    { id: "mori-v2-navigation", label: "Return rules" },
+    { id: "mori-v2-navigation", label: "Navigation" },
     { id: "mori-v2-health", label: "Health recording" },
     { id: "mori-v2-modes", label: "AI modes" },
-    { id: "mori-v2-delivery", label: "Delivery" },
+    { id: "mori-v2-delivery", label: "Outcome" },
   ],
   navigation: {
     title: "Unify return taps without adding navigation controls",

@@ -9,10 +9,10 @@ export const patsyV2 = {
     { label: "Delivery", value: "Mobile Figma prototype · Unlaunched" },
   ],
   sections: [
-    { id: "patsy-v2-research", label: "Menu priority" },
+    { id: "patsy-v2-research", label: "Research" },
     { id: "patsy-v2-ordering", label: "Pickup iteration" },
-    { id: "patsy-v2-reservation", label: "Reservation" },
-    { id: "patsy-v2-boundary", label: "Boundary" },
+    { id: "patsy-v2-reservation", label: "Reservation review" },
+    { id: "patsy-v2-boundary", label: "Outcome" },
   ],
   research: {
     title: "Make the menu useful for a dining decision",

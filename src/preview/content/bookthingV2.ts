@@ -5,10 +5,10 @@ const preview = "/images/preview/bookthing-v2/";
 export const bookthingV2 = {
   projectName: "BookThing",
   sections: [
-    { id: "bookthing-v2-ia", label: "IA" },
+    { id: "bookthing-v2-ia", label: "Information architecture" },
     { id: "bookthing-v2-donation", label: "Donation" },
     { id: "bookthing-v2-calendar", label: "Calendar" },
-    { id: "bookthing-v2-boundaries", label: "Scope" },
+    { id: "bookthing-v2-boundaries", label: "Outcome" },
   ],
   hero: {
     eyebrow: "BookThing · Nonprofit website",

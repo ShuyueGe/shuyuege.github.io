@@ -1,0 +1,20 @@
+/* V2-only reference variant. V1 components and global styles stay untouched. */
+.preview-v2 .v2-directory { --v2-directory-top: 100px; margin: 12px 0 32px; }
+.preview-v2 .v2-directory .v2-section-nav { position: relative; display: flex; flex-wrap: nowrap; gap: 24px; overflow-x: auto; scroll-padding-inline: 16px; margin: 0; padding: 8px 0; border: 0; scrollbar-width: thin; scrollbar-color: var(--color-border) transparent; }
+.preview-v2 .v2-directory .v2-section-nav > a { flex: 0 0 auto; display: flex; align-items: center; min-height: 44px; padding: 8px 0; border: 0; border-bottom: 2px solid transparent; color: var(--color-muted); font-size: 14px; font-weight: 500; line-height: 1.5; transition: color var(--transition-fast), border-color var(--transition-fast); }
+.preview-v2 .v2-directory .v2-section-nav > a:hover { color: #78a49b; border-bottom-color: transparent; }
+.preview-v2 .v2-directory .v2-section-nav > a[aria-current="location"] { color: #78a49b; border-color: #78a49b; font-weight: 700; }
+.preview-v2 .v2-directory .v2-section-nav > a:focus-visible { outline: 2px solid var(--color-text); outline-offset: -2px; }
+@media (max-width: 1535px) {
+ .preview-v2 .v2-directory .v2-section-nav[data-overflow-end] { mask-image: linear-gradient(to right, #000 calc(100% - 16px), transparent); }
+}
+/* A 128px rail + 32px gap + 16px edge fits without moving the existing body at 1536px. */
+@media (min-width: 1536px) {
+ .preview-v2 .v2-article { position: relative; }
+ .preview-v2 .v2-directory { position: absolute; top: var(--v2-directory-start); bottom: 0; left: -112px; width: 128px; margin: 0; pointer-events: none; }
+ .preview-v2 .v2-directory .v2-section-nav { position: sticky; top: var(--v2-directory-top); display: flex; flex-direction: column; gap: 10px; max-height: calc(100dvh - var(--v2-directory-top) - 24px); overflow-y: auto; overflow-x: hidden; padding: 0; pointer-events: auto; }
+ .preview-v2 .v2-directory .v2-section-nav > a { padding: 10.4px 8px 10.4px 16px; border-bottom: 0; border-left: 2px solid transparent; overflow-wrap: anywhere; }
+ .preview-v2 .v2-directory .v2-section-nav > a[aria-current="location"] { border-left-color: #78a49b; }
+}
+@media (prefers-reduced-motion: reduce) { .preview-v2 .v2-directory .v2-section-nav > a { transition: none; } }
+@media print { .preview-v2 .v2-directory { display: none; } }

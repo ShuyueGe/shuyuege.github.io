@@ -1,14 +1,14 @@
 import { useEffect, useId, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import "./PreviewV2.css";
+import { V2Directory } from "./V2Directory";
 
 export function PreviewShell({ project, title, sections, children }: {
   project: "mori" | "patsy" | "bookthing"; title: string;
   sections: readonly { id: string; label: string }[]; children: ReactNode;
 }) {
-  const { pathname, hash } = useLocation();
   useEffect(() => {
     const priorTitle = document.title;
     document.title = `${title} · Preview v2 | Shuyue Ge`;
@@ -19,33 +19,13 @@ export function PreviewShell({ project, title, sections, children }: {
     document.head.append(robots);
     return () => { robots.remove(); document.title = priorTitle; };
   }, [title]);
-  useEffect(() => {
-    const id = decodeURIComponent(hash.slice(1));
-    if (!sections.some(section => section.id === id)) return;
-    const heading = document.getElementById(id);
-    if (!heading) return;
-    heading.focus({ preventScroll: true });
-    heading.scrollIntoView({ behavior: "instant", block: "start" });
-  }, [hash, sections]);
   return <Layout className={`preview-v2 preview-v2--${project}`}>
     <article className="v2-article" aria-label={`${title} case study preview`}>
       <div className="v2-utility">
         <Link className="back-link" to="/?section=projects">← Back to projects</Link>
         <span className="v2-preview-label">Preview v2</span>
       </div>
-      <nav className="v2-section-nav" aria-label="Case study sections">
-        {sections.map(section => <Link key={section.id} to={{ pathname, hash: `#${section.id}` }}
-          aria-current={hash === `#${section.id}` ? "location" : undefined}
-          onClick={event => {
-            if (hash === `#${section.id}` && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
-              event.preventDefault();
-              const heading = document.getElementById(section.id);
-              heading?.focus({ preventScroll: true });
-              heading?.scrollIntoView({ behavior: "instant", block: "start" });
-            }
-          }}
-        >{section.label}</Link>)}
-      </nav>
+      <V2Directory sections={sections} />
       {children}
     </article>
   </Layout>;

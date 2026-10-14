@@ -148,3 +148,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 构建与九组页面检查通过：直接访问／刷新、图片与源图、锚点焦点和前进后退、折叠／键盘、放大关闭／焦点恢复、视频控制／单段播放／离屏暂停／reduced motion、字体加载、图像窗口可见区域与横向溢出。加载三页预览样式后，首页与正式三页的 DOM、元素坐标和计算样式一致，无 V2 入口且 preview noindex 正确清除。148 个受保护文件、四份 handoff、原工作目录 133 个文件及原 HEAD／干净状态不变；不宣称动态／栅格化位图逐像素一致。记录位于 `compact-verification/`，上线后复核位于 `compact-online/`。
 
 素材与事实边界继续有效：MORI 仍复用用户确认的同一未剪辑录屏，未补造独立返回演示、记录表单或 AI 开场画面；Patsy’s 修订仍未复测，BookThing 未实现／未正式测试。原素材、原版内容与 final handoff 保持不变。
+## V2 页内目录（2026-10-13）
+
+目录编辑入口为 `src/preview/V2Directory.tsx`／`V2Directory.css`；三页条目仍在各自内容文件的 `sections` 数组，保留现有锚点。组件通过 `PreviewShared.tsx` 接入；V1的 `CaseStudyNav` 与全站样式未改。
+
+实际V1核对：BookThing与Patsy’s没有显示目录总标题，使用128px侧栏、32px正文间隔、14px／21px条目、500／700字重、10px间距和`#78a49b`高亮；MORI V1没有页内目录，因此MORI V2参照作品集已有的同一呈现方式。V2为保留既有正文宽度和左对齐，从1536px启用侧栏；1440／820／390px使用V1的非sticky横向滚动方式。侧栏从第一个实际章节旁开始，滚动后位于header高度+24px，保持长章节与最后章节的阅读高亮。
+
+条目按实际V2顺序：BookThing为Information architecture／Donation／Calendar／Outcome；MORI为Navigation／Health recording／AI modes／Outcome；Patsy’s为Research／Pickup iteration／Reservation review／Outcome。当前BookThing中`Additional pages & visual identity`已在此前内容精简中删除，本轮只改目录，未恢复该模块或加入不存在的锚点。`Complete sitemaps & task paths`内容、原图、默认开合、内部样式与交互完全保留。
+
+基线及截图在忽略的`v1-directory-reference/`、`v2-directory-before/`，正文与正式页面保留检查在`v2-directory-after/preservation-results.json`，最终交互及桌面1680／手机390截图在`v2-directory-final-interactions/`，均位于`.design-review.local/`。导航外HTML、文字、素材、正文横向尺寸与内部相对布局一致；移除旧顶部目录时允许对应的统一纵向位移，不宣称绝对纵向坐标不变。没有修改正文、章节顺序、原页面、全站入口、素材或依赖，noindex继续按预览路由清理。
