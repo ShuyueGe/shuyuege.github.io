@@ -23,7 +23,11 @@ export const bookthingV2 = {
   },
   ia: {
     title: "Separate schedules from news, group donation resources",
-    body: "Persona-based tasks guided the IA: visits need Calendar and Location; donations need grouped guidance; participation needs Volunteer and Location. News & Events now separates Calendar from Newsroom. Donate groups Donation Rules, Donation Schedule, and Wish List; Volunteer and Location remain direct.",
+    body: [
+      "The original sitemap distributed opening information across Home, News, and FAQ; Events led to Facebook. A visit-planning task therefore spanned dates, announcements, and location information across destinations.",
+      "Assumption-based proto-personas and task paths supplied planning criteria, rather than findings from a user study: visitors need to distinguish public openings from special events and find the address; money donors need a Donate destination with payment options near the top; volunteers need sign-up and location information.",
+    ],
+    decision: "The revised News & Events branch separates Calendar’s operational schedule from Newsroom’s announcements, while retaining Social media. Donate groups Donation Rules, Donation Schedule, and Wish List as named destinations. Volunteer and Location stay directly accessible. These groupings guided the prototype’s dropdown menus.",
     originalLabel: "Original",
     revisedLabel: "Revised",
     fullEvidenceLabel: "Complete sitemaps & task paths",
@@ -31,21 +35,28 @@ export const bookthingV2 = {
   donation: {
     title: "Showing both ways to donate before the detailed rules",
     body: [
-      "Financial giving originally followed lengthy book rules. I surfaced Money Donations and Book Donations together, then placed Books We Accept and Other rules in labeled disclosures. PayPal Giving Fund and Donorbox stayed unchanged; the donation-hours warning remains visible.",
+      "The original Donate page placed financial giving after lengthy book-donation rules. Readers encountered detailed instructions for one method before seeing the other.",
+      "The revision puts Money Donations and Book Donations in the first content row, making the method choice visible before its requirements. A compact financial-giving area keeps the existing PayPal Giving Fund and Donorbox options; the wider book-giving column holds preparation, schedules, and rules.",
     ],
-    originalLink: "Original donation page ↗",
+    originalLabel: "Original donation ordering",
+    revisedLabel: "Revised donation hierarchy",
+    detail: "Books We Accept and Other rules group the long guidance under descriptive labels. The drop-off warning stays visible outside them. Payment methods and book policies were retained; this was a content-order change, not a new checkout.",
     moneyLabel: "Money donations",
     booksLabel: "Book donations",
-    tradeoff: "Less default text risks overlooked restrictions; noticing quantity limits and hours still needs testing.",
+    tradeoff: "Giving method choice priority over the full rule list risks overlooked restrictions inside disclosures. Whether visitors notice quantity limits, acceptance rules, and donation hours still needs testing.",
   },
   calendar: {
     title: "Make visit planning a schedule, not a news search",
-    body: "Calendar places openings in a dedicated schedule, marks public openings, and separates giveaway from donation hours.",
+    body: [
+      "Opening dates were scattered across News and Events. A dedicated Calendar was chosen over relying on a News feed or homepage announcement so dates could sit beside the operational details needed to plan a visit. Newsroom retains announcements and archives.",
+      "The calendar design includes month/year browsing and filtering. A star marks BookThing’s public openings, distinguishing them from other events; highlighted dates connect the month grid to a date-detail panel. That panel separates giveaway hours from book-donation hours, rather than presenting one opening time for both tasks.",
+    ],
   },
   outcome: {
     title: "Prototype delivered; usability remains unvalidated",
     body: [
-      "I completed revised IA, five desktop prototype pages, and visual identity. The concept remains unimplemented, with no formal usability testing. Next: can visitors find the next opening and notice donation restrictions?",
+      "The concept comprises revised IA, five desktop prototype pages, and supporting visual identity. It was not implemented or formally usability-tested, so findability and comprehension remain unvalidated.",
+      "Next, test whether a visitor can find the next opening and its correct hours, a money donor can identify an applicable payment option, and a book donor can locate acceptance requirements and quantity limits. Observe missed navigation and overlooked disclosures, including when donation columns stack on narrow screens.",
     ],
     supportingLabel: "Additional pages & visual identity",
     supportingBody: "The remaining page exports and identity studies document the concept’s scope. They provide supplementary context rather than evidence of usability or impact.",
@@ -77,13 +88,13 @@ export const bookthingV2Assets = {
   originalBranches: {
     src: preview + "ia-original-news-events.png", fullSrc: original + "bookthing-ia-original-sitemap.png", width: 1030, height: 735,
     alt: "Original sitemap detail: News contains opening and event announcements; Events leads to Facebook.",
-    caption: "Schedules mixed with announcements.",
+    caption: "Original: opening announcements share News with updates; Events leads to Facebook.",
   },
   // bookthing-ia-revised-sitemap.png, 3628×1408; [620,330,1095,650].
   revisedBranches: {
     src: preview + "ia-revised-schedule-donate.png", fullSrc: original + "bookthing-ia-revised-sitemap.png", width: 1095, height: 650,
     alt: "Revised sitemap detail: Calendar, Newsroom and Social media under News & Events; Rules, Schedule and Wish List under Donate.",
-    caption: "Calendar separated; donation resources grouped.",
+    caption: "Revised: Calendar gets a schedule destination; Donate names rules, timing, and Wish List.",
   },
   fullOriginal: {
     src: original + "bookthing-ia-original-sitemap.png", width: 4320, height: 1382,
@@ -118,7 +129,12 @@ export const bookthingV2Assets = {
     alt: "Book-donation introduction, complete disclosure labels, expanded Other rules and the donation-hours warning.",
     caption: "Disclosures; hours warning stays visible.",
   },
-  originalDonation: original + "bookthing-analysis-donate-2025.png",
+  // Authentic 2025 source; [20,2070,730,515] shows the rules-to-money ordering.
+  originalDonation: {
+    src: original + "bookthing-analysis-donate-2025.png", width: 1152, height: 4096,
+    alt: "Original Donate page excerpt showing book-donation rules immediately before Money Donations.",
+    caption: "Original: financial giving follows book-donation rules.",
+  },
   // bookthing-final-calendar-page.png, 3840×2496; [560,380,2680,1270].
   calendarContext: {
     src: preview + "calendar-content.png", fullSrc: original + "bookthing-final-calendar-page.png", width: 2680, height: 1270,

@@ -34,7 +34,7 @@ export function MoriV2() {
     <section className="v2-section mori-v2-navigation" aria-labelledby={copy.sections[0].id}>
       <SectionHeading id={copy.sections[0].id} title={copy.navigation.title} />
       <div className="mori-v2-navigation-grid">
-        <div>{copy.navigation.paragraphs.map(text => <p className="v2-prose" key={text}>{text}</p>)}
+        <div><div className="mori-v2-navigation-story">{copy.navigation.paragraphs.map(text => <p className="v2-prose" key={text}>{text}</p>)}</div>
           <div className="mori-v2-rules">{copy.navigation.rules.map(rule => <div key={rule.label}>
             <span className="v2-label">{rule.label}</span><h3>{rule.action}</h3>
           </div>)}</div>
@@ -48,6 +48,7 @@ export function MoriV2() {
     </section>
     <section className="v2-section mori-v2-health" aria-labelledby={copy.sections[1].id}>
       <SectionHeading id={copy.sections[1].id} title={copy.health.title}>
+        <p className="v2-prose">{copy.health.context}</p>
         <p className="v2-prose mori-v2-finding">{copy.health.finding}</p>
         <p className="v2-prose">{copy.health.decision}</p>
       </SectionHeading>
@@ -55,10 +56,12 @@ export function MoriV2() {
         <div><h3>{copy.health.beforeLabel}</h3>
           <EvidenceImage {...assets.healthBefore} alt={copy.health.beforeAlt}
             caption={copy.health.beforeCaption} regions={[{ left: 0, top: 0, width: 724, height: 350 }, { left: 0, top: 924, width: 724, height: 476 }]} />
+          <div className="mori-v2-record-path"><p className="v2-label">{copy.health.originalFlowLabel}</p><p className="v2-prose">{copy.health.originalFlow}</p></div>
         </div>
         <div><h3>{copy.health.afterLabel}</h3>
           <EvidenceImage {...assets.healthAfter} alt={copy.health.afterAlt}
             caption={copy.health.afterCaption} />
+          <div className="mori-v2-record-path mori-v2-record-path--revised"><p className="v2-label">{copy.health.revisedFlowLabel}</p><p className="v2-prose">{copy.health.revisedFlow}</p></div>
 
           <p className="v2-note">{copy.health.flowNote}</p>
         </div>
@@ -66,7 +69,9 @@ export function MoriV2() {
     </section>
     <section className="v2-section v2-section--support mori-v2-modes" aria-labelledby={copy.sections[2].id}>
       <SectionHeading id={copy.sections[2].id} title={copy.modes.title} />
-      <p className="v2-prose mori-v2-mode-prose">{copy.modes.body}</p>
+      <div className="mori-v2-mode-prose"><p className="v2-prose">{copy.modes.body}</p>
+        <p className="v2-prose">{copy.modes.alternatives}</p>
+        <p className="v2-prose mori-v2-mode-decision">{copy.modes.decision}</p></div>
       <div className="mori-v2-mode-pair">
         <div><h3>{copy.modes.companion.heading}</h3><EvidenceImage {...assets.companion}
           alt={copy.modes.companion.alt} caption={copy.modes.companion.caption}

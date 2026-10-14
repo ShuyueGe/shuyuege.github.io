@@ -16,12 +16,13 @@ export function BookThingV2() {
     <section className="v2-section bookthing-v2-ia" aria-labelledby={copy.sections[0].id}>
       <div className="bookthing-v2-section-intro">
         <SectionHeading id={copy.sections[0].id} title={copy.ia.title} />
-        <div className="bookthing-v2-section-copy"><p className="v2-prose">{copy.ia.body}</p></div>
+        <div className="bookthing-v2-section-copy">{copy.ia.body.map(paragraph => <p className="v2-prose" key={paragraph}>{paragraph}</p>)}</div>
       </div>
       <div className="bookthing-v2-map-comparison">
         <div><h3>{copy.ia.originalLabel}</h3><EvidenceImage {...assets.originalBranches} /></div>
         <div><h3>{copy.ia.revisedLabel}</h3><EvidenceImage {...assets.revisedBranches} /></div>
       </div>
+      <p className="v2-prose bookthing-v2-ia-decision">{copy.ia.decision}</p>
       <details className="v2-details bookthing-v2-full-diagrams">
         <summary>{copy.ia.fullEvidenceLabel}</summary>
         <EvidenceImage {...assets.fullOriginal} />
@@ -35,22 +36,27 @@ export function BookThingV2() {
         <SectionHeading id={copy.sections[1].id} title={copy.donation.title} />
         <div className="bookthing-v2-section-copy">
           {copy.donation.body.map(paragraph => <p className="v2-prose" key={paragraph}>{paragraph}</p>)}
-          <a className="bookthing-v2-source-link" href={assetUrl(assets.originalDonation)} target="_blank" rel="noopener noreferrer"
-            aria-label={`${copy.donation.originalLink} (${copy.supportingFiles.newTab})`}>{copy.donation.originalLink}</a>
+
         </div>
       </div>
+      <div className="bookthing-v2-donation-original">
+        <h3>{copy.donation.originalLabel}</h3>
+        <EvidenceImage {...assets.originalDonation} regions={[{ left: 20, top: 2070, width: 730, height: 515 }]} />
+      </div>
+      <h3 className="bookthing-v2-revised-label">{copy.donation.revisedLabel}</h3>
       <div className="bookthing-v2-donation-desktop"><EvidenceImage {...assets.donationContext} className="bookthing-v2-donation-context" regions={[{ left: 0, top: 0, width: 2560, height: 1620 }, { left: 1234, top: 569, width: 1098, height: 145 }, { left: 1234, top: 1430, width: 1098, height: 110 }]} /></div>
       <div className="bookthing-v2-donation-mobile">
         <div><h3>{copy.donation.moneyLabel}</h3><EvidenceImage {...assets.donationMoney} className="bookthing-v2-donation-money" regions={[{ left: 0, top: 0, width: 930, height: 864 }]} /></div>
         <div><h3>{copy.donation.booksLabel}</h3><EvidenceImage {...assets.donationBooks} className="bookthing-v2-donation-books" regions={[{ left: 9, top: 174, width: 520, height: 145 }, { left: 9, top: 1046, width: 650, height: 42 }, { left: 657, top: 1046, width: 453, height: 42 }, { left: 9, top: 1089, width: 650, height: 43 }, { left: 657, top: 1089, width: 453, height: 43 }]} /></div>
       </div>
+      <p className="v2-prose bookthing-v2-donation-detail">{copy.donation.detail}</p>
       <p className="v2-note bookthing-v2-tradeoff">{copy.donation.tradeoff}</p>
     </section>
 
     <section className="v2-section v2-section--support bookthing-v2-calendar" aria-labelledby={copy.sections[2].id}>
       <div className="bookthing-v2-section-intro">
         <SectionHeading id={copy.sections[2].id} title={copy.calendar.title} />
-        <div className="bookthing-v2-section-copy"><p className="v2-prose">{copy.calendar.body}</p></div>
+        <div className="bookthing-v2-section-copy">{copy.calendar.body.map(paragraph => <p className="v2-prose" key={paragraph}>{paragraph}</p>)}</div>
       </div>
       <div className="bookthing-v2-calendar-desktop"><EvidenceImage {...assets.calendarContext} /></div>
       <div className="bookthing-v2-calendar-mobile">
@@ -61,7 +67,7 @@ export function BookThingV2() {
 
     <section className="v2-ending bookthing-v2-ending" aria-labelledby={copy.sections[3].id}>
       <SectionHeading id={copy.sections[3].id} title={copy.outcome.title} />
-      {copy.outcome.body.map(paragraph => <p className="v2-prose" key={paragraph}>{paragraph}</p>)}
+      <div className="bookthing-v2-ending-copy">{copy.outcome.body.map(paragraph => <p className="v2-prose" key={paragraph}>{paragraph}</p>)}</div>
       <details className="v2-details bookthing-v2-supporting">
         <summary>{copy.outcome.supportingLabel}</summary>
         <p className="v2-prose">{copy.outcome.supportingBody}</p>

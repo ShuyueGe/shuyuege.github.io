@@ -5,9 +5,6 @@
 .preview-v2--patsy .patsy-v2-hero-image { width: 100%; max-width: 390px; justify-self: end; }
 /* The comparison has a shared frame; standalone prototype views remain open. */
 .preview-v2--patsy .patsy-v2-original { padding: 16px; border: 1px solid #d2d8cf; background: transparent; }
-.preview-v2--patsy .patsy-v2-contribution { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--color-border); }
-.preview-v2--patsy .patsy-v2-contribution h2 { font-size: 17px; line-height: 1.6; letter-spacing: -.015em; margin: 0 0 8px; }
-.preview-v2--patsy .patsy-v2-contribution p { font-size: 17px; line-height: 1.7; margin: 0; max-width: 70ch; }
 .preview-v2--patsy .patsy-v2-research { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(300px,.85fr); gap: 28px 32px; padding: 34px 40px; background: #eef0ea; align-items: start; }
 .preview-v2--patsy .patsy-v2-research .v2-section-heading { margin-bottom: 22px; }
 .preview-v2--patsy .patsy-v2-research h2 { font-size: clamp(28px,2.5vw,34px); max-width: 25ch; }
@@ -63,9 +60,6 @@
   .preview-v2--patsy .patsy-v2-hero .v2-meta > div { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 12px; }
   .preview-v2--patsy .patsy-v2-hero .v2-meta dt { margin: 0; align-self: baseline; }
   .preview-v2--patsy .patsy-v2-hero-image { max-width: 350px; justify-self: start; }
-  .preview-v2--patsy .patsy-v2-contribution { margin-top: 12px; padding-top: 8px; }
-  .preview-v2--patsy .patsy-v2-contribution h2 { margin-bottom: 4px; }
-  .preview-v2--patsy .patsy-v2-contribution p { line-height: 1.6; }
   .preview-v2--patsy .patsy-v2-research { grid-template-columns: 1fr; padding: 26px 16px; gap: 24px; }
   .preview-v2--patsy .patsy-v2-original { max-width: 320px; justify-self: start; padding: 0; border: 0; }
   .preview-v2--patsy .patsy-v2-menu-comparison { grid-template-columns: 1fr; gap: 16px; padding: 20px 16px; }
@@ -81,4 +75,25 @@
   .preview-v2--patsy .patsy-v2-reservation { grid-template-columns: 1fr; gap: 24px; }
   .preview-v2--patsy .patsy-v2-reservation-image { max-width: none; justify-self: end; }
   .preview-v2--patsy .patsy-v2-ending { grid-template-columns: 1fr; gap: 20px; }
+}
+/* Restored research and iteration reasoning stays beside the existing evidence. */
+.preview-v2--patsy .patsy-v2-hero .v2-meta > div:first-child { grid-column: 1 / -1; }
+.preview-v2--patsy .patsy-v2-survey-counts { font-size: 17px; max-width: 60ch; }
+.preview-v2--patsy .patsy-v2-survey-counts p { margin: 0 0 18px; }
+.preview-v2--patsy .patsy-v2-survey-counts p:last-child { margin-bottom: 0; }
+.preview-v2--patsy .patsy-v2-survey-counts strong { font-weight: 700; }
+.preview-v2--patsy .patsy-v2-research-response { grid-column: 1 / -1; padding-top: 26px; border-top: 1px solid #cbd4c9; }
+.preview-v2--patsy .patsy-v2-research-response .v2-prose { max-width: 72ch; }
+.preview-v2--patsy .patsy-v2-research-response .v2-note { margin: 24px 0; max-width: 76ch; }
+.preview-v2--patsy .patsy-v2-ordering-intro { max-width: 72ch; margin-bottom: 32px; }
+.preview-v2--patsy .patsy-v2-decision-copy p { margin-top: 0; }
+.preview-v2--patsy .patsy-v2-decision-copy p + p { margin-top: 24px; }
+.preview-v2--patsy .patsy-v2-ordering-bridge { margin-top: 32px; }
+.preview-v2--patsy .patsy-v2-ordering-bridge .v2-prose { max-width: 72ch; }
+.preview-v2--patsy .patsy-v2-ordering-bridge .patsy-v2-revision { margin-top: 0; }
+.preview-v2--patsy .patsy-v2-ending .v2-prose + .v2-prose { margin-top: 20px; }
+@media (max-width: 700px) {
+  .preview-v2--patsy .patsy-v2-research-response { padding-top: 22px; }
+  .preview-v2--patsy .patsy-v2-ordering-intro { margin-bottom: 26px; }
+  .preview-v2--patsy .patsy-v2-ordering-bridge { margin-top: 28px; }
 }

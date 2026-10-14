@@ -1,5 +1,5 @@
 /* BookThing V2: a compact introduction, paired IA stage, and desktop UI spread.
-   All selectors remain inside this preview root; the manuscript is frozen. */
+   All selectors remain inside this preview root; restored reasoning stays with its evidence. */
 .preview-v2--bookthing .bookthing-v2-hero {
   display: grid;
   grid-template-columns: minmax(0, .6fr) minmax(0, .4fr);
@@ -157,3 +157,14 @@
   .preview-v2--bookthing .bookthing-v2-calendar h2 { font-size: 27px; }
   .preview-v2--bookthing .bookthing-v2-supporting-columns { grid-template-columns: 1fr; gap: 25px; }
 }
+
+/* Selective reasoning restoration: keep the comparison and its rationale adjacent. */
+.preview-v2--bookthing .bookthing-v2-section-copy .v2-prose + .v2-prose { margin-top: 18px; }
+.preview-v2--bookthing .bookthing-v2-ia-decision { max-width: 68ch; margin: 26px 0 0; }
+.preview-v2--bookthing .bookthing-v2-donation-original { max-width: 470px; margin: 0 0 30px; }
+.preview-v2--bookthing .bookthing-v2-donation-original h3,
+.preview-v2--bookthing .bookthing-v2-revised-label { font-size: 16px; margin: 0 0 14px; }
+.preview-v2--bookthing .bookthing-v2-donation-original .v2-source-window { outline: 1px solid #dce2dc; }
+.preview-v2--bookthing .bookthing-v2-donation-original .v2-source-window img { border: 0; padding: 0; }
+.preview-v2--bookthing .bookthing-v2-donation-detail { max-width: 68ch; margin: 24px 0 0; }
+.preview-v2--bookthing .bookthing-v2-ending-copy .v2-prose:last-child { margin-bottom: 0; }

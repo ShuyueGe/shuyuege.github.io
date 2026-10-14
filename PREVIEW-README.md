@@ -2,7 +2,7 @@
 
 工作区：`C:\Users\win\.codex\worktrees\case-study-v2\shuyuege.github.io`
 分支：`preview/case-study-v2`
-基线：`ea2f1f5fbc0533328f5f603e781aaa0987e41565`。
+初始隔离基线：`ea2f1f5fbc0533328f5f603e781aaa0987e41565`。本次设计依据恢复的起点为 `227ef450d2749f301f39db8407dd8f613bb42c21`。
 
 用户已授权补完、推送，并进一步要求三个指定的线上预览地址。保留独立 worktree 和此预览分支；因现有 GitHub Pages 环境只允许 `main` 发布，将验证后的 V2 与短地址同步到远程 `main`。首页、正式页面、导航、页脚和现有部署设置保持不变。
 
@@ -53,7 +53,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 
 复现截图使用 `scripts/design-review.mjs`，设置 `REVIEW_VARIANT=v2`、`REVIEW_PAGES=mori,patsy,bookthing`、`REVIEW_URL=http://127.0.0.1:5188`，以及环境提供的 `PLAYWRIGHT_MODULE`、`SHARP_MODULE`。没有新增项目依赖。
 
-## 本轮 250–300 词编辑
+## 历史 250–300 词编辑（已被本次恢复预算取代）
 
 | 页面 | 1440 px | 820 px | 390 px |
 | --- | ---: | ---: | ---: |
@@ -96,3 +96,28 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 最终构建与九组浏览器检查通过：直接访问/刷新、锚点与历史、放大与焦点恢复、折叠、图片和来源链接、视频控制/单视频播放/离屏暂停/reduced motion、横向溢出和预览metadata清理。首页与原三页在加载全部预览样式后的DOM及计算样式一致；位图受现有动态内容和栅格化影响，不宣称逐像素一致。原工作区133个文件的SHA-256、HEAD和干净状态不变；5188预览仍仅监听127.0.0.1。
 
 截图保存在 `.design-review.local/blind-v2-baseline/` 与 `blind-v2-r1/` 至 `blind-v2-r5/`；最终验证在 `blind-v2-verification/`；独立评分及剩余问题追加在 `review-history.json`，原始反馈保留在聊天记录。线上地址继续使用上方三个短地址，并跳转至原有hash路由。部署后实测记录在 `blind-v2-online/`，包含最新构建指纹和九组直接访问/刷新结果。
+## 最新编辑：选择性恢复设计依据与迭代
+
+用户本次要求取代旧精简目标和字数预算；已有三个V2、网址对应关系、noindex和原站保护继续有效。编辑入口仍是上方三组V2内容／组件／样式；不修改V1或final handoff。沿用现有字体、配色、模块顺序和发布机制，局部调整只为容纳恢复的解释；未重启视觉盲审循环。
+
+| 项目 | 修改前全部说明 | 修改后全部说明 | 常规上限 | 最终上限 |
+| --- | ---: | ---: | ---: | ---: |
+| MORI | 273 | 656 | 1000 | 1200 |
+| Patsy’s | 284 | 774 | 900 | 1100 |
+| BookThing | 349 | 639 | 850 | 1000 |
+
+用同一一次性DOM计数方法对已发布的起点和本次实际页面重新统计。包含项目标题、metadata、正文、步骤数字、图注、提示、关闭的折叠说明及响应式独有文字；互斥响应式副本中的相同文字只计一次。全站导航／页脚、图片内原有界面文字、alt和代码不计；连字符复合词、数字比率和小数各计一词，独立标点不计。这与历史“默认展开”的口径不同，尤其BookThing的补充说明现在纳入总数。没有项目超过常规上限，亦未用图片、alt或折叠规避正文预算。计数脚本与前后文本保存在忽略的 `.design-review.local/reasoning-measure.mjs` 及 `reasoning-restore-before/`、`reasoning-restore-after/`。
+
+恢复依据与放回位置：
+
+- MORI：`moriCopy.ts`与`mori-final.md`中cloud/swipe的原始吸引力、Android潜在冲突、复用tap的理由放回导航；标题点击无响应→下方独立记录控件→既有表单的断点及空间取舍放回健康对照；背景／布局备选的不足与共同结构的选择放回AI模式。保留真实录屏与输入局部，明确上线与未测得效果的区别。
+- BookThing：现有三张IA图、V1文案及Git `512e9f2`记录的规划依据用于解释Calendar/Newsroom与Donate分支；assumption-based proto-personas不写成用户研究。捐赠模块恢复原规则→Money Donations局部、方法选择优先及内容空间／disclosure风险；Calendar恢复相对News/homepage announcement的选择及日期与不同hours的关系。
+- Patsy’s：原DOCX Figures6–7、AppendixA Q9/Q11及§§7.2、8.2–8.4核实意愿、菜单优先级、缺失pickup任务与失效热点的区别，逐项解释新增入口、review、checkout、pickup和confirmation；预约保留X删除与edit/commit关系。移除独立个人贡献模块，简短Role/Team继续保留。
+
+继续不恢复重复成品gallery、整套视觉系统、长背景、通用UX方法及空泛reflection。Patsy’s个人Menu标题删除／confirmation层级细改没有对应可信导出，也不补回为已展示的界面成果；完整IA和额外原图仍作为补充材料。
+
+资料边界／待办：MORI缺独立剪辑的两种返回演示、AI开场引导图和记录表单图；3/5原记录只明确“数据标题”，没有逐参与者具体标题明细。BookThing未发现独立研究报告，依据保守写为内容审查与规划任务。Patsy’s报告概述与详细章节对时间反馈的状态冲突，采用§8.2及final handoff的未完成表述；初版X没有新增截图。没有这些素材也能解释主线，未伪造测试或新增界面。
+
+`npm run build`通过；三页在1440、820、390px实际截图、图片可见面积和交互回归通过：直接打开／刷新、锚点／历史、放大／焦点、折叠、原图链接、视频控制／单视频播放／离屏暂停／reduced motion。当前回归确认首页与原三页在加载全部V2样式后的DOM／计算样式一致，预览metadata清除，正式站点没有V2入口。150个受保护文件、四份handoff和原工作区133个受控文件哈希保持不变；不宣称动态位图逐像素一致。
+
+实际构建产物由源代码生成，不手工编辑dist。发布前检查staged diff和待推送提交，沿用main触发GitHub Pages，保留独立预览分支和原本地checkout。发布后的三个既有地址将检查最新构建指纹、对应项目、直接打开／刷新、noindex、图片和视频；再从V2跳到正式页检查metadata及入口。验证截图与结果保存在 `.design-review.local/reasoning-restored-final/`、`reasoning-verification/`、`reasoning-online/`。
