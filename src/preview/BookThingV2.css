@@ -75,3 +75,15 @@
   .preview-v2--bookthing .bookthing-v2-calendar-mobile { grid-template-columns: 1fr; gap: 24px; }
   .preview-v2--bookthing .bookthing-v2-ending h2 { font-size: 28px; }
 }
+
+
+/* Restore the original supporting source-link groups, without a new gallery. */
+.preview-v2--bookthing .bookthing-v2-supporting-section { margin-bottom: var(--v2-section-gap); }
+.preview-v2--bookthing .bookthing-v2-supporting { grid-column: 1 / -1; }
+.preview-v2--bookthing .bookthing-v2-supporting-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+.preview-v2--bookthing .bookthing-v2-supporting-columns h3 { font-size: 17px; }
+.preview-v2--bookthing .bookthing-v2-supporting-columns ul { padding: 0; margin: 0; list-style: none; }
+.preview-v2--bookthing .bookthing-v2-supporting-columns a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 900px) {
+  .preview-v2--bookthing .bookthing-v2-supporting-columns { grid-template-columns: 1fr; gap: 25px; }
+}

@@ -5,6 +5,7 @@ import "./V2Directory.css";
 export function V2Directory({ sections }: { sections: readonly { id: string; label: string }[] }) {
   const rail = useRef<HTMLDivElement>(null);
   const nav = useRef<HTMLElement>(null);
+  const clampedAnchor = useRef<{ id: string; reached: boolean } | null>(null);
   const [activeId, setActiveId] = useState<string>();
   const { pathname, search, hash } = useLocation();
   const sectionIds = JSON.stringify(sections.map(section => section.id));
@@ -18,7 +19,14 @@ export function V2Directory({ sections }: { sections: readonly { id: string; lab
     const offset = Number.parseFloat(getComputedStyle(rail.current!).getPropertyValue("--v2-directory-top")) || 100;
     heading.tabIndex = -1;
     heading.focus({ preventScroll: true });
-    window.scrollTo({ top: heading.getBoundingClientRect().top + scrollY - offset,
+    const targetTop = heading.getBoundingClientRect().top + scrollY - offset;
+    clampedAnchor.current = targetTop > document.documentElement.scrollHeight - innerHeight
+      ? { id, reached: false } : null;
+    if (clampedAnchor.current && scrollY + innerHeight >= document.documentElement.scrollHeight - 1) {
+      clampedAnchor.current.reached = true;
+      setActiveId(id);
+    }
+    window.scrollTo({ top: targetTop,
       behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }, []);
   useEffect(() => {
@@ -34,9 +42,19 @@ export function V2Directory({ sections }: { sections: readonly { id: string; lab
       frame = 0;
       let current: string | undefined = targets[0]?.id;
       for (const target of targets) if (target.element.getBoundingClientRect().top <= offset + 1) current = target.id;
-      if (scrollY + innerHeight >= document.documentElement.scrollHeight - 1) current = targets.at(-1)?.id;
+      const atEnd = scrollY + innerHeight >= document.documentElement.scrollHeight - 1;
+      if (atEnd) current = targets.at(-1)?.id;
+      const intent = clampedAnchor.current;
+      if (intent) {
+        if (atEnd) intent.reached = true;
+        else if (intent.reached) clampedAnchor.current = null;
+        const target = document.getElementById(intent.id)?.getBoundingClientRect();
+        if (clampedAnchor.current && target && target.top < innerHeight && target.bottom > offset) current = intent.id;
+      }
       setActiveId(current);
     };
+    const clearIntent = () => { clampedAnchor.current = null; updateActive(); };
+    const onKey = (event: KeyboardEvent) => { if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End"].includes(event.key)) clearIntent(); };
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(updateActive); };
     const measure = () => {
       offset = Math.min((header?.getBoundingClientRect().height ?? 76) + 24, innerHeight / 3);
@@ -50,7 +68,10 @@ export function V2Directory({ sections }: { sections: readonly { id: string; lab
     if (header) observer.observe(header);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", measure);
-    return () => { observer.disconnect(); cancelAnimationFrame(frame); window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", measure); };
+    window.addEventListener("wheel", clearIntent, { passive: true });
+    window.addEventListener("touchmove", clearIntent, { passive: true });
+    window.addEventListener("keydown", onKey);
+    return () => { observer.disconnect(); cancelAnimationFrame(frame); window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", measure); window.removeEventListener("wheel", clearIntent); window.removeEventListener("touchmove", clearIntent); window.removeEventListener("keydown", onKey); };
   }, [sectionIds, syncOverflow]);
   useEffect(() => {
     const id = (JSON.parse(sectionIds) as string[]).find(id => hash === "#" + id || hash === "#" + encodeURIComponent(id));

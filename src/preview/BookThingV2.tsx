@@ -1,4 +1,4 @@
-import { EvidenceImage, PreviewMeta, PreviewShell, SectionHeading } from "./PreviewShared";
+import { assetUrl, EvidenceImage, PreviewMeta, PreviewShell, SectionHeading } from "./PreviewShared";
 import { bookthingV2 as copy, bookthingV2Assets as assets } from "./content/bookthingV2";
 import "./BookThingV2.css";
 
@@ -65,8 +65,23 @@ export function BookThingV2() {
       </div>
     </section>
 
-    <section className="v2-ending bookthing-v2-ending" aria-labelledby={copy.sections[3].id}>
-      <SectionHeading id={copy.sections[3].id} title={copy.outcome.title} />
+    <section className="bookthing-v2-supporting-section" aria-labelledby={copy.sections[3].id}>
+      <details className="v2-details bookthing-v2-supporting">
+        <summary id={copy.sections[3].id}>{copy.supporting.label}</summary>
+        <p className="v2-prose">{copy.supporting.body}</p>
+        <div className="bookthing-v2-supporting-columns">
+          <div><h3>{copy.supporting.prototypeLabel}</h3><ul>{copy.supporting.prototype.map(file => <li key={file.label}>
+            <a href={assetUrl(file.src)} target="_blank" rel="noopener noreferrer" aria-label={`${file.label} (${copy.supporting.newTab})`}>{file.label}<span aria-hidden="true"> ↗</span></a>
+          </li>)}</ul></div>
+          <div><h3>{copy.supporting.identityLabel}</h3><ul>{copy.supporting.identity.map(file => <li key={file.label}>
+            <a href={assetUrl(file.src)} target="_blank" rel="noopener noreferrer" aria-label={`${file.label} (${copy.supporting.newTab})`}>{file.label}<span aria-hidden="true"> ↗</span></a>
+          </li>)}</ul></div>
+        </div>
+      </details>
+    </section>
+
+    <section className="v2-ending bookthing-v2-ending" aria-labelledby={copy.sections[4].id}>
+      <SectionHeading id={copy.sections[4].id} title={copy.outcome.title} />
       <div className="bookthing-v2-ending-copy">{copy.outcome.body.map(paragraph => <p className="v2-prose" key={paragraph}>{paragraph}</p>)}</div>
     </section>
   </PreviewShell>;

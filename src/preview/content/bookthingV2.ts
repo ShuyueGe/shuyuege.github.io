@@ -8,6 +8,7 @@ export const bookthingV2 = {
     { id: "bookthing-v2-ia", label: "Information architecture" },
     { id: "bookthing-v2-donation", label: "Donation" },
     { id: "bookthing-v2-calendar", label: "Calendar" },
+    { id: "bookthing-v2-supporting", label: "Pages & identity" },
     { id: "bookthing-v2-boundaries", label: "Outcome" },
   ],
   hero: {
@@ -49,6 +50,26 @@ export const bookthingV2 = {
     body: [
       "Calendar puts dates beside visit details instead of relying on news posts. Stars identify public openings; the date panel separates giveaway and book-donation hours.",
     ],
+  },
+  supporting: {
+    label: "Additional pages & visual identity",
+    body: "Supplementary concept exports, not evidence of usability.",
+    prototypeLabel: "Five desktop prototype pages",
+    identityLabel: "Supporting visual identity",
+    prototype: [
+      { label: "Donate", src: original + "bookthing-final-donate-page.png" },
+      { label: "Calendar", src: original + "bookthing-final-calendar-page.png" },
+      { label: "Newsroom", src: original + "bookthing-final-news.png" },
+      { label: "Wishlist", src: original + "bookthing-final-wishlist.png" },
+      { label: "FAQ", src: original + "bookthing-final-FAQ-page.png" },
+    ],
+    identity: [
+      { label: "Typography specimen", src: original + "typography.png" },
+      { label: "Color exploration", src: original + "bookthing-visual-system-support-color platte.png" },
+      { label: "Book-as-door mark", src: original + "bookthing-visual-system-support-logo.png" },
+      { label: "Concept business card", src: original + "bookthing-visual-system-support-business card.png" },
+    ],
+    newTab: "opens an original image in a new tab",
   },
   outcome: {
     title: "Prototype delivered; usability remains unvalidated",
