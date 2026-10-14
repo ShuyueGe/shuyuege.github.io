@@ -24,10 +24,10 @@ export const bookthingV2 = {
   ia: {
     title: "Separate schedules from news, group donation resources",
     body: [
-      "The original sitemap distributed opening information across Home, News, and FAQ; Events led to Facebook. A visit-planning task therefore spanned dates, announcements, and location information across destinations.",
-      "Assumption-based proto-personas and task paths supplied planning criteria, rather than findings from a user study: visitors need to distinguish public openings from special events and find the address; money donors need a Donate destination with payment options near the top; volunteers need sign-up and location information.",
+      "The original sitemap scattered opening information across Home, News, and FAQ; Events linked to Facebook.",
+      "Assumption-based proto-personas and task paths supplied planning criteria, not user-study findings: distinguish openings from events, surface payment options, and keep volunteer sign-up and location accessible.",
     ],
-    decision: "The revised News & Events branch separates Calendar’s operational schedule from Newsroom’s announcements, while retaining Social media. Donate groups Donation Rules, Donation Schedule, and Wish List as named destinations. Volunteer and Location stay directly accessible. These groupings guided the prototype’s dropdown menus.",
+    decision: "News & Events now separates Calendar schedules from Newsroom announcements. Donate groups Donation Rules, Donation Schedule, and Wish List; these branches guided prototype dropdowns.",
     originalLabel: "Original",
     revisedLabel: "Revised",
     fullEvidenceLabel: "Complete sitemaps & task paths",
@@ -35,49 +35,26 @@ export const bookthingV2 = {
   donation: {
     title: "Showing both ways to donate before the detailed rules",
     body: [
-      "The original Donate page placed financial giving after lengthy book-donation rules. Readers encountered detailed instructions for one method before seeing the other.",
-      "The revision puts Money Donations and Book Donations in the first content row, making the method choice visible before its requirements. A compact financial-giving area keeps the existing PayPal Giving Fund and Donorbox options; the wider book-giving column holds preparation, schedules, and rules.",
+      "Financial giving followed lengthy book rules. The revision puts Money Donations and Book Donations first: a compact payment area beside wider book guidance.",
     ],
     originalLabel: "Original donation ordering",
     revisedLabel: "Revised donation hierarchy",
-    detail: "Books We Accept and Other rules group the long guidance under descriptive labels. The drop-off warning stays visible outside them. Payment methods and book policies were retained; this was a content-order change, not a new checkout.",
+    detail: "Books We Accept and Other rules group requirements; the drop-off warning stays visible. Existing payment methods and policies remain.",
     moneyLabel: "Money donations",
     booksLabel: "Book donations",
-    tradeoff: "Giving method choice priority over the full rule list risks overlooked restrictions inside disclosures. Whether visitors notice quantity limits, acceptance rules, and donation hours still needs testing.",
+    tradeoff: "Collapsed rules may be overlooked. Whether visitors notice acceptance requirements, quantity limits, and hours needs testing.",
   },
   calendar: {
     title: "Make visit planning a schedule, not a news search",
     body: [
-      "Opening dates were scattered across News and Events. A dedicated Calendar was chosen over relying on a News feed or homepage announcement so dates could sit beside the operational details needed to plan a visit. Newsroom retains announcements and archives.",
-      "The calendar design includes month/year browsing and filtering. A star marks BookThing’s public openings, distinguishing them from other events; highlighted dates connect the month grid to a date-detail panel. That panel separates giveaway hours from book-donation hours, rather than presenting one opening time for both tasks.",
+      "Calendar puts dates beside visit details instead of relying on news posts. Stars identify public openings; the date panel separates giveaway and book-donation hours.",
     ],
   },
   outcome: {
     title: "Prototype delivered; usability remains unvalidated",
     body: [
-      "The concept comprises revised IA, five desktop prototype pages, and supporting visual identity. It was not implemented or formally usability-tested, so findability and comprehension remain unvalidated.",
-      "Next, test whether a visitor can find the next opening and its correct hours, a money donor can identify an applicable payment option, and a book donor can locate acceptance requirements and quantity limits. Observe missed navigation and overlooked disclosures, including when donation columns stack on narrow screens.",
+      "The academic concept includes revised IA and five desktop prototype pages. It was not implemented or usability-tested; navigation and disclosure findability remain unvalidated.",
     ],
-    supportingLabel: "Additional pages & visual identity",
-    supportingBody: "The remaining page exports and identity studies document the concept’s scope. They provide supplementary context rather than evidence of usability or impact.",
-    prototypeLabel: "Five desktop prototype pages",
-    identityLabel: "Supporting visual identity",
-  },
-  supportingFiles: {
-    prototype: [
-      { label: "Donate", src: original + "bookthing-final-donate-page.png" },
-      { label: "Calendar", src: original + "bookthing-final-calendar-page.png" },
-      { label: "Newsroom", src: original + "bookthing-final-news.png" },
-      { label: "Wishlist", src: original + "bookthing-final-wishlist.png" },
-      { label: "FAQ", src: original + "bookthing-final-FAQ-page.png" },
-    ],
-    identity: [
-      { label: "Typography specimen", src: original + "typography.png" },
-      { label: "Color exploration", src: original + "bookthing-visual-system-support-color platte.png" },
-      { label: "Book-as-door mark", src: original + "bookthing-visual-system-support-logo.png" },
-      { label: "Concept business card", src: original + "bookthing-visual-system-support-business card.png" },
-    ],
-    newTab: "opens an original image in a new tab",
   },
 } as const;
 // All previews below are deterministic Sharp source-pixel crops. No marks, text,

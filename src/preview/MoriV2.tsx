@@ -63,15 +63,16 @@ export function MoriV2() {
             caption={copy.health.afterCaption} />
           <div className="mori-v2-record-path mori-v2-record-path--revised"><p className="v2-label">{copy.health.revisedFlowLabel}</p><p className="v2-prose">{copy.health.revisedFlow}</p></div>
 
-          <p className="v2-note">{copy.health.flowNote}</p>
+
         </div>
       </div>
+      <p className="v2-note">{copy.health.flowNote}</p>
     </section>
     <section className="v2-section v2-section--support mori-v2-modes" aria-labelledby={copy.sections[2].id}>
       <SectionHeading id={copy.sections[2].id} title={copy.modes.title} />
       <div className="mori-v2-mode-prose"><p className="v2-prose">{copy.modes.body}</p>
         <p className="v2-prose">{copy.modes.alternatives}</p>
-        <p className="v2-prose mori-v2-mode-decision">{copy.modes.decision}</p></div>
+      </div>
       <div className="mori-v2-mode-pair">
         <div><h3>{copy.modes.companion.heading}</h3><EvidenceImage {...assets.companion}
           alt={copy.modes.companion.alt} caption={copy.modes.companion.caption}
@@ -83,7 +84,7 @@ export function MoriV2() {
     </section>
     <section className="v2-ending" aria-labelledby={copy.sections[3].id}>
       <SectionHeading id={copy.sections[3].id} title={copy.ending.title} />
-      <div className="v2-two-col"><p className="v2-prose">{copy.ending.body}</p><p className="v2-prose">{copy.ending.reflection}</p></div>
+      <p className="v2-prose">{copy.ending.body}</p>
     </section>
   </PreviewShell>;
 }

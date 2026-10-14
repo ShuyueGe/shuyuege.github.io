@@ -96,7 +96,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 最终构建与九组浏览器检查通过：直接访问/刷新、锚点与历史、放大与焦点恢复、折叠、图片和来源链接、视频控制/单视频播放/离屏暂停/reduced motion、横向溢出和预览metadata清理。首页与原三页在加载全部预览样式后的DOM及计算样式一致；位图受现有动态内容和栅格化影响，不宣称逐像素一致。原工作区133个文件的SHA-256、HEAD和干净状态不变；5188预览仍仅监听127.0.0.1。
 
 截图保存在 `.design-review.local/blind-v2-baseline/` 与 `blind-v2-r1/` 至 `blind-v2-r5/`；最终验证在 `blind-v2-verification/`；独立评分及剩余问题追加在 `review-history.json`，原始反馈保留在聊天记录。线上地址继续使用上方三个短地址，并跳转至原有hash路由。部署后实测记录在 `blind-v2-online/`，包含最新构建指纹和九组直接访问/刷新结果。
-## 最新编辑：选择性恢复设计依据与迭代
+## 历史编辑：选择性恢复设计依据与迭代（预算已被下方硬上限取代）
 
 用户本次要求取代旧精简目标和字数预算；已有三个V2、网址对应关系、noindex和原站保护继续有效。编辑入口仍是上方三组V2内容／组件／样式；不修改V1或final handoff。沿用现有字体、配色、模块顺序和发布机制，局部调整只为容纳恢复的解释；未重启视觉盲审循环。
 
@@ -121,3 +121,30 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 `npm run build`通过；三页在1440、820、390px实际截图、图片可见面积和交互回归通过：直接打开／刷新、锚点／历史、放大／焦点、折叠、原图链接、视频控制／单视频播放／离屏暂停／reduced motion。当前回归确认首页与原三页在加载全部V2样式后的DOM／计算样式一致，预览metadata清除，正式站点没有V2入口。150个受保护文件、四份handoff和原工作区133个受控文件哈希保持不变；不宣称动态位图逐像素一致。
 
 实际构建产物由源代码生成，不手工编辑dist。发布前检查staged diff和待推送提交，沿用main触发GitHub Pages，保留独立预览分支和原本地checkout。发布后的三个既有地址将检查最新构建指纹、对应项目、直接打开／刷新、noindex、图片和视频；再从V2跳到正式页检查metadata及入口。验证截图与结果保存在 `.design-review.local/reasoning-restored-final/`、`reasoning-verification/`、`reasoning-online/`。
+## 当前编辑：内容精选与图文协调（2026-10-13）
+
+起点为已发布的 `4bde24188434007cd5c663a79f8b23f2a20225ac`，本轮采用新的硬上限，取代上述所有旧预算与超限例外。沿用现有三页、编辑入口、短网址、预览分支和 GitHub Pages 流程；不新增版本、正式入口或其他内容副本。
+
+| 项目 | 修改前全部说明 | 修改后全部说明 | 硬上限 |
+| --- | ---: | ---: | ---: |
+| BookThing | 639 | 358 | 400 |
+| MORI | 656 | 428 | 450 |
+| Patsy’s | 774 | 332 | 350 |
+
+同一一次性 DOM 计数统计修改前线上页面与修改后页面，包含项目标题、简介、元信息、章节标题、正文、步骤数字、图注、解释性标注、查看图片提示和折叠叙述；互斥响应式副本只计一次，响应式独有说明仍计入。全站共用导航／页脚、原始截图 UI 与 sitemap 节点、alt、代码和独立标点不计；连字符复合词、数字／比率／小数各计一词。没有把正文转图或藏进 alt／折叠规避预算。计数与文本保存在忽略的 `.design-review.local/compact-measure.mjs` 和 `compact-coordinated-before/`、`compact-coordinated-final/`；线上复核另存 `compact-coordinated-online/`。
+
+**BookThing 锁定模块**：`Complete sitemaps & task paths` 共 21 词，先从总预算扣除，其他内容预算为 379 词。该模块标题、解释、三张完整原图、顺序、源文件／alt／图注、展开折叠和图片放大全部保留。1440／820／390px 的展开 HTML、文字、图数及全部记录内部宽高、字体、间距、边框、颜色与基线一致；仅调整模块外部间距。专属冻结样式保留原内部呈现，不随其他图注规则变化。基线在 `compact-coordinated-before/`，逐项核对在 `compact-lock-local/`；继续编辑时不得删改这段 disclosure 或三份素材配置。
+
+精选内容与来源：
+
+- MORI：保留 cloud／swipe 初始方向、Android 潜在导航冲突、复用两种 tap 的选择及可发现性代价；保留 3/5 点标题无响应→数据项开启既有表单、移除独立记录区的推导；AI 模式压成共同结构与提示用途的短例子。合并重复过程解释与结尾 reflection，保留三项上线、无可用复测或效果指标的边界。依据仍为 `moriCopy.ts`／`mori-final.md`。
+- BookThing：保留 proto-personas／task paths 的规划性质、Calendar／Newsroom 与 Donate 分支、捐赠方法先于规则以及 disclosure 遗漏风险；Calendar 缩为访问任务的支持例子。删除锁定模块之外的 `Additional pages & visual identity` 补充入口，合并长背景和泛化验证清单；不删除素材文件。依据仍为三张原 IA 图、V1 文案、既有 Git 记录与 final handoff。
+- Patsy’s：保留 21/21 问卷的意愿性质及样本限定、菜单信息优先级、两人的探索性测试、缺失 pickup 路径与不支持热点的区别、实际新增任务环节；预约压成 X 删除与 edit／confirm 的短例子。删去重复研究背景、次要菜单细改和长篇待验证事项，保留 preset／nonfunctional／未复测／未上线限定。依据仍为原报告、研究附录与 final handoff。
+
+版式规则：1280px 主容器，64ch 正文阅读宽度；桌面／平板／手机外侧留白 48／32／20px；同级组间距 32／24px，章节间距 64／48px，正文 17px、1.7 行高。标题与正文、证据共享左对齐线；主要采用解释→成组证据，适合时并排且顶部对齐。同组标签、图片容器、放大提示和图注一致；图像按原比例，手机单列，不使用固定文字高度、line-clamp、隐藏正文或人工补齐。MORI 两段录屏固定同宽；Patsy’s 菜单等宽对照，平板 pickup 用编号／图片／邻近图注的行布局；BookThing 原捐赠局部不放大超过原始宽度，修订上下文与细节在同一证据组。锁定模块的内部规则例外保留。
+
+新鲜上下文独立视觉评审配置为 gpt-6-astra／high，只提供当前截图与固定 rubric（含两段 Content Lock）。一轮局部修正前→后：MORI 7.4→8.0，BookThing 7.6→7.6，Patsy’s 7.1→7.3。未达到仓库 9.0 视觉目标。保留自然比例造成的部分图注高度差及短例子右侧留白；未采纳缩小可读证据、强制等高留白、改变锁定模块或扩大视觉重做的建议。记录在现有 `review-history.json`，最终截图 `compact-layout-r1/`；没有重启历史五轮循环。
+
+构建与九组页面检查通过：直接访问／刷新、图片与源图、锚点焦点和前进后退、折叠／键盘、放大关闭／焦点恢复、视频控制／单段播放／离屏暂停／reduced motion、字体加载、图像窗口可见区域与横向溢出。加载三页预览样式后，首页与正式三页的 DOM、元素坐标和计算样式一致，无 V2 入口且 preview noindex 正确清除。148 个受保护文件、四份 handoff、原工作目录 133 个文件及原 HEAD／干净状态不变；不宣称动态／栅格化位图逐像素一致。记录位于 `compact-verification/`，上线后复核位于 `compact-online/`。
+
+素材与事实边界继续有效：MORI 仍复用用户确认的同一未剪辑录屏，未补造独立返回演示、记录表单或 AI 开场画面；Patsy’s 修订仍未复测，BookThing 未实现／未正式测试。原素材、原版内容与 final handoff 保持不变。
