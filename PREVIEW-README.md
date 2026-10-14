@@ -157,3 +157,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 条目按实际V2顺序：BookThing为Information architecture／Donation／Calendar／Pages & identity／Outcome；MORI为Navigation／Health recording／AI modes／Outcome；Patsy’s为Research／Pickup iteration／Reservation review／Outcome。用户后续明确要求恢复`Additional pages & visual identity`；现已按Git `4bde241`恢复两组九个原图入口、原有素材顺序与默认折叠，并移至Calendar之后、总结之前。2026-10-13后续局部调整：该模块现在默认折叠，展开后依次展示五张完整desktop缩略图（Donate／Calendar／Newsroom／Wishlist／FAQ，桌面五列、820px两列、390px单列）及四张完整视觉材料。四图参照实际V1：桌面三列为Logo与Business card上下成组／Typography／Color，1100px以下按同一顺序单列。复用原九个原图新标签页链接；素材及所有现有文字未改，不增加图注或交互文案。编辑仅在`BookThingV2.tsx`／`BookThingV2.css`。目录仍指向可见summary，不自动展开。`Complete sitemaps & task paths`内容、原图、默认开合、内部样式与交互完全保留。
 
 基线及截图在忽略的`v1-directory-reference/`、`v2-directory-before/`，正文与正式页面保留检查在`v2-directory-restored-final/preservation-results.json`，最终交互及桌面1680／手机390截图在`v2-directory-final-interactions/`，均位于`.design-review.local/`。排除目录及授权恢复的补充模块后，原有HTML、文字、素材、正文横向尺寸与内部相对布局一致；移除旧顶部目录时允许对应的统一纵向位移，不宣称绝对纵向坐标不变。除用户明确授权恢复的BookThing补充模块外，原有正文、章节顺序与内部布局未改；该模块带来的纵向位移单独核算。原页面、全站入口、素材和依赖未改，noindex继续按预览路由清理。
+
+## V2 阅读宽度与章节节奏（2026-10-13）
+
+本轮仅改`PreviewV2.css`及三页专属CSS，所有内容文件、JSX、图片、视频、锚点与原图链接冻结于`580dd37`。常规article为1120px含左右48px内距（1440px下可用1024px），正文76ch并限制在52rem；完整sitemap保留1184／756／350px原内部展示宽度，只外部居中。Hero→首章112px、主章转场96px，手机64／56px；标题→说明20／16px，说明→证据32／24px，同章组40／32px。BookThing三主章同字体／字重／字号／行高／measure，支持材料与结尾独立降一级。使用空间与图片尺度区分层级，移除无作用的章节横线、重复padding和图注侧栏；不更换字体或品牌。
+
+修改前证据为`.design-review.local/v2-rhythm-before/`，最终布局截图、四处接缝、内容与正式页保护检查位于对应`v2-rhythm-*`忽略目录；独立评审的固定内容锁定提示与实际记录位于`v2-rhythm-review/`。字数保持BookThing393／MORI449／Patsy’s333，未创建新文案版本。

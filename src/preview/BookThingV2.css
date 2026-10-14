@@ -3,30 +3,30 @@
 .preview-v2--bookthing .bookthing-v2-hero { display: block; }
 .preview-v2--bookthing .bookthing-v2-hero h1 { max-width: 29ch; font-size: clamp(34px, 3.5vw, 49px); line-height: 1.12; margin-bottom: 0; }
 .preview-v2--bookthing .bookthing-v2-hero-reading { margin-top: 16px; }
-.preview-v2--bookthing .bookthing-v2-hero .v2-lead { max-width: 64ch; margin: 0; font-size: 18px; }
+.preview-v2--bookthing .bookthing-v2-hero .v2-lead { max-width: min(var(--v2-reading-width), var(--v2-narrative-width)); margin: 0; font-size: 18px; }
 .preview-v2--bookthing .bookthing-v2-hero .v2-meta { grid-template-columns: .7fr 1fr 1.25fr 1.25fr; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--color-border); }
-.preview-v2--bookthing .bookthing-v2-section-intro { display: block; margin-bottom: 24px; }
-.preview-v2--bookthing .bookthing-v2-section-intro .v2-section-heading { margin-bottom: 12px; }
-.preview-v2--bookthing .bookthing-v2-section-intro h2 { max-width: 32ch; margin-bottom: 0; font-size: clamp(28px, 2.5vw, 34px); line-height: 1.22; }
-.preview-v2--bookthing .bookthing-v2-section-copy .v2-prose { max-width: 64ch; }
+.preview-v2--bookthing .bookthing-v2-section-intro { display: block; margin-bottom: var(--v2-evidence-gap); }
+.preview-v2--bookthing .bookthing-v2-section-intro .v2-section-heading { margin-bottom: var(--v2-title-gap); }
+.preview-v2--bookthing .bookthing-v2-section-intro h2 { max-width: var(--v2-narrative-width); margin-bottom: 0; font-size: var(--v2-chapter-size); line-height: var(--v2-chapter-leading); }
+.preview-v2--bookthing .bookthing-v2-section-copy .v2-prose { max-width: min(var(--v2-reading-width), var(--v2-narrative-width)); }
 .preview-v2--bookthing .bookthing-v2-section-copy .v2-prose:last-child { margin-bottom: 0; }
 .preview-v2--bookthing .v2-image-trigger img { border: 1px solid #dce2dc; padding: 0; background: #fff; }
-.preview-v2--bookthing .bookthing-v2-map-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: start; }
+.preview-v2--bookthing .bookthing-v2-map-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--v2-group-gap); align-items: start; }
 .preview-v2--bookthing .bookthing-v2-map-comparison h3,
 .preview-v2--bookthing .bookthing-v2-donation-original h3,
 .preview-v2--bookthing .bookthing-v2-revised-label,
 .preview-v2--bookthing .bookthing-v2-donation-mobile h3 { font-size: 16px; margin: 0 0 12px; }
 .preview-v2--bookthing .bookthing-v2-map-comparison .v2-image-trigger img { width: 100%; height: auto; object-fit: contain; object-position: left top; }
-.preview-v2--bookthing .bookthing-v2-ia-decision { max-width: 64ch; margin: 24px 0 0; }
-.preview-v2--bookthing .bookthing-v2-donation-original { max-width: 730px; margin: 0 0 24px; }
+.preview-v2--bookthing .bookthing-v2-ia-decision { max-width: min(var(--v2-reading-width), var(--v2-narrative-width)); margin: var(--v2-group-gap) 0 0; }
+.preview-v2--bookthing .bookthing-v2-donation-original { max-width: 560px; margin: 0 0 var(--v2-group-gap); }
 .preview-v2--bookthing .bookthing-v2-donation-original .v2-source-window { border: 0; outline: 1px solid #dce2dc; }
 .preview-v2--bookthing .bookthing-v2-donation-original .v2-source-window img { border: 0; padding: 0; }
 .preview-v2--bookthing .bookthing-v2-donation-context .v2-source-regions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 12px; background: #eef2ee; }
 .preview-v2--bookthing .bookthing-v2-donation-context .v2-source-window { width: 100%; border: 0; outline: 1px solid #dce2dc; }
 .preview-v2--bookthing .bookthing-v2-donation-context .v2-source-window:first-child { grid-column: 1 / -1; }
 .preview-v2--bookthing .bookthing-v2-donation-context .v2-source-window img { border: 0; padding: 0; }
-.preview-v2--bookthing .bookthing-v2-donation-detail { max-width: 64ch; margin: 24px 0 0; }
-.preview-v2--bookthing .bookthing-v2-tradeoff { max-width: 64ch; margin: 16px 0 0; }
+.preview-v2--bookthing .bookthing-v2-donation-detail { max-width: min(var(--v2-reading-width), var(--v2-narrative-width)); margin: var(--v2-group-gap) 0 0; }
+.preview-v2--bookthing .bookthing-v2-tradeoff { max-width: min(var(--v2-reading-width), var(--v2-narrative-width)); margin: 16px 0 0; }
 .preview-v2--bookthing .bookthing-v2-donation-mobile,
 .preview-v2--bookthing .bookthing-v2-calendar-mobile { display: none; }
 .preview-v2--bookthing .bookthing-v2-calendar-hours .v2-source-window { width: 100%; border: 0; outline: 1px solid #dce2dc; }
@@ -40,13 +40,13 @@
 .preview-v2--bookthing .bookthing-v2-donation-books .v2-source-window img,
 .preview-v2--bookthing .bookthing-v2-donation-money .v2-source-window img { border: 0; padding: 0; }
 .preview-v2--bookthing .bookthing-v2-ending { display: block; }
-.preview-v2--bookthing .bookthing-v2-ending .v2-section-heading { margin-bottom: 12px; }
-.preview-v2--bookthing .bookthing-v2-ending h2 { max-width: 32ch; font-size: 29px; }
+.preview-v2--bookthing .bookthing-v2-ending .v2-section-heading { margin-bottom: var(--v2-title-gap); }
+.preview-v2--bookthing .bookthing-v2-ending h2 { max-width: var(--v2-narrative-width); font-size: var(--v2-outcome-size); }
 .preview-v2--bookthing .bookthing-v2-ending-copy .v2-prose:last-child { margin-bottom: 0; }
 
 /* User-locked disclosure: all internal typography, source sizing and spacing
    match the frozen starting version. Only its external margin can vary. */
-.preview-v2--bookthing .bookthing-v2-full-diagrams { margin-top: 24px; padding: 18px 0; border-block: 1px solid var(--color-border); }
+.preview-v2--bookthing .bookthing-v2-full-diagrams { width: var(--v2-wide-width); margin-inline: calc((100% - var(--v2-wide-width)) / 2); margin-top: var(--v2-group-gap); padding: 18px 0; border-block: 1px solid var(--color-border); }
 .preview-v2--bookthing .bookthing-v2-full-diagrams summary { font-size: 14px; font-weight: 650; line-height: normal; min-height: 44px; align-content: center; margin: 0; padding: 0; }
 .preview-v2--bookthing .bookthing-v2-full-diagrams[open] summary { margin-bottom: 24px; }
 .preview-v2--bookthing .bookthing-v2-full-diagrams .v2-evidence { margin: 0; }
@@ -64,16 +64,22 @@
   .preview-v2--bookthing .bookthing-v2-donation-mobile,
   .preview-v2--bookthing .bookthing-v2-calendar-mobile { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
 }
+/* The date grid and short hours panel remain sequential at tablet width. */
+@media (min-width: 601px) and (max-width: 900px) {
+  .preview-v2--bookthing .bookthing-v2-calendar-mobile { grid-template-columns: 1fr; gap: var(--v2-group-gap); }
+  .preview-v2--bookthing .bookthing-v2-calendar-mobile > .v2-evidence:first-child { width: min(100%,380px); margin-inline: auto; }
+  .preview-v2--bookthing .bookthing-v2-calendar-mobile > .v2-evidence:last-child { width: min(100%,535px); margin-inline: auto; }
+}
 @media (max-width: 600px) {
   .preview-v2--bookthing .bookthing-v2-hero h1 { font-size: 32px; line-height: 1.15; }
   .preview-v2--bookthing .bookthing-v2-hero .v2-meta { grid-template-columns: 1fr; gap: 8px; padding-top: 16px; margin-top: 16px; }
   .preview-v2--bookthing .bookthing-v2-hero .v2-meta > div { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 12px; align-items: baseline; }
   .preview-v2--bookthing .bookthing-v2-hero .v2-meta dt { margin-bottom: 0; }
-  .preview-v2--bookthing .bookthing-v2-section-intro h2 { font-size: 28px; }
+  .preview-v2--bookthing .bookthing-v2-section-intro h2 { font-size: var(--v2-chapter-size); }
   .preview-v2--bookthing .bookthing-v2-map-comparison,
   .preview-v2--bookthing .bookthing-v2-donation-mobile,
   .preview-v2--bookthing .bookthing-v2-calendar-mobile { grid-template-columns: 1fr; gap: 24px; }
-  .preview-v2--bookthing .bookthing-v2-ending h2 { font-size: 28px; }
+  .preview-v2--bookthing .bookthing-v2-ending h2 { font-size: var(--v2-outcome-size); }
 }
 
 
@@ -82,7 +88,7 @@
 .preview-v2--bookthing .bookthing-v2-supporting { grid-column: 1 / -1; }
 .preview-v2--bookthing .bookthing-v2-supporting h3 { font-size: 17px; }
 .preview-v2--bookthing .bookthing-v2-supporting-prototypes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; align-items: start; }
-.preview-v2--bookthing .bookthing-v2-supporting-identity-group { margin-top: 32px; }
+.preview-v2--bookthing .bookthing-v2-supporting-identity-group { margin-top: var(--v2-group-gap); }
 .preview-v2--bookthing .bookthing-v2-supporting-identity { display: grid; grid-template-columns: minmax(0, .85fr) repeat(2, minmax(0, 1fr)); gap: 32px; align-items: start; }
 .preview-v2--bookthing .bookthing-v2-supporting-applications { display: grid; gap: 32px; align-items: start; }
 .preview-v2--bookthing .bookthing-v2-supporting-artwork { min-width: 0; margin: 0; }

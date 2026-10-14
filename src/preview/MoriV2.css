@@ -1,63 +1,72 @@
-/* MORI: the shared rail holds the explanation, then its evidence group. */
-.preview-v2--mori .mori-v2-hero { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 48px; align-items: start; }
-.preview-v2--mori .mori-v2-dusk { width: 210px; margin: 0; padding: 0; background: none; }
+/* MORI V2: shared narrative measure, then authentic grouped evidence. */
+.preview-v2--mori .mori-v2-hero { display: grid; grid-template-columns: minmax(0,1fr) 210px; gap: var(--v2-group-gap); align-items: start; }
+.preview-v2--mori .mori-v2-dusk { width: min(100%,210px); margin: 0; padding: 0; background: none; }
 .preview-v2--mori .mori-v2-dusk video { display: block; width: 100%; height: auto; }
-.preview-v2--mori .mori-v2-dusk figcaption { font-size: 14px; line-height: 1.65; color: #44564b; margin-top: 12px; }
-.preview-v2--mori .mori-v2-navigation-grid { display: grid; grid-template-columns: minmax(0,1fr) 340px; grid-template-rows: auto max-content 1fr; gap: 24px 48px; align-items: start; }
-.preview-v2--mori .mori-v2-navigation-grid > div:first-child { display: contents; }
-.preview-v2--mori .mori-v2-navigation-story { grid-column: 1; max-width: 64ch; }
+.preview-v2--mori .mori-v2-dusk figcaption { font-size: 14px; line-height: 1.65; color: #44564b; margin: var(--v2-caption-gap) 0 0; }
+
+/* Preserve the DOM's explanation -> rules -> trade-off -> recording sequence. */
+.preview-v2--mori .mori-v2-navigation-grid,
+.preview-v2--mori .mori-v2-navigation-grid > div:first-child { display: block; }
+.preview-v2--mori .mori-v2-navigation-story,
+.preview-v2--mori .mori-v2-rules { font-size: 17px; max-width: min(var(--v2-reading-width),var(--v2-narrative-width)); }
 .preview-v2--mori .mori-v2-navigation-story .v2-prose:last-child { margin-bottom: 0; }
-.preview-v2--mori .mori-v2-rules { grid-column: 1; grid-row: 2; background: #e4ede3; padding: 24px; max-width: 64ch; }
-.preview-v2--mori .mori-v2-rules > div + div { border-top: 1px solid #bdccbf; margin-top: 20px; padding-top: 20px; }
-.preview-v2--mori .mori-v2-rules .v2-label { margin-bottom: 8px; }
-.preview-v2--mori .mori-v2-rules h3 { font-size: 24px; margin: 0; }
-.preview-v2--mori .mori-v2-navigation-grid > div:first-child > .v2-note { grid-column: 1; grid-row: 3; margin: 0; }
-.preview-v2--mori .mori-v2-return-evidence { grid-column: 2; grid-row: 1 / span 3; }
-.preview-v2--mori .mori-v2-return-evidence h3 { font-size: 16px; margin: 0 0 12px; }
-.preview-v2--mori .mori-v2-return-video { width: 210px; }
+.preview-v2--mori .mori-v2-rules { display: grid; gap: var(--v2-title-gap); margin-top: var(--v2-evidence-gap); padding: 0; background: none; }
+.preview-v2--mori .mori-v2-rules .v2-label { display: block; margin: 0 0 8px; }
+.preview-v2--mori .mori-v2-rules h3 { font-size: 20px; line-height: 1.35; font-weight: 600; margin: 0; }
+.preview-v2--mori .mori-v2-navigation-grid > div:first-child > .v2-note { margin: var(--v2-evidence-gap) 0 0; }
+.preview-v2--mori .mori-v2-return-evidence { width: min(100%,380px); margin: var(--v2-group-gap) auto 0; }
+.preview-v2--mori .mori-v2-return-evidence .mori-v2-dusk { width: 100%; }
+.preview-v2--mori .mori-v2-return-evidence video { width: min(100%,210px); margin-inline: auto; }
+.preview-v2--mori .mori-v2-return-evidence h3 { font-size: 16px; line-height: 1.65; margin: 0 0 12px; }
+
+.preview-v2--mori .mori-v2-health > .v2-section-heading { margin-bottom: var(--v2-evidence-gap); }
 .preview-v2--mori .mori-v2-health-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--v2-group-gap); align-items: start; }
-.preview-v2--mori .mori-v2-health-pair h3, .preview-v2--mori .mori-v2-mode-pair h3 { font-size: 16px; margin: 0 0 12px; }
+.preview-v2--mori .mori-v2-health-pair h3,
+.preview-v2--mori .mori-v2-mode-pair h3 { font-size: 16px; line-height: 1.65; margin: 0 0 12px; }
 .preview-v2--mori .mori-v2-finding { font-weight: 650; }
+/* Keep the existing health source windows and their source-pixel bounds intact. */
 .preview-v2--mori .v2-source-regions { padding: 8px; outline: 1px solid #b8c6b9; background: #eef0e8; }
 .preview-v2--mori .v2-source-window { border: 0; }
 .preview-v2--mori .v2-source-window img { padding: 0; border: 0; }
 .preview-v2--mori .mori-v2-health-pair .v2-image-trigger > img { padding: 8px; border: 1px solid #b8c6b9; background: #eef0e8; }
-.preview-v2--mori .mori-v2-record-path { margin-top: 20px; padding-top: 16px; border-top: 1px solid #cbd4ca; }
+.preview-v2--mori .mori-v2-record-path { margin-top: var(--v2-evidence-gap); padding: 0; border: 0; }
 .preview-v2--mori .mori-v2-record-path .v2-label { margin-bottom: 8px; }
 .preview-v2--mori .mori-v2-record-path .v2-prose { margin-bottom: 0; }
-.preview-v2--mori .mori-v2-record-path--revised { border-color: #73927f; }
-.preview-v2--mori .mori-v2-health > .v2-note { margin: 20px 0 0; }
-.preview-v2--mori .mori-v2-mode-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--v2-group-gap); margin-top: 24px; align-items: start; }
-.preview-v2--mori .mori-v2-mode-decision { font-weight: 600; }
-.preview-v2--mori .v2-ending .v2-two-col { display: block; max-width: 64ch; }
-@media (max-width: 900px) {
- .preview-v2--mori .mori-v2-hero, .preview-v2--mori .mori-v2-navigation-grid { grid-template-columns: minmax(0,1fr) 240px; column-gap: 32px; }
-}
-@media (max-width: 600px) {
- .preview-v2--mori .mori-v2-hero, .preview-v2--mori .mori-v2-health-pair, .preview-v2--mori .mori-v2-mode-pair { grid-template-columns: 1fr; gap: 24px; }
- .preview-v2--mori .mori-v2-hero .v2-meta { grid-template-columns: 1fr; }
- .preview-v2--mori .mori-v2-hero .v2-meta > div { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 12px; }
- .preview-v2--mori .mori-v2-hero .v2-meta dt { margin: 0; }
- .preview-v2--mori .mori-v2-navigation-grid { display: block; }
- .preview-v2--mori .mori-v2-navigation-grid > div:first-child { display: block; }
- .preview-v2--mori .mori-v2-rules { margin-top: 24px; }
- .preview-v2--mori .mori-v2-navigation-grid > div:first-child > .v2-note { margin-top: 20px; }
- .preview-v2--mori .mori-v2-return-evidence { margin-top: 24px; }
-}
-/* Modes only: complete source images and a compact two-direction comparison. */
-.preview-v2--mori .mori-v2-modes .mori-v2-explorations { width: min(100%,64ch); table-layout: fixed; border-collapse: collapse; font-size: 17px; line-height: 1.7; margin: 0 0 24px; }
-.preview-v2--mori .mori-v2-modes .mori-v2-explorations th, .preview-v2--mori .mori-v2-modes .mori-v2-explorations td { text-align: left; vertical-align: top; padding: 0 0 16px; }
+.preview-v2--mori .mori-v2-health > .v2-note { margin: var(--v2-evidence-gap) 0 0; }
+
+/* Modes stay in order: problem, comparison table, final explanation, full screens. */
+.preview-v2--mori .mori-v2-modes h2 { font-size: var(--v2-support-size); line-height: var(--v2-chapter-leading); font-weight: 600; }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations { width: min(100%,var(--v2-reading-width),var(--v2-narrative-width)); table-layout: fixed; border-collapse: collapse; font-size: 17px; line-height: 1.7; margin: 0 0 var(--v2-evidence-gap); }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations th,
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations td { text-align: left; vertical-align: top; padding: 0 0 16px; }
 .preview-v2--mori .mori-v2-modes .mori-v2-explorations th:first-child { width: 34%; padding-right: 24px; }
 .preview-v2--mori .mori-v2-modes .mori-v2-explorations thead th { font-size: 14px; font-weight: 650; }
 .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody th { font-weight: 600; }
-.preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child th, .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child td { padding-bottom: 0; }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child th,
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child td { padding-bottom: 0; }
+.preview-v2--mori .mori-v2-modes > .v2-prose:last-of-type { margin-bottom: var(--v2-evidence-gap); }
+.preview-v2--mori .mori-v2-mode-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--v2-group-gap); width: min(100%,800px); margin-inline: auto; align-items: start; }
 .preview-v2--mori .mori-v2-modes .v2-image-trigger > img { display: block; width: 100%; height: auto; object-fit: contain; }
+.preview-v2--mori .v2-ending h2 { font-size: var(--v2-outcome-size); font-weight: 600; }
+.preview-v2--mori .v2-ending > .v2-prose:last-child { margin-bottom: 0; }
+
+@media (max-width: 900px) {
+ .preview-v2--mori .mori-v2-hero { grid-template-columns: 1fr; }
+ .preview-v2--mori .mori-v2-hero > .mori-v2-dusk { justify-self: center; }
+}
 @media (max-width: 600px) {
- .preview-v2--mori .mori-v2-modes .mori-v2-explorations { display: block; }
- .preview-v2--mori .mori-v2-modes .mori-v2-explorations thead, .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody { display: block; }
- .preview-v2--mori .mori-v2-modes .mori-v2-explorations thead tr { display: grid; grid-template-columns: 1fr; gap: 2px; margin-bottom: 16px; }
- .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr { display: block; margin-bottom: 20px; }
- .preview-v2--mori .mori-v2-modes .mori-v2-explorations th, .preview-v2--mori .mori-v2-modes .mori-v2-explorations td { display: block; width: auto; padding: 0; }
+ .preview-v2--mori .mori-v2-health-pair,
+ .preview-v2--mori .mori-v2-mode-pair { grid-template-columns: 1fr; }
+ .preview-v2--mori .mori-v2-hero .v2-meta { grid-template-columns: 1fr; }
+ .preview-v2--mori .mori-v2-hero .v2-meta > div { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 12px; }
+ .preview-v2--mori .mori-v2-hero .v2-meta dt { margin: 0; }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations,
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations thead,
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody { display: block; }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations thead tr { padding-bottom: 12px; border-bottom: 1px solid var(--color-border); display: grid; grid-template-columns: minmax(0,.34fr) minmax(0,.66fr); gap: 12px; margin-bottom: var(--v2-evidence-gap); }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr { display: block; margin-bottom: var(--v2-title-gap); }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations th,
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations td { display: block; width: auto; padding: 0; }
  .preview-v2--mori .mori-v2-modes .mori-v2-explorations th:first-child { width: auto; padding-right: 0; }
  .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody th { margin-bottom: 8px; }
  .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child { margin-bottom: 0; }
