@@ -129,9 +129,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stop-v2-preview.ps
 | --- | ---: | ---: | ---: |
 | BookThing | 639 | 358 | 400 |
 | MORI | 656 | 428 | 450 |
-| Patsy’s | 774 | 332 | 350 |
+| Patsy’s | 774 | 333 | 350 |
 
-同一一次性 DOM 计数统计修改前线上页面与修改后页面，包含项目标题、简介、元信息、章节标题、正文、步骤数字、图注、解释性标注、查看图片提示和折叠叙述；互斥响应式副本只计一次，响应式独有说明仍计入。全站共用导航／页脚、原始截图 UI 与 sitemap 节点、alt、代码和独立标点不计；连字符复合词、数字／比率／小数各计一词。没有把正文转图或藏进 alt／折叠规避预算。计数与文本保存在忽略的 `.design-review.local/compact-measure.mjs` 和 `compact-coordinated-before/`、`compact-coordinated-final/`；线上复核另存 `compact-coordinated-online/`。
+同一一次性 DOM 计数统计修改前线上页面与修改后页面，包含项目标题、简介、元信息、章节标题、正文、步骤数字、图注、解释性标注、查看图片提示和折叠叙述；互斥响应式副本只计一次，响应式独有说明仍计入。全站共用导航／页脚、原始截图 UI 与 sitemap 节点、alt、代码和独立标点不计；连字符复合词、数字、小数各计一词，斜线分隔的英文词分别计数。没有把正文转图或藏进 alt／折叠规避预算。计数与文本保存在忽略的 `.design-review.local/compact-measure.mjs` 和 `compact-coordinated-before/`、`compact-coordinated-final/`；线上复核另存 `compact-coordinated-online/`。
 
 **BookThing 锁定模块**：`Complete sitemaps & task paths` 共 21 词，先从总预算扣除，其他内容预算为 379 词。该模块标题、解释、三张完整原图、顺序、源文件／alt／图注、展开折叠和图片放大全部保留。1440／820／390px 的展开 HTML、文字、图数及全部记录内部宽高、字体、间距、边框、颜色与基线一致；仅调整模块外部间距。专属冻结样式保留原内部呈现，不随其他图注规则变化。基线在 `compact-coordinated-before/`，逐项核对在 `compact-lock-local/`；继续编辑时不得删改这段 disclosure 或三份素材配置。
 
