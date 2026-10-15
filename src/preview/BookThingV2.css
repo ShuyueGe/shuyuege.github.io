@@ -44,11 +44,8 @@
 .preview-v2--bookthing .bookthing-v2-ending h2 { max-width: var(--v2-narrative-width); font-size: var(--v2-outcome-size); }
 .preview-v2--bookthing .bookthing-v2-ending-copy .v2-prose:last-child { margin-bottom: 0; }
 
-/* User-locked disclosure: all internal typography, source sizing and spacing
-   match the frozen starting version. Only its external margin can vary. */
-.preview-v2--bookthing .bookthing-v2-full-diagrams { width: var(--v2-wide-width); margin-inline: calc((100% - var(--v2-wide-width)) / 2); margin-top: var(--v2-group-gap); padding: 18px 0; border-block: 1px solid var(--color-border); }
-.preview-v2--bookthing .bookthing-v2-full-diagrams summary { font-size: 14px; font-weight: 650; line-height: normal; min-height: 44px; align-content: center; margin: 0; padding: 0; }
-.preview-v2--bookthing .bookthing-v2-full-diagrams[open] summary { margin-bottom: 24px; }
+/* Complete diagrams keep their internal treatment within the main content rail. */
+.preview-v2--bookthing .bookthing-v2-full-diagrams { width: 100%; margin-inline: 0; margin-top: var(--v2-group-gap); }
 .preview-v2--bookthing .bookthing-v2-full-diagrams .v2-evidence { margin: 0; }
 .preview-v2--bookthing .bookthing-v2-full-diagrams .v2-evidence + .v2-evidence { margin-top: 24px; }
 .preview-v2--bookthing .bookthing-v2-full-diagrams .v2-image-trigger { display: block; width: 100%; border: 0; padding: 0; margin: 0; text-align: left; background: none; }
@@ -106,11 +103,6 @@
 }
 
 /* Native disclosure entrances only; expanded material keeps its existing layout. */
-.preview-v2--bookthing details.v2-details > summary.bookthing-v2-disclosure-summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-width: 0; padding: 16px 18px; border: 1px solid #b8c6b9; border-radius: var(--radius-small); background: #eef2ee; color: var(--color-text); font-size: 14px; font-weight: 600; line-height: 1.5; list-style: none; cursor: pointer; }
-.preview-v2--bookthing .bookthing-v2-disclosure-summary::marker { content: ""; }
-.preview-v2--bookthing .bookthing-v2-disclosure-summary::-webkit-details-marker { display: none; }
-.preview-v2--bookthing .bookthing-v2-disclosure-summary:hover { background: #e5ece5; border-color: #91a493; }
-.preview-v2--bookthing .bookthing-v2-disclosure-summary:focus-visible { outline: 2px solid var(--color-text); outline-offset: 4px; }
 .preview-v2--bookthing .bookthing-v2-disclosure-title { min-width: 0; }
 .preview-v2--bookthing .bookthing-v2-disclosure-action { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 8px; color: #253c34; white-space: nowrap; }
 .preview-v2--bookthing .bookthing-v2-disclosure-action svg { flex: 0 0 auto; width: 20px; height: 20px; }
