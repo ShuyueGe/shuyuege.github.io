@@ -24,7 +24,7 @@ export function BookThingV2() {
       </div>
       <p className="v2-prose bookthing-v2-ia-decision">{copy.ia.decision}</p>
       <details className="v2-details bookthing-v2-full-diagrams">
-        <summary>{copy.ia.fullEvidenceLabel}</summary>
+        <DisclosureSummary title={copy.ia.fullEvidenceLabel} noun="diagrams" />
         <EvidenceImage {...assets.fullOriginal} />
         <EvidenceImage {...assets.fullTasks} />
         <EvidenceImage {...assets.fullRevised} />
@@ -67,7 +67,7 @@ export function BookThingV2() {
 
     <section className="bookthing-v2-supporting-section" aria-labelledby={copy.sections[3].id}>
       <details className="v2-details bookthing-v2-supporting">
-        <summary id={copy.sections[3].id}>{copy.supporting.label}</summary>
+        <DisclosureSummary id={copy.sections[3].id} title={copy.supporting.label} noun="gallery" />
         <p className="v2-prose">{copy.supporting.body}</p>
         <div className="bookthing-v2-supporting-prototype-group">
           <h3>{copy.supporting.prototypeLabel}</h3>
@@ -96,6 +96,19 @@ export function BookThingV2() {
   </PreviewShell>;
 }
 
+
+function DisclosureSummary({ id, title, noun }: { id?: string; title: string; noun: "diagrams" | "gallery" }) {
+  return <summary id={id} className="bookthing-v2-disclosure-summary">
+    <span className="bookthing-v2-disclosure-title">{title}</span>
+    <span className="bookthing-v2-disclosure-action">
+      <span className="bookthing-v2-disclosure-show">Show {noun}</span>
+      <span className="bookthing-v2-disclosure-hide">Hide {noun}</span>
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+        <path d="m5 7.5 5 5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </span>
+  </summary>;
+}
 
 const prototypeDimensions = [[2560, 1960], [3840, 2496], [3840, 2496], [2560, 1672], [2560, 1672]] as const;
 

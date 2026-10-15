@@ -104,3 +104,17 @@
   .preview-v2--bookthing .bookthing-v2-supporting-identity,
   .preview-v2--bookthing .bookthing-v2-supporting-applications { gap: 24px; }
 }
+
+/* Native disclosure entrances only; expanded material keeps its existing layout. */
+.preview-v2--bookthing details.v2-details > summary.bookthing-v2-disclosure-summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-width: 0; padding: 16px 18px; border: 1px solid #b8c6b9; border-radius: var(--radius-small); background: #eef2ee; color: var(--color-text); font-size: 14px; font-weight: 600; line-height: 1.5; list-style: none; cursor: pointer; }
+.preview-v2--bookthing .bookthing-v2-disclosure-summary::marker { content: ""; }
+.preview-v2--bookthing .bookthing-v2-disclosure-summary::-webkit-details-marker { display: none; }
+.preview-v2--bookthing .bookthing-v2-disclosure-summary:hover { background: #e5ece5; border-color: #91a493; }
+.preview-v2--bookthing .bookthing-v2-disclosure-summary:focus-visible { outline: 2px solid var(--color-text); outline-offset: 4px; }
+.preview-v2--bookthing .bookthing-v2-disclosure-title { min-width: 0; }
+.preview-v2--bookthing .bookthing-v2-disclosure-action { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 8px; color: #253c34; white-space: nowrap; }
+.preview-v2--bookthing .bookthing-v2-disclosure-action svg { flex: 0 0 auto; width: 20px; height: 20px; }
+.preview-v2--bookthing .bookthing-v2-disclosure-hide { display: none; }
+.preview-v2--bookthing details[open] > .bookthing-v2-disclosure-summary .bookthing-v2-disclosure-show { display: none; }
+.preview-v2--bookthing details[open] > .bookthing-v2-disclosure-summary .bookthing-v2-disclosure-hide { display: inline; }
+.preview-v2--bookthing details[open] > .bookthing-v2-disclosure-summary svg { transform: rotate(180deg); }
