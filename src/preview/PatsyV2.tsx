@@ -74,6 +74,33 @@ export function PatsyV2() {
         crop={{ ratio: "804 / 910", position: "bottom" }} />
     </section>
 
+    <section className="patsy-v2-mockups" aria-labelledby="patsy-v2-mockups-heading">
+      <details className="v2-details">
+        <summary id="patsy-v2-mockups-heading">
+          <span className="patsy-v2-disclosure-title">Final mockups</span>
+          <span className="patsy-v2-disclosure-action">
+            <span className="patsy-v2-disclosure-show">Show gallery</span>
+            <span className="patsy-v2-disclosure-hide">Hide gallery</span>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+              <path d="m5 7.5 5 5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </summary>
+        <div className="patsy-v2-mockup-groups">
+          {finalMockupGroups.map(group => <div className="patsy-v2-mockup-group" key={group.title}>
+            <h3>{group.title}</h3>
+            <div className={`patsy-v2-mockup-grid${group.screens.length === 3 ? " patsy-v2-mockup-grid--three" : ""}`}>
+              {group.screens.map(([label, file]) => <div key={file}>
+                <h4>{label}</h4>
+                <EvidenceImage src={`/images/projects/patsy/${file}`} width={804} height={1758}
+                  alt={`Full team prototype screen: ${label}`} />
+              </div>)}
+            </div>
+          </div>)}
+        </div>
+      </details>
+    </section>
+
     <section className="v2-ending patsy-v2-ending" aria-labelledby="patsy-v2-boundary">
       <SectionHeading id="patsy-v2-boundary" title={copy.boundary.title} />
       <div>
@@ -82,3 +109,22 @@ export function PatsyV2() {
     </section>
   </PreviewShell>;
 }
+const finalMockupGroups = [
+  { title: "Home & menus", screens: [
+    ["Home", "after-Landing Page.png"],
+    ["Starters", "after-Menu 1.png"],
+    ["Entrées", "after-Menu 2.png"],
+  ] },
+  { title: "Pickup", screens: [
+    ["Empty cart", "after-Cart step1.png"],
+    ["Order review", "after-Cart step2.png"],
+    ["Checkout", "after-Cart step3.png"],
+    ["Order confirmation", "after-Cart step4.png"],
+  ] },
+  { title: "Reservations", screens: [
+    ["Reservation details", "after-Reservation step1.png"],
+    ["Guest count", "after-Reservation step2.png"],
+    ["Reservation review", "after-Reservation step3.png"],
+    ["Reservation confirmation", "after-Reservation step4.png"],
+  ] },
+] as const;
