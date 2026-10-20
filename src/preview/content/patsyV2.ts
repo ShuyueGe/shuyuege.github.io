@@ -4,9 +4,10 @@ export const patsyV2 = {
   title: "From menu browsing to a complete pickup path",
   intro: "Research prioritized menu access; exploratory testing exposed a missing pickup path.",
   meta: [
-    { label: "Role", value: "Research planning · Test design and observation · Focused UI refinement" },
-    { label: "Team", value: "Four-person academic project" },
-    { label: "Delivery", value: "Mobile Figma prototype · Unlaunched" },
+    { label: "Role", value: "UI & UX designer" },
+    { label: "Timeline", value: "January–May 2026" },
+    { label: "Team", value: "4 UI & UX designers (me, Jihye, Karly, Kevin)" },
+    { label: "Delivery", value: "Low-fidelity and high-fidelity mockups" },
   ],
   sections: [
     { id: "patsy-v2-research", label: "Research" },
@@ -20,8 +21,7 @@ export const patsyV2 = {
       { lead: "21 of 21", text: "survey respondents selected View menu as a likely website use; multiple selections were allowed." },
     ],
     decision: "Stated intentions prioritized menu access. Small-text feedback and product review prompted more space for menu categories, descriptions, and prices.",
-    tradeoff: "The landing export still omits hours and seasonal closures.",
-    sample: "Convenience sample: UMBC students and team members’ families; none lived in Bethany Beach, and one had visited Patsy’s. Intentions were not observed behavior.",
+    booking: "Customers needed to make reservations without leaving the website.",
   },
   ordering: {
     title: "Testing exposed the gap between browsing and ordering",
@@ -37,15 +37,20 @@ export const patsyV2 = {
       { title: "Checkout + pickup", asset: "checkout" },
       { title: "Confirm", asset: "confirmation" },
     ],
-    limitation: "Next-step buttons advance through preset states; add-to-cart and dynamic updates remain nonfunctional. The revision was not retested.",
+    limitation: "Extending the menu into a pickup sequence was our clearest testing-informed change. We added cart cues, an order summary, checkout with pickup information, and confirmation.",
   },
   reservation: {
     title: "Review, edit, then confirm",
+    context: "The original reservation page linked to Exploretock; our team proposed an in-site selection, review, and confirmation flow.",
     text: "Both participants completed the initial reservation task. An unclear, nonworking X was removed; Make Edits and Reserve retained correction before commitment.",
   },
   boundary: {
-    title: "Delivered prototype; effectiveness unverified",
-    text: "Testing prompted revision; it did not demonstrate improved task success. The concept remains unlaunched.",
+    title: "Outcome",
+    rows: [
+      { label: "Designed:", text: "A revised mobile concept for menu browsing, reservations, and a proposed pickup sequence." },
+      { label: "Tested:", text: "Three tasks on the initial prototype with two participants, revealing missing ordering steps and ambiguous controls." },
+      { label: "Still unvalidated:", text: "The revised pickup flow, broader usability, and restaurant acceptance. The concept remained unlaunched; no desktop design or measured post-redesign results were produced." },
+    ],
   },
   assets: {
     landing: {
@@ -57,6 +62,10 @@ export const patsyV2 = {
       src: "/images/projects/patsy/report-original-phone.jpg", width: 992, height: 2048,
       alt: "Original Patsy’s website phone capture with small text and a dense desktop composition",
       caption: "Original phone view: dense, desktop-style content.",
+    },
+    originalMenu: {
+      src: "/images/projects/patsy/before-menu.jpg", width: 1179, height: 2282,
+      alt: "Original Patsy’s menu with densely arranged dish names, descriptions, and prices",
     },
     testedMenu: {
       src: "/images/projects/patsy/report-tested-menu.png", width: 584, height: 638,

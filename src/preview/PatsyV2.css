@@ -2,7 +2,6 @@
 .preview-v2--patsy .patsy-v2-hero { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: var(--v2-group-gap); align-items: start; }
 .preview-v2--patsy .patsy-v2-hero-copy { min-width: 0; }
 .preview-v2--patsy .patsy-v2-hero-image { width: 100%; max-width: 320px; justify-self: start; }
-.preview-v2--patsy .patsy-v2-hero .v2-meta > div:first-child { grid-column: 1 / -1; }
 .preview-v2--patsy .patsy-v2-research { display: block; }
 .preview-v2--patsy .patsy-v2-research h2,
 .preview-v2--patsy .patsy-v2-ordering h2 { max-width: var(--v2-narrative-width); font-size: var(--v2-chapter-size); line-height: var(--v2-chapter-leading); }
@@ -42,8 +41,7 @@
 .preview-v2--patsy .patsy-v2-ending .v2-prose { margin-bottom: 0; }
 
 @media (max-width: 1000px) {
- .preview-v2--patsy .patsy-v2-flow { grid-template-columns: repeat(2,minmax(0,1fr)); }
- .preview-v2--patsy .patsy-v2-flow > li:last-child { grid-column: 1 / -1; width: min(100%,380px); justify-self: center; }
+ .preview-v2--patsy .patsy-v2-flow { grid-template-columns: 1fr; width: 100%; max-width: 380px; margin-inline: auto; }
 }
 @media (max-width: 900px) {
  .preview-v2--patsy .patsy-v2-hero { grid-template-columns: 1fr; }
@@ -78,4 +76,17 @@
 }
 @media (max-width: 600px) {
  .preview-v2--patsy .patsy-v2-mockup-grid { grid-template-columns: 1fr; width: 100%; max-width: 350px; margin-inline: auto; }
+}
+
+/* Requested original-site comparison and outcome matrix, scoped to Patsy V2. */
+.preview-v2--patsy .patsy-v2-original-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 320px)); justify-content: center; gap: var(--v2-group-gap); margin-top: var(--v2-evidence-gap); align-items: start; }
+.preview-v2--patsy .patsy-v2-original-pair .patsy-v2-original { margin: 0; }
+.preview-v2--patsy .patsy-v2-outcome-table { width: 100%; max-width: var(--v2-narrative-width); margin: 0; font-size: 17px; line-height: 1.7; }
+.preview-v2--patsy .patsy-v2-outcome-table > div { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 24px; padding: 20px 0; border-top: 1px solid var(--color-border); }
+.preview-v2--patsy .patsy-v2-outcome-table > div:last-child { border-bottom: 1px solid var(--color-border); }
+.preview-v2--patsy .patsy-v2-outcome-table dt { font-weight: 650; }
+.preview-v2--patsy .patsy-v2-outcome-table dd { margin: 0; }
+@media (max-width: 700px) {
+ .preview-v2--patsy .patsy-v2-original-pair { grid-template-columns: minmax(0, 320px); }
+ .preview-v2--patsy .patsy-v2-outcome-table > div { grid-template-columns: 1fr; gap: 8px; }
 }

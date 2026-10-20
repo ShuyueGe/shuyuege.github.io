@@ -24,11 +24,13 @@ export function PatsyV2() {
       </div>
       <div className="patsy-v2-research-response">
         <p className="v2-prose">{copy.research.decision}</p>
-        <p className="v2-note">{copy.research.tradeoff}</p>
-        <p className="patsy-v2-small">{copy.research.sample}</p>
+        <p className="v2-prose">{copy.research.booking}</p>
       </div>
-      <EvidenceImage {...copy.assets.original} className="patsy-v2-original"
-        crop={{ ratio: "992 / 900", position: "top" }} />
+      <div className="patsy-v2-original-pair">
+        <EvidenceImage {...copy.assets.original} className="patsy-v2-original"
+          crop={{ ratio: "992 / 900", position: "top" }} />
+        <EvidenceImage {...copy.assets.originalMenu} className="patsy-v2-original" />
+      </div>
     </section>
 
     <section className="v2-section patsy-v2-ordering" aria-labelledby="patsy-v2-ordering">
@@ -53,13 +55,11 @@ export function PatsyV2() {
         </div>
       <div className="patsy-v2-flow-stage">
         <h3>{copy.ordering.sequenceLabel}</h3>
-        <p className="v2-note patsy-v2-flow-limitation">{copy.ordering.limitation}</p>
+        <p className="v2-note patsy-v2-flow-limitation"><strong>{copy.ordering.limitation}</strong></p>
         <ol className="patsy-v2-flow">
           {copy.ordering.sequence.map((step, index) => <li key={step.asset}>
             <h4><span className="patsy-v2-step-number" aria-hidden="true">{index + 1}</span>{step.title}</h4>
-            <EvidenceImage {...copy.assets[step.asset]}
-              crop={index === 1 ? undefined : { ratio: index === 0 ? "804 / 670" : "804 / 660", position: "bottom" }}
-              regions={index === 1 ? [{ left: 0, top: 734, width: 804, height: 402 }, { left: 0, top: 1590, width: 804, height: 168 }] : undefined} />
+            <EvidenceImage {...copy.assets[step.asset]} />
           </li>)}
         </ol>
       </div>
@@ -68,7 +68,7 @@ export function PatsyV2() {
     <section className="v2-section v2-section--support patsy-v2-reservation" aria-labelledby="patsy-v2-reservation">
       <div>
         <SectionHeading id="patsy-v2-reservation" title={copy.reservation.title} />
-        <p className="v2-prose">{copy.reservation.text}</p>
+        <p className="v2-prose"><strong>{copy.reservation.context}</strong><br />{copy.reservation.text}</p>
       </div>
       <EvidenceImage {...copy.assets.reservation} className="patsy-v2-reservation-image"
         crop={{ ratio: "804 / 910", position: "bottom" }} />
@@ -103,9 +103,11 @@ export function PatsyV2() {
 
     <section className="v2-ending patsy-v2-ending" aria-labelledby="patsy-v2-boundary">
       <SectionHeading id="patsy-v2-boundary" title={copy.boundary.title} />
-      <div>
-        <p className="v2-prose">{copy.boundary.text}</p>
-      </div>
+      <dl className="patsy-v2-outcome-table">
+        {copy.boundary.rows.map(row => <div key={row.label}>
+          <dt>{row.label}</dt><dd>{row.text}</dd>
+        </div>)}
+      </dl>
     </section>
   </PreviewShell>;
 }
