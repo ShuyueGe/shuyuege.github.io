@@ -6,13 +6,14 @@ export const patsyV2 = {
   meta: [
     { label: "Role", value: "UI & UX designer" },
     { label: "Timeline", value: "January–May 2026" },
-    { label: "Team", value: "4 UI & UX designers (me, Jihye, Karly, Kevin)" },
+    { label: "Team", value: "4 UI & UX designers (me, Jihye, Carly, Kevin)" },
     { label: "Delivery", value: "Low-fidelity and high-fidelity mockups" },
   ],
   sections: [
     { id: "patsy-v2-research", label: "Research" },
     { id: "patsy-v2-ordering", label: "Pickup iteration" },
     { id: "patsy-v2-reservation", label: "Reservation review" },
+    { id: "patsy-v2-mockups-heading", label: "Final mockups" },
     { id: "patsy-v2-boundary", label: "Outcome" },
   ],
   research: {
@@ -30,7 +31,7 @@ export const patsyV2 = {
     hotspot: "Separately, a crab-cake tap failed because its prototype hotspot was unsupported.",
     revision: "The revision added homepage pickup, menu cart/plus cues, order review, checkout with pickup information, and confirmation.",
     testedLabel: "Initial prototype · Tested",
-    revisedLabel: "Revised prototype · Not retested",
+    revisedLabel: "Revised prototype",
     sequenceLabel: "Proposed pickup sequence",
     sequence: [
       { title: "Review", asset: "cart" },

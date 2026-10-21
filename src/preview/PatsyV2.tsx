@@ -28,8 +28,9 @@ export function PatsyV2() {
       </div>
       <div className="patsy-v2-original-pair">
         <EvidenceImage {...copy.assets.original} className="patsy-v2-original"
-          crop={{ ratio: "992 / 900", position: "top" }} />
-        <EvidenceImage {...copy.assets.originalMenu} className="patsy-v2-original" />
+          crop={{ ratio: "992 / 1072", position: "top" }} />
+        <EvidenceImage {...copy.assets.originalMenu} className="patsy-v2-original"
+          regions={[{ left: 360, top: 330, width: 682, height: 737 }]} />
       </div>
     </section>
 
@@ -50,7 +51,7 @@ export function PatsyV2() {
           </div>
           <div className="patsy-v2-revised">
             <p className="patsy-v2-evidence-label">{copy.ordering.revisedLabel}</p>
-            <EvidenceImage {...copy.assets.revisedMenu} crop={{ ratio: "804 / 1180", position: "top" }} />
+            <EvidenceImage {...copy.assets.revisedMenu} crop={{ ratio: "256 / 365", position: "top" }} />
           </div>
         </div>
       <div className="patsy-v2-flow-stage">
