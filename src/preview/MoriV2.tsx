@@ -40,10 +40,6 @@ export function MoriV2() {
           </div>)}</div>
           <p className="v2-note">{copy.navigation.tradeoff}</p>
         </div>
-        <div className="mori-v2-return-evidence">
-          <h3>{copy.navigation.videoLabel}</h3>
-          <DuskVideo navigation />
-        </div>
       </div>
     </section>
     <section className="v2-section mori-v2-health" aria-labelledby={copy.sections[1].id}>
