@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./V2Directory.css";
+
+function sectionHash(id: string) { return "#" + id.replace(/-v2-/g, "-"); }
 
 export function V2Directory({ sections }: { sections: readonly { id: string; label: string }[] }) {
   const rail = useRef<HTMLDivElement>(null);
@@ -8,6 +10,7 @@ export function V2Directory({ sections }: { sections: readonly { id: string; lab
   const clampedAnchor = useRef<{ id: string; reached: boolean } | null>(null);
   const [activeId, setActiveId] = useState<string>();
   const { pathname, search, hash } = useLocation();
+  const navigate = useNavigate();
   const sectionIds = JSON.stringify(sections.map(section => section.id));
   const syncOverflow = useCallback(() => {
     const element = nav.current;
@@ -74,13 +77,17 @@ export function V2Directory({ sections }: { sections: readonly { id: string; lab
     return () => { observer.disconnect(); cancelAnimationFrame(frame); window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", measure); window.removeEventListener("wheel", clearIntent); window.removeEventListener("touchmove", clearIntent); window.removeEventListener("keydown", onKey); };
   }, [sectionIds, syncOverflow]);
   useEffect(() => {
-    const id = (JSON.parse(sectionIds) as string[]).find(id => hash === "#" + id || hash === "#" + encodeURIComponent(id));
+    const id = (JSON.parse(sectionIds) as string[]).find(id => hash === sectionHash(id) || hash === "#" + id || hash === "#" + encodeURIComponent(id));
+    if (id && hash !== sectionHash(id)) {
+      navigate({ pathname, search, hash: sectionHash(id) }, { replace: true });
+      return;
+    }
     let secondFrame = 0;
     const firstFrame = requestAnimationFrame(() => {
       secondFrame = requestAnimationFrame(() => { if (id) scrollToSection(id); });
     });
     return () => { cancelAnimationFrame(firstFrame); cancelAnimationFrame(secondFrame); };
-  }, [pathname, hash, sectionIds, scrollToSection]);
+  }, [pathname, search, hash, sectionIds, scrollToSection, navigate]);
   useEffect(() => {
     const element = nav.current, active = element?.querySelector<HTMLElement>('[aria-current="location"]');
     if (!element || !active) return;
@@ -89,9 +96,9 @@ export function V2Directory({ sections }: { sections: readonly { id: string; lab
       left: item.left < bounds.left ? item.left - bounds.left : Math.max(0, item.right - bounds.right + (element.hasAttribute("data-overflow-end") ? 16 : 0)), behavior: "instant" });
   }, [activeId]);
   return <div ref={rail} className="v2-directory"><nav ref={nav} className="v2-section-nav" aria-label="Case study sections" onScroll={syncOverflow}>
-    {sections.map(section => <Link key={section.id} to={{ pathname, search, hash: "#" + section.id }}
+    {sections.map(section => <Link key={section.id} to={{ pathname, search, hash: sectionHash(section.id) }}
       aria-current={activeId === section.id ? "location" : undefined} onClick={event => {
-        if (hash === "#" + section.id && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+        if (hash === sectionHash(section.id) && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
           event.preventDefault(); scrollToSection(section.id);
         }
       }}>{section.label}</Link>)}

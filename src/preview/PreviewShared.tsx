@@ -11,19 +11,13 @@ export function PreviewShell({ project, title, sections, children }: {
 }) {
   useEffect(() => {
     const priorTitle = document.title;
-    document.title = `${title} · Preview v2 | Shuyue Ge`;
-    const robots = document.createElement("meta");
-    robots.name = "robots";
-    robots.content = "noindex, nofollow";
-    robots.dataset.previewV2 = "true";
-    document.head.append(robots);
-    return () => { robots.remove(); document.title = priorTitle; };
+    document.title = `${title} | Shuyue Ge`;
+    return () => { document.title = priorTitle; };
   }, [title]);
   return <Layout className={`preview-v2 preview-v2--${project}`}>
-    <article className="v2-article" aria-label={`${title} case study preview`}>
+    <article className="v2-article" aria-label={`${title} case study`}>
       <div className="v2-utility">
         <Link className="back-link" to="/?section=projects">← Back to projects</Link>
-        <span className="v2-preview-label">Preview v2</span>
       </div>
       <V2Directory sections={sections} />
       {children}
