@@ -1,4 +1,6 @@
 /* MORI V2: shared narrative measure, then authentic grouped evidence. */
+.preview-v2.preview-v2--mori .v2-prose,
+.preview-v2.preview-v2--mori .v2-note { max-width: 100%; }
 .preview-v2--mori .mori-v2-hero { display: grid; grid-template-columns: minmax(0,1fr) 210px; gap: var(--v2-group-gap); align-items: start; }
 .preview-v2--mori .mori-v2-dusk { width: min(100%,210px); margin: 0; padding: 0; background: none; }
 .preview-v2--mori .mori-v2-dusk video { display: block; width: 100%; height: auto; }
@@ -8,7 +10,7 @@
 .preview-v2--mori .mori-v2-navigation-grid,
 .preview-v2--mori .mori-v2-navigation-grid > div:first-child { display: block; }
 .preview-v2--mori .mori-v2-navigation-story,
-.preview-v2--mori .mori-v2-rules { font-size: 17px; max-width: min(var(--v2-reading-width),var(--v2-narrative-width)); }
+.preview-v2--mori .mori-v2-rules { font-size: 17px; max-width: 100%; }
 .preview-v2--mori .mori-v2-navigation-story .v2-prose:last-child { margin-bottom: 0; }
 .preview-v2--mori .mori-v2-rules { display: grid; gap: var(--v2-title-gap); margin-top: var(--v2-evidence-gap); padding: 0; background: none; }
 .preview-v2--mori .mori-v2-rules .v2-label { display: block; margin: 0 0 8px; }
