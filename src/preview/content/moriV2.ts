@@ -77,7 +77,7 @@ export const moriV2 = {
 // Reversible crops are derived from the authentic sources; fullSrc opens the source.
 export const moriV2Assets = {
   heroVideo: "/images/projects/mori/黄昏-hero-web.mp4",
-  healthBefore: { src: "/images/projects/mori/旧-身心节律.png", fullSrc: "/images/projects/mori/旧-身心节律.png", width: 724, height: 1854 }, // Continuous page crop ends above Today's Progress.
+  healthBefore: { src: "/images/preview/mori-v2/health-before-restored.png", fullSrc: "/images/preview/mori-v2/health-before-restored.png", width: 1448, height: 3708 }, // Continuous page crop ends above Today's Progress.
   healthAfter: { src: "/images/projects/mori/新-身心节律.png", fullSrc: "/images/projects/mori/新-身心节律.png", width: 1179, height: 2556 }, // Full supplied screenshot.
   companion: { src: "/images/projects/mori/新-聊天-黄昏.png", width: 1179, height: 2556 },
   guardian: { src: "/images/projects/mori/新-记录-黄昏.png", width: 1179, height: 2556 },
