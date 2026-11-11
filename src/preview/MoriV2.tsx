@@ -50,13 +50,13 @@ export function MoriV2() {
       </SectionHeading>
       <div className="mori-v2-health-pair">
         <div><h3>{copy.health.beforeLabel}</h3>
-          <EvidenceImage {...assets.healthBefore} alt={copy.health.beforeAlt}
-            caption={copy.health.beforeCaption} regions={[{ left: 0, top: 0, width: 724, height: 350 }, { left: 0, top: 924, width: 724, height: 476 }]} />
+          <EvidenceImage {...assets.healthBefore} className="mori-v2-health-full" alt={copy.health.beforeAlt}
+            caption={copy.health.beforeCaption} regions={[{ left: 0, top: 0, width: 724, height: 1800 }]} />
           <div className="mori-v2-record-path"><p className="v2-label">{copy.health.originalFlowLabel}</p><p className="v2-prose">{copy.health.originalFlow}</p></div>
         </div>
         <div><h3>{copy.health.afterLabel}</h3>
-          <EvidenceImage {...assets.healthAfter} alt={copy.health.afterAlt}
-            caption={copy.health.afterCaption} />
+          <EvidenceImage {...assets.healthAfter} className="mori-v2-health-full" alt={copy.health.afterAlt}
+            caption={copy.health.afterCaption} regions={[{ left: 0, top: 0, width: 1179, height: 2556 }]} />
           <div className="mori-v2-record-path mori-v2-record-path--revised"><p className="v2-label">{copy.health.revisedFlowLabel}</p><p className="v2-prose">{copy.health.revisedFlow}</p></div>
 
 

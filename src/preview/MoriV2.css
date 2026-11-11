@@ -31,6 +31,10 @@
 .preview-v2--mori .v2-source-window { border: 0; }
 .preview-v2--mori .v2-source-window img { padding: 0; border: 0; }
 .preview-v2--mori .mori-v2-health-pair .v2-image-trigger > img { padding: 8px; border: 1px solid #b8c6b9; background: #eef0e8; }
+/* Match the former two-window height; scale each continuous screenshot proportionally. */
+.preview-v2--mori .mori-v2-health-full { container-type: inline-size; }
+.preview-v2--mori .mori-v2-health-full .v2-source-regions { display: flex; justify-content: center; align-items: flex-start; height: calc((100cqw - 16px) * 826 / 724 + 32px); }
+.preview-v2--mori .mori-v2-health-full .v2-source-window { flex: 0 0 auto; height: 100%; width: auto; max-width: 100%; }
 .preview-v2--mori .mori-v2-record-path { margin-top: var(--v2-evidence-gap); padding: 0; border: 0; }
 .preview-v2--mori .mori-v2-record-path .v2-label { margin-bottom: 8px; }
 .preview-v2--mori .mori-v2-record-path .v2-prose { margin-bottom: 0; }
