@@ -42,11 +42,11 @@
 
 /* Modes stay in order: problem, comparison table, final explanation, full screens. */
 .preview-v2--mori .mori-v2-modes h2 { font-size: var(--v2-support-size); line-height: var(--v2-chapter-leading); font-weight: 600; }
-.preview-v2--mori .mori-v2-modes .mori-v2-explorations { width: min(100%,var(--v2-reading-width),var(--v2-narrative-width)); table-layout: fixed; border-collapse: collapse; font-size: 17px; line-height: 1.7; margin: 0 0 var(--v2-evidence-gap); }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 17px; line-height: 1.7; margin: 0 0 var(--v2-evidence-gap); }
 .preview-v2--mori .mori-v2-modes .mori-v2-explorations th,
-.preview-v2--mori .mori-v2-modes .mori-v2-explorations td { text-align: left; vertical-align: top; padding: 0 0 16px; }
-.preview-v2--mori .mori-v2-modes .mori-v2-explorations th:first-child { width: 34%; padding-right: 24px; }
-.preview-v2--mori .mori-v2-modes .mori-v2-explorations thead th { font-size: 14px; font-weight: 650; }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations td { text-align: left; vertical-align: top; padding: 12px 0 24px; }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations th:first-child { width: 34%; padding-right: 48px; }
+.preview-v2--mori .mori-v2-modes .mori-v2-explorations thead th { font-size: 14px; font-weight: 650; padding-top: 0; padding-bottom: 20px; }
 .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody th { font-weight: 600; }
 .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child th,
 .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child td { padding-bottom: 0; }
@@ -69,11 +69,11 @@
  .preview-v2--mori .mori-v2-modes .mori-v2-explorations,
  .preview-v2--mori .mori-v2-modes .mori-v2-explorations thead,
  .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody { display: block; }
- .preview-v2--mori .mori-v2-modes .mori-v2-explorations thead tr { padding-bottom: 12px; border-bottom: 1px solid var(--color-border); display: grid; grid-template-columns: minmax(0,.34fr) minmax(0,.66fr); gap: 12px; margin-bottom: var(--v2-evidence-gap); }
- .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr { display: block; margin-bottom: var(--v2-title-gap); }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations thead tr { padding-bottom: 16px; border-bottom: 1px solid var(--color-border); display: grid; grid-template-columns: minmax(0,.34fr) minmax(0,.66fr); gap: 16px; margin-bottom: var(--v2-evidence-gap); }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr { display: block; margin-bottom: 24px; }
  .preview-v2--mori .mori-v2-modes .mori-v2-explorations th,
  .preview-v2--mori .mori-v2-modes .mori-v2-explorations td { display: block; width: auto; padding: 0; }
  .preview-v2--mori .mori-v2-modes .mori-v2-explorations th:first-child { width: auto; padding-right: 0; }
- .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody th { margin-bottom: 8px; }
+ .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody th { margin-bottom: 12px; }
  .preview-v2--mori .mori-v2-modes .mori-v2-explorations tbody tr:last-child { margin-bottom: 0; }
 }
